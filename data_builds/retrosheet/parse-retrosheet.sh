@@ -2,6 +2,9 @@
 
 set -eu
 
+mkdir parsed
+cd parsed
+
 # Easy stuff first: merge files that don't need parsing
 echo "Loading gamelog..."
 cat /retrosheet/gamelog/*.TXT > /parsed/gamelog.csv
@@ -31,7 +34,6 @@ cat /retrosheet/rosters/*.ROS > /parsed/rosters.csv
 pigz rosters.csv
 
 # Now we parse the event files with the Chadwick toolkit
-
 event_parse='cwevent -q -y {} -f 0-96 -x 0-62 {}* >> /parsed/event.csv'
 game_parse='cwgame -q -y {} -f 0-83 -x 0-94 {}* >> /parsed/game.csv'
 sub_parse='cwsub -q -y {} {}* >> /parsed/sub.csv'
@@ -43,7 +45,7 @@ event_folders=(asg post regular)
 chadwick_output_types=(event game sub daily comment)
 parse_funcs=("${event_parse}" "${game_parse}" "${sub_parse}" "${daily_parse}" "${comment_parse}")
 
-# Get rid of box score files
+# Get rid of box score files (This makes me sad, would like to build a parser for them)
 rm /retrosheet/event/**/*.{EBA,EBN}
 
 mkdir "${chadwick_output_types[@]}"
@@ -56,17 +58,16 @@ for folder in "${event_folders[@]}"; do
             # Find all of the team files and grab the years from each of them
             # Then pass each year as an argument to cwevent, which will process
             # all files in the folder of that year
-            # Not all years will have data (e.g. 1994 post and 1945 asg),
+            # Not all years will have data_builds (e.g. 1994 post and 1945 asg),
             # So we allow it to finish even if one command errors out
             find | grep "TEAM" | grep -oE '[0-9]{4}$' | \
             xargs -P $(nproc) -i sh -c "${func} || true"
     done
-    rm -rf /retrosheet/event/"${folder}"
 done
 
 # Merge all yearly files into one and gzip
 for type in "${chadwick_output_types[@]}"; do
     echo "Zipping $type output..."
     pigz /parsed/"${type}".csv
-echo "Finished Retrosheet transform."
 done
+echo "Finished Retrosheet transform."
