@@ -58,7 +58,7 @@ for folder in "${event_folders[@]}"; do
             # Find all of the team files and grab the years from each of them
             # Then pass each year as an argument to cwevent, which will process
             # all files in the folder of that year
-            # Not all years will have data_builds (e.g. 1994 post and 1945 asg),
+            # Not all years will have data_build (e.g. 1994 post and 1945 asg),
             # So we allow it to finish even if one command errors out
             find | grep "TEAM" | grep -oE '[0-9]{4}$' | \
             xargs -P $(nproc) -i sh -c "${func} || true"
