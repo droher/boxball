@@ -34,34 +34,39 @@ cat /retrosheet/rosters/*.ROS > /parsed/rosters.csv
 pigz rosters.csv
 
 # Now we parse the event files with the Chadwick toolkit
-event_parse='cwevent -q -y {} -f 0-96 -x 0-62 {}* >> /parsed/event.csv'
-game_parse='cwgame -q -y {} -f 0-83 -x 0-94 {}* >> /parsed/game.csv'
-sub_parse='cwsub -q -y {} {}* >> /parsed/sub.csv'
 daily_parse='cwdaily -q -y {} {}* >> /parsed/daily.csv'
 comment_parse='cwcomment -q -y {} {}* >> /parsed/comment.csv'
+game_parse='cwgame -q -y {} -f 0-83 -x 0-94 {}* >> /parsed/game.csv'
+sub_parse='cwsub -q -y {} {}* >> /parsed/sub.csv'
+event_parse='cwevent -q -y {} -f 0-96 -x 0-62 {}* >> /parsed/event.csv'
+
 
 
 event_folders=(asg post regular)
-chadwick_output_types=(event game sub daily comment)
-parse_funcs=("${event_parse}" "${game_parse}" "${sub_parse}" "${daily_parse}" "${comment_parse}")
+chadwick_output_types=(daily comment event game sub)
+parse_funcs=("${daily_parse}" "${comment_parse}" "${game_parse}" "${sub_parse}" "${event_parse}")
 
-# Get rid of box score files (This makes me sad, would like to build a parser for them)
-rm /retrosheet/event/**/*.{EBA,EBN}
-
-mkdir "${chadwick_output_types[@]}"
 
 # Parse each event file once per each extraction function
-for folder in "${event_folders[@]}"; do
-    echo "Loading $folder events..."
-    for func in "${parse_funcs[@]}"; do
+for func in "${parse_funcs[@]}"; do
+    # Only the first two funcs (daily/comment) handle box score files, so we remove them once we're done
+    # Ideally want to do this with regex without removing
+    # but can't figure it out inside the shell string commands above
+    if ['"${func}"' == '"${game_parse}"']; then
+        echo "Removing box score files from parsing tree as not needed for remaining parsers"
+        rm /retrosheet/event/**/*.{EBA,EBN}
+    fi
+    echo "Parsing: '"${func}"'"
+    for folder in "${event_folders[@]}"; do
+        echo "Loading $folder events..."
         cd /retrosheet/event/"${folder}" && \
             # Find all of the team files and grab the years from each of them
             # Then pass each year as an argument to cwevent, which will process
             # all files in the folder of that year
-            # Not all years will have data_build (e.g. 1994 post and 1945 asg),
+            # Not all years will have data (e.g. 1994 post and 1945 asg),
             # So we allow it to finish even if one command errors out
-            find | grep "TEAM" | grep -oE '[0-9]{4}$' | \
-            xargs -P $(nproc) -i sh -c "${func} || true"
+            find | grep "TEAM" | grep -oE '[0-9]{4}$' | sort | \
+            xargs -P $(nproc) -i sh -c "echo {} && ${func} || true"
     done
 done
 
