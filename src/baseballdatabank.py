@@ -116,7 +116,6 @@ class Batting(Base):
     SH = Column(Integer)
     SF = Column(Integer)
     GIDP = Column(Integer)
-    G_old = Column(Integer)
 
 
 class BattingPost(Base):
@@ -146,12 +145,12 @@ class BattingPost(Base):
     GIDP = Column(Integer)
 
 
-t_CollegePlaying = Table(
-    'CollegePlaying', metadata,
-    Column('playerID', String(9)),
-    Column('schoolID', String(15)),
-    Column('yearID', Integer)
-)
+class CollegePlaying(Base):
+    __tablename__ = 'CollegePlaying'
+
+    Column('playerID', String(9), primary_key=True),
+    Column('schoolID', String(15), primary_key=True),
+    Column('yearID', Integer, primary_key=True)
 
 
 class Fielding(Base):
@@ -186,6 +185,29 @@ class FieldingOF(Base):
     Glf = Column(Integer)
     Gcf = Column(Integer)
     Grf = Column(Integer)
+
+
+class FieldingOFSplit(Base):
+    __tablename__ = 'FieldingOFSplit'
+
+    playerID = Column(String(9), primary_key=True, nullable=False)
+    yearID = Column(Integer, primary_key=True, nullable=False)
+    stint = Column(Integer, primary_key=True, nullable=False)
+    teamID = Column(String(3))
+    lgID = Column(String(2))
+    POS = Column(String(2), primary_key=True, nullable=False)
+    G = Column(Integer)
+    GS = Column(Integer)
+    InnOuts = Column(Integer)
+    PO = Column(Integer)
+    A = Column(Integer)
+    E = Column(Integer)
+    DP = Column(Integer)
+    PB = Column(Integer)
+    WP = Column(Integer)
+    SB = Column(Integer)
+    CS = Column(Integer)
+    ZR = Column(Float(53))
 
 
 class FieldingPost(Base):
@@ -254,8 +276,8 @@ class ManagersHalf(Base):
     rank = Column(Integer)
 
 
-class Master(Base):
-    __tablename__ = 'Master'
+class People(Base):
+    __tablename__ = 'People'
 
     playerID = Column(String(10), primary_key=True)
     birthYear = Column(Integer)
