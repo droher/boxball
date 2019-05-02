@@ -1,6 +1,5 @@
-FROM alpine:3.9.3 AS build-common
+FROM python:3.7.3-alpine3.9 AS build-common
 RUN apk add --no-cache \
-    bash \
     libtool \
     wget \
     unzip \
@@ -30,9 +29,9 @@ COPY triggers/retrosheet.sha1 .
 RUN wget https://github.com/chadwickbureau/retrosheet/archive/master.zip -O retrosheet.zip && \
     unzip retrosheet.zip && \
     mv retrosheet-master retrosheet
-COPY parse-retrosheet.sh .
+COPY parse_retrosheet.py .
 # Assemble parsed Retrosheet files into `/parsed/` for next container
-RUN chmod +x parse-retrosheet.sh && ./parse-retrosheet.sh
+RUN python -u parse_retrosheet.py
 
 
 FROM build-common as build-baseballdatabank
