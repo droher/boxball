@@ -1,15 +1,15 @@
 # coding: utf-8
-from sqlalchemy import Boolean, CHAR, Column, Date, Integer, String, Text
+from sqlalchemy import MetaData, Boolean, CHAR, Column, Date, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
-metadata = Base.metadata
+metadata: MetaData = Base.metadata
 
 
 class Event(Base):
     __tablename__ = 'events'
 
-    game_id = Column(CHAR(12), nullable=False)
+    game_id = Column(CHAR(12), primary_key=True)
     away_team_id = Column(CHAR(3))
     inn_ct = Column(Integer)
     bat_home_id = Column(Integer)
@@ -358,12 +358,12 @@ class Game(Base):
 class Daily(Base):
     __tablename__ = "daily"
 
-    game_id = Column(CHAR(12))
+    game_id = Column(CHAR(12), primary_key=True)
     game_dt = Column(Date)
     game_ct = Column(Integer)
     appear_dt = Column(Date)
     team_id = Column(CHAR(3))
-    player_id = Column(CHAR(8))
+    player_id = Column(CHAR(8), primary_key=True)
     b_g = Column(Integer)
     b_pa = Column(Integer)
     b_ab = Column(Integer)
@@ -501,17 +501,18 @@ class Comment(Base):
 
 
 class Gamelog(Base):
+    __tablename__ = "gamelog"
     # No explicit column names are provided by Retrosheet.
     # Alternative source used for header names: https://github.com/maxtoki/baseball_R
     # Did some exploratory analysis to find data types
 
-    Date = Column(Date)
-    DoubleHeader = Column(Integer)
+    Date = Column(Date, primary_key=True)
+    DoubleHeader = Column(Integer, primary_key=True)
     DayOfWeek = Column(CHAR(3))
-    VisitingTeam = Column(CHAR(3))
+    VisitingTeam = Column(CHAR(3), primary_key=True)
     VisitingTeamLeague = Column(CHAR(2))
     VisitingTeamGameNumber = Column(Integer)
-    HomeTeam = Column(CHAR(3))
+    HomeTeam = Column(CHAR(3), primary_key=True)
     HomeTeamLeague = Column(CHAR(2))
     HomeTeamGameNumber = Column(Integer)
     VisitorRunsScored = Column(Integer)
@@ -700,7 +701,7 @@ class Schedule(Base):
     Date = Column(Date, primary_key=True)
     DoubleHeader = Column(Integer, primary_key=True)
     DayOfWeek = Column(CHAR(3))
-    VisitingTeam = Column(CHAR(3))
+    VisitingTeam = Column(CHAR(3), primary_key=True)
     VisitingTeamLeague = Column(CHAR(2))
     VisitingTeamGameNumber = Column(Integer)
     HomeTeam = Column(CHAR(3), primary_key=True)

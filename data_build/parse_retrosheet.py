@@ -1,8 +1,10 @@
 import fileinput
 from pathlib import Path
+import multiprocessing
 import subprocess
 import re
 import gzip
+import io
 
 RETROSHEET_PATH = Path("/retrosheet")
 OUTPUT_PATH = Path("/parsed")
@@ -10,9 +12,6 @@ OUTPUT_PATH.mkdir(exist_ok=True)
 
 RETROSHEET_SUBDIRS = "gamelog", "schedule", "parks", "rosters", "event"
 EVENT_FOLDERS = "asg", "post", "regular"
-
-PBP_SUFFIXES = "EDA", "EDN", "EVA", "EVN"
-PBP_SUFFIX_GLOB = ".{" + ",".join(PBP_SUFFIXES) + "}"
 
 PARSE_FUNCS = {
     "daily": "cwdaily -q -y {year} {year}*",
@@ -24,7 +23,6 @@ PARSE_FUNCS = {
 
 
 def parse_simple_files():
-
     def concat_files(input_path: Path, output_path: Path, glob: str = "*",
                      prepend_filename: bool = False,
                      strip_header: bool = False):
@@ -57,18 +55,21 @@ def parse_event_types():
         event_base = RETROSHEET_PATH / "event"
         output_path = OUTPUT_PATH.joinpath(output_type).with_suffix(".csv.gz")
         command_template = PARSE_FUNCS[output_type]
-        fout = gzip.open(output_path, 'wt')
+        f_out_inflated = open(output_path, 'w')
         for folder in EVENT_FOLDERS:
             data_path = event_base.joinpath(folder)
             years = {re.match("[0-9]{4}", f.stem)[0] for f in data_path.iterdir()
                      if re.match("[0-9]{4}", f.stem)}
             for year in sorted(years):
-                command = command_template.format(year=year, pbp_only=PBP_SUFFIX_GLOB)
+                command = command_template.format(year=year)
                 print(data_path, command)
-                process = subprocess.run(command, capture_output=True, cwd=data_path, check=True, shell=True,
-                                         text=True)
-                fout.write(process.stdout)
-        fout.close()
+                process = subprocess.run(command, capture_output=True, cwd=data_path, check=True, shell=True, text=True)
+                f_out_inflated.write(process.stdout)
+        f_out_inflated.close()
+        # Now gzip
+        with open(output_path, 'rb') as f_in, gzip.open(output_path.with_suffix(".gz"), 'wb') as f_out:
+            f_out.writelines(f_in)
+        output_path.unlink()
 
     def drop_boxscore_files():
         for f in RETROSHEET_PATH.rglob("*.EB*"):
@@ -84,3 +85,4 @@ def parse_event_types():
 
 parse_simple_files()
 parse_event_types()
+

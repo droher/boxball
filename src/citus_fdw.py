@@ -1,26 +1,9 @@
-from sqlalchemy import create_engine
-from sqlalchemy.dialects import sqlite, postgresql, mysql
-from sqlalchemy.schema import CreateTable, Table, MetaData, Column
-from sqlalchemy_fdw.dialect import dialect
-from sqlalchemy_fdw import ForeignDataWrapper, ForeignTable
-
-from src.retrosheet import metadata as m, Game
-
-engine = create_engine('pgfdw://user:password@host:10/dbname', strategy="mock", executor=lambda x: None)
-metadata = MetaData()
-metadata.bind = engine
-
-fdw = ForeignDataWrapper("myfdwserver", "myfdwextension", metadata=metadata,
-                            options={'option1': 'test'})
-fdw.create()
+from sqlalchemy.schema import Table, MetaData
+from sqlalchemy_fdw import ForeignTable
 
 
-for table in m.tables.values():
-    t: Table = table
-    new_cols = []
-    for c in t.columns.values():
-        new_cols.append(c.copy())
-    ft = ForeignTable(t.name, metadata, *[c.copy() for c in t.columns.values()], pgfdw_server="myfdwserver")
-
-for t in metadata.tables.values():
-    print(CreateTable(t).compile(dialect=dialect()))
+def create_fdw_metadata(existing_metadata: MetaData, **kwargs) -> MetaData:
+    metadata = MetaData()
+    for table in existing_metadata.tables.values():
+        ForeignTable(table.name, metadata, *[c.copy() for c in table.columns.values()], **kwargs)
+    return metadata
