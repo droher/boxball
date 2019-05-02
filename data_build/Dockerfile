@@ -1,5 +1,6 @@
 FROM alpine:3.9.3 AS build-common
 RUN apk add --no-cache \
+    bash \
     libtool \
     wget \
     unzip \
