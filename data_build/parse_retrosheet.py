@@ -44,14 +44,14 @@ def parse_simple_files():
     print("Writing simple files...")
     concat_files(subdirs["gamelog"], output_base / "gamelog.csv.gz", glob="*.TXT")
     concat_files(subdirs["schedule"], output_base / "schedule.csv.gz", glob="*.TXT")
-    concat_files(subdirs["parks"], output_base / "park.csv.gz", glob="parkcode.txt", strip_header=True)
+    concat_files(subdirs["misc"], output_base / "park.csv.gz", glob="parkcode.txt", strip_header=True)
     concat_files(subdirs["rosters"], output_base / "roster.csv.gz", glob="*.ROS", prepend_filename=True)
 
 
 def parse_event_types():
     def parse_events(output_type: str):
         event_base = RETROSHEET_PATH / "event"
-        output_path = OUTPUT_PATH.joinpath(output_type).with_suffix(".csv.gz")
+        output_path = OUTPUT_PATH.joinpath(output_type).with_suffix(".csv")
         command_template = PARSE_FUNCS[output_type]
         f_out_inflated = open(output_path, 'w')
         for folder in EVENT_FOLDERS:
@@ -65,7 +65,7 @@ def parse_event_types():
                 f_out_inflated.write(process.stdout)
         f_out_inflated.close()
         # Now gzip
-        with open(output_path, 'rb') as f_in, gzip.open(output_path.with_suffix(".gz"), 'wb') as f_out:
+        with open(output_path, 'rb') as f_in, gzip.open(output_path.with_suffix("csv.gz"), 'wb') as f_out:
             f_out.writelines(f_in)
         output_path.unlink()
 

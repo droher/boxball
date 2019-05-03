@@ -5,6 +5,6 @@ services:
     image: dockerball-csv.gz:latest
   dockerball-postgres:
     build: ./target_builds/postgres
-    image: dockerball-posgres:latest
+    image: dockerball-postgres:latest
     depends_on:
       - dockerball-csv.gz

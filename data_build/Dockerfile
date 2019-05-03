@@ -50,6 +50,6 @@ COPY parse-baseballdatabank.sh .
 RUN chmod +x parse-baseballdatabank.sh && ./parse-baseballdatabank.sh
 
 # Use a skinny build for deployment
-FROM build-common as build-validate
+FROM alpine:3.9.3
 COPY --from=build-baseballdatabank /parsed /baseballdatabank
 COPY --from=build-retrosheet /parsed /retrosheet
