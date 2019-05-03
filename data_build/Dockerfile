@@ -9,7 +9,10 @@ RUN apk add --no-cache \
     make \
     autoconf \
     automake \
-    clang
+    clang \
+    postgresql-libs \
+    musl-dev \
+    postgresql-dev
 
 FROM build-common as build-retrosheet-download
 # The trigger copies are a way to force rebuild the data if the repos have been updated
@@ -33,6 +36,8 @@ RUN cd chadwick && \
 COPY --from=build-retrosheet-download /retrosheet /retrosheet
 COPY parse_retrosheet.py .
 # Assemble parsed Retrosheet files into `/parsed/` for next container
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 RUN python -u parse_retrosheet.py
 
 FROM build-common as build-baseballdatabank
@@ -45,6 +50,6 @@ COPY parse-baseballdatabank.sh .
 RUN chmod +x parse-baseballdatabank.sh && ./parse-baseballdatabank.sh
 
 # Use a skinny build for deployment
-FROM alpine:3.9.3
+FROM build-common as build-validate
 COPY --from=build-baseballdatabank /parsed /baseballdatabank
 COPY --from=build-retrosheet /parsed /retrosheet

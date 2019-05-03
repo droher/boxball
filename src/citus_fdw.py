@@ -1,4 +1,4 @@
-from sqlalchemy.schema import Table, MetaData
+from sqlalchemy.schema import MetaData
 from sqlalchemy_fdw import ForeignTable
 
 

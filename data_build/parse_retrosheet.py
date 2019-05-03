@@ -1,10 +1,8 @@
 import fileinput
 from pathlib import Path
-import multiprocessing
 import subprocess
 import re
 import gzip
-import io
 
 RETROSHEET_PATH = Path("/retrosheet")
 OUTPUT_PATH = Path("/parsed")
@@ -46,8 +44,8 @@ def parse_simple_files():
     print("Writing simple files...")
     concat_files(subdirs["gamelog"], output_base / "gamelog.csv.gz", glob="*.TXT")
     concat_files(subdirs["schedule"], output_base / "schedule.csv.gz", glob="*.TXT")
-    concat_files(subdirs["parks"], output_base / "parks.csv.gz", glob="parkcode.txt", strip_header=True)
-    concat_files(subdirs["rosters"], output_base / "schedule.csv.gz", glob="*.ROS", prepend_filename=True)
+    concat_files(subdirs["parks"], output_base / "park.csv.gz", glob="parkcode.txt", strip_header=True)
+    concat_files(subdirs["rosters"], output_base / "roster.csv.gz", glob="*.ROS", prepend_filename=True)
 
 
 def parse_event_types():

@@ -1,2 +1,2 @@
 FROM postgres:11.2-alpine
-COPY --from=retrosheet-psql /retrosheet /retrosheet
+COPY --from=dockerball-csv.gz /retrosheet /retrosheet

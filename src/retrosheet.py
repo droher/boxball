@@ -7,7 +7,7 @@ metadata: MetaData = Base.metadata
 
 
 class Event(Base):
-    __tablename__ = 'events'
+    __tablename__ = 'event'
 
     game_id = Column(CHAR(12), primary_key=True)
     away_team_id = Column(CHAR(3))
@@ -172,7 +172,7 @@ class Event(Base):
 
 
 class Game(Base):
-    __tablename__ = 'games'
+    __tablename__ = 'game'
 
     game_id = Column(CHAR(12), primary_key=True)
     game_dt = Column(Integer)
@@ -478,7 +478,7 @@ class Daily(Base):
 
 
 class Sub(Base):
-    __tablename__ = 'subs'
+    __tablename__ = 'sub'
 
     game_id = Column(CHAR(12), primary_key=True)
     inn_ct = Column(Integer)
@@ -670,7 +670,7 @@ class Gamelog(Base):
 
 
 class Park(Base):
-    __tablename__ = 'parks'
+    __tablename__ = 'park'
 
     park_id = Column(CHAR(5), primary_key=True)
     name = Column(Text)
@@ -683,7 +683,7 @@ class Park(Base):
 
 
 class Roster(Base):
-    __tablename__ = 'rosters'
+    __tablename__ = 'roster'
     # We inserted the year in preprocessing
     Year = Column(Integer, primary_key=True)
     PlayerID = Column(CHAR(8), primary_key=True)

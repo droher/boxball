@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  dockerball-csv.gz:
+    build: ./data_build
+    image: dockerball-csv.gz:latest
+  dockerball-postgres:
+    build: ./target_builds/postgres
+    image: dockerball-posgres:latest
+    depends_on:
+      - dockerball-csv.gz
