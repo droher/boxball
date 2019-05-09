@@ -1,2 +1,2 @@
-# Retrosheet-Docker-Postgres
-A complete historical baseball database that you can deploy with one word.
+# Dockerball
+The history of baseball through your modality of choice.
