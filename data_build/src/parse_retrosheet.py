@@ -120,4 +120,4 @@ def parse_event_types():
 
 
 parse_simple_files()
-parse_event_types()
+# parse_event_types()
