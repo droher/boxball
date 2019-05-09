@@ -4,9 +4,8 @@ from sqlalchemy import MetaData, Table
 from marshmallow_sqlalchemy import TableSchema
 import zstandard as zstd
 import io
-import psycopg2
 
-from src.retrosheet import metadata as retrosheet_metadata
+from data_build.src.retrosheet import metadata as retrosheet_metadata
 
 ERROR_FILE_HEADER = ["file", "row_number", "pk", "errors"]
 

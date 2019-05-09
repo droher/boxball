@@ -34,11 +34,13 @@ RUN cd chadwick && \
     make && \
     make install
 COPY --from=build-retrosheet-download /retrosheet /retrosheet
-COPY parse_retrosheet.py .
 # Assemble parsed Retrosheet files into `/parsed/` for next container
+COPY src/ /src
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-RUN python -u parse_retrosheet.py
+RUN python -u src/parse_retrosheet.py
+ENV PYTHONPATH="/"
+RUN python -u /src/ddl_maker.py
 
 FROM build-common as build-baseballdatabank
 COPY triggers/baseballdatabank.sha1 .
