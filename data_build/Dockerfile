@@ -35,9 +35,9 @@ RUN cd chadwick && \
     make install
 COPY --from=build-retrosheet-download /retrosheet /retrosheet
 # Assemble parsed Retrosheet files into `/parsed/` for next container
-COPY src/ /src
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+COPY src/ /src
 RUN python -u src/parse_retrosheet.py
 ENV PYTHONPATH="/"
 RUN python -u /src/ddl_maker.py

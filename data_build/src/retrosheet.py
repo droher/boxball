@@ -716,12 +716,13 @@ class Park(Base):
 
     park_id = Column(CHAR(5), primary_key=True)
     name = Column(Text)
+    aka = Column(Text)
+    city = Column(Text)
     state = Column(Text)
     start_date = Column(Date)
     end_date = Column(Date)
     league = Column(CHAR(2))
     notes = Column(Text)
-    aka = Column(Text)
 
 
 class Roster(Base):
@@ -741,14 +742,14 @@ class Schedule(Base):
     __tablename__ = 'schedule'
 
     date = Column(Date, primary_key=True)
-    double_header = Column(Integer, primary_key=True)
+    double_header = Column(Integer)
     day_of_week = Column(CHAR(3))
-    visiting_team = Column(CHAR(3), primary_key=True)
+    visiting_team = Column(CHAR(3))
     visiting_team_league = Column(CHAR(2))
     visiting_team_game_number = Column(Integer)
     home_team = Column(CHAR(3), primary_key=True)
     home_team_league = Column(CHAR(2))
-    home_team_game_number = Column(Integer)
+    home_team_game_number = Column(Integer, primary_key=True)
     day_night = Column(CHAR(1))
     postponement_indicator = Column(String(128))
     makeup_dates = Column(String)

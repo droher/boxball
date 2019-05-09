@@ -5,10 +5,12 @@ import subprocess
 import re
 import zstd
 import logging
+import sys
 
 RETROSHEET_PATH = Path("/retrosheet")
 OUTPUT_PATH = Path("/parsed")
 OUTPUT_PATH.mkdir(exist_ok=True)
+DOS_EOF = chr(26)
 
 RETROSHEET_SUBDIRS = "gamelog", "schedule", "misc", "rosters", "event"
 EVENT_FOLDERS = "asg", "post", "regular"
@@ -28,25 +30,35 @@ def compress(file: Path) -> None:
     compressed_file = file.with_suffix(file.suffix + ".zst")
     cctx = zstd.ZstdCompressor()
     with open(file, 'rb') as ifh, open(compressed_file, 'wb') as ofh:
-        print(cctx.copy_stream(ifh, ofh))
+        compression_result = cctx.copy_stream(ifh, ofh)
+        print("{} size (uncompressed,compressed): {}".format(file, compression_result))
     return file.unlink()
 
 
 def parse_simple_files() -> None:
     def concat_files(input_path: Path, output_path: Path, glob: str = "*",
                      prepend_filename: bool = False,
-                     strip_header: bool = False):
+                     strip_header: bool = False,
+                     check_dupes: bool = True):
         files = (f for f in input_path.glob(glob) if f.is_file())
         with open(output_path, 'wt') as fout, fileinput.input(files) as fin:
+            lines = set()
             for line in fin:
+                # Remove DOS EOF character (CRTL+Z)
+                new_line = line.strip(DOS_EOF)
+                if not new_line or new_line.isspace():
+                    continue
                 if fin.isfirstline() and strip_header:
                     continue
                 if prepend_filename:
-                    year = Path(fin.filename()).stem
-                    modified_line = "{},{}".format(year, line)
-                    fout.write(modified_line)
-                else:
-                    fout.write(line)
+                    year = Path(fin.filename()).stem[-4:]
+                    new_line = "{},{}".format(year, new_line)
+                if new_line in lines:
+                    print("Duplicate row in {}: {}".format(fin.filename(), new_line), file=sys.stderr)
+                    continue
+                if check_dupes:
+                    lines.add(new_line)
+                fout.write(new_line)
         return compress(output_path)
 
     retrosheet_base = Path(RETROSHEET_PATH)
@@ -55,10 +67,10 @@ def parse_simple_files() -> None:
     subdirs = {subdir: retrosheet_base / subdir for subdir in RETROSHEET_SUBDIRS}
 
     print("Writing simple files...")
-    concat_files(subdirs["gamelog"], output_base / "gamelog.csv.gz", glob="*.TXT")
-    concat_files(subdirs["schedule"], output_base / "schedule.csv.gz", glob="*.TXT")
-    concat_files(subdirs["misc"], output_base / "park.csv.gz", glob="parkcode.txt", strip_header=True)
-    concat_files(subdirs["rosters"], output_base / "roster.csv.gz", glob="*.ROS", prepend_filename=True)
+    concat_files(subdirs["gamelog"], output_base / "gamelog.csv", glob="*.TXT", check_dupes=False)
+    concat_files(subdirs["schedule"], output_base / "schedule.csv", glob="*.TXT")
+    concat_files(subdirs["misc"], output_base / "park.csv", glob="parkcode.txt", strip_header=True)
+    concat_files(subdirs["rosters"], output_base / "roster.csv", glob="*.ROS", prepend_filename=True)
 
 
 def parse_event_types():
@@ -91,7 +103,7 @@ def parse_event_types():
         with open(output_path, 'r') as ifh, open(new_output_path, 'w') as ofh:
             for line in ifh:
                 if line.count('"') % 2 != 0:
-                    print("Bad comment line: {}".format(line))
+                    print("Bad comment line: {}".format(line), file=sys.stderr)
                 else:
                     existing_comments.add(line)
                     ofh.write(line)
