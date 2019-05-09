@@ -755,18 +755,52 @@ class Schedule(Base):
     makeup_dates = Column(String)
 
 
-class BasesCd(Base):
-    __tablename__ = 'bases_cd'
+class CodeEvent(Base):
+    __tablename__ = 'code_event'
 
-    start_bases_cd = Column(Integer, primary_key=True)
-    runner_1 = Column(SmallInteger)
-    runner_2 = Column(SmallInteger)
-    runner_3 = Column(SmallInteger)
+    code = Column(SmallInteger, primary_key=True)
+    description = Column(String(30))
 
 
-class EventCd(Base):
-    __tablename__ = 'event_cd'
+class CodeFieldPark(Base):
+    __tablename__ = 'code_field_park'
 
-    value_cd = Column(Integer, primary_key=True)
-    shortname = Column(String(8))
-    longname = Column(String(30))
+    code = Column(SmallInteger, primary_key=True)
+    description = Column(String(30))
+
+
+class CodeMethodRecord(Base):
+    __tablename__ = 'code_method_record'
+
+    code = Column(SmallInteger, primary_key=True)
+    description = Column(String(30))
+
+
+class CodePitchesRecord(Base):
+    __tablename__ = 'code_pitches_record'
+
+    code = Column(SmallInteger, primary_key=True)
+    description = Column(String(30))
+
+
+class CodePrecipPark(Base):
+    __tablename__ = 'code_precip_park'
+
+    code = Column(SmallInteger, primary_key=True)
+    description = Column(String(30))
+
+
+class CodeSkyPark(Base):
+    __tablename__ = 'code_sky_park'
+
+    event_cd = Column(SmallInteger, primary_key=True)
+    description = Column(String(30))
+
+
+class CodeWindDirectionPark(Base):
+    __tablename__ = 'code_wind_direction_park'
+
+    event_cd = Column(SmallInteger, primary_key=True)
+    description = Column(String(30))
+
+

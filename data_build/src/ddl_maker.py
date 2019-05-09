@@ -23,8 +23,6 @@ def make_postgres_copy_ddl(metadata: MetaData, csv_dir: Path):
     ddl = []
     for table_obj in metadata.tables.values():
         table_name = table_obj.name
-        if "gamelog" not in table_name:
-            continue
         column_names = ", ".join((c.name for c in table_obj.columns.values()
                                   if not(c.autoincrement is True)))
         csv_path = csv_dir.joinpath(table_name).with_suffix(".csv.zst")

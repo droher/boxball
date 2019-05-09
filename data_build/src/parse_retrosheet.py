@@ -7,10 +7,13 @@ import zstd
 import logging
 import sys
 
-RETROSHEET_PATH = Path("/retrosheet")
-OUTPUT_PATH = Path("/parsed")
-OUTPUT_PATH.mkdir(exist_ok=True)
+# MS-DOS eof character that needs to be specially handled in some files
 DOS_EOF = chr(26)
+
+
+RETROSHEET_PATH = Path("/retrosheet")
+CODE_TABLES_PATH = Path("/code_tables")
+OUTPUT_PATH = Path("/parsed")
 
 RETROSHEET_SUBDIRS = "gamelog", "schedule", "misc", "rosters", "event"
 EVENT_FOLDERS = "asg", "post", "regular"
@@ -27,12 +30,17 @@ PARSE_FUNCS = {
 def compress(file: Path) -> None:
     """Replaces the original file with a compressed version"""
     logging.info("Compressing {}".format(file))
-    compressed_file = file.with_suffix(file.suffix + ".zst")
+    compressed_file = OUTPUT_PATH.joinpath(file.stem).with_suffix(file.suffix + ".zst")
     cctx = zstd.ZstdCompressor()
     with open(file, 'rb') as ifh, open(compressed_file, 'wb') as ofh:
         compression_result = cctx.copy_stream(ifh, ofh)
         print("{} size (uncompressed,compressed): {}".format(file, compression_result))
     return file.unlink()
+
+
+def parse_code_tables() -> None:
+    for file in CODE_TABLES_PATH.glob("*.csv"):
+        compress(file)
 
 
 def parse_simple_files() -> None:
@@ -119,5 +127,8 @@ def parse_event_types():
     parse_events("event")
 
 
-parse_simple_files()
-# parse_event_types()
+if __name__ == "__main__":
+    OUTPUT_PATH.mkdir(exist_ok=True)
+    parse_code_tables()
+    parse_simple_files()
+    parse_event_types()

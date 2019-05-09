@@ -53,5 +53,6 @@ RUN chmod +x parse-baseballdatabank.sh && ./parse-baseballdatabank.sh
 
 # Use a skinny build for deployment
 FROM alpine:3.9.3
+RUN apk add zstd
 COPY --from=build-baseballdatabank /parsed /baseballdatabank
 COPY --from=build-retrosheet /parsed /retrosheet
