@@ -36,3 +36,5 @@ ALTER SYSTEM SET
  max_wal_size = '12GB';
 ALTER SYSTEM SET
  checkpoint_timeout = '3600';
+ALTER SYSTEM SET
+ synchronous_commit = 'off';

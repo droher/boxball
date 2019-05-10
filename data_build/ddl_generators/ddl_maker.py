@@ -23,7 +23,10 @@ def make_load_ddl(metadata: MetaData, dialect: Dialect) -> DdlString:
 
 
 def make_postgres_copy_ddl(metadata: MetaData, csv_dir: Path) -> DdlString:
-    copy_ddl_template = "COPY {full_table_name}({column_names}) FROM PROGRAM '{cmd}' CSV;"
+    copy_ddl_template = """
+    ALTER TABLE {full_table_name} SET UNLOGGED;
+    COPY {full_table_name}({column_names}) FROM PROGRAM '{cmd}' CSV;
+    """
     cmd_template = "zstd --rm -cd {csv_path}"
     ddl = []
     for table_obj in metadata.tables.values():
