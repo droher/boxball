@@ -1,13 +1,18 @@
 from pathlib import Path
-from sqlalchemy import MetaData, Table
+from sqlalchemy import MetaData
 from sqlalchemy.schema import CreateTable, CreateSchema
 from sqlalchemy.engine.interfaces import Dialect
 from sqlalchemy.dialects import postgresql
 
-from src.retrosheet import metadata as retrosheet_metadata
+from ddl_generators.schemas import all_metadata
+
+CSV_PATH_PREFIX = Path("/data")
+OUTPUT_PATH = Path("/ddl")
+
+DdlString = str
 
 
-def make_load_ddl(metadata: MetaData, dialect: Dialect) -> str:
+def make_load_ddl(metadata: MetaData, dialect: Dialect) -> DdlString:
     ddl = []
     schema_ddl = str(CreateSchema(metadata.schema).compile(dialect=dialect))
     ddl.append(schema_ddl)
@@ -17,8 +22,11 @@ def make_load_ddl(metadata: MetaData, dialect: Dialect) -> str:
     return ";\n".join(d for d in ddl) + ";\n"
 
 
-def make_postgres_copy_ddl(metadata: MetaData, csv_dir: Path):
-    copy_ddl_template = "COPY {full_table_name}({column_names}) FROM PROGRAM '{cmd}' CSV;"
+def make_postgres_copy_ddl(metadata: MetaData, csv_dir: Path) -> DdlString:
+    copy_ddl_template = """
+    ALTER TABLE {full_table_name} SET UNLOGGED;
+    COPY {full_table_name}({column_names}) FROM PROGRAM '{cmd}' CSV;
+    """
     cmd_template = "zstd --rm -cd {csv_path}"
     ddl = []
     for table_obj in metadata.tables.values():
@@ -33,11 +41,15 @@ def make_postgres_copy_ddl(metadata: MetaData, csv_dir: Path):
     return "\n".join(ddl) + ";\n"
 
 
-def build_postgres_ddl():
-    csv_path = Path("/retrosheet")
-    with open("/parsed/retrosheet.sql", "w") as f:
-        f.write(make_load_ddl(retrosheet_metadata, postgresql.dialect()))
-        f.write(make_postgres_copy_ddl(retrosheet_metadata, csv_path))
+def build_postgres_ddl(*metadatas: MetaData) -> None:
+    for metadatum in metadatas:
+        csv_path = CSV_PATH_PREFIX.joinpath(metadatum.schema)
+        output_file = OUTPUT_PATH.joinpath("postgres.sql")
+        with open(output_file, "a+") as f:
+            f.write(make_load_ddl(metadatum, postgresql.dialect()))
+            f.write(make_postgres_copy_ddl(metadatum, csv_path))
 
 
-build_postgres_ddl()
+if __name__ == "__main__":
+    OUTPUT_PATH.mkdir(exist_ok=True)
+    build_postgres_ddl(*all_metadata)

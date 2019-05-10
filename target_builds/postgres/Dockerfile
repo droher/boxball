@@ -1,6 +1,5 @@
 FROM postgres:11.2-alpine
-COPY --from=dockerball-csv.gz /retrosheet /retrosheet
-COPY conf.sql /docker-entrypoint-initdb.d/
+COPY A_build_conf.sql z_run_conf.sql /docker-entrypoint-initdb.d/
 RUN apk add zstd
-RUN mv /retrosheet/retrosheet.sql /docker-entrypoint-initdb.d/
-RUN chmod -R 777 /retrosheet
+COPY --chown=postgres:postgres --from=dockerball-csv /ddl/postgres.sql /docker-entrypoint-initdb.d/
+COPY --chown=postgres:postgres --from=dockerball-csv /data /data
