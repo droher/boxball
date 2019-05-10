@@ -5,7 +5,7 @@ import subprocess
 import re
 import sys
 
-from src.parsers.util import compress
+from parsers.util import compress
 
 # MS-DOS eof character that needs to be specially handled in some files
 DOS_EOF = chr(26)

@@ -46,7 +46,7 @@ class Event(Base):
     event_cd = Column(SmallInteger)
     bat_event_fl = Column(Boolean)
     ab_fl = Column(Boolean)
-    h_fl = Column(Boolean)
+    h_fl = Column(SmallInteger)
     sh_fl = Column(Boolean)
     sf_fl = Column(Boolean)
     event_outs_ct = Column(SmallInteger)

@@ -4,7 +4,7 @@ from sqlalchemy.schema import CreateTable, CreateSchema
 from sqlalchemy.engine.interfaces import Dialect
 from sqlalchemy.dialects import postgresql
 
-from src.schemas import all_metadata
+from schemas import all_metadata
 
 CSV_PATH_PREFIX = Path("/data")
 

@@ -28,7 +28,7 @@ FROM build-common as build-retrosheet
 # Download and install Chadwick
 COPY triggers/chadwick.sha1 .
 COPY code_tables/ /code_tables
-COPY src/ /src
+COPY parsers/ /parsers
 RUN wget https://github.com/chadwickbureau/chadwick/archive/master.zip -O chadwick.zip && \
     unzip chadwick.zip && \
     mv chadwick-master chadwick
@@ -41,22 +41,22 @@ COPY --from=build-retrosheet-download retrosheet.zip .
 RUN unzip retrosheet.zip && \
     mv retrosheet-master retrosheet
 # Assemble parsed Retrosheet files into `/parsed/` for prod container
-RUN python -u src/parsers/parse_retrosheet.py
+RUN python -u /parsers/parse_retrosheet.py
 
 FROM build-common as build-baseballdatabank
 COPY triggers/baseballdatabank.sha1 .
-COPY src/ /src
+COPY parsers/ /parsers
 # Download the baseball databank (aka the lahman database)
 RUN wget https://github.com/chadwickbureau/baseballdatabank/archive/master.zip -O baseballdatabank.zip && \
     unzip baseballdatabank.zip && \
     mv baseballdatabank-master baseballdatabank
 # Assemble parsed Retrosheet files into `/parsed/` for prod container
-RUN python -u src/parsers/parse_baseballdatabank.py
+RUN python -u /parsers/parse_baseballdatabank.py
 
 FROM build-common as build-ddl
-COPY src/ /src
+COPY ddl_generators /ddl_generators
 # Builds `/load.sql` for prod container
-RUN python -u /src/ddl_maker.py
+RUN python -u /ddl_generators/ddl_maker.py
 
 # Use a skinny build for deployment
 FROM alpine:3.9.3

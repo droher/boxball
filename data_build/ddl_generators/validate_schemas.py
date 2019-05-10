@@ -5,7 +5,7 @@ from marshmallow_sqlalchemy import TableSchema
 import zstandard as zstd
 import io
 
-from src.schemas.retrosheet import metadata as retrosheet_metadata
+from ddl_generators import metadata as retrosheet_metadata
 
 ERROR_FILE_HEADER = ["file", "row_number", "pk", "errors"]
 

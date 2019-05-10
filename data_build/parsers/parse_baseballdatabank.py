@@ -1,7 +1,7 @@
 
 from pathlib import Path
 import humps
-from src.parsers.util import compress
+from parsers.util import compress
 
 DOS_EOF = chr(26)
 
