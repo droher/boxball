@@ -12,7 +12,6 @@
     - repeat entries in cwgame table (find specifics before sending)
 
 - Targets to implement:
-    - MySQL
     - SQLite
     - Parquet (will require dtype mapper)
     - Flat file dumps (find good host, e.g. Mega/OneDrive)
@@ -20,10 +19,11 @@
     - Drill
     - Postgres cstore_fdw
     - Clickhouse
+    - Presto
     - Superset (backed by one of the columnar stores above)
     - RStudio
     - Anaconda/Jupyter
-    - Spark (1+ language/backend)
+    - Spark (1+ language, off Hive?)
     - Tensorflow
     - Keras
     - DataFusion
