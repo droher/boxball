@@ -41,8 +41,6 @@ def validate_csvs_against_metadata(metadata: MetaData, csv_dir: Path) -> None:
 
     for table_name, table_obj in metadata.tables.items():
         print(table_name)
-        if table_name not in ("gamelog", "park", "roster", "schedule", "sub"):
-            continue
         columns = [c.name for c in table_obj.columns]
         validator = get_validator(table_obj)
         data_filepath = csv_dir.joinpath(table_name).with_suffix(".csv.zstd")

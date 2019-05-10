@@ -58,12 +58,13 @@ class AwardsManager(Base):
 class AwardsPlayer(Base):
     __tablename__ = 'awards_players'
 
-    player_id = Column(String(9), primary_key=True, nullable=False)
-    award_id = Column(String(255), primary_key=True, nullable=False)
-    year_id = Column(SmallInteger, primary_key=True, nullable=False)
-    lg_id = Column(String(2), primary_key=True, nullable=False)
+    player_id = Column(String(9))
+    award_id = Column(String(255))
+    year_id = Column(SmallInteger)
+    lg_id = Column(String(2))
     tie = Column(String(1))
     notes = Column(String(100))
+    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
 class AwardsShareManager(Base):
@@ -71,7 +72,7 @@ class AwardsShareManager(Base):
 
     award_id = Column(String(25), primary_key=True, nullable=False)
     year_id = Column(Integer, primary_key=True, nullable=False)
-    lg_id = Column(String(2), primary_key=True, nullable=False)
+    lg_id = Column(String(2))
     player_id = Column(String(10), primary_key=True, nullable=False)
     points_won = Column(Integer)
     points_max = Column(Integer)
@@ -83,7 +84,7 @@ class AwardsSharePlayer(Base):
 
     award_id = Column(String(25), primary_key=True, nullable=False)
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
-    lg_id = Column(String(2), primary_key=True, nullable=False)
+    lg_id = Column(String(2))
     player_id = Column(String(9), primary_key=True, nullable=False)
     points_won = Column(Float(53))
     points_max = Column(Integer)
@@ -99,7 +100,6 @@ class Batting(Base):
     team_id = Column(String(3))
     lg_id = Column(String(2))
     g = Column(SmallInteger)
-    g_batting = Column(SmallInteger)
     ab = Column(SmallInteger)
     r = Column(SmallInteger)
     h = Column(SmallInteger)
@@ -284,13 +284,13 @@ class People(Base):
     birth_month = Column(SmallInteger)
     birth_day = Column(SmallInteger)
     birth_country = Column(String(50))
-    birth_state = Column(String(2))
+    birth_state = Column(String(50))
     birth_city = Column(String(50))
     death_year = Column(SmallInteger)
     death_month = Column(SmallInteger)
     death_day = Column(SmallInteger)
     death_country = Column(String(50))
-    death_state = Column(String(2))
+    death_state = Column(String(50))
     death_city = Column(String(50))
     name_first = Column(String(50))
     name_last = Column(String(50))

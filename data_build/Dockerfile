@@ -14,7 +14,6 @@ RUN apk add --no-cache \
     musl-dev \
     postgresql-dev
 COPY requirements.txt .
-COPY src/ /src
 RUN pip install -r requirements.txt
 ENV PYTHONPATH="/"
 
@@ -29,6 +28,7 @@ FROM build-common as build-retrosheet
 # Download and install Chadwick
 COPY triggers/chadwick.sha1 .
 COPY code_tables/ /code_tables
+COPY src/ /src
 RUN wget https://github.com/chadwickbureau/chadwick/archive/master.zip -O chadwick.zip && \
     unzip chadwick.zip && \
     mv chadwick-master chadwick
@@ -45,6 +45,7 @@ RUN python -u src/parsers/parse_retrosheet.py
 
 FROM build-common as build-baseballdatabank
 COPY triggers/baseballdatabank.sha1 .
+COPY src/ /src
 # Download the baseball databank (aka the lahman database)
 RUN wget https://github.com/chadwickbureau/baseballdatabank/archive/master.zip -O baseballdatabank.zip && \
     unzip baseballdatabank.zip && \
@@ -53,6 +54,7 @@ RUN wget https://github.com/chadwickbureau/baseballdatabank/archive/master.zip -
 RUN python -u src/parsers/parse_baseballdatabank.py
 
 FROM build-common as build-ddl
+COPY src/ /src
 # Builds `/load.sql` for prod container
 RUN python -u /src/ddl_maker.py
 
@@ -61,5 +63,5 @@ FROM alpine:3.9.3
 RUN apk add zstd
 WORKDIR data
 COPY --from=build-ddl /load.sql .
-COPY --from=build-baseballdatabank /parsed /baseballdatabank
-COPY --from=build-retrosheet /parsed /retrosheet
+COPY --from=build-baseballdatabank /parsed ./baseballdatabank
+COPY --from=build-retrosheet /parsed ./retrosheet
