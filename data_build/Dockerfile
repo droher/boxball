@@ -55,13 +55,13 @@ RUN python -u /parsers/parse_baseballdatabank.py
 
 FROM build-common as build-ddl
 COPY ddl_generators /ddl_generators
-# Builds `/load.sql` for prod container
+# Builds ddl scripts for prod container
 RUN python -u /ddl_generators/ddl_maker.py
 
 # Use a skinny build for deployment
 FROM alpine:3.9.3
 RUN apk add zstd
 WORKDIR data
-COPY --from=build-ddl /load.sql .
+COPY --from=build-ddl /ddl /ddl
 COPY --from=build-baseballdatabank /parsed ./baseballdatabank
 COPY --from=build-retrosheet /parsed ./retrosheet

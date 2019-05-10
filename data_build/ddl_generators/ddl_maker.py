@@ -7,6 +7,7 @@ from sqlalchemy.dialects import postgresql
 from ddl_generators.schemas import all_metadata
 
 CSV_PATH_PREFIX = Path("/data")
+OUTPUT_PATH = Path("/ddl")
 
 DdlString = str
 
@@ -40,10 +41,12 @@ def make_postgres_copy_ddl(metadata: MetaData, csv_dir: Path) -> DdlString:
 def build_postgres_ddl(*metadatas: MetaData) -> None:
     for metadatum in metadatas:
         csv_path = CSV_PATH_PREFIX.joinpath(metadatum.schema)
-        with open("/load.sql", "a") as f:
+        output_file = OUTPUT_PATH.joinpath("postgres.sql")
+        with open(output_file, "a+") as f:
             f.write(make_load_ddl(metadatum, postgresql.dialect()))
             f.write(make_postgres_copy_ddl(metadatum, csv_path))
 
 
 if __name__ == "__main__":
+    OUTPUT_PATH.mkdir(exist_ok=True)
     build_postgres_ddl(*all_metadata)
