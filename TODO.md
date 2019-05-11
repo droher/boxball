@@ -1,6 +1,10 @@
 - Change repo name to containerball
 
-- Validation container to help find bugs/discrepancies in Retrosheet data
+- Build targets out of cleansed CSV that converts T/F to 1/0 and blanks to NULL
+
+- Validation container/script to help find bugs/discrepancies in Retrosheet data
+
+- Potentially generate ddl in separate container
 
 - Data bugs to notify Retrosheet about:
     - Repeat roster row in BRF1914.ROS (Felix Chouinard)
@@ -9,21 +13,19 @@
 
 - Logic bugs to notify Chadwick Bureau about:
     - cwcomment issue handling multiline comment in 2007 ASG (about Soriano)
-    - repeat entries in cwgame table (find specifics before sending)
+    - repeat entries in cwdaily table (find specifics before sending)
 
 - Targets to implement:
-    - MySQL
-    - SQLite
     - Parquet (will require dtype mapper)
     - Flat file dumps (find good host, e.g. Mega/OneDrive)
     - Druid
     - Drill
-    - Postgres cstore_fdw
     - Clickhouse
+    - Presto
     - Superset (backed by one of the columnar stores above)
     - RStudio
     - Anaconda/Jupyter
-    - Spark (1+ language/backend)
+    - Spark (1+ language, off Hive?)
     - Tensorflow
     - Keras
     - DataFusion
