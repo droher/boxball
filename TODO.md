@@ -11,10 +11,9 @@
 
 - Logic bugs to notify Chadwick Bureau about:
     - cwcomment issue handling multiline comment in 2007 ASG (about Soriano)
-    - repeat entries in cwgame table (find specifics before sending)
+    - repeat entries in cwdaily table (find specifics before sending)
 
 - Targets to implement:
-    - SQLite
     - Parquet (will require dtype mapper)
     - Flat file dumps (find good host, e.g. Mega/OneDrive)
     - Druid

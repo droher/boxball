@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Optional
 
 from sqlalchemy import MetaData
 from sqlalchemy.engine.interfaces import Dialect
@@ -17,8 +18,12 @@ class TargetDdlFactory:
         raise NotImplementedError("Each target must implement its own target name (e.g. 'postgres'")
 
     @property
-    def dialect(self) -> Dialect:
+    def dialect(self) -> Optional[Dialect]:
         raise NotImplementedError("Each target must implement its own copy function")
+
+    @property
+    def file_format(self) -> str:
+        return "sql"
 
     @property
     def data_path_prefix(self) -> Path:
@@ -48,7 +53,7 @@ class TargetDdlFactory:
     def build_ddl(self, *metadatas: MetaData) -> None:
         for metadatum in metadatas:
             transformed_metadata = self.metadata_transform(metadatum)
-            output_file = OUTPUT_PATH.joinpath("{}.sql".format(self.target_name))
+            output_file = OUTPUT_PATH.joinpath("{}.{}".format(self.target_name, self.file_format))
             with open(output_file, "a+") as f:
                 f.write(self.make_create_ddl(transformed_metadata))
                 f.write(self.make_copy_ddl(transformed_metadata))

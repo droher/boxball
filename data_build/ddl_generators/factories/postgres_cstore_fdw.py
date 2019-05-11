@@ -1,4 +1,4 @@
-from sqlalchemy.schema import MetaData, CreateTable
+from sqlalchemy.schema import MetaData
 from sqlalchemy.engine.interfaces import Dialect
 from sqlalchemy_fdw import ForeignTable
 from sqlalchemy_fdw.dialect import PGDialectFdw
