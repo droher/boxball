@@ -16,10 +16,6 @@ class PostgresDdlFactory(TargetDdlFactory):
         return postgresql.dialect()
 
     def _get_csv_dir(self, table: Table) -> str:
-        """
-        Helper function that allows copy statement to work for both Postgres
-        and Postgres_Cstore_Fdw
-        """
         name = table.fullname
         if "." in name:
             return name.split(".")[0]
@@ -34,9 +30,7 @@ class PostgresDdlFactory(TargetDdlFactory):
             return "_".join(name.split("_")[1:])
 
     def make_copy_ddl(self, metadata: MetaData) -> DdlString:
-        copy_ddl_template = """
-        COPY {full_table_name}({column_names}) FROM PROGRAM '{cmd}' CSV;
-        """
+        copy_ddl_template = "COPY {full_table_name}({column_names}) FROM PROGRAM '{cmd}' CSV;"
         cmd_template = "zstd --rm -cd {csv_file}"
         ddl = []
         for table_obj in metadata.tables.values():
