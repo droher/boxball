@@ -1,6 +1,8 @@
 - Change repo name to containerball
 
-- Validation container to help find bugs/discrepancies in Retrosheet data
+- Build targets out of cleansed CSV that converts T/F to 1/0 and blanks to NULL
+
+- Validation container/script to help find bugs/discrepancies in Retrosheet data
 
 - Potentially generate ddl in separate container
 
