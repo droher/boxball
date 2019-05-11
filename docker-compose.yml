@@ -1,10 +1,25 @@
 version: '3.7'
 services:
-  dockerball-csv.gz:
+  boxball-csv:
     build: ./data_build
-    image: dockerball-csv.gz:latest
-  dockerball-postgres:
+    image: doublewick/boxball:csv-latest
+  boxball-postgres:
     build: ./target_builds/postgres
-    image: dockerball-postgres:latest
+    image: doublewick/boxball:postgres-latest
     depends_on:
-      - dockerball-csv.gz
+      - boxball-csv
+  boxball-postgres-cstore-fdw:
+    build: ./target_builds/postgres_cstore_fdw
+    image: doublewick/boxball:postgres-cstore-fdw-latest
+    depends_on:
+      - boxball-postgres
+  boxball-mysql:
+    build: ./target_builds/mysql
+    image: doublewick/boxball:mysql-latest
+    depends_on:
+      - boxball-csv
+  boxball-sqlite:
+    build: ./target_builds/sqlite
+    image: doublewick/boxball:sqlite-latest
+    depends_on:
+      - boxball-csv
