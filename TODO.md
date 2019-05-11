@@ -2,6 +2,8 @@
 
 - Validation container to help find bugs/discrepancies in Retrosheet data
 
+- Potentially generate ddl in separate container
+
 - Data bugs to notify Retrosheet about:
     - Repeat roster row in BRF1914.ROS (Felix Chouinard)
     - 5/28/2012 HOU-COL doubleheader not flagged as such
@@ -17,7 +19,6 @@
     - Flat file dumps (find good host, e.g. Mega/OneDrive)
     - Druid
     - Drill
-    - Postgres cstore_fdw
     - Clickhouse
     - Presto
     - Superset (backed by one of the columnar stores above)
