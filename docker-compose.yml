@@ -4,22 +4,22 @@ services:
     build: extract
     image: doublewick/boxball:csv-latest
   boxball-postgres:
-    build: ./target_builds/postgres
+    build: load/postgres
     image: doublewick/boxball:postgres-latest
     depends_on:
       - boxball-csv
   boxball-postgres-cstore-fdw:
-    build: ./target_builds/postgres_cstore_fdw
+    build: load/postgres_cstore_fdw
     image: doublewick/boxball:postgres-cstore-fdw-latest
     depends_on:
       - boxball-postgres
   boxball-mysql:
-    build: ./target_builds/mysql
+    build: load/mysql
     image: doublewick/boxball:mysql-latest
     depends_on:
       - boxball-csv
   boxball-sqlite:
-    build: ./target_builds/sqlite
+    build: load/sqlite
     image: doublewick/boxball:sqlite-latest
     depends_on:
       - boxball-csv
