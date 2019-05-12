@@ -5,8 +5,6 @@ from marshmallow_sqlalchemy import TableSchema
 import zstandard as zstd
 import io
 
-from ddl_generators.schemas.retrosheet import metadata as retrosheet_metadata
-
 ERROR_FILE_HEADER = ["file", "row_number", "pk", "errors"]
 
 
@@ -58,6 +56,3 @@ def validate_csvs_against_metadata(metadata: MetaData, csv_dir: Path) -> None:
                     writer.writerow(error_row)
                     print(row)
                     break
-
-
-validate_csvs_against_metadata(retrosheet_metadata, Path.cwd())

@@ -1,6 +1,6 @@
 from ddl_generators import OUTPUT_PATH
 from ddl_generators.factories import all_factories
-from ddl_generators.schemas import all_metadata
+from schemas import all_metadata
 
 
 if __name__ == "__main__":

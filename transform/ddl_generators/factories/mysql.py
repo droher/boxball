@@ -3,7 +3,7 @@ from sqlalchemy import MetaData, Float, Boolean, Column
 from sqlalchemy.dialects import mysql
 from sqlalchemy.engine.interfaces import Dialect
 
-from ddl_generators.factories.target_ddl_factory import DdlString, TargetDdlFactory
+from ddl_generators.target_ddl_factory import DdlString, TargetDdlFactory
 
 
 class MySqlDdlFactory(TargetDdlFactory):
