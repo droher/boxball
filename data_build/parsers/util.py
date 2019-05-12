@@ -13,3 +13,6 @@ def compress(file: Path, output_dir: Path) -> None:
         compression_result = cctx.copy_stream(ifh, ofh)
         print("{} size (uncompressed,compressed): {}".format(file, compression_result))
     return file.unlink()
+
+
+OUTPUT_PATH = Path("/parsed")

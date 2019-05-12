@@ -45,7 +45,7 @@ COPY --from=build-retrosheet-download retrosheet.zip .
 RUN unzip retrosheet.zip && \
     mv retrosheet-* retrosheet
 # Assemble parsed Retrosheet files into `/parsed/` for prod container
-RUN python -u /parsers/parse_retrosheet.py
+RUN python -u /parsers/retrosheet.py
 
 FROM build-common as build-baseballdatabank
 ARG BASEBALLDATABANK_VERSION
@@ -55,7 +55,7 @@ RUN wget https://github.com/chadwickbureau/baseballdatabank/archive/${BASEBALLDA
     unzip baseballdatabank.zip && \
     mv baseballdatabank-* baseballdatabank
 # Assemble parsed Retrosheet files into `/parsed/` for prod container
-RUN python -u /parsers/parse_baseballdatabank.py
+RUN python -u /parsers/baseballdatabank.py
 
 FROM build-common as build-ddl
 COPY ddl_generators /ddl_generators
