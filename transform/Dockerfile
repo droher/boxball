@@ -7,8 +7,8 @@ RUN apk add --no-cache \
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 ENV PYTHONPATH="/"
-
-FROM build-common as build-ddl
 COPY src/ src/
-# Builds ddl scripts for prod container
 RUN python -u src/ddl_maker.py
+
+FROM alpine:3.9.3
+COPY --from=build-ddl /ddl /ddl
