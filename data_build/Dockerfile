@@ -1,3 +1,7 @@
+ARG CHADWICK_VERSION=v0.7.2
+ARG BASEBALLDATABANK_VERSION=v2019.2
+ARG RETROSHEET_VERSION=4f9e94b57b3325b05f8f916000ea3add7256672c
+
 FROM python:3.7.3-alpine3.9 AS build-common
 RUN apk add --no-cache \
     libtool \
@@ -19,18 +23,19 @@ ENV PYTHONPATH="/"
 
 
 FROM build-common as build-retrosheet-download
-# The trigger copy is a way to force rebuild the data if the repos have been updated
-COPY triggers/retrosheet.sha1 .
-RUN wget https://github.com/chadwickbureau/retrosheet/archive/master.zip -O retrosheet.zip
+ARG RETROSHEET_VERSION
+RUN wget https://github.com/chadwickbureau/retrosheet/archive/${RETROSHEET_VERSION}.zip -O retrosheet.zip
 
 
 FROM build-common as build-retrosheet
+ARG CHADWICK_VERSION
+ARG RETROSHET_VERSION
 # Download and install Chadwick
 COPY code_tables/ /code_tables
 COPY parsers/ /parsers
-RUN wget https://github.com/chadwickbureau/chadwick/archive/v0.7.2.zip -O chadwick.zip && \
+RUN wget https://github.com/chadwickbureau/chadwick/archive/${CHADWICK_VERSION}.zip -O chadwick.zip && \
     unzip chadwick.zip && \
-    mv chadwick-master chadwick
+    mv chadwick-* chadwick
 RUN cd chadwick && \
     autoreconf --install && \
     ./configure && \
@@ -38,16 +43,17 @@ RUN cd chadwick && \
     make install
 COPY --from=build-retrosheet-download retrosheet.zip .
 RUN unzip retrosheet.zip && \
-    mv retrosheet-master retrosheet
+    mv retrosheet-* retrosheet
 # Assemble parsed Retrosheet files into `/parsed/` for prod container
 RUN python -u /parsers/parse_retrosheet.py
 
 FROM build-common as build-baseballdatabank
+ARG BASEBALLDATABANK_VERSION
 COPY parsers/ /parsers
 # Download the baseball databank (aka the lahman database)
-RUN wget https://github.com/chadwickbureau/baseballdatabank/archive/v2019.2.zip -O baseballdatabank.zip && \
+RUN wget https://github.com/chadwickbureau/baseballdatabank/archive/${BASEBALLDATABANK_VERSION}.zip -O baseballdatabank.zip && \
     unzip baseballdatabank.zip && \
-    mv baseballdatabank-master baseballdatabank
+    mv baseballdatabank-* baseballdatabank
 # Assemble parsed Retrosheet files into `/parsed/` for prod container
 RUN python -u /parsers/parse_baseballdatabank.py
 
