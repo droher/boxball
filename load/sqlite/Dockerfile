@@ -3,9 +3,9 @@ RUN apk add --no-cache \
     zstd \
     sqlite
 RUN sqlite3 boxball.db ".databases"
-COPY --from=doublewick/boxball:csv-0.0.1 /ddl/sqlite.sql .
+COPY --from=doublewick/boxball:ddl-latest /ddl/sqlite.sql .
 RUN cat sqlite.sql
-COPY --from=doublewick/boxball:csv-0.0.1 /data /data
+COPY --from=doublewick/boxball:csv-latest /data /data
 RUN echo "Decompressing fies..." && \
     for f in /data/**/*.csv.zst; do zstd --rm -d $f; done && \
     echo "Building db..." && \

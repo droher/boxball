@@ -7,16 +7,12 @@ RUN apk add --no-cache \
     libtool \
     wget \
     unzip \
-    pigz \
     gcc \
     g++ \
     make \
     autoconf \
     automake \
-    clang \
-    postgresql-libs \
-    musl-dev \
-    postgresql-dev
+    clang
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 ENV PYTHONPATH="/"
@@ -29,7 +25,6 @@ RUN wget https://github.com/chadwickbureau/retrosheet/archive/${RETROSHEET_VERSI
 
 FROM build-common as build-retrosheet
 ARG CHADWICK_VERSION
-ARG RETROSHET_VERSION
 # Download and install Chadwick
 COPY code_tables/ /code_tables
 COPY parsers/ /parsers
@@ -45,7 +40,7 @@ COPY --from=build-retrosheet-download retrosheet.zip .
 RUN unzip retrosheet.zip && \
     mv retrosheet-* retrosheet
 # Assemble parsed Retrosheet files into `/parsed/` for prod container
-RUN python -u /parsers/parse_retrosheet.py
+RUN python -u /parsers/retrosheet.py
 
 FROM build-common as build-baseballdatabank
 ARG BASEBALLDATABANK_VERSION
@@ -55,17 +50,11 @@ RUN wget https://github.com/chadwickbureau/baseballdatabank/archive/${BASEBALLDA
     unzip baseballdatabank.zip && \
     mv baseballdatabank-* baseballdatabank
 # Assemble parsed Retrosheet files into `/parsed/` for prod container
-RUN python -u /parsers/parse_baseballdatabank.py
-
-FROM build-common as build-ddl
-COPY ddl_generators /ddl_generators
-# Builds ddl scripts for prod container
-RUN python -u /ddl_generators/ddl_maker.py
+RUN python -u /parsers/baseballdatabank.py
 
 # Use a skinny build for deployment
 FROM alpine:3.9.3
 RUN apk add zstd
 WORKDIR data
-COPY --from=build-ddl /ddl /ddl
 COPY --from=build-baseballdatabank /parsed ./baseballdatabank
 COPY --from=build-retrosheet /parsed ./retrosheet

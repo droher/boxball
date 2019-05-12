@@ -1,13 +1,11 @@
-
 from pathlib import Path
+
 import humps
-from parsers.util import compress
+
+from parsers.util import compress, OUTPUT_PATH
 
 DOS_EOF = chr(26)
-
-
 BASEBALLDATABANK_PATH = Path("/baseballdatabank/core")
-OUTPUT_PATH = Path("/parsed")
 
 
 def get_baseballdatabank_files():

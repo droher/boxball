@@ -1,18 +1,17 @@
 import fileinput
+import re
+import subprocess
+import sys
 from pathlib import Path
 from typing import Callable
-import subprocess
-import re
-import sys
 
-from parsers.util import compress
+from parsers.util import compress, OUTPUT_PATH
 
 # MS-DOS eof character that needs to be specially handled in some files
 DOS_EOF = chr(26)
 
 RETROSHEET_PATH = Path("/retrosheet")
 CODE_TABLES_PATH = Path("/code_tables")
-OUTPUT_PATH = Path("/parsed")
 
 RETROSHEET_SUBDIRS = "gamelog", "schedule", "misc", "rosters", "event"
 EVENT_FOLDERS = "asg", "post", "regular"

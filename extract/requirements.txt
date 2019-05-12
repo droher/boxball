@@ -1,0 +1,2 @@
+pyhumps==1.2.2
+zstandard==0.11.0
