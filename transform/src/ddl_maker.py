@@ -1,5 +1,5 @@
 from src import OUTPUT_PATH
-from src.factories import all_factories
+from src.ddl_factories import all_factories
 from src.schemas import all_metadata
 
 
