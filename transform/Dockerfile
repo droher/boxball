@@ -1,17 +1,17 @@
-FROM python:3.7.3-slim-stretch AS build-ddl
+FROM python:3.7.3-slim-stretch AS build-common
 COPY requirements.txt .
+COPY src/ src/
 RUN pip install -r requirements.txt
 ENV PYTHONPATH="/"
 
-FROM build-ddl as build-parquet
-RUN pip install pyarrow
-COPY --from=doublewick/boxball:csv-latest /data /data
-RUN pip install pandas
-COPY src/ src/
-RUN python -u src/parquet.py
+FROM build-common as build-ddl
 RUN python -u src/ddl_maker.py
+
+FROM build-ddl as build-parquet
+COPY --from=doublewick/boxball:csv-latest /data /data
+RUN python -u src/parquet.py
 
 
 FROM alpine:3.9.3
-COPY --from=build-parquet /ddl /ddl
-COPY --from=build-parquet /data /data
+COPY --from=build-ddl /ddl /ddl
+COPY --from=build-parquet /data/parquet /parquet

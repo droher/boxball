@@ -3,7 +3,6 @@ import io
 from typing import Dict, Type, Iterator, List, Tuple, BinaryIO
 
 import pandas as pd
-import numpy as np
 import pyarrow as pa
 import zstandard as zstd
 from pyarrow import parquet as pq
@@ -14,6 +13,7 @@ from sqlalchemy.sql.type_api import TypeEngine
 from src.schemas import all_metadata
 from src import DEFAULT_CSV_PATH_PREFIX
 
+PARQUET_PREFIX = DEFAULT_CSV_PATH_PREFIX.joinpath("parquet")
 BUFFER_SIZE_ROWS = 500000
 
 
@@ -66,9 +66,9 @@ def get_arrow_fields(table: AlchemyTable) -> List[Tuple[str, str]]:
 
 def csv_stream(zstd_io: BinaryIO) -> io.TextIOWrapper:
     """
-
-    :param zstd_io:
-    :return:
+    Sends a zstd file as a text buffer to Pandas, which doesn't
+    yet decompress zstd files natively
+    :param zstd_io: The open IO from the .csv.zst file
     """
     dctx = zstd.ZstdDecompressor()
     reader = dctx.stream_reader(zstd_io)
@@ -84,9 +84,8 @@ def write_parquet_files(metadata: AlchemyMetadata):
     for table in tables:
         name = table.name
         print(name)
-        files_location = DEFAULT_CSV_PATH_PREFIX.joinpath(metadata.schema, name)
-        csv_file = files_location.with_suffix(".csv.zst")
-        parquet_file = files_location.with_suffix(".parquet")
+        csv_file = DEFAULT_CSV_PATH_PREFIX.joinpath(metadata.schema, name).with_suffix(".csv.zst")
+        parquet_file = PARQUET_PREFIX.joinpath(metadata.schema, name).with_suffix(".parquet")
 
         csv_buffer = csv_stream(open(csv_file, 'rb'))
 
@@ -94,7 +93,6 @@ def write_parquet_files(metadata: AlchemyMetadata):
         arrow_fields = get_arrow_fields(table)
         arrow_schema = pa.schema(get_arrow_fields(table))
         column_names = [name for name, dtype in pandas_fields]
-        # We
         date_cols = [name for name, dtype in arrow_fields if "date" in dtype]
 
         writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='zstd',
