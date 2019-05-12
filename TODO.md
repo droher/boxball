@@ -30,3 +30,14 @@
     - Gatsby/GraphQL/JAMstack site
     - Pyodide
     - CRAN/Pypi packages to download data dumps and load into dataframes
+
+- Pyarrow steps in case I forget:
+    - Establish Arrow schemas for each file (can just be a sqlalchemy -> arrow lookup dict)
+    - Inflate csvs before starting the read (doesn't look like CompressedInputStream can do this correctly,
+    so probably a better idea to either deflate the files in bash first or use the python zstandard library
+    to inflate row-by-row.
+    - Create a ParquetWriter with the schema for the file, put it in a with block
+    - Under that block, loop: read x lines from a PythonFile CSV or the zstandard stream into a BufferedReader
+    - Then use read_csv to create a table (using that schema)
+    - Write the table to the ParquetWriter, repeat until no more data
+    - x should be as large as we can get without causing OOM issues on a 2GB box 
