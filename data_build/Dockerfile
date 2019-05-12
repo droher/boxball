@@ -28,7 +28,7 @@ FROM build-common as build-retrosheet
 # Download and install Chadwick
 COPY code_tables/ /code_tables
 COPY parsers/ /parsers
-RUN https://github.com/chadwickbureau/chadwick/archive/v0.7.2.zip -O chadwick.zip && \
+RUN wget https://github.com/chadwickbureau/chadwick/archive/v0.7.2.zip -O chadwick.zip && \
     unzip chadwick.zip && \
     mv chadwick-master chadwick
 RUN cd chadwick && \
