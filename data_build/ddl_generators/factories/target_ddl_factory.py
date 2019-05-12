@@ -19,7 +19,7 @@ class TargetDdlFactory:
 
     @property
     def dialect(self) -> Optional[Dialect]:
-        raise NotImplementedError("Each target must specify its own dialect or explicitly declare it None")
+        raise NotImplementedError("Each target must implement its own copy function")
 
     @property
     def file_format(self) -> str:
@@ -30,9 +30,6 @@ class TargetDdlFactory:
         return DEFAULT_CSV_PATH_PREFIX
 
     def make_create_ddl(self, metadata: MetaData) -> DdlString:
-        if not self.dialect:
-            raise ValueError("Dialect must be specified to use default metadata creation function")
-
         ddl = []
         if metadata.schema:
             schema_ddl = str(CreateSchema(metadata.schema).compile(dialect=self.dialect))
