@@ -9,7 +9,6 @@ RUN pip install -r requirements.txt
 ENV PYTHONPATH="/"
 
 FROM build-common as build-ddl
-COPY ddl_generators /ddl_generators
-COPY schemas /schemas
+COPY src/ src/
 # Builds ddl scripts for prod container
-RUN python -u /ddl_generators/ddl_maker.py
+RUN python -u src/ddl_maker.py

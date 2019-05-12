@@ -3,8 +3,8 @@ from sqlalchemy.engine.interfaces import Dialect
 from sqlalchemy_fdw import ForeignTable
 from sqlalchemy_fdw.dialect import PGDialectFdw
 
-from ddl_generators.factories.postgres import PostgresDdlFactory
-from ddl_generators.target_ddl_factory import DdlString
+from src.factories.postgres import PostgresDdlFactory
+from src.target_ddl_factory import DdlString
 
 CSTORE_SERVER = "cstore_server"
 

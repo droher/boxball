@@ -5,7 +5,7 @@ from sqlalchemy import MetaData
 from sqlalchemy.engine.interfaces import Dialect
 from sqlalchemy.sql.ddl import CreateSchema, CreateTable
 
-from ddl_generators import OUTPUT_PATH
+from src import OUTPUT_PATH
 
 DEFAULT_CSV_PATH_PREFIX = Path("/data")
 DdlString = str

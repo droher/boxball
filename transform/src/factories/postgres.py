@@ -2,7 +2,7 @@ from sqlalchemy import MetaData, Table
 from sqlalchemy.dialects import postgresql
 from sqlalchemy.engine.interfaces import Dialect
 
-from ddl_generators.target_ddl_factory import DdlString, TargetDdlFactory
+from src.target_ddl_factory import DdlString, TargetDdlFactory
 
 
 class PostgresDdlFactory(TargetDdlFactory):
