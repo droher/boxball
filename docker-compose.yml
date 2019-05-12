@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   boxball-csv:
-    build: ./data_build
+    build: extract
     image: doublewick/boxball:csv-latest
   boxball-postgres:
     build: ./target_builds/postgres
