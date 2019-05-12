@@ -1,2 +1,1 @@
-![](./assets/boxball.svg)
-<img src="./assets/boxball.svg" width="50%">
+<img src="./assets/boxball.svg" width="50%" align="center">
