@@ -14,7 +14,11 @@ from src.schemas import all_metadata
 from src import DEFAULT_CSV_PATH_PREFIX
 
 PARQUET_PREFIX = DEFAULT_CSV_PATH_PREFIX.joinpath("parquet")
-BUFFER_SIZE_ROWS = 500000
+# How many rows in each CSV chunk to bring into memory.
+# Larger sizes result in better compression and slightly faster time,
+# but don't want to risk OOM issues on small build boxes.
+# 300K keeps us a hair under 1GB peak execution memory
+BUFFER_SIZE_ROWS = 300000
 
 
 @dataclass
@@ -52,8 +56,8 @@ sql_type_lookup: Dict[Type[TypeEngine], Types] = {
 
 
 def get_fields(table: AlchemyTable) -> List[Tuple[str, Types]]:
-    cols = [(c.name, c.type) for c in table.columns().values() if c.autoincrement is not True]
-    return [(c.name, sql_type_lookup[dtype]) for c, dtype in cols]
+    cols = [(c.name, c.type) for c in table.columns.values() if c.autoincrement is not True]
+    return [(name, sql_type_lookup[type(dtype)]) for name, dtype in cols]
 
 
 def get_pandas_fields(table: AlchemyTable) -> List[Tuple[str, str]]:
@@ -76,16 +80,21 @@ def csv_stream(zstd_io: BinaryIO) -> io.TextIOWrapper:
 
 
 def map_to_bytes(*strs: str) -> List[bytes]:
+    """
+    Helper for weird read_csv parameter that makes you encode the string in bytes first
+    """
     return [bytes(s, encoding="utf-8") for s in strs]
 
 
-def write_parquet_files(metadata: AlchemyMetadata):
+def write_parquet_files(metadata: AlchemyMetadata) -> None:
     tables: Iterator[AlchemyTable] = metadata.tables.values()
     for table in tables:
         name = table.name
         print(name)
         csv_file = DEFAULT_CSV_PATH_PREFIX.joinpath(metadata.schema, name).with_suffix(".csv.zst")
-        parquet_file = PARQUET_PREFIX.joinpath(metadata.schema, name).with_suffix(".parquet")
+        parquet_path = PARQUET_PREFIX.joinpath(metadata.schema)
+        parquet_path.mkdir(exist_ok=True, parents=True)
+        parquet_file = parquet_path.joinpath(name).with_suffix(".parquet")
 
         csv_buffer = csv_stream(open(csv_file, 'rb'))
 
@@ -101,7 +110,7 @@ def write_parquet_files(metadata: AlchemyMetadata):
                                   true_values=map_to_bytes('T'), false_values=map_to_bytes('F'),
                                   chunksize=BUFFER_SIZE_ROWS, parse_dates=date_cols)
         rows_processed = 0
-        for i, df in enumerate(df_iterator):
+        for df in df_iterator:
             pa_table = pa.Table.from_pandas(df=df, schema=arrow_schema)
             rows_processed += min(BUFFER_SIZE_ROWS, len(df))
             writer.write_table(pa_table)
