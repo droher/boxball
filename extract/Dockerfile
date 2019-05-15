@@ -55,6 +55,6 @@ RUN python -u /parsers/baseballdatabank.py
 # Use a skinny build for deployment
 FROM alpine:3.9.3
 RUN apk add zstd
-WORKDIR data
+WORKDIR extract
 COPY --from=build-baseballdatabank /parsed ./baseballdatabank
 COPY --from=build-retrosheet /parsed ./retrosheet
