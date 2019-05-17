@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-import io
 from pathlib import Path
 from typing import Dict, Type, Iterator, List, Tuple
 
@@ -77,34 +76,21 @@ def map_to_bytes(*strs: str) -> List[bytes]:
     return [bytes(s, encoding="utf-8") for s in strs]
 
 
-def chunked_multiformat_write(df_iterator: TextFileReader, parquet_writer: pq.ParquetWriter,
-                              csv_file: Path):
-    """
-    Writes both a CSV and a Parquet version of the chunked dataframe input.
-
-    Arrow table creation and Parquet-writes take up less than 5% of the time on this function.
-    CSV write takes over 80% and the CSV read around 15%.
-    """
+def chunked_write(df_iterator: TextFileReader, parquet_writer: pq.ParquetWriter):
     rows_processed = 0
-    fout = pa.OSFile(str(csv_file), "wb")
-    compressor = pa.CompressedOutputStream(fout, compression="zstd")
-    csv_writer = io.TextIOWrapper(compressor)
     for df in df_iterator:
         rows_processed += min(BUFFER_SIZE_ROWS, len(df))
-        df.to_csv(csv_writer, index=False, header=False, chunksize=BUFFER_SIZE_ROWS//10)
         pa_table = pa.Table.from_pandas(df=df, schema=parquet_writer.schema)
         parquet_writer.write_table(pa_table)
 
         print("Rows processed: {}".format(rows_processed), end="\r", flush=True)
     print()
-    # Have to close the last 3 in this order to avoid errors
-    for f in parquet_writer, csv_writer, compressor, fout:
-        f.close()
+    parquet_writer.close()
 
 
 def write_files(metadata: AlchemyMetadata) -> None:
     """
-    Creates a standardized CSV file and a Parquet file for each table in the schema.
+    Creates a Parquet file for each table in the schema.
     """
     tables: Iterator[AlchemyTable] = metadata.tables.values()
     for table in tables:
@@ -118,7 +104,6 @@ def write_files(metadata: AlchemyMetadata) -> None:
 
         extract_file = get_path(EXTRACT_PATH_PREFIX, ".csv.zst")
         parquet_file = get_path(PARQUET_PREFIX, ".parquet")
-        csv_file = get_path(CSV_PREFIX, ".csv.zst")
 
         pandas_fields = get_pandas_fields(table)
         arrow_fields = get_arrow_fields(table)
@@ -138,7 +123,7 @@ def write_files(metadata: AlchemyMetadata) -> None:
                                                   true_values=map_to_bytes('T'), false_values=map_to_bytes('F'),
                                                   chunksize=BUFFER_SIZE_ROWS, parse_dates=date_cols)
 
-        chunked_multiformat_write(df_iterator, parquet_writer, csv_file)
+        chunked_write(df_iterator, parquet_writer)
 
 
 if __name__ == "__main__":

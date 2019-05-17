@@ -1,8 +1,3 @@
-ARG CHADWICK_VERSION=v0.7.2
-ARG BASEBALLDATABANK_VERSION=v2019.2
-ARG RETROSHEET_VERSION=4f9e94b57b3325b05f8f916000ea3add7256672c
-ARG EXTRACT_DIR=extract
-
 FROM python:3.7.3-alpine3.9 AS build-common
 RUN apk add --no-cache \
     parallel \

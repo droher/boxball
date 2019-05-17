@@ -12,7 +12,7 @@ RUN cd cstore_fdw && \
     make install
 RUN echo "shared_preload_libraries = 'cstore_fdw'" >> ${PGDATA}/postgresql.conf
 COPY --chown=postgres:postgres --from=doublewick/boxball:ddl-latest /ddl/postgres_cstore_fdw.sql /docker-entrypoint-initdb.d/
-COPY --chown=postgres:postgres --from=doublewick/boxball:csv-latest /data /data
+COPY --chown=postgres:postgres --from=doublewick/boxball:csv-latest /transform/csv /data
 RUN cat /docker-entrypoint-initdb.d/postgres_cstore_fdw.sql
 
 FROM build

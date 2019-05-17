@@ -1,37 +1,56 @@
 version: '3.7'
 services:
+
   boxball-extract:
     build: extract
-    image: doublewick/boxball:extract-latest
+    image: ${REPO}:extract-${VERSION}
 
   boxball-ddl:
-    build: transform
-    image: doublewick/boxball:ddl-latest
+    build:
+      context: transform
+      dockerfile: ddl.Dockerfile
+    image: ${REPO}:ddl-${VERSION}
+
+  boxball-parquet:
+    build:
+      context: transform
+      dockerfile: parquet.Dockerfile
+    image: ${REPO}:parquet-${VERSION}
+    depends_on:
+      - boxball-extract
+
+  boxball-csv:
+    build:
+      context: transform
+      dockerfile: csv.Dockerfile
+    image: ${REPO}:csv-${VERSION}
+    depends_on:
+      - boxball-extract
 
   boxball-postgres:
     build: load/postgres
-    image: doublewick/boxball:postgres-latest
+    image: ${REPO}:postgres-${VERSION}
     depends_on:
-      - boxball-extract
+      - boxball-csv
       - boxball-ddl
 
   boxball-postgres-cstore-fdw:
     build: load/postgres_cstore_fdw
-    image: doublewick/boxball:postgres-cstore-fdw-latest
+    image: ${REPO}:postgres-cstore-fdw-${VERSION}
     depends_on:
-      - boxball-extract
+      - boxball-csv
       - boxball-ddl
 
   boxball-mysql:
     build: load/mysql
-    image: doublewick/boxball:mysql-latest
+    image: ${REPO}:mysql-${VERSION}
     depends_on:
-      - boxball-extract
+      - boxball-csv
       - boxball-ddl
 
   boxball-sqlite:
     build: load/sqlite
-    image: doublewick/boxball:sqlite-latest
+    image: ${REPO}:sqlite-${VERSION}
     depends_on:
-      - boxball-extract
+      - boxball-csv
       - boxball-ddl
