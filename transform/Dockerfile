@@ -8,10 +8,10 @@ FROM build-common as build-ddl
 RUN python -u src/ddl_maker.py
 
 FROM build-ddl as build-parquet
-COPY --from=doublewick/boxball:csv-latest /data /data
+COPY --from=doublewick/boxball:extract-latest /extract /extract
 RUN python -u src/parquet.py
 
 
 FROM alpine:3.9.3
 COPY --from=build-ddl /ddl /ddl
-COPY --from=build-parquet /data/parquet /parquet
+COPY --from=build-parquet /transform/parquet /parquet

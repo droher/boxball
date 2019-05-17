@@ -2,11 +2,9 @@ from dataclasses import dataclass
 import io
 from pathlib import Path
 from typing import Dict, Type, Iterator, List, Tuple
-from time import time
 
 import pandas as pd
 import pyarrow as pa
-import zstandard as zstd
 from pandas.io.parsers import TextFileReader
 from pyarrow import parquet as pq
 from sqlalchemy import MetaData as AlchemyMetadata, Table as AlchemyTable
@@ -81,30 +79,33 @@ def map_to_bytes(*strs: str) -> List[bytes]:
 
 def chunked_multiformat_write(df_iterator: TextFileReader, parquet_writer: pq.ParquetWriter,
                               csv_file: Path):
+    """
+    Writes both a CSV and a Parquet version of the chunked dataframe input.
+
+    Arrow table creation and Parquet-writes take up less than 5% of the time on this function.
+    CSV write takes over 80% and the CSV read around 15%.
+    """
     rows_processed = 0
-    cctx = zstd.ZstdCompressor()
-    writer = io.TextIOWrapper(cctx.stream_writer(open(csv_file, "ab")))
-    t = time()
+    fout = pa.OSFile(str(csv_file), "wb")
+    compressor = pa.CompressedOutputStream(fout, compression="zstd")
+    csv_writer = io.TextIOWrapper(compressor)
     for df in df_iterator:
-        print("Read:", time() - t)
-        t = time()
         rows_processed += min(BUFFER_SIZE_ROWS, len(df))
-        df.to_csv(writer, mode="ab")
-        print("Csv Write:", time() - t)
-        t = time()
+        df.to_csv(csv_writer, index=False, header=False, chunksize=BUFFER_SIZE_ROWS//10)
         pa_table = pa.Table.from_pandas(df=df, schema=parquet_writer.schema)
-        print("Arrow table:", time() - t)
-        t = time()
         parquet_writer.write_table(pa_table)
-        print("Parquet Write:", time() - t)
-        t = time()
 
         print("Rows processed: {}".format(rows_processed), end="\r", flush=True)
     print()
-    parquet_writer.close()
+    # Have to close the last 3 in this order to avoid errors
+    for f in parquet_writer, csv_writer, compressor, fout:
+        f.close()
 
 
 def write_files(metadata: AlchemyMetadata) -> None:
+    """
+    Creates a standardized CSV file and a Parquet file for each table in the schema.
+    """
     tables: Iterator[AlchemyTable] = metadata.tables.values()
     for table in tables:
         name = table.name
@@ -126,10 +127,9 @@ def write_files(metadata: AlchemyMetadata) -> None:
         date_cols = [name for name, dtype in arrow_fields if "date" in dtype]
 
         # Using both Arrow and Pandas allows each library to cover the other's current shortcomings.
-        # Pandas's read_csv can handle chunked reads, while Arrow's WriteParquet can handle chunked writes.
+        # Pandas's read_csv can handle chunked/complex reads, while Arrow's WriteParquet can handle chunked writes.
         # Arrow's input streams are capable of handling zstd files, which Pandas hasn't implemented yet.
         in_buf = pa.OSFile(str(extract_file), mode="r")
-        out_buf = pa.OSFile(str(csv_file), mode="w")
         reader = pa.CompressedInputStream(in_buf, compression="zstd")
 
         parquet_writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='zstd',

@@ -1,9 +1,11 @@
 ARG CHADWICK_VERSION=v0.7.2
 ARG BASEBALLDATABANK_VERSION=v2019.2
 ARG RETROSHEET_VERSION=4f9e94b57b3325b05f8f916000ea3add7256672c
+ARG EXTRACT_DIR=extract
 
 FROM python:3.7.3-alpine3.9 AS build-common
 RUN apk add --no-cache \
+    parallel \
     libtool \
     wget \
     unzip \
@@ -54,7 +56,8 @@ RUN python -u /parsers/baseballdatabank.py
 
 # Use a skinny build for deployment
 FROM alpine:3.9.3
+ARG EXTRACT_DIR
 RUN apk add zstd
-WORKDIR extract
+WORKDIR $EXTRACT_DIR
 COPY --from=build-baseballdatabank /parsed ./baseballdatabank
 COPY --from=build-retrosheet /parsed ./retrosheet

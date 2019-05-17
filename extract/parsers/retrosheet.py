@@ -75,14 +75,14 @@ def parse_event_types():
         command_template = PARSE_FUNCS[output_type]
         f_out_inflated = open(output_file, 'w')
         for folder in EVENT_FOLDERS:
+            print(output_type, folder)
             data_path = event_base.joinpath(folder)
             years = {re.match("[0-9]{4}", f.stem)[0] for f in data_path.iterdir()
                      if re.match("[0-9]{4}", f.stem)}
-            for year in sorted(years):
-                command = command_template.format(year=year)
-                print(data_path, command)
-                subprocess.run(command, cwd=data_path, check=True, shell=True, text=True,
-                               stdout=f_out_inflated)
+            commands = "\n".join([command_template.format(year=year) for year in years])
+            parallel_command = "echo -e '{commands}' | parallel -k --will-cite".format(commands=commands)
+            subprocess.run(parallel_command, cwd=data_path, check=True, shell=True, text=True,
+                           stdout=f_out_inflated)
         f_out_inflated.close()
         if clean_func:
             clean_func(output_file)
