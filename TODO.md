@@ -6,6 +6,7 @@
     - Repeat roster row in BRF1914.ROS (Felix Chouinard)
     - 5/28/2012 HOU-COL doubleheader not flagged as such
     - 1938 schedule file has blank line at the end
+    - "pitches" metadata includes incomplete records (not necessarily a bug but perhaps misleading)
 
 - Logic bugs to notify Chadwick Bureau about:
     - cwcomment issue handling multiline comment in 2007 ASG (about Soriano)

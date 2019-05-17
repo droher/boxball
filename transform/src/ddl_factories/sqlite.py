@@ -53,7 +53,3 @@ class SqliteDdlFactory(TargetDdlFactory):
                     ddl.append(bool_template.format(bool_int=1, bool_str="T", **base_kwargs))
                     ddl.append(bool_template.format(bool_int=0, bool_str="F", **base_kwargs))
         return "\n".join(ddl)
-
-    def make_create_ddl(self, metadata: MetaData) -> DdlString:
-        existing_ddl = super().make_create_ddl(metadata)
-        return existing_ddl.replace("(0, 1)", "('0', '1', 'T', 'F', '')")

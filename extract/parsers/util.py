@@ -4,6 +4,9 @@ from pathlib import Path
 import zstd
 
 
+OUTPUT_PATH = Path("/parsed")
+
+
 def compress(file: Path, output_dir: Path) -> None:
     """Replaces the original file with a compressed version"""
     logging.info("Compressing {}".format(file))
@@ -13,6 +16,3 @@ def compress(file: Path, output_dir: Path) -> None:
         compression_result = cctx.copy_stream(ifh, ofh)
         print("{} size (uncompressed,compressed): {}".format(file, compression_result))
     return file.unlink()
-
-
-OUTPUT_PATH = Path("/parsed")

@@ -1,23 +1,24 @@
 from dataclasses import dataclass
-import io
-from typing import Dict, Type, Iterator, List, Tuple, BinaryIO
+from pathlib import Path
+from typing import Dict, Type, Iterator, List, Tuple
 
 import pandas as pd
 import pyarrow as pa
-import zstandard as zstd
+from pandas.io.parsers import TextFileReader
 from pyarrow import parquet as pq
 from sqlalchemy import MetaData as AlchemyMetadata, Table as AlchemyTable
 from sqlalchemy import Integer, SmallInteger, Float, String, CHAR, Text, Boolean, Date, DateTime
 from sqlalchemy.sql.type_api import TypeEngine
 
 from src.schemas import all_metadata
-from src import DEFAULT_CSV_PATH_PREFIX
+from src import EXTRACT_PATH_PREFIX, TRANSFORM_PATH_PREFIX
 
-PARQUET_PREFIX = DEFAULT_CSV_PATH_PREFIX.joinpath("parquet")
+PARQUET_PREFIX = TRANSFORM_PATH_PREFIX.joinpath("parquet")
+CSV_PREFIX = TRANSFORM_PATH_PREFIX.joinpath("csv")
 # How many rows in each CSV chunk to bring into memory.
 # Larger sizes result in better compression and slightly faster time,
 # but don't want to risk OOM issues on small build boxes.
-# 300K keeps us a hair under 1GB peak execution memory
+# 300K keeps us around 1GB peak execution memory
 BUFFER_SIZE_ROWS = 300000
 
 
@@ -68,17 +69,6 @@ def get_arrow_fields(table: AlchemyTable) -> List[Tuple[str, str]]:
     return [(name, dtype.pa) for name, dtype in get_fields(table)]
 
 
-def csv_stream(zstd_io: BinaryIO) -> io.TextIOWrapper:
-    """
-    Sends a zstd file as a text buffer to Pandas, which doesn't
-    yet decompress zstd files natively
-    :param zstd_io: The open IO from the .csv.zst file
-    """
-    dctx = zstd.ZstdDecompressor()
-    reader = dctx.stream_reader(zstd_io)
-    return io.TextIOWrapper(reader)
-
-
 def map_to_bytes(*strs: str) -> List[bytes]:
     """
     Helper for weird read_csv parameter that makes you encode the string in bytes first
@@ -86,17 +76,34 @@ def map_to_bytes(*strs: str) -> List[bytes]:
     return [bytes(s, encoding="utf-8") for s in strs]
 
 
-def write_parquet_files(metadata: AlchemyMetadata) -> None:
+def chunked_write(df_iterator: TextFileReader, parquet_writer: pq.ParquetWriter):
+    rows_processed = 0
+    for df in df_iterator:
+        rows_processed += min(BUFFER_SIZE_ROWS, len(df))
+        pa_table = pa.Table.from_pandas(df=df, schema=parquet_writer.schema)
+        parquet_writer.write_table(pa_table)
+
+        print("Rows processed: {}".format(rows_processed), end="\r", flush=True)
+    print()
+    parquet_writer.close()
+
+
+def write_files(metadata: AlchemyMetadata) -> None:
+    """
+    Creates a Parquet file for each table in the schema.
+    """
     tables: Iterator[AlchemyTable] = metadata.tables.values()
     for table in tables:
         name = table.name
         print(name)
-        csv_file = DEFAULT_CSV_PATH_PREFIX.joinpath(metadata.schema, name).with_suffix(".csv.zst")
-        parquet_path = PARQUET_PREFIX.joinpath(metadata.schema)
-        parquet_path.mkdir(exist_ok=True, parents=True)
-        parquet_file = parquet_path.joinpath(name).with_suffix(".parquet")
 
-        csv_buffer = csv_stream(open(csv_file, 'rb'))
+        def get_path(prefix: Path, suffix: str):
+            parent_dir = prefix.joinpath(metadata.schema)
+            parent_dir.mkdir(exist_ok=True, parents=True)
+            return parent_dir.joinpath(name).with_suffix(suffix)
+
+        extract_file = get_path(EXTRACT_PATH_PREFIX, ".csv.zst")
+        parquet_file = get_path(PARQUET_PREFIX, ".parquet")
 
         pandas_fields = get_pandas_fields(table)
         arrow_fields = get_arrow_fields(table)
@@ -104,22 +111,21 @@ def write_parquet_files(metadata: AlchemyMetadata) -> None:
         column_names = [name for name, dtype in pandas_fields]
         date_cols = [name for name, dtype in arrow_fields if "date" in dtype]
 
-        writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='zstd',
-                                  version="2.0", use_dictionary=True)
-        df_iterator = pd.read_csv(csv_buffer, header=None, names=column_names, dtype=dict(pandas_fields),
-                                  true_values=map_to_bytes('T'), false_values=map_to_bytes('F'),
-                                  chunksize=BUFFER_SIZE_ROWS, parse_dates=date_cols)
-        rows_processed = 0
-        for df in df_iterator:
-            pa_table = pa.Table.from_pandas(df=df, schema=arrow_schema)
-            rows_processed += min(BUFFER_SIZE_ROWS, len(df))
-            writer.write_table(pa_table)
-            print("Rows processed: {}".format(rows_processed), end="\r", flush=True)
-        print()
-        csv_buffer.close()
-        writer.close()
+        # Using both Arrow and Pandas allows each library to cover the other's current shortcomings.
+        # Pandas's read_csv can handle chunked/complex reads, while Arrow's WriteParquet can handle chunked writes.
+        # Arrow's input streams are capable of handling zstd files, which Pandas hasn't implemented yet.
+        in_buf = pa.OSFile(str(extract_file), mode="r")
+        reader = pa.CompressedInputStream(in_buf, compression="zstd")
+
+        parquet_writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='zstd',
+                                          version="2.0", use_dictionary=True)
+        df_iterator: TextFileReader = pd.read_csv(reader, header=None, names=column_names, dtype=dict(pandas_fields),
+                                                  true_values=map_to_bytes('T'), false_values=map_to_bytes('F'),
+                                                  chunksize=BUFFER_SIZE_ROWS, parse_dates=date_cols)
+
+        chunked_write(df_iterator, parquet_writer)
 
 
 if __name__ == "__main__":
     for m in all_metadata:
-        write_parquet_files(m)
+        write_files(m)
