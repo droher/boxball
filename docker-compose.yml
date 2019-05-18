@@ -1,6 +1,5 @@
 version: '3.7'
 services:
-
   boxball-extract:
     build:
       context: extract
@@ -19,18 +18,25 @@ services:
   boxball-parquet:
     build:
       context: transform
-      dockerfile: parquet.Dockerfile
-    image: ${REPO}:parquet-${VERSION}
+      dockerfile: transform.Dockerfile
+    image: ${REPO}:transform-${VERSION}
     depends_on:
       - boxball-extract
 
   boxball-csv:
     build:
       context: transform
-      dockerfile: csv.Dockerfile
+      dockerfile: transform.Dockerfile
     image: ${REPO}:csv-${VERSION}
     depends_on:
       - boxball-extract
+
+  boxball-clickhouse:
+    build: load/clickhouse
+    image: ${REPO}:clickhouse-${VERSION}
+    depends_on:
+      - boxball-parquet
+      - boxball-ddl
 
   boxball-postgres:
     build: load/postgres

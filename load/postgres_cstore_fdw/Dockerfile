@@ -1,6 +1,4 @@
 FROM postgres:11.2-alpine as build
-ARG REPO
-ARG VERSION
 RUN apk --no-cache add \
     zstd \
     alpine-sdk \
@@ -13,8 +11,8 @@ RUN cd cstore_fdw && \
     make && \
     make install
 RUN echo "shared_preload_libraries = 'cstore_fdw'" >> ${PGDATA}/postgresql.conf
-COPY --chown=postgres:postgres --from=${REPO}:ddl-{VERSION} /ddl/postgres_cstore_fdw.sql /docker-entrypoint-initdb.d/
-COPY --chown=postgres:postgres --from=${REPO}:csv-{VERSION} /transform/csv /data
+COPY --chown=postgres:postgres --from=doublewick/boxball:ddl-0.0.1 /ddl/postgres_cstore_fdw.sql /docker-entrypoint-initdb.d/
+COPY --chown=postgres:postgres --from=doublewick/boxball:csv-0.0.1 /transform/csv /data
 RUN cat /docker-entrypoint-initdb.d/postgres_cstore_fdw.sql
 
 FROM build

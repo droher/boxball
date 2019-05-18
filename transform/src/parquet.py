@@ -50,9 +50,9 @@ sql_type_lookup: Dict[Type[TypeEngine], Types] = {
     CHAR: Types('str'),
     Text: Types('str'),
     Boolean: Types('bool'),
-    # Arrow needs us to take in dates as strings that have gone through Pandas' magic `parse_dates` param
-    Date: Types('str', 'date32'),
-    DateTime: Types('str', 'date64')
+    # Some Parquet targets can't handle Parquet dates, so we need to parse and pass timestamps
+    Date: Types('str', 'timestamp[ms]'),
+    DateTime: Types('str', 'timestamp[ms]')
 }
 
 
@@ -76,16 +76,23 @@ def map_to_bytes(*strs: str) -> List[bytes]:
     return [bytes(s, encoding="utf-8") for s in strs]
 
 
-def chunked_write(df_iterator: TextFileReader, parquet_writer: pq.ParquetWriter):
+def chunked_write(df_iterator: TextFileReader, parquet_writer: pq.ParquetWriter, date_cols: List[str]):
+    """
+    Writes both a CSV and a Parquet version of the chunked dataframe input.
+
+    Arrow table creation and Parquet-writes take up less than 5% of the time on this function.
+    CSV write takes over 80% and the CSV read around 15%.
+    """
     rows_processed = 0
     for df in df_iterator:
         rows_processed += min(BUFFER_SIZE_ROWS, len(df))
+        for col_name in date_cols:
+            df[col_name] = pd.to_datetime(df[col_name], unit="ms", infer_datetime_format=True)
         pa_table = pa.Table.from_pandas(df=df, schema=parquet_writer.schema)
         parquet_writer.write_table(pa_table)
 
         print("Rows processed: {}".format(rows_processed), end="\r", flush=True)
     print()
-    parquet_writer.close()
 
 
 def write_files(metadata: AlchemyMetadata) -> None:
@@ -109,7 +116,7 @@ def write_files(metadata: AlchemyMetadata) -> None:
         arrow_fields = get_arrow_fields(table)
         arrow_schema = pa.schema(get_arrow_fields(table))
         column_names = [name for name, dtype in pandas_fields]
-        date_cols = [name for name, dtype in arrow_fields if "date" in dtype]
+        date_cols = [name for name, dtype in arrow_fields if "timestamp" in dtype]
 
         # Using both Arrow and Pandas allows each library to cover the other's current shortcomings.
         # Pandas's read_csv can handle chunked/complex reads, while Arrow's WriteParquet can handle chunked writes.
@@ -123,7 +130,7 @@ def write_files(metadata: AlchemyMetadata) -> None:
                                                   true_values=map_to_bytes('T'), false_values=map_to_bytes('F'),
                                                   chunksize=BUFFER_SIZE_ROWS, parse_dates=date_cols)
 
-        chunked_write(df_iterator, parquet_writer)
+        chunked_write(df_iterator, parquet_writer, date_cols)
 
 
 if __name__ == "__main__":
