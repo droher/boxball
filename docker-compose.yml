@@ -18,7 +18,7 @@ services:
   boxball-parquet:
     build:
       context: transform
-      dockerfile: transform.Dockerfile
+      dockerfile: parquet.Dockerfile
     image: ${REPO}:transform-${VERSION}
     depends_on:
       - boxball-extract
@@ -26,7 +26,7 @@ services:
   boxball-csv:
     build:
       context: transform
-      dockerfile: transform.Dockerfile
+      dockerfile: csv.Dockerfile
     image: ${REPO}:csv-${VERSION}
     depends_on:
       - boxball-extract
