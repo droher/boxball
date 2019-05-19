@@ -35,7 +35,7 @@ class PostgresDdlFactory(TargetDdlFactory):
         cmd_template = "zstd --rm -cd {csv_file}"
         ddl = []
         for table_obj in metadata.tables.values():
-            csv_dir = self.data_path_prefix.joinpath(self._get_csv_dir(table_obj))
+            csv_dir = self.data_path_prefix.joinpath("csv", self._get_csv_dir(table_obj))
             column_names = ", ".join((c.name for c in table_obj.columns.values()
                                       if not (c.autoincrement is True)))
             csv_file = csv_dir.joinpath(self._get_csv_stem(table_obj)).with_suffix(".csv.zst")
