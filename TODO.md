@@ -16,7 +16,6 @@
     - Flat file dumps (find good host, e.g. Mega/OneDrive)
     - Druid
     - Drill
-    - Clickhouse
     - Presto
     - Superset (backed by one of the columnar stores above)
     - RStudio
@@ -28,3 +27,4 @@
     - Gatsby/GraphQL/JAMstack site
     - Pyodide
     - CRAN/Pypi packages to download data dumps and load into dataframes
+    - Julia (JuliaDB?)

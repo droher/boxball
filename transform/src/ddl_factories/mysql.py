@@ -29,7 +29,7 @@ class MySqlDdlFactory(TargetDdlFactory):
         float_exp = "`{0}` = IF(@{0} IN ('', 'inf'), NULL, @{0})"
         boolean_exp = "`{0}` = IF(@{0} = 'T', 1, IF(@{0} = 'F', 0, IF(@{0} = '', NULL, @{0})))"
 
-        csv_dir = self.data_path_prefix.joinpath(metadata.schema)
+        csv_dir = self.data_path_prefix.joinpath("csv", metadata.schema)
         ddl = []
         for table_obj in metadata.tables.values():
             table_name = table_obj.name
