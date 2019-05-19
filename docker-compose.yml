@@ -19,7 +19,7 @@ services:
     build:
       context: transform
       dockerfile: parquet.Dockerfile
-    image: ${REPO}:transform-${VERSION}
+    image: ${REPO}:parquet-${VERSION}
     depends_on:
       - boxball-extract
 
