@@ -78,16 +78,16 @@ def map_to_bytes(*strs: str) -> List[bytes]:
 
 def chunked_write(df_iterator: TextFileReader, parquet_writer: pq.ParquetWriter, date_cols: List[str]):
     """
-    Writes both a CSV and a Parquet version of the chunked dataframe input.
+    Writes  Parquet version of the chunked dataframe input.
 
-    Arrow table creation and Parquet-writes take up less than 5% of the time on this function.
-    CSV write takes over 80% and the CSV read around 15%.
+    Arrow table creation and Parquet-writes take up around 25% of the time on this function.
+    The CSV read takes around 75%.
     """
     rows_processed = 0
     for df in df_iterator:
         rows_processed += min(BUFFER_SIZE_ROWS, len(df))
         for col_name in date_cols:
-            df[col_name] = pd.to_datetime(df[col_name], unit="ms", infer_datetime_format=True)
+            df[col_name] = pd.to_datetime(df[col_name], unit="ms")
         pa_table = pa.Table.from_pandas(df=df, schema=parquet_writer.schema)
         parquet_writer.write_table(pa_table)
 

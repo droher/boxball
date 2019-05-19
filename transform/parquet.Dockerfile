@@ -10,7 +10,7 @@ RUN echo $REPO
 RUN echo $VERSION
 COPY src/ src/
 COPY --from=doublewick/boxball:extract-0.0.1 /extract /extract
-RUN python -u src/transform.py
+RUN python -u src/parquet.py
 
 FROM alpine:3.9.3
 COPY --from=build-transform /transform/ /transform/
