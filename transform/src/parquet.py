@@ -124,7 +124,8 @@ def write_files(metadata: AlchemyMetadata) -> None:
         in_buf = pa.OSFile(str(extract_file), mode="r")
         reader = pa.CompressedInputStream(in_buf, compression="zstd")
 
-        parquet_writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='zstd',
+        # Have to use snappy codec for Parquet because Drill doesn't read zstd
+        parquet_writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='snappy',
                                           version="2.0", use_dictionary=True)
         df_iterator: TextFileReader = pd.read_csv(reader, header=None, names=column_names, dtype=dict(pandas_fields),
                                                   true_values=map_to_bytes('T'), false_values=map_to_bytes('F'),
