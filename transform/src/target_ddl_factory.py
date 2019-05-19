@@ -5,7 +5,7 @@ from sqlalchemy import MetaData
 from sqlalchemy.engine.interfaces import Dialect
 from sqlalchemy.sql.ddl import CreateSchema, CreateTable
 
-from src import OUTPUT_PATH, EXTRACT_PATH_PREFIX
+from src import OUTPUT_PATH, TRANSFORM_PATH_PREFIX
 
 DdlString = str
 
@@ -26,7 +26,7 @@ class TargetDdlFactory:
 
     @property
     def data_path_prefix(self) -> Path:
-        return EXTRACT_PATH_PREFIX
+        return TRANSFORM_PATH_PREFIX
 
     def make_create_ddl(self, metadata: MetaData) -> DdlString:
         if not self.dialect:
