@@ -38,6 +38,13 @@ services:
       - boxball-parquet
       - boxball-ddl
 
+  boxball-drill:
+    build: load/clickhouse
+    image: ${REPO}:drill-${VERSION}
+    depends_on:
+      - boxball-parquet
+      - boxball-ddl
+
   boxball-postgres:
     build: load/postgres
     image: ${REPO}:postgres-${VERSION}
