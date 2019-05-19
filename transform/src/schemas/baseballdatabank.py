@@ -1,4 +1,4 @@
-from sqlalchemy import MetaData, Column, DateTime, Float, Integer, String, SmallInteger
+from sqlalchemy import MetaData, Column, Date, Float, Integer, String, SmallInteger
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base(metadata=MetaData(schema="baseballdatabank"))
@@ -246,6 +246,20 @@ class HallOfFame(Base):
     needed_note = Column(String(25))
 
 
+class HomeGames(Base):
+    __tablename__ = "home_games"
+
+    year_id = Column(SmallInteger, primary_key=True, nullable=False)
+    lg_id = Column(String(2), primary_key=True, nullable=False)
+    team_id = Column(String(3), primary_key=True, nullable=False)
+    park_id = Column(String(5), primary_key=True, nullable=False)
+    first_game = Column(Date)
+    last_game = Column(Date)
+    games = Column(SmallInteger)
+    openings = Column(SmallInteger)
+    attendance = Column(Integer)
+
+
 class Manager(Base):
     __tablename__ = 'managers'
 
@@ -276,6 +290,17 @@ class ManagersHalf(Base):
     rank = Column(SmallInteger)
 
 
+class Parks(Base):
+    __tablename__ = "parks"
+
+    park_id = Column(String(5), primary_key=True, nullable=False)
+    park_name = Column(String(40))
+    park_alias = Column(String(45))
+    city = Column(String(25))
+    state = Column(String(2))
+    country = Column(String(2))
+
+
 class People(Base):
     __tablename__ = 'people'
 
@@ -299,8 +324,8 @@ class People(Base):
     height = Column(Float(53))
     bats = Column(String(1))
     throws = Column(String(1))
-    debut = Column(DateTime)
-    final_game = Column(DateTime)
+    debut = Column(Date)
+    final_game = Column(Date)
     retro_id = Column(String(9))
     bbref_id = Column(String(9))
 
