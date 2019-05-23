@@ -1,4 +1,6 @@
-- Build targets out of cleansed CSV that converts T/F to 1/0 and blanks to NULL
+- Add doc to tables
+
+- Test cov
 
 - Validation container/script to help find bugs/discrepancies in Retrosheet data
 
@@ -15,7 +17,6 @@
 - Targets to implement:
     - Flat file dumps (find good host, e.g. Mega/OneDrive)
     - Druid
-    - Drill
     - Presto
     - Superset (backed by one of the columnar stores above)
     - RStudio
