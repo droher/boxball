@@ -7,6 +7,27 @@ metadata: MetaData = Base.metadata
 
 
 class Event(Base):
+    """
+    The event table is the most granular data available, containing one row for every play of every game
+    for which Retrosheet has data. This includes all postseason games in history, all All-Star games in history,
+    all regular season games dating back to 1937, and a majority of regular season games dating back to 1921.
+
+    Each row in the table does not necessarily constitute a new or complete plate appearance, as events like
+    stolen bases and balks have their own rows.
+
+    While all games present in the table have the bare minimum of information about every play in the game,
+    there are significant differences in data quality from game to game. These differences in data quality often
+    complicate historical analyses.
+    -- A significant number of games from 1937-1973 do not have complete play-by-play accounts available. For these
+        missing games, Retrosheet has derived play-by-play data using a combination of box scores and game stories.
+        These derived games are likely to have less granular data around fielding plays.
+    -- The overwhelming majority of games prior to 1988 do not have pitch-by-pitch data available (the most notable
+        exceptions to this are the 1950s Dodgers home games). From 1988-1999, nearly all games have pitch sequences,
+        but a significant number of games are missing pitch sequences from at least one plate appearance, making
+        pitch count analysis a bit more difficult. Games from 2000 on have complete pitch data.
+    -- A similar situation exists for hit location data, although location data is more frequently populated for
+        older games than pitch data is.
+    """
     __tablename__ = 'event'
 
     game_id = Column(CHAR(12), primary_key=True, doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
@@ -182,6 +203,15 @@ class Event(Base):
 
 
 class Game(Base):
+    """
+    Contains one row for every unique game in the `event` table, and provides useful summary and metadata information
+    about those games.
+
+    Note that this table will suffer from the same data quality/completeness issues as `event`. This table only
+    includes games for which play-by-play accounts exist, which means that some games from 1921-1936 and all games
+    prior to 1921 will be missing from this table. The `gamelog` table provides one row for each game in major league
+    history, making it a better choice for complete historical analyses.
+    """
     __tablename__ = 'game'
 
     game_id = Column(CHAR(12), primary_key=True, doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
@@ -391,6 +421,14 @@ class Game(Base):
 
 
 class Daily(Base):
+    """
+    Contains one row per player per game. In addition to providing more convenient summaries of player data than the
+    `event` table, the `daily` table also includes information from box score event files, giving it complete coverage
+    for all games dating back to 1906 (as well as the 1871 and 1872 seasons).
+
+    The same caveats around data quality from `event` apply here as well. Additionally, there appear to be some minor
+    referential integrity issues in a couple rows.
+    """
     __tablename__ = "daily"
 
     game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
@@ -553,6 +591,9 @@ class Daily(Base):
 
 
 class Sub(Base):
+    """
+    A complement to `event` that provides convenient information about substitutions.
+    """
     __tablename__ = 'sub'
 
     game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
@@ -569,6 +610,10 @@ class Sub(Base):
 
 
 class Comment(Base):
+    """
+    A complement to `event` that sources detailed text comments from play-by-play files. When present,
+    these comments can be helpful in figuring out what happened on unusual plays.
+    """
     __tablename__ = 'comment'
 
     game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
@@ -578,6 +623,10 @@ class Comment(Base):
 
 
 class Gamelog(Base):
+    """
+    Contains one row for every game in major league history. While a bare minimum of result information exists
+    for all rows, the data becomes significantly more sparse for years prior to box score event files (< 1906).
+    """
     __tablename__ = "gamelog"
     # No explicit column names are provided by Retrosheet.
     # Alternative source used for header names: https://github.com/maxtoki/baseball_R
@@ -788,6 +837,9 @@ class Gamelog(Base):
 
 
 class Park(Base):
+    """
+    Basic information about ballparks.
+    """
     __tablename__ = 'park'
 
     park_id = Column(CHAR(5), primary_key=True, doc="Park ID")
@@ -802,6 +854,10 @@ class Park(Base):
 
 
 class Roster(Base):
+    """
+    Contains one row for each unique combination of player, team, and year. For more detailed/convenient player
+    biographical data, use the `people` table from the Baseball Databank schema, joining on `retro_id`.
+    """
     __tablename__ = 'roster'
     # We inserted the year in preprocessing
     year = Column(Integer, primary_key=True, doc="Year of roster")
@@ -815,6 +871,9 @@ class Roster(Base):
 
 
 class Schedule(Base):
+    """
+    Contains the original regular season schedules for all seasons dating back to 1877.
+    """
     __tablename__ = 'schedule'
 
     date = Column(Date, primary_key=True, doc="Scheduled game date")
@@ -849,6 +908,9 @@ class Schedule(Base):
 
 
 class CodeEvent(Base):
+    """
+    Descriptions for codes in `event.event_cd`
+    """
     __tablename__ = 'code_event'
 
     code = Column(SmallInteger, primary_key=True)
@@ -856,6 +918,9 @@ class CodeEvent(Base):
 
 
 class CodeFieldPark(Base):
+    """
+    Descriptions for codes in `game.field_park_cd`
+    """
     __tablename__ = 'code_field_park'
 
     code = Column(SmallInteger, primary_key=True)
@@ -863,6 +928,9 @@ class CodeFieldPark(Base):
 
 
 class CodeMethodRecord(Base):
+    """
+    Descriptions for codes in `game.method_record_cd`
+    """
     __tablename__ = 'code_method_record'
 
     code = Column(SmallInteger, primary_key=True)
@@ -870,6 +938,9 @@ class CodeMethodRecord(Base):
 
 
 class CodePitchesRecord(Base):
+    """
+    Descriptions for codes in `game.pitches_record_cd`
+    """
     __tablename__ = 'code_pitches_record'
 
     code = Column(SmallInteger, primary_key=True)
@@ -877,6 +948,9 @@ class CodePitchesRecord(Base):
 
 
 class CodePrecipPark(Base):
+    """
+    Descriptions for codes in `game.precip_park_cd`
+    """
     __tablename__ = 'code_precip_park'
 
     code = Column(SmallInteger, primary_key=True)
@@ -884,6 +958,9 @@ class CodePrecipPark(Base):
 
 
 class CodeSkyPark(Base):
+    """
+    Descriptions for codes in `game.sky_park_cd`
+    """
     __tablename__ = 'code_sky_park'
 
     event_cd = Column(SmallInteger, primary_key=True)
@@ -891,6 +968,9 @@ class CodeSkyPark(Base):
 
 
 class CodeWindDirectionPark(Base):
+    """
+    Descriptions for codes in `game.wind_direction_park_cd`
+    """
     __tablename__ = 'code_wind_direction_park'
 
     event_cd = Column(SmallInteger, primary_key=True)
