@@ -424,7 +424,7 @@ class Daily(Base):
     b_gdp = Column(SmallInteger, doc="Grounded into double plays")
     b_hp = Column(SmallInteger, doc="Hit by pitches")
     b_sh = Column(SmallInteger, doc="Sacrifice hits")
-    b_sf = Column(SmallInteger, doc="Sacrrifice files")
+    b_sf = Column(SmallInteger, doc="Sacrifice files")
     b_sb = Column(SmallInteger, doc="Stolen bases")
     b_cs = Column(SmallInteger, doc="Caught stealing")
     b_xi = Column(SmallInteger, doc="Reached on interference")
@@ -561,10 +561,10 @@ class Sub(Base):
     sub_id = Column(CHAR(8), doc="Player ID of substitute")
     sub_home_id = Column(Boolean, doc="Is the home team making the substitution")
     sub_lineup_id = Column(SmallInteger, doc="Lineup position of substitution")
-    sub_fld_cd = Column(SmallInteger, doc="Fielding position of substutution")
+    sub_fld_cd = Column(SmallInteger, doc="Fielding position of substitution")
     removed_id = Column(CHAR(8), doc="ID of removed player")
     removed_fld_cd = Column(SmallInteger, doc="Fielding position of removed player")
-    event_id = Column(SmallInteger, doc="Event number in which subsitution occurred")
+    event_id = Column(SmallInteger, doc="Event number in which substitution occurred")
     dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
@@ -588,9 +588,9 @@ class Gamelog(Base):
         Number of game:
          "0" -- a single game
          "1" -- the first game of a double (or triple) header
-                including seperate admission doubleheaders
+                including separate admission doubleheaders
          "2" -- the second game of a double (or triple) header
-                including seperate admission doubleheaders
+                including separate admission doubleheaders
          "3" -- the third game of a triple-header
          "A" -- the first game of a double-header involving 3 teams
          "B" -- the second game of a double-header involving 3 teams
