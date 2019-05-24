@@ -555,25 +555,25 @@ class Daily(Base):
 class Sub(Base):
     __tablename__ = 'sub'
 
-    game_id = Column(CHAR(12))
-    inn_ct = Column(SmallInteger)
-    bat_home_id = Column(SmallInteger)
-    sub_id = Column(CHAR(8))
-    sub_home_id = Column(SmallInteger)
-    sub_lineup_id = Column(SmallInteger)
-    sub_fld_cd = Column(SmallInteger)
-    removed_id = Column(CHAR(8))
-    removed_fld_cd = Column(SmallInteger)
-    event_id = Column(SmallInteger)
+    game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
+    inn_ct = Column(SmallInteger, doc="Inning of substitution")
+    bat_home_id = Column(Boolean, doc="Is home team batting")
+    sub_id = Column(CHAR(8), doc="Player ID of substitute")
+    sub_home_id = Column(Boolean, doc="Is the home team making the substitution")
+    sub_lineup_id = Column(SmallInteger, doc="Lineup position of substitution")
+    sub_fld_cd = Column(SmallInteger, doc="Fielding position of substutution")
+    removed_id = Column(CHAR(8), doc="ID of removed player")
+    removed_fld_cd = Column(SmallInteger, doc="Fielding position of removed player")
+    event_id = Column(SmallInteger, doc="Event number in which subsitution occurred")
     dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
 class Comment(Base):
     __tablename__ = 'comment'
 
-    game_id = Column(CHAR(12))
-    event_id = Column(SmallInteger)
-    comment = Column(String(1638))
+    game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
+    event_id = Column(SmallInteger, doc="Commented event number")
+    comment = Column(String(1638), doc="Comment text")
     dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
