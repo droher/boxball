@@ -790,45 +790,62 @@ class Gamelog(Base):
 class Park(Base):
     __tablename__ = 'park'
 
-    park_id = Column(CHAR(5), primary_key=True)
-    name = Column(String(41))
-    aka = Column(String(40))
-    city = Column(String(17))
-    state = Column(String(9))
-    start_date = Column(Date)
-    end_date = Column(Date)
-    league = Column(CHAR(2))
-    notes = Column(String(54))
+    park_id = Column(CHAR(5), primary_key=True, doc="Park ID")
+    name = Column(String(41), doc="Park name")
+    aka = Column(String(40), doc="Common park alias")
+    city = Column(String(17), doc="City")
+    state = Column(String(9), doc="State (unabbreviated)")
+    start_date = Column(Date, doc="First game")
+    end_date = Column(Date, doc="Last game")
+    league = Column(CHAR(2), doc="League ID")
+    notes = Column(String(54), doc="Misc. notes")
 
 
 class Roster(Base):
     __tablename__ = 'roster'
     # We inserted the year in preprocessing
-    year = Column(Integer, primary_key=True)
-    player_id = Column(CHAR(8), primary_key=True)
-    last_name = Column(String(32))
-    first_name = Column(String(32))
-    bats = Column(CHAR(1))
-    throws = Column(CHAR(1))
-    team_id = Column(CHAR(3), primary_key=True)
-    position = Column(String(2))
+    year = Column(Integer, primary_key=True, doc="Year of roster")
+    player_id = Column(CHAR(8), primary_key=True, doc="Player ID")
+    last_name = Column(String(32), doc="Player last name")
+    first_name = Column(String(32), doc="Player first name")
+    bats = Column(CHAR(1), doc="Bat handedness")
+    throws = Column(CHAR(1), doc="Throw handedness")
+    team_id = Column(CHAR(3), primary_key=True, doc="Team ID")
+    position = Column(String(2), doc="Primary fielding position")
 
 
 class Schedule(Base):
     __tablename__ = 'schedule'
 
-    date = Column(Date, primary_key=True)
-    double_header = Column(SmallInteger)
-    day_of_week = Column(CHAR(3))
-    visiting_team = Column(CHAR(3))
-    visiting_team_league = Column(CHAR(2))
-    visiting_team_game_number = Column(SmallInteger)
-    home_team = Column(CHAR(3), primary_key=True)
-    home_team_league = Column(CHAR(2))
-    home_team_game_number = Column(Integer, primary_key=True)
-    day_night = Column(CHAR(1))
-    postponement_indicator = Column(String(30))
-    makeup_dates = Column(String(20))
+    date = Column(Date, primary_key=True, doc="Scheduled game date")
+    double_header = Column(SmallInteger, doc="Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, "
+                                             "2 - second game of doubleheader")
+    day_of_week = Column(CHAR(3), doc="Day of week (3 letter abbreviation")
+    visiting_team = Column(CHAR(3), doc="Away team ID")
+    visiting_team_league = Column(CHAR(2), "Away team league ID")
+    visiting_team_game_number = Column(SmallInteger, doc="Away team game number")
+    home_team = Column(CHAR(3), primary_key=True, doc="Home team ID")
+    home_team_league = Column(CHAR(2), doc="Home team league ID")
+    home_team_game_number = Column(Integer, primary_key=True, doc="Home team game number")
+    day_night = Column(CHAR(1), doc="D - day, N - night")
+    postponement_indicator = Column(String(30), doc="""
+        This field will contain one or more phrases related to the game if it was
+        not played as scheduled. If there is more than one phrase, they are separated
+        by a semi-colon (";"). There are three possible outcomes for games not played
+        on the originally scheduled date:
+        -- The game was played on another date
+        -- The game was played on the original date but at another site
+        -- The game was not played
+        """)
+    makeup_dates = Column(String(20), doc="""
+        This field will contain a makeup date if the postponed game was played at
+        another time or place. If an attempt was known to have been made on a date but
+        postponed again, that date will be listed. In that case, there will be a second
+        date for the date when the game was actually played, in this form: "20150428;
+        20150528" For the note about a team folding, the team code is one of the
+        standard Retrosheet team IDs. The same is true for the team played as note.
+        Often, the two of these are combined in one field.
+        """)
 
 
 class CodeEvent(Base):
