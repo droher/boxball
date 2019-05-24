@@ -15,6 +15,10 @@ class Event(Base):
     Each row in the table does not necessarily constitute a new or complete plate appearance, as events like
     stolen bases and balks have their own rows.
 
+    If you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage
+    option like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for
+    traditional row-oriented stores.
+
     While all games present in the table have the bare minimum of information about every play in the game,
     there are significant differences in data quality from game to game. These differences in data quality often
     complicate historical analyses.
@@ -426,8 +430,13 @@ class Daily(Base):
     `event` table, the `daily` table also includes information from box score event files, giving it complete coverage
     for all games dating back to 1906 (as well as the 1871 and 1872 seasons).
 
+    If you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage
+    option like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for
+    traditional row-oriented stores.
+
     The same caveats around data quality from `event` apply here as well. Additionally, there appear to be some minor
-    referential integrity issues in a couple rows.
+    referential integrity issues in a couple rows: in at least one case, a player truly appeared in a single game more
+    than once (in the 1934 All-Star Game), while a parsing error caused this to appear in at least one other case.
     """
     __tablename__ = "daily"
 
