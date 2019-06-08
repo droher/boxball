@@ -8,14 +8,13 @@ orbs:
 
 jobs:
     build:
-      docker:
-        - image: circleci/buildpack-deps:trusty
+      machine: true
       steps:
         - checkout
         - setup_remote_docker:
             docker_layer_caching: true
             version: 18.06.0-ce
-        - run: docker-compose build
+        - run: docker-compose up -d
 
 
 # Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
