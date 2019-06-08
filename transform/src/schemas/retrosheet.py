@@ -1,4 +1,3 @@
-# coding: utf-8
 from sqlalchemy import MetaData, Boolean, CHAR, Column, Date, Integer, SmallInteger, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 

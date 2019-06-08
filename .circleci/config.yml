@@ -14,7 +14,17 @@ jobs:
         - checkout
         - run: |
             sudo pip install flake8==3.7.7
-            flake8 .
+            flake8
+
+    unit-test:
+      docker:
+        - image: circleci/python:3.7.3-stretch
+      steps:
+        - checkout
+        - run: |
+            sudo pip install -r requirements.txt
+            pytest --cov
+
 
     build:
       docker:
@@ -35,6 +45,9 @@ workflows:
   build_and_test:
     jobs:
       - style
-      - build:
+      - unit-test:
           requires:
             - style
+      - build:
+          requires:
+            - unit-test
