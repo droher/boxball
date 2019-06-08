@@ -1,5 +1,3 @@
-import pytest
-
 
 class TestExtract:
     def test_dummy(self):
