@@ -45,9 +45,16 @@ workflows:
   build_and_test:
     jobs:
       - style
+
       - unit-test:
           requires:
             - style
+
+      - codecov/upload:
+          environment:
+              CODECOV_TOKEN: b30e093b-af42-46e6-badf-42fbc03d76bf
+          file: {{ coverage_report_filepath }}
+
       - build:
           requires:
             - unit-test
