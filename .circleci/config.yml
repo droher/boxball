@@ -17,7 +17,7 @@ jobs:
             version: 18.06.0-ce
         - run:
             environment:
-                BUILD_ENV:test
+                BUILD_ENV: test
             command: docker-compose up -d
 
 
