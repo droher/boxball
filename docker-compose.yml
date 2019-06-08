@@ -7,6 +7,7 @@ services:
         - CHADWICK_VERSION
         - RETROSHEET_VERSION
         - BASEBALLDATABANK_VERSION
+        - BUILD_ENV
     image: ${REPO}:extract-${VERSION}
 
   boxball-ddl:
