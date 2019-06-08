@@ -39,7 +39,7 @@ class SqliteDdlFactory(TargetDdlFactory):
         for table_obj in metadata.tables.values():
             table_name: str = table_obj.fullname
             namespace = table_name[:table_name.index("_")]
-            model_name = table_name[table_name.index("_")+1:]
+            model_name = table_name[table_name.index("_") + 1:]
             csv_dir = self.data_path_prefix.joinpath(namespace)
             csv_file = csv_dir.joinpath(model_name).with_suffix(".csv")
             copy_ddl = copy_ddl_template.format(table_name=table_name, csv_file=csv_file)

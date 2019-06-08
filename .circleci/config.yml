@@ -7,6 +7,15 @@ orbs:
 
 
 jobs:
+    style:
+      docker:
+        - image: circleci/python:3.7.3-slim
+      steps:
+        - checkout
+        - run: |
+            pip install flake8==3.7.7
+            flake8 .
+
     build:
       docker:
         - image: circleci/buildpack-deps:trusty
@@ -25,4 +34,5 @@ jobs:
 workflows:
   build_and_test:
     jobs:
+      - style
       - build
