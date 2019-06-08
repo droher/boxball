@@ -9,7 +9,7 @@ orbs:
 jobs:
     style:
       docker:
-        - image: circleci/python:3.7.3-slim
+        - image: circleci/python:3.7.3-stretch
       steps:
         - checkout
         - run: |
@@ -35,4 +35,6 @@ workflows:
   build_and_test:
     jobs:
       - style
-      - build
+      - build:
+          requires:
+            - style
