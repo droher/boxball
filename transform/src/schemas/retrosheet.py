@@ -1,4 +1,3 @@
-# coding: utf-8
 from sqlalchemy import MetaData, Boolean, CHAR, Column, Date, Integer, SmallInteger, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -560,42 +559,42 @@ class Daily(Base):
     f_3b_e = Column(SmallInteger, doc="Errors as third baseman")
     f_3b_dp = Column(SmallInteger, doc="Double plays turned as third baseman")
     f_3b_tp = Column(SmallInteger, doc="Triple pays turned as third baseman")
-    f_ss_g = Column(SmallInteger, doc="Appearances at shortstop")          
-    f_ss_gs = Column(SmallInteger, doc="Starts at shortstop")              
-    f_ss_out = Column(SmallInteger, doc="Outs played as shortstop")        
-    f_ss_tc = Column(SmallInteger, doc="Total chances as shortstop")       
-    f_ss_po = Column(SmallInteger, doc="Putouts as shortstop")             
-    f_ss_a = Column(SmallInteger, doc="Assists as shortstop")              
-    f_ss_e = Column(SmallInteger, doc="Errors as shortstop")               
-    f_ss_dp = Column(SmallInteger, doc="Double plays turned as shortstop") 
-    f_ss_tp = Column(SmallInteger, doc="Triple pays turned as shortstop")  
-    f_lf_g = Column(SmallInteger, doc="Appearances at left fielder")          
-    f_lf_gs = Column(SmallInteger, doc="Starts at left fielder")              
-    f_lf_out = Column(SmallInteger, doc="Outs played as left fielder")        
-    f_lf_tc = Column(SmallInteger, doc="Total chances as left fielder")       
-    f_lf_po = Column(SmallInteger, doc="Putouts as left fielder")             
-    f_lf_a = Column(SmallInteger, doc="Assists as left fielder")              
-    f_lf_e = Column(SmallInteger, doc="Errors as left fielder")               
-    f_lf_dp = Column(SmallInteger, doc="Double plays turned as left fielder") 
-    f_lf_tp = Column(SmallInteger, doc="Triple pays turned as left fielder")  
-    f_cf_g = Column(SmallInteger, doc="Appearances at center fielder")          
-    f_cf_gs = Column(SmallInteger, doc="Starts at center fielder")              
-    f_cf_out = Column(SmallInteger, doc="Outs played as center fielder")        
-    f_cf_tc = Column(SmallInteger, doc="Total chances as center fielder")       
-    f_cf_po = Column(SmallInteger, doc="Putouts as center fielder")             
-    f_cf_a = Column(SmallInteger, doc="Assists as center fielder")              
-    f_cf_e = Column(SmallInteger, doc="Errors as center fielder")               
-    f_cf_dp = Column(SmallInteger, doc="Double plays turned as center fielder") 
-    f_cf_tp = Column(SmallInteger, doc="Triple pays turned as center fielder")  
-    f_rf_g = Column(SmallInteger, doc="Appearances at right fielder")          
-    f_rf_gs = Column(SmallInteger, doc="Starts at right fielder")              
-    f_rf_out = Column(SmallInteger, doc="Outs played as right fielder")        
-    f_rf_tc = Column(SmallInteger, doc="Total chances as right fielder")       
-    f_rf_po = Column(SmallInteger, doc="Putouts as right fielder")             
-    f_rf_a = Column(SmallInteger, doc="Assists as right fielder")              
-    f_rf_e = Column(SmallInteger, doc="Errors as right fielder")               
-    f_rf_dp = Column(SmallInteger, doc="Double plays turned as right fielder") 
-    f_rf_tp = Column(SmallInteger, doc="Triple pays turned as right fielder")  
+    f_ss_g = Column(SmallInteger, doc="Appearances at shortstop")
+    f_ss_gs = Column(SmallInteger, doc="Starts at shortstop")
+    f_ss_out = Column(SmallInteger, doc="Outs played as shortstop")
+    f_ss_tc = Column(SmallInteger, doc="Total chances as shortstop")
+    f_ss_po = Column(SmallInteger, doc="Putouts as shortstop")
+    f_ss_a = Column(SmallInteger, doc="Assists as shortstop")
+    f_ss_e = Column(SmallInteger, doc="Errors as shortstop")
+    f_ss_dp = Column(SmallInteger, doc="Double plays turned as shortstop")
+    f_ss_tp = Column(SmallInteger, doc="Triple pays turned as shortstop")
+    f_lf_g = Column(SmallInteger, doc="Appearances at left fielder")
+    f_lf_gs = Column(SmallInteger, doc="Starts at left fielder")
+    f_lf_out = Column(SmallInteger, doc="Outs played as left fielder")
+    f_lf_tc = Column(SmallInteger, doc="Total chances as left fielder")
+    f_lf_po = Column(SmallInteger, doc="Putouts as left fielder")
+    f_lf_a = Column(SmallInteger, doc="Assists as left fielder")
+    f_lf_e = Column(SmallInteger, doc="Errors as left fielder")
+    f_lf_dp = Column(SmallInteger, doc="Double plays turned as left fielder")
+    f_lf_tp = Column(SmallInteger, doc="Triple pays turned as left fielder")
+    f_cf_g = Column(SmallInteger, doc="Appearances at center fielder")
+    f_cf_gs = Column(SmallInteger, doc="Starts at center fielder")
+    f_cf_out = Column(SmallInteger, doc="Outs played as center fielder")
+    f_cf_tc = Column(SmallInteger, doc="Total chances as center fielder")
+    f_cf_po = Column(SmallInteger, doc="Putouts as center fielder")
+    f_cf_a = Column(SmallInteger, doc="Assists as center fielder")
+    f_cf_e = Column(SmallInteger, doc="Errors as center fielder")
+    f_cf_dp = Column(SmallInteger, doc="Double plays turned as center fielder")
+    f_cf_tp = Column(SmallInteger, doc="Triple pays turned as center fielder")
+    f_rf_g = Column(SmallInteger, doc="Appearances at right fielder")
+    f_rf_gs = Column(SmallInteger, doc="Starts at right fielder")
+    f_rf_out = Column(SmallInteger, doc="Outs played as right fielder")
+    f_rf_tc = Column(SmallInteger, doc="Total chances as right fielder")
+    f_rf_po = Column(SmallInteger, doc="Putouts as right fielder")
+    f_rf_a = Column(SmallInteger, doc="Assists as right fielder")
+    f_rf_e = Column(SmallInteger, doc="Errors as right fielder")
+    f_rf_dp = Column(SmallInteger, doc="Double plays turned as right fielder")
+    f_rf_tp = Column(SmallInteger, doc="Triple pays turned as right fielder")
     dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
@@ -774,8 +773,8 @@ class Gamelog(Base):
     visitor_batting_1_player_id = Column(CHAR(8), doc="Away team lineup slot 1 starting player ID")
     visitor_batting_1_name = Column(String(32), doc="Away team lineup slot 1 starting player name")
     visitor_batting_1_position = Column(SmallInteger, doc="Away team lineup slot 1 starting player fielding position")
-    visitor_batting_2_player_id = Column(CHAR(8), doc="Away team lineup slot 2 starting player ID")                 
-    visitor_batting_2_name = Column(String(32), doc="Away team lineup slot 2 starting player name")                 
+    visitor_batting_2_player_id = Column(CHAR(8), doc="Away team lineup slot 2 starting player ID")
+    visitor_batting_2_name = Column(String(32), doc="Away team lineup slot 2 starting player name")
     visitor_batting_2_position = Column(SmallInteger, doc="Away team lineup slot 2 starting player fielding position")
     visitor_batting_3_player_id = Column(CHAR(8), doc="Away team lineup slot 3 starting player ID")
     visitor_batting_3_name = Column(String(32), doc="Away team lineup slot 3 starting player name")
@@ -827,16 +826,16 @@ class Gamelog(Base):
     home_batting_9_position = Column(SmallInteger, doc="Home team lineup slot 9 starting player fielding position")
     additional_info = Column(String(128), doc="""
         Additional information.  This is a grab-bag of informational
-              items that might not warrant a field on their own.  The field 
+              items that might not warrant a field on their own.  The field
               is alpha-numeric. Some items are represented by tokens such as:
                  "HTBF" -- home team batted first.
                  Note: if "HTBF" is specified it would be possible to see
                  something like "01002000x" in the visitor's line score.
-              Changes in umpire positions during a game will also appear in 
+              Changes in umpire positions during a game will also appear in
               this field.  These will be in the form:
                  umpchange,inning,umpPosition,umpid with the latter three
                  repeated for each umpire.
-              These changes occur with umpire injuries, late arrival of 
+              These changes occur with umpire injuries, late arrival of
               umpires or changes from completion of suspended games. Details
               of suspended games are in field `completion_information`.
         """)

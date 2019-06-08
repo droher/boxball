@@ -7,6 +7,26 @@ orbs:
 
 
 jobs:
+    style:
+      docker:
+        - image: circleci/python:3.7.3-stretch
+      steps:
+        - checkout
+        - run: |
+            sudo pip install flake8==3.7.7
+            flake8
+
+    unit-test:
+      docker:
+        - image: circleci/python:3.7.3-stretch
+      steps:
+        - checkout
+        - run: |
+            sudo pip install -r requirements.txt
+            pytest --cov
+        - codecov/upload
+
+
     build:
       docker:
         - image: circleci/buildpack-deps:trusty
@@ -25,4 +45,10 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - build
+      - style
+      - unit-test:
+          requires:
+            - style
+      - build:
+          requires:
+            - unit-test

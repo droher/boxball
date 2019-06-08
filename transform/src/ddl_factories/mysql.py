@@ -42,7 +42,7 @@ class MySqlDdlFactory(TargetDdlFactory):
             boolean_col_list = [boolean_exp.format(c.name) for c in cols
                                 if isinstance(c.type, Boolean)]
             default_col_list = [default_exp.format(c.name) for c in cols
-                                    if not isinstance(c.type, (Boolean, Float))]
+                                if not isinstance(c.type, (Boolean, Float))]
             column_vars = ", ".join("@{}".format(c.name) for c in cols)
 
             exps = ",\n".join(float_col_list + boolean_col_list + default_col_list)

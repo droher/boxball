@@ -1,0 +1,5 @@
+[flake8]
+ignore=E741
+max-line-length=120
+max-complexity=10
+exclude=.git,__pycache__,extract/fixtures,load,venv
