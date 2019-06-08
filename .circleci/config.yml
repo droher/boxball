@@ -50,7 +50,9 @@ workflows:
           requires:
             - style
 
-      - codecov/upload:
+      - codecov:
+          steps:
+            - codecov/upload
           environment:
               CODECOV_TOKEN: b30e093b-af42-46e6-badf-42fbc03d76bf
           file: {{ coverage_report_filepath }}
