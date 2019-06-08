@@ -188,6 +188,9 @@ class FieldingOF(Base):
 
 
 class FieldingOFSplit(Base):
+    """
+    Disaggregates outfield statistics from `Fielding` into LF, CF, and RF
+    """
     __tablename__ = 'fielding_of_split'
 
     player_id = Column(String(9), primary_key=True, nullable=False)
@@ -497,6 +500,8 @@ class TeamsFranchise(Base):
 
 
 class TeamsHalf(Base):
+    """Table for years in MLB history that the season was divided into halves (e.g. 1981)"""
+
     __tablename__ = 'teams_half'
 
     year_id = Column(Integer, primary_key=True, nullable=False)
