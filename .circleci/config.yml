@@ -3,13 +3,24 @@ version: 2.1
 
 # Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
 orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.3.1
+  codecov: codecov/codecov@1.0.5
+
+
+jobs:
+    build:
+      docker:
+        - image: circleci/buildpack-deps:trusty
+      steps:
+        - checkout
+        - setup_remote_docker:
+            docker_layer_caching: true
+            version: 18.06.0-ce
+        - run: docker-compose build
+
 
 # Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
 workflows:
-  # Name the workflow "Welcome"
-  Welcome:
-    # Run the welcome/run job in its own container
+  build_and_test:
     jobs:
-      - welcome/run
+      - codecov/codecov
+      - build
