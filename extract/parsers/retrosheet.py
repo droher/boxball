@@ -30,11 +30,13 @@ class RetrosheetParser:
     Class for running Retrosheet extract. Mostly in a class for testing convenience.
     """
 
-    def parse_code_tables(self) -> None:
+    @staticmethod
+    def parse_code_tables() -> None:
         for file in CODE_TABLES_PATH.glob("*.csv"):
             compress(file, OUTPUT_PATH)
 
-    def parse_simple_files(self) -> None:
+    @staticmethod
+    def parse_simple_files() -> None:
         def concat_files(input_path: Path, output_file: Path, glob: str = "*",
                          prepend_filename: bool = False,
                          strip_header: bool = False,
@@ -71,7 +73,8 @@ class RetrosheetParser:
         concat_files(subdirs["misc"], output_base / "park.csv", glob="parkcode.txt", strip_header=True)
         concat_files(subdirs["rosters"], output_base / "roster.csv", glob="*.ROS", prepend_filename=True)
 
-    def parse_event_types(self, use_parallel=True) -> None:
+    @staticmethod
+    def parse_event_types(use_parallel=True) -> None:
         def parse_events(output_type: str, clean_func: Callable = None):
             event_base = RETROSHEET_PATH / "event"
             output_file = OUTPUT_PATH.joinpath(output_type).with_suffix(".csv")

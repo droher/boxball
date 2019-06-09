@@ -5,8 +5,11 @@
 <a href="https://circleci.com/gh/droher/boxball">
     <img src="https://circleci.com/gh/droher/boxball.svg?style=shield&circle-token=2b78bfd4c600c640c479f2f2d9eaa38823ad8b96" align="left" />
 </a>
-<a href="https://codecov.io/gh/droher/boxball">
-  <img src="https://codecov.io/gh/droher/boxball/branch/master/graph/badge.svg?token=EFOhQUQcHk" align="left" />
+<a href="https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=droher/boxball&amp;utm_campaign=Badge_Grade">
+    <img src="https://api.codacy.com/project/badge/Grade/9a163160d3db4621b941b3297bfb9edf" align="left"/>
+</a>
+<a href="https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=droher/boxball&amp;utm_campaign=Badge_Coverage">
+    <img src="https://api.codacy.com/project/badge/Coverage/9a163160d3db4621b941b3297bfb9edf" align="left"/>
 </a>
 <br>
 </p>
@@ -18,23 +21,23 @@ Retrosheet contains information on every major-league pitch since 2000, every pl
 every box score since 1906, and every game since 1871.
 The Databank (based on the [Lahman Database](http://www.seanlahman.com/baseball-archive/statistics/) contains yearly
 summaries for every player and team in history. In addition to the data and databases themselves, Boxball relies on the following tools:
- * [Docker](https://docs.docker.com/engine/docker-overview/) for repeatable builds and easy distribution
- * [SQLAlchemy](https://www.sqlalchemy.org/) for abstracting away DDL differences between databases
- * [Chadwick](https://github.com/chadwickbureau/chadwick) for translating Retrosheet's complex event files into a relational format
+*   [Docker](https://docs.docker.com/engine/docker-overview/) for repeatable builds and easy distribution
+*   [SQLAlchemy](https://www.sqlalchemy.org/) for abstracting away DDL differences between databases
+*   [Chadwick](https://github.com/chadwickbureau/chadwick) for translating Retrosheet's complex event files into a relational format
 
 Follow the instructions below to install your distribution of choice. The full set of images is also available on
 Docker Hub.
 
 If you find the project useful, please consider donating to:
-* The [Ali Forney Center](https://aliforneycenter.donordrive.com/index.cfm?fuseaction=donate.general) for homeless LGBTQ youth
-* [350.org](https://act.350.org/donate/build/), a grassroots international climate change organization
+*   The [Ali Forney Center](https://aliforneycenter.donordrive.com/index.cfm?fuseaction=donate.general) for homeless LGBTQ youth
+*   [350.org](https://act.350.org/donate/build/), a grassroots international climate change organization
 
 Feel free to [contact me](mailto:david@boxball.io) with questions or comments! 
 
 ## Requirements
-* [Docker](https://docs.docker.com/install/) (v18.06, earlier versions may not work)
-* 2-20GB Disk space (depends on distribution choice)
-* 500MB-8GB RAM available to Docker (depends on distribution choice)
+*   [Docker](https://docs.docker.com/install/) (v18.06, earlier versions may not work)
+*   2-20GB Disk space (depends on distribution choice)
+*   500MB-8GB RAM available to Docker (depends on distribution choice)
 
 ## Distributions
 ### Column-Oriented Databases
@@ -62,7 +65,6 @@ container and using the `clickhouse-client` CLI or by using a local database cli
 The data will be persisted on your machine in
 `~/boxball/clickhouse` (~700MB), which means you can stop/remove the container without having to reload the data
 when you turn it back on.
-
 
 #### Drill
 [Drill](https://drill.apache.org/) is a framework that allows for SQL queries directly on files, without having to declare any schema.
@@ -141,6 +143,7 @@ to develop and host this project for free thanks to the generous open-source pla
 
 Retrosheet represents the collective effort of thousands of baseball fans over 150 years of scorekeeping and data entry.
 My best hope for this project is that it facilitates more historical research.
+
 ``` 
 The information used here was obtained free of
 charge from and is copyrighted by Retrosheet.  Interested

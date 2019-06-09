@@ -15,14 +15,16 @@ class PostgresDdlFactory(TargetDdlFactory):
     def dialect(self) -> Dialect:
         return postgresql.dialect()
 
-    def _get_csv_dir(self, table: Table) -> str:
+    @staticmethod
+    def _get_csv_dir(table: Table) -> str:
         name = table.fullname
         if "." in name:
             return name.split(".")[0]
         else:
             return name.split("_")[0]
 
-    def _get_csv_stem(self, table: Table) -> str:
+    @staticmethod
+    def _get_csv_stem(table: Table) -> str:
         name = table.fullname
         if "." in name:
             return "".join(name.split(".")[1:])
