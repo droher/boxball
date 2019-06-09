@@ -31,7 +31,7 @@ class PostgresDdlFactory(TargetDdlFactory):
 
     def make_copy_ddl(self, metadata: MetaData) -> DdlString:
         copy_ddl_template = ("COPY {full_table_name}({column_names}) "
-                             "FROM PROGRAM '{cmd}' CSV FORCE_NULL({column_names});")
+                             "FROM PROGRAM '{cmd}' WITH (FORMAT CSV, FORCE_NULL({column_names}));")
         cmd_template = "zstd --rm -cd {csv_file}"
         ddl = []
         for table_obj in metadata.tables.values():

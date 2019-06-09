@@ -40,7 +40,7 @@ services:
       - boxball-ddl
 
   boxball-drill:
-    build: load/clickhouse
+    build: load/drill
     image: ${REPO}:drill-${VERSION}
     depends_on:
       - boxball-parquet
