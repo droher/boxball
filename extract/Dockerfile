@@ -25,14 +25,14 @@ ARG RETROSHEET_VERSION
 RUN wget https://github.com/chadwickbureau/retrosheet/archive/${RETROSHEET_VERSION}.zip -O retrosheet.zip
 
 FROM build-common as get-retrosheet-test
-COPY fixtures/retrosheet.zip .
+COPY fixtures/raw/retrosheet.zip .
 
 FROM build-common as get-baseballdatabank-prod
 ARG BASEBALLDATABANK_VERSION
 RUN wget https://github.com/chadwickbureau/baseballdatabank/archive/${BASEBALLDATABANK_VERSION}.zip -O baseballdatabank.zip
 
 FROM build-common as get-baseballdatabank-test
-COPY fixtures/baseballdatabank.zip .
+COPY fixtures/raw/baseballdatabank.zip .
 
 # Now alias to abstract the build_env difference away downstream
 FROM ${RETROSHEET_IMAGE} as get-retrosheet
