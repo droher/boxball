@@ -1,5 +1,5 @@
 [flake8]
-ignore=E741
+ignore=E741,E731
 max-line-length=120
-max-complexity=10
-exclude=.git,__pycache__,extract/fixtures,load,venv
+max-complexity=11
+exclude=.git,__pycache__,extract/fixtures,load,venv,tests
