@@ -36,7 +36,7 @@ Feel free to [contact me](mailto:david@boxball.io) with questions or comments!
 * 2-20GB Disk space (depends on distribution choice)
 * 500MB-8GB RAM available to Docker (depends on distribution choice)
 
-##Distributions
+## Distributions
 ### Column-Oriented Databases
 #### Postgres cstore_fdw
 This distribution uses the [cstore_fdw](https://github.com/citusdata/cstore_fdw) extension to turn PostgreSQL
