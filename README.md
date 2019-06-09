@@ -2,6 +2,7 @@
 <img src="./assets/boxball.jpg" width="50%">
 </p>
 <p>
+<img alt="GitHub release" src="https://img.shields.io/github/release/droher/boxball.svg" align="left">
 <a href="https://circleci.com/gh/droher/boxball">
     <img src="https://circleci.com/gh/droher/boxball.svg?style=shield&circle-token=2b78bfd4c600c640c479f2f2d9eaa38823ad8b96" align="left" />
 </a>
@@ -11,6 +12,9 @@
 <a href="https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=droher/boxball&amp;utm_campaign=Badge_Coverage">
     <img src="https://api.codacy.com/project/badge/Coverage/9a163160d3db4621b941b3297bfb9edf" align="left"/>
 </a>
+<img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/doublewick/boxball.svg" align="left">
+<a href="https://opensource.org/licenses/Apache-2.0">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" align="left" /></a>
 <br>
 </p>
 
@@ -143,6 +147,10 @@ to develop and host this project for free thanks to the generous open-source pla
 
 Retrosheet represents the collective effort of thousands of baseball fans over 150 years of scorekeeping and data entry.
 My best hope for this project is that it facilitates more historical research.
+
+## Licence(s)
+All code is released under the Apache 2.0 license. Baseball Databank data is distributed under the [CC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+license. Retrosheet data is released under the condition that the below text appear prominently:
 
 ``` 
 The information used here was obtained free of
