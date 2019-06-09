@@ -855,8 +855,9 @@ class Park(Base):
     aka = Column(String(40), doc="Common park alias")
     city = Column(String(17), doc="City")
     state = Column(String(9), doc="State (unabbreviated)")
-    start_date = Column(Date, doc="First game")
-    end_date = Column(Date, doc="Last game")
+    # TODO: Handle this MySQL edge case so these can be dates again
+    start_date = Column(String(10), doc="First game")
+    end_date = Column(String(10), doc="Last game")
     league = Column(CHAR(2), doc="League ID")
     notes = Column(String(54), doc="Misc. notes")
 
@@ -921,7 +922,7 @@ class CodeEvent(Base):
     """
     __tablename__ = 'code_event'
 
-    code = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -931,7 +932,7 @@ class CodeFieldPark(Base):
     """
     __tablename__ = 'code_field_park'
 
-    code = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -941,7 +942,7 @@ class CodeMethodRecord(Base):
     """
     __tablename__ = 'code_method_record'
 
-    code = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -951,7 +952,7 @@ class CodePitchesRecord(Base):
     """
     __tablename__ = 'code_pitches_record'
 
-    code = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -961,7 +962,7 @@ class CodePrecipPark(Base):
     """
     __tablename__ = 'code_precip_park'
 
-    code = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -971,7 +972,7 @@ class CodeSkyPark(Base):
     """
     __tablename__ = 'code_sky_park'
 
-    event_cd = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -981,5 +982,5 @@ class CodeWindDirectionPark(Base):
     """
     __tablename__ = 'code_wind_direction_park'
 
-    event_cd = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))

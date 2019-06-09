@@ -23,7 +23,7 @@
 [Retrosheet](http://retrosheet.org) and the [Baseball Databank](https://github.com/chadwickbureau/baseballdatabank).
 Retrosheet contains information on every major-league pitch since 2000, every play since 1937,
 every box score since 1906, and every game since 1871.
-The Databank (based on the [Lahman Database](http://www.seanlahman.com/baseball-archive/statistics/) contains yearly
+The Databank (based on the [Lahman Database](http://www.seanlahman.com/baseball-archive/statistics/)) contains yearly
 summaries for every player and team in history. In addition to the data and databases themselves, Boxball relies on the following tools:
 *   [Docker](https://docs.docker.com/engine/docker-overview/) for repeatable builds and easy distribution
 *   [SQLAlchemy](https://www.sqlalchemy.org/) for abstracting away DDL differences between databases
@@ -79,7 +79,11 @@ It is usually used on a computing cluster with massive datasets, but we use a si
 Data will be immediately available to query after the image is downloaded. Use port `8047` to access the Web UI 
 (which includes a SQL runner) and port `31010` to connect via a database client.
 You may also attach the container and query from the command line.
-The data will be persisted on your machine in `~/boxball/drill` (~700MB). 
+The data will be persisted on your machine in `~/boxball/drill` (~700MB).
+
+#### Spark
+
+Coming soon
 
 ### Traditional (Row-oriented) Databases
 Note: these frameworks are likely to be prohibitively slow when querying play-by-play data, and they take up significantly
@@ -111,7 +115,7 @@ To install and run:
 `docker run -d -p 8080:8080 -v ~/boxball/sqlite:/db doublewick/boxball:sqlite-0.0.2`
 
 Roughly two minutes after the image is downloaded, the data will be fully loaded into the database. `localhost:8080`
-will provide a Web UI where you can write queries and perform schema exploration.
+will provide a [web UI](https://github.com/coleifer/sqlite-web) where you can write queries and perform schema exploration.
 
 ### Flat File Downloads
 
