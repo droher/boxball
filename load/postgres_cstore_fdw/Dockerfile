@@ -10,7 +10,7 @@ RUN apk --no-cache add \
 RUN wget https://github.com/citusdata/cstore_fdw/archive/master.zip -O cstore_fdw.zip && \
     unzip cstore_fdw.zip && \
     mv cstore_fdw-master cstore_fdw
-WORKDIR cstore_fdw
+WORKDIR /cstore_fdw
 RUN make && \
     make install
 WORKDIR /

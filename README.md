@@ -18,23 +18,23 @@ Retrosheet contains information on every major-league pitch since 2000, every pl
 every box score since 1906, and every game since 1871.
 The Databank (based on the [Lahman Database](http://www.seanlahman.com/baseball-archive/statistics/) contains yearly
 summaries for every player and team in history. In addition to the data and databases themselves, Boxball relies on the following tools:
-*  [Docker](https://docs.docker.com/engine/docker-overview/) for repeatable builds and easy distribution
-*  [SQLAlchemy](https://www.sqlalchemy.org/) for abstracting away DDL differences between databases
-*  [Chadwick](https://github.com/chadwickbureau/chadwick) for translating Retrosheet's complex event files into a relational format
+*   [Docker](https://docs.docker.com/engine/docker-overview/) for repeatable builds and easy distribution
+*   [SQLAlchemy](https://www.sqlalchemy.org/) for abstracting away DDL differences between databases
+*   [Chadwick](https://github.com/chadwickbureau/chadwick) for translating Retrosheet's complex event files into a relational format
 
 Follow the instructions below to install your distribution of choice. The full set of images is also available on
 Docker Hub.
 
 If you find the project useful, please consider donating to:
-*  The [Ali Forney Center](https://aliforneycenter.donordrive.com/index.cfm?fuseaction=donate.general) for homeless LGBTQ youth
-*  [350.org](https://act.350.org/donate/build/), a grassroots international climate change organization
+*   The [Ali Forney Center](https://aliforneycenter.donordrive.com/index.cfm?fuseaction=donate.general) for homeless LGBTQ youth
+*   [350.org](https://act.350.org/donate/build/), a grassroots international climate change organization
 
 Feel free to [contact me](mailto:david@boxball.io) with questions or comments! 
 
 ## Requirements
-*  [Docker](https://docs.docker.com/install/) (v18.06, earlier versions may not work)
-*  2-20GB Disk space (depends on distribution choice)
-*  500MB-8GB RAM available to Docker (depends on distribution choice)
+*   [Docker](https://docs.docker.com/install/) (v18.06, earlier versions may not work)
+*   2-20GB Disk space (depends on distribution choice)
+*   500MB-8GB RAM available to Docker (depends on distribution choice)
 
 ## Distributions
 ### Column-Oriented Databases
