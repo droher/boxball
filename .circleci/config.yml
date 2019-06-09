@@ -45,6 +45,6 @@ workflows:
       - int-test:
           requires:
             - style
-      - build:
+      - e2e-test:
           requires:
             - int-test
