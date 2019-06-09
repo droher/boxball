@@ -108,5 +108,5 @@ venv.bak/
 secrets.env
 
 # Unzipped stuff from tests
-retrosheet/
-baseballdatabank/
+.retrosheet/
+.baseballdatabank/

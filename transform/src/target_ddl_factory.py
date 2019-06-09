@@ -56,6 +56,6 @@ class TargetDdlFactory:
         for metadatum in metadatas:
             transformed_metadata = self.metadata_transform(metadatum)
             output_file = OUTPUT_PATH.joinpath("{}.{}".format(self.target_name, self.file_format))
-            with open(output_file, "a+") as f:
+            with open(output_file, "w") as f:
                 f.write(self.make_create_ddl(transformed_metadata))
                 f.write(self.make_copy_ddl(transformed_metadata))

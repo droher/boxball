@@ -12,11 +12,14 @@ TMP = Path("/tmp/boxball")
 
 def pytest_sessionstart(session):
     TMP.mkdir()
+    TMP.joinpath("extract").mkdir()
     sys.path.insert(0, str(Path(os.getcwd()).joinpath("extract")))
     sys.path.insert(0, str(Path(os.getcwd()).joinpath("transform")))
-    unzip = "unzip extract/fixtures/{0}.zip -d . && mv {0}-master /tmp/boxball/{0}"
+    raw = "unzip extract/fixtures/raw/{0}.zip -d /tmp/ && mv /tmp/{0}-master /tmp/boxball/{0}"
+    csv = "cp -r extract/fixtures/extract/{0} /tmp/boxball/extract/{0}"
     for archive in ("retrosheet", "baseballdatabank"):
-        subprocess.run(unzip.format(archive), shell=True)
+        subprocess.run(raw.format(archive), shell=True, check=True)
+        subprocess.run(csv.format(archive), shell=True, check=True)
     code_tables = "cp -r extract/code_tables /tmp/boxball"
     subprocess.run(code_tables, shell=True)
 
