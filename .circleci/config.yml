@@ -19,7 +19,8 @@ jobs:
         - checkout
         - run: |
             sudo pip install -r requirements.txt
-            pytest --cov --cov-report xml
+            pytest --cov
+            coverage xml
             python-codacy-coverage -r coverage.xml
 
 
