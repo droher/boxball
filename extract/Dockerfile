@@ -48,11 +48,12 @@ COPY parsers/ /parsers
 RUN wget https://github.com/chadwickbureau/chadwick/archive/${CHADWICK_VERSION}.zip -O chadwick.zip && \
     unzip chadwick.zip && \
     mv chadwick-* chadwick
-RUN cd chadwick && \
-    autoreconf --install && \
+WORKDIR /chadwick
+RUN autoreconf --install && \
     ./configure && \
     make && \
     make install
+WORKDIR /
 COPY --from=get-retrosheet retrosheet.zip .
 RUN unzip retrosheet.zip && \
     mv retrosheet-* retrosheet
@@ -72,6 +73,6 @@ RUN python -u /parsers/baseballdatabank.py
 # Use a skinny build for deployment
 FROM alpine:3.9.3
 RUN apk add zstd
-WORKDIR extract
+WORKDIR /extract
 COPY --from=extract-baseballdatabank /parsed ./baseballdatabank
 COPY --from=extract-retrosheet /parsed ./retrosheet

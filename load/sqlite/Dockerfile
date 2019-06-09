@@ -1,15 +1,18 @@
+FROM doublewick/boxball:ddl-0.0.1 as ddl
+FROM doublewick/boxball:csv-0.0.1 as csv
+
 FROM alpine:3.9.3 as build
 RUN apk add --no-cache \
     zstd \
     sqlite
 RUN sqlite3 boxball.db ".databases"
-COPY --from=doublewick/boxball:ddl-0.0.1 /ddl/sqlite.sql .
+COPY --from=ddl /ddl/sqlite.sql .
 RUN cat sqlite.sql
-COPY --from=doublewick/boxball:csv-0.0.1 /transform/csv /data
+COPY --from=csv /transform/csv /data
 RUN echo "Decompressing fies..." && \
-    for f in /data/**/*.csv.zst; do zstd --rm -d $f; done && \
+    for f in /data/**/*.csv.zst; do zstd --rm -d ${f}; done && \
     echo "Building db..." && \
-    cat sqlite.sql | sqlite3 -bail boxball.db && \
+    < sqlite.sql sqlite3 -bail boxball.db && \
     rm -rf /data && \
     zstd --rm boxball.db
 

@@ -1,3 +1,6 @@
+FROM doublewick/boxball:ddl-0.0.1 as ddl
+FROM doublewick/boxball:csv-0.0.1 as csv
+
 FROM postgres:11.2-alpine as build
 RUN apk --no-cache add \
     zstd \
@@ -7,12 +10,13 @@ RUN apk --no-cache add \
 RUN wget https://github.com/citusdata/cstore_fdw/archive/master.zip -O cstore_fdw.zip && \
     unzip cstore_fdw.zip && \
     mv cstore_fdw-master cstore_fdw
-RUN cd cstore_fdw && \
-    make && \
+WORKDIR cstore_fdw
+RUN make && \
     make install
-RUN echo "shared_preload_libraries = 'cstore_fdw'" >> ${PGDATA}/postgresql.conf
-COPY --chown=postgres:postgres --from=doublewick/boxball:ddl-0.0.1 /ddl/postgres_cstore_fdw.sql /docker-entrypoint-initdb.d/
-COPY --chown=postgres:postgres --from=doublewick/boxball:csv-0.0.1 /transform/csv /data
+WORKDIR /
+RUN echo "shared_preload_libraries = 'cstore_fdw'" >> "${PGDATA}/postgresql.conf"
+COPY --chown=postgres:postgres --from=ddl /ddl/postgres_cstore_fdw.sql /docker-entrypoint-initdb.d/
+COPY --chown=postgres:postgres --from=csv /transform/csv /data
 RUN cat /docker-entrypoint-initdb.d/postgres_cstore_fdw.sql
 
 FROM build
