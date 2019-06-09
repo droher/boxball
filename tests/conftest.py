@@ -2,6 +2,8 @@ import subprocess
 from pathlib import Path
 import os
 from shutil import rmtree
+import sys
+sys.path.insert(0, os.getcwd())
 
 from extract.parsers.util import OUTPUT_PATH
 
