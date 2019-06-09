@@ -110,3 +110,6 @@ secrets.env
 # Unzipped stuff from tests
 .retrosheet/
 .baseballdatabank/
+
+# to-do list
+TODO.md
