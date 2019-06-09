@@ -1,14 +1,12 @@
-import sys
 import os
 from unittest.mock import patch
 from pathlib import Path
-sys.path.insert(0, os.getcwd())
 
 from parsers.retrosheet import RetrosheetParser, PARSE_FUNCS
 from parsers.baseballdatabank import get_baseballdatabank_files
 from parsers.util import compress
 
-
+os.chdir(Path("/tmp/boxball"))
 MOCK_FUNCS = {k: "cat *{year}*" for k in PARSE_FUNCS}
 
 
