@@ -607,7 +607,8 @@ class Sub(Base):
 
     game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
     inn_ct = Column(SmallInteger, doc="Inning of substitution")
-    bat_home_id = Column(Boolean, doc="Is home team batting")
+    # TODO: Handle -1 so this can be a boolean
+    bat_home_id = Column(SmallInteger, doc="Is home team batting (-1 for N/A)")
     sub_id = Column(CHAR(8), doc="Player ID of substitute")
     sub_home_id = Column(Boolean, doc="Is the home team making the substitution")
     sub_lineup_id = Column(SmallInteger, doc="Lineup position of substitution")

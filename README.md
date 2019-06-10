@@ -153,7 +153,7 @@ Lahman](http://www.seanlahman.com/) for creating his database, which I have been
 to develop and host this project for free thanks to the generous open-source plans of CircleCI, Github, and Docker Hub.
 
 Retrosheet represents the collective effort of thousands of baseball fans over 150 years of scorekeeping and data entry.
-My best hope for this project is that it facilitates more historical research.
+I hope Boxball facilitates more historical research to continue this tradition.
 
 ## Licence(s)
 All code is released under the Apache 2.0 license. Baseball Databank data is distributed under the [CC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
