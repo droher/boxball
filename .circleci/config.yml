@@ -39,6 +39,7 @@ jobs:
               docker-compose up -d
               sleep 60s
               clean_exits=$(docker-compose ps -q | xargs docker inspect -f '{{ .State.ExitCode }}' | grep -c 0)
+              echo $clean_exits
               ((${clean_exits}==10)) || echo "At least one container had a non-zero exit" && exit 1;
 
 
