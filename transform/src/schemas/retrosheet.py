@@ -856,7 +856,7 @@ class Park(Base):
     name = Column(String(41), doc="Park name")
     aka = Column(String(40), doc="Common park alias")
     city = Column(String(17), doc="City")
-    state = Column(String(9), doc="State (unabbreviated)")
+    state = Column(String(9), doc="State")
     # TODO: Handle this MySQL edge case so these can be dates again
     start_date = Column(String(10), doc="First game")
     end_date = Column(String(10), doc="Last game")
