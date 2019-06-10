@@ -1,4 +1,4 @@
-from sqlalchemy import MetaData, Boolean, CHAR, Column, Date, Integer, SmallInteger, String, DateTime
+from sqlalchemy import MetaData, Boolean, CHAR, Column, Date, Integer, SmallInteger, String
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base(metadata=MetaData(schema="retrosheet"))
@@ -241,8 +241,9 @@ class Game(Base):
     scorer_record_id = Column(String(50), doc="Scorekeeper")
     translator_record_id = Column(String(50), doc="Translator")
     inputter_record_id = Column(String(50), doc="Inputter")
-    input_record_ts = Column(DateTime, doc="Date and time of record input")
-    edit_record_ts = Column(DateTime, doc="Date and time of Most recent record edit")
+    # TODO: Figure out how to parse in parquet
+    input_record_ts = Column(String(20), doc="Date and time of record input")
+    edit_record_ts = Column(String(20), doc="Date and time of Most recent record edit")
     method_record_cd = Column(String(1), doc="How the game was scored (join `code_method_record` for details")
     pitches_record_cd = Column(String(1), doc="Highest detail of pitches recorded "
                                               "(join `code_pitches_record` for details). Note that many games with "
