@@ -32,6 +32,9 @@ summaries for every player and team in history. In addition to the data and data
 Follow the instructions below to install your distribution of choice. The full set of images is also available on
 Docker Hub.
 
+The Retrosheet schema is extensively documented in the code; see the source [here](https://github.com/droher/boxball/blob/master/transform/src/schemas/retrosheet.pyhttps://github.com/droher/boxball/blob/master/transform/src/schemas/retrosheet.py)
+until I find a prettier solution.
+
 If you find the project useful, please consider donating to:
 *   The [Ali Forney Center](https://aliforneycenter.donordrive.com/index.cfm?fuseaction=donate.general) for homeless LGBTQ youth
 *   [350.org](https://act.350.org/donate/build/), a grassroots international climate change organization
