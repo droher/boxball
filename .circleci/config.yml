@@ -38,9 +38,10 @@ jobs:
             command: |
               docker-compose up -d
               sleep 60s
+              total_exits=$(docker-compose ps -q | wc -l)
               clean_exits=$(docker-compose ps -q | xargs docker inspect -f '{{ .State.ExitCode }}' | grep -c 0)
-              echo $clean_exits
-              ((${clean_exits}==10)) || echo "At least one container had a non-zero exit" && exit 1;
+              echo "Total containers: ${total_exits} Clean exits: ${clean_exits}"
+              ((${clean_exits}==${total_exits})) || (echo "At least one container had a non-zero exit" && exit 1);
 
 
 # Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
