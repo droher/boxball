@@ -1,4 +1,5 @@
-FROM doublewick/boxball:extract-0.0.1 as extract
+ARG VERSION
+FROM doublewick/boxball:extract-${VERSION} as extract
 
 FROM python:3.7.3-slim-stretch AS build-common
 COPY requirements.txt .
