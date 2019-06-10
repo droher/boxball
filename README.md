@@ -2,6 +2,7 @@
 <img src="./assets/boxball.jpg" width="50%">
 </p>
 <p>
+<img alt="GitHub release" src="https://img.shields.io/github/release/droher/boxball.svg" align="left">
 <a href="https://circleci.com/gh/droher/boxball">
     <img src="https://circleci.com/gh/droher/boxball.svg?style=shield&circle-token=2b78bfd4c600c640c479f2f2d9eaa38823ad8b96" align="left" />
 </a>
@@ -11,6 +12,9 @@
 <a href="https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=droher/boxball&amp;utm_campaign=Badge_Coverage">
     <img src="https://api.codacy.com/project/badge/Coverage/9a163160d3db4621b941b3297bfb9edf" align="left"/>
 </a>
+<img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/doublewick/boxball.svg" align="left">
+<a href="https://opensource.org/licenses/Apache-2.0">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" align="left" /></a>
 <br>
 </p>
 
@@ -19,7 +23,7 @@
 [Retrosheet](http://retrosheet.org) and the [Baseball Databank](https://github.com/chadwickbureau/baseballdatabank).
 Retrosheet contains information on every major-league pitch since 2000, every play since 1937,
 every box score since 1906, and every game since 1871.
-The Databank (based on the [Lahman Database](http://www.seanlahman.com/baseball-archive/statistics/) contains yearly
+The Databank (based on the [Lahman Database](http://www.seanlahman.com/baseball-archive/statistics/)) contains yearly
 summaries for every player and team in history. In addition to the data and databases themselves, Boxball relies on the following tools:
 *   [Docker](https://docs.docker.com/engine/docker-overview/) for repeatable builds and easy distribution
 *   [SQLAlchemy](https://www.sqlalchemy.org/) for abstracting away DDL differences between databases
@@ -27,6 +31,9 @@ summaries for every player and team in history. In addition to the data and data
 
 Follow the instructions below to install your distribution of choice. The full set of images is also available on
 Docker Hub.
+
+The Retrosheet schema is extensively documented in the code; see the source [here](https://github.com/droher/boxball/blob/master/transform/src/schemas/retrosheet.pyhttps://github.com/droher/boxball/blob/master/transform/src/schemas/retrosheet.py)
+until I find a prettier solution.
 
 If you find the project useful, please consider donating to:
 *   The [Ali Forney Center](https://aliforneycenter.donordrive.com/index.cfm?fuseaction=donate.general) for homeless LGBTQ youth
@@ -75,7 +82,11 @@ It is usually used on a computing cluster with massive datasets, but we use a si
 Data will be immediately available to query after the image is downloaded. Use port `8047` to access the Web UI 
 (which includes a SQL runner) and port `31010` to connect via a database client.
 You may also attach the container and query from the command line.
-The data will be persisted on your machine in `~/boxball/drill` (~700MB). 
+The data will be persisted on your machine in `~/boxball/drill` (~700MB).
+
+#### Spark
+
+Coming soon
 
 ### Traditional (Row-oriented) Databases
 Note: these frameworks are likely to be prohibitively slow when querying play-by-play data, and they take up significantly
@@ -107,7 +118,7 @@ To install and run:
 `docker run -d -p 8080:8080 -v ~/boxball/sqlite:/db doublewick/boxball:sqlite-0.0.2`
 
 Roughly two minutes after the image is downloaded, the data will be fully loaded into the database. `localhost:8080`
-will provide a Web UI where you can write queries and perform schema exploration.
+will provide a [web UI](https://github.com/coleifer/sqlite-web) where you can write queries and perform schema exploration.
 
 ### Flat File Downloads
 
@@ -142,7 +153,11 @@ Lahman](http://www.seanlahman.com/) for creating his database, which I have been
 to develop and host this project for free thanks to the generous open-source plans of CircleCI, Github, and Docker Hub.
 
 Retrosheet represents the collective effort of thousands of baseball fans over 150 years of scorekeeping and data entry.
-My best hope for this project is that it facilitates more historical research.
+I hope Boxball facilitates more historical research to continue this tradition.
+
+## Licence(s)
+All code is released under the Apache 2.0 license. Baseball Databank data is distributed under the [CC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+license. Retrosheet data is released under the condition that the below text appear prominently:
 
 ``` 
 The information used here was obtained free of

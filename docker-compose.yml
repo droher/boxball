@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  boxball-extract:
+  extract:
     build:
       context: extract
       args:
@@ -10,66 +10,90 @@ services:
         - BUILD_ENV
     image: ${REPO}:extract-${VERSION}
 
-  boxball-ddl:
+  ddl:
     build:
       context: transform
       dockerfile: ddl.Dockerfile
+      args:
+        - VERSION
     image: ${REPO}:ddl-${VERSION}
 
-  boxball-parquet:
+  parquet:
     build:
       context: transform
       dockerfile: parquet.Dockerfile
+      args:
+        - VERSION
     image: ${REPO}:parquet-${VERSION}
     depends_on:
-      - boxball-extract
+      - extract
 
-  boxball-csv:
+  csv:
     build:
       context: transform
       dockerfile: csv.Dockerfile
+      args:
+        - VERSION
     image: ${REPO}:csv-${VERSION}
     depends_on:
-      - boxball-extract
+      - extract
 
-  boxball-clickhouse:
-    build: load/clickhouse
+  clickhouse:
+    build:
+      context: load/clickhouse
+      args:
+        - VERSION
     image: ${REPO}:clickhouse-${VERSION}
     depends_on:
-      - boxball-parquet
-      - boxball-ddl
+      - parquet
+      - ddl
 
-  boxball-drill:
-    build: load/drill
+  drill:
+    build:
+      context: load/drill
+      args:
+        - VERSION
     image: ${REPO}:drill-${VERSION}
     depends_on:
-      - boxball-parquet
-      - boxball-ddl
+      - parquet
+      - ddl
 
-  boxball-postgres:
-    build: load/postgres
+  postgres:
+    build:
+      context: load/postgres
+      args:
+        - VERSION
     image: ${REPO}:postgres-${VERSION}
     depends_on:
-      - boxball-csv
-      - boxball-ddl
+      - csv
+      - ddl
 
-  boxball-postgres-cstore-fdw:
-    build: load/postgres_cstore_fdw
+  postgres-cstore-fdw:
+    build:
+      context: load/postgres_cstore_fdw
+      args:
+        - VERSION
     image: ${REPO}:postgres-cstore-fdw-${VERSION}
     depends_on:
-      - boxball-csv
-      - boxball-ddl
+      - csv
+      - ddl
 
-  boxball-mysql:
-    build: load/mysql
+  mysql:
+    build:
+      context: load/mysql
+      args:
+        - VERSION
     image: ${REPO}:mysql-${VERSION}
     depends_on:
-      - boxball-csv
-      - boxball-ddl
+      - csv
+      - ddl
 
-  boxball-sqlite:
-    build: load/sqlite
+  sqlite:
+    build:
+      context: load/sqlite
+      args:
+        - VERSION
     image: ${REPO}:sqlite-${VERSION}
     depends_on:
-      - boxball-csv
-      - boxball-ddl
+      - csv
+      - ddl

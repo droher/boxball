@@ -1,4 +1,4 @@
-from sqlalchemy import MetaData, Boolean, CHAR, Column, Date, Integer, SmallInteger, String, DateTime
+from sqlalchemy import MetaData, Boolean, CHAR, Column, Date, Integer, SmallInteger, String
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base(metadata=MetaData(schema="retrosheet"))
@@ -241,8 +241,9 @@ class Game(Base):
     scorer_record_id = Column(String(50), doc="Scorekeeper")
     translator_record_id = Column(String(50), doc="Translator")
     inputter_record_id = Column(String(50), doc="Inputter")
-    input_record_ts = Column(DateTime, doc="Date and time of record input")
-    edit_record_ts = Column(DateTime, doc="Date and time of Most recent record edit")
+    # TODO: Figure out how to parse in parquet
+    input_record_ts = Column(String(20), doc="Date and time of record input")
+    edit_record_ts = Column(String(20), doc="Date and time of Most recent record edit")
     method_record_cd = Column(String(1), doc="How the game was scored (join `code_method_record` for details")
     pitches_record_cd = Column(String(1), doc="Highest detail of pitches recorded "
                                               "(join `code_pitches_record` for details). Note that many games with "
@@ -606,7 +607,8 @@ class Sub(Base):
 
     game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
     inn_ct = Column(SmallInteger, doc="Inning of substitution")
-    bat_home_id = Column(Boolean, doc="Is home team batting")
+    # TODO: Handle -1 so this can be a boolean
+    bat_home_id = Column(SmallInteger, doc="Is home team batting (-1 for N/A)")
     sub_id = Column(CHAR(8), doc="Player ID of substitute")
     sub_home_id = Column(Boolean, doc="Is the home team making the substitution")
     sub_lineup_id = Column(SmallInteger, doc="Lineup position of substitution")
@@ -855,8 +857,9 @@ class Park(Base):
     aka = Column(String(40), doc="Common park alias")
     city = Column(String(17), doc="City")
     state = Column(String(9), doc="State (unabbreviated)")
-    start_date = Column(Date, doc="First game")
-    end_date = Column(Date, doc="Last game")
+    # TODO: Handle this MySQL edge case so these can be dates again
+    start_date = Column(String(10), doc="First game")
+    end_date = Column(String(10), doc="Last game")
     league = Column(CHAR(2), doc="League ID")
     notes = Column(String(54), doc="Misc. notes")
 
@@ -921,7 +924,7 @@ class CodeEvent(Base):
     """
     __tablename__ = 'code_event'
 
-    code = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -931,7 +934,7 @@ class CodeFieldPark(Base):
     """
     __tablename__ = 'code_field_park'
 
-    code = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -941,7 +944,7 @@ class CodeMethodRecord(Base):
     """
     __tablename__ = 'code_method_record'
 
-    code = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -951,7 +954,7 @@ class CodePitchesRecord(Base):
     """
     __tablename__ = 'code_pitches_record'
 
-    code = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -961,7 +964,7 @@ class CodePrecipPark(Base):
     """
     __tablename__ = 'code_precip_park'
 
-    code = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -971,7 +974,7 @@ class CodeSkyPark(Base):
     """
     __tablename__ = 'code_sky_park'
 
-    event_cd = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
 
 
@@ -981,5 +984,5 @@ class CodeWindDirectionPark(Base):
     """
     __tablename__ = 'code_wind_direction_park'
 
-    event_cd = Column(SmallInteger, primary_key=True)
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))

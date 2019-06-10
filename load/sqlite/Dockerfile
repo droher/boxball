@@ -1,5 +1,6 @@
-FROM doublewick/boxball:ddl-0.0.1 as ddl
-FROM doublewick/boxball:csv-0.0.1 as csv
+ARG VERSION
+FROM doublewick/boxball:ddl-${VERSION} as ddl
+FROM doublewick/boxball:csv-${VERSION} as csv
 
 FROM alpine:3.9.3 as build
 RUN apk add --no-cache \
@@ -7,7 +8,6 @@ RUN apk add --no-cache \
     sqlite
 RUN sqlite3 boxball.db ".databases"
 COPY --from=ddl /ddl/sqlite.sql .
-RUN cat sqlite.sql
 COPY --from=csv /transform/csv /data
 RUN echo "Decompressing fies..." && \
     for f in /data/**/*.csv.zst; do zstd --rm -d ${f}; done && \
@@ -24,4 +24,4 @@ RUN apk add --no-cache \
 RUN pip install sqlite-web==0.3.6
 WORKDIR /db
 COPY --from=build boxball.db.zst .
-ENTRYPOINT zstd --rm -d boxball.db.zst && sqlite_web -H 0.0.0.0 -x boxball.db
+ENTRYPOINT zstd --rm -d /db/boxball.db.zst && sqlite_web -H 0.0.0.0 -x boxball.db
