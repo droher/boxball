@@ -300,7 +300,7 @@ class Parks(Base):
     park_name = Column(String(40))
     park_alias = Column(String(45))
     city = Column(String(25))
-    state = Column(String(2))
+    state = Column(String(16))
     country = Column(String(2))
 
 
