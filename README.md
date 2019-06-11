@@ -1,20 +1,20 @@
 <p align="center">
 <img src="./assets/boxball.jpg" width="50%">
 </p>
-<p>
-<img alt="GitHub release" src="https://img.shields.io/github/release/droher/boxball.svg" align="left">
+<p align="center">
+<img alt="GitHub release" src="https://img.shields.io/github/release/droher/boxball.svg">
 <a href="https://circleci.com/gh/droher/boxball">
-    <img src="https://circleci.com/gh/droher/boxball.svg?style=shield&circle-token=2b78bfd4c600c640c479f2f2d9eaa38823ad8b96" align="left" />
+    <img src="https://circleci.com/gh/droher/boxball.svg?style=shield&circle-token=2b78bfd4c600c640c479f2f2d9eaa38823ad8b96"/>
 </a>
 <a href="https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=droher/boxball&amp;utm_campaign=Badge_Grade">
-    <img src="https://api.codacy.com/project/badge/Grade/9a163160d3db4621b941b3297bfb9edf" align="left"/>
+    <img src="https://api.codacy.com/project/badge/Grade/9a163160d3db4621b941b3297bfb9edf"/>
 </a>
 <a href="https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=droher/boxball&amp;utm_campaign=Badge_Coverage">
-    <img src="https://api.codacy.com/project/badge/Coverage/9a163160d3db4621b941b3297bfb9edf" align="left"/>
+    <img src="https://api.codacy.com/project/badge/Coverage/9a163160d3db4621b941b3297bfb9edf"/>
 </a>
-<img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/doublewick/boxball.svg" align="left">
+<img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/doublewick/boxball.svg">
 <a href="https://opensource.org/licenses/Apache-2.0">
-    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" align="left" /></a>
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
 <br>
 </p>
 
