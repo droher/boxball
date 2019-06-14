@@ -23,4 +23,4 @@ RUN apk add --no-cache \
     sqlite
 RUN pip install sqlite-web==0.3.6
 COPY --from=build boxball.db.zst /tmp/
-ENTRYPOINT zstd --rm -d /tmp/boxball.db.zst -o /db/boxball.db && sqlite_web -H 0.0.0.0 -x /db/boxball.db
+ENTRYPOINT zstd --rm -d /tmp/boxball.db.zst -fo /db/boxball.db && sqlite_web -H 0.0.0.0 -x /db/boxball.db
