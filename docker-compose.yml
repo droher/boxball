@@ -44,6 +44,8 @@ services:
       args:
         - VERSION
     image: ${REPO}:clickhouse-${VERSION}
+    volumes:
+      - ~/boxball/clickhouse:/var/lib/clickhouse
     depends_on:
       - parquet
       - ddl
@@ -54,6 +56,8 @@ services:
       args:
         - VERSION
     image: ${REPO}:drill-${VERSION}
+    volumes:
+      - ~/boxball/drill:/data
     depends_on:
       - parquet
       - ddl
@@ -64,6 +68,8 @@ services:
       args:
         - VERSION
     image: ${REPO}:postgres-${VERSION}
+    volumes:
+      - ~/boxball/postgres:/var/lib/postgresql/data
     depends_on:
       - csv
       - ddl
@@ -74,6 +80,8 @@ services:
       args:
         - VERSION
     image: ${REPO}:postgres-cstore-fdw-${VERSION}
+    volumes:
+      - ~/boxball/postgres-cstore-fdw:/var/lib/postgresql/data
     depends_on:
       - csv
       - ddl
@@ -84,6 +92,8 @@ services:
       args:
         - VERSION
     image: ${REPO}:mysql-${VERSION}
+    volumes:
+      - ~/boxball/mysql:/var/lib/mysql
     depends_on:
       - csv
       - ddl
@@ -94,6 +104,8 @@ services:
       args:
         - VERSION
     image: ${REPO}:sqlite-${VERSION}
+    volumes:
+      - ~/boxball/sqlite:/db
     depends_on:
       - csv
       - ddl
