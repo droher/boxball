@@ -55,7 +55,7 @@ but with a huge improvement in speed and disk usage. To install and run the data
 
 `docker run --name postgres-cstore-fdw -d -p 5433:5432 -v ~/boxball/postgres-cstore-fdw:/var/lib/postgresql/data doublewick/boxball:postgres-cstore-fdw-0.0.2`
 
-Roughly an hour after the image is downloaded, the data will be fully loaded into the database, and you can connect to it on port `5433`
+Roughly an hour after the image is downloaded, the data will be fully loaded into the database, and you can connect to it as the user `postgres` on port `5433`
 (either using the `psql` command line tool or a database client of your choice). The data will be persisted on your machine in
 `~/boxball/postgres-cstore-fdw` (~1.5GB), which means you can stop/remove the container without having to reload the data
 when you turn it back on.
@@ -68,7 +68,7 @@ To install and run the database server:
 `docker run --name clickhouse -d -p 8123:8123 -v ~/boxball/clickhouse:/var/lib/clickhouse doublewick/boxball:clickhouse-0.0.2`
 
 15-30 minutes after the image is downloaded, the data will be fully loaded into the database, and you can connect to it either by attaching the
-container and using the `clickhouse-client` CLI or by using a local database client on port `8123`. 
+container and using the `clickhouse-client` CLI or by using a local database client on port `8123` as the user `default`. 
 The data will be persisted on your machine in
 `~/boxball/clickhouse` (~700MB), which means you can stop/remove the container without having to reload the data
 when you turn it back on.
@@ -97,7 +97,7 @@ Similar configuration to the cstore_fdw extended version above, but stored in th
 `docker run --name postgres -d -p 5432:5432 -v ~/boxball/postgres:/var/lib/postgresql/data doublewick/boxball:postgres-0.0.2`
 
 Roughly 90 minutes after the image is downloaded, the data will be fully loaded into the database,
-and you can connect to it on port `5432`
+and you can connect to it on port `5432` as the user `postgres`
 (either using the `psql` command line tool or a database client of your choice). The data will be persisted on your machine in
 `~/boxball/postgres` (~12GB), which means you can stop/remove the container without having to reload the data
 when you turn it back on.
@@ -108,7 +108,7 @@ To install and run:
 `docker run --name mysql -d -p 3306:3306 -v ~/boxball/mysql:/var/lib/mysql doublewick/boxball:mysql-0.0.2`
 
 Roughly two hours after the image is downloaded, the data will be fully loaded into the database,
-and you can connect to it on port `3306`. The data will be persisted on your machine in
+and you can connect to it as the user `root` on port `3306`. The data will be persisted on your machine in
 `~/boxball/mysql` (~12GB), which means you can stop/remove the container without having to reload the data
 when you turn it back on.
 
