@@ -53,7 +53,7 @@ This distribution uses the [cstore_fdw](https://github.com/citusdata/cstore_fdw)
 into a column-oriented database. This means that you get the rich featureset of Postgres,
 but with a huge improvement in speed and disk usage. To install and run the database server:
 
-`docker run --name postgres-cstore-fdw -d -p 5433:5432 -v ~/boxball/postgres-cstore-fdw:/var/lib/postgresql/data doublewick/boxball:postgres-cstore-fdw-0.0.2`
+`docker run --name postgres-cstore-fdw -d -p 5433:5432 -v ~/boxball/postgres-cstore-fdw:/var/lib/postgresql/data doublewick/boxball:postgres-cstore-fdw-0.1.0`
 
 Roughly an hour after the image is downloaded, the data will be fully loaded into the database, and you can connect to it as the user `postgres` on port `5433`
 (either using the `psql` command line tool or a database client of your choice). The data will be persisted on your machine in
@@ -65,7 +65,7 @@ when you turn it back on.
 disk space than Postgres cstore_fdw, but significantly more RAM (~5GB). I've yet to run any query performance comparisons.
 To install and run the database server:
 
-`docker run --name clickhouse -d -p 8123:8123 -v ~/boxball/clickhouse:/var/lib/clickhouse doublewick/boxball:clickhouse-0.0.2`
+`docker run --name clickhouse -d -p 8123:8123 -v ~/boxball/clickhouse:/var/lib/clickhouse doublewick/boxball:clickhouse-0.1.0`
 
 15-30 minutes after the image is downloaded, the data will be fully loaded into the database, and you can connect to it either by attaching the
 container and using the `clickhouse-client` CLI or by using a local database client on port `8123` as the user `default`. 
@@ -77,7 +77,7 @@ when you turn it back on.
 [Drill](https://drill.apache.org/) is a framework that allows for SQL queries directly on files, without having to declare any schema.
 It is usually used on a computing cluster with massive datasets, but we use a single-node setup. To install and run:
 
-`docker run --name drill -id -p 8047:8047 -p 31010:31010 -v ~/boxball/drill:/data doublewick/boxball:drill-0.0.2`
+`docker run --name drill -id -p 8047:8047 -p 31010:31010 -v ~/boxball/drill:/data doublewick/boxball:drill-0.1.0`
  
 Data will be immediately available to query after the image is downloaded. Use port `8047` to access the Web UI 
 (which includes a SQL runner) and port `31010` to connect via a database client.
@@ -94,7 +94,7 @@ more disk space than their columnar counterparts.
 #### Postgres
 Similar configuration to the cstore_fdw extended version above, but stored in the conventional way.
 
-`docker run --name postgres -d -p 5432:5432 -v ~/boxball/postgres:/var/lib/postgresql/data doublewick/boxball:postgres-0.0.2`
+`docker run --name postgres -d -p 5432:5432 -v ~/boxball/postgres:/var/lib/postgresql/data doublewick/boxball:postgres-0.1.0`
 
 Roughly 90 minutes after the image is downloaded, the data will be fully loaded into the database,
 and you can connect to it on port `5432` as the user `postgres`
@@ -105,7 +105,7 @@ when you turn it back on.
 #### MySQL
 To install and run:
 
-`docker run --name mysql -d -p 3306:3306 -v ~/boxball/mysql:/var/lib/mysql doublewick/boxball:mysql-0.0.2`
+`docker run --name mysql -d -p 3306:3306 -v ~/boxball/mysql:/var/lib/mysql doublewick/boxball:mysql-0.1.0`
 
 Roughly two hours after the image is downloaded, the data will be fully loaded into the database,
 and you can connect to it as the user `root` on port `3306`. The data will be persisted on your machine in
@@ -115,7 +115,7 @@ when you turn it back on.
 #### SQLite (with web UI)
 To install and run:
 
-`docker run --name sqlite -d -p 8080:8080 -v ~/boxball/sqlite:/db doublewick/boxball:sqlite-0.0.2`
+`docker run --name sqlite -d -p 8080:8080 -v ~/boxball/sqlite:/db doublewick/boxball:sqlite-0.1.0`
 
 Roughly two minutes after the image is downloaded, the data will be fully loaded into the database. `localhost:8080`
 will provide a [web UI](https://github.com/coleifer/sqlite-web) where you can write queries and perform schema exploration.
