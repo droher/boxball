@@ -30,7 +30,6 @@ jobs:
       steps:
         - checkout
         - setup_remote_docker:
-            docker_layer_caching: true
             version: 18.06.0-ce
         - run:
             environment:
