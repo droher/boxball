@@ -125,11 +125,11 @@ will provide a [web UI](https://github.com/coleifer/sqlite-web) where you can wr
 #### Parquet
 Parquet is a columnar data format originally developed for the Hadoop ecosystem. It has solid support in Spark, Pandas,
 and many other frameworks.
-[OneDrive](https://1drv.ms/u/s!AtpEocFNRNBWg1eR5L-U7bupJqyt?e=RbxuMp)
+[OneDrive](https://1drv.ms/u/s!AtpEocFNRNBWhAqZMaj40Bb8__6u?e=dNJiod)
 
 #### CSV
-The original CSVs from the extract step (folder stored as `.tar.gz`).
-[OneDrive](https://1drv.ms/u/s!AtpEocFNRNBWhAb_gwNbBLPB1pDv?e=qyrU3L)
+The original CSVs from the extract step (each csv file is compressed in the ZSTD format).
+[OneDrive](https://1drv.ms/u/s!AtpEocFNRNBWhDLuZqcmXYOIieKQ?e=xP4Azs)
 
 ### Interactive Data Exploration
 
