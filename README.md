@@ -128,7 +128,7 @@ and many other frameworks.
 [OneDrive](https://1drv.ms/u/s!AtpEocFNRNBWhAqZMaj40Bb8__6u?e=dNJiod)
 
 #### CSV
-The original CSVs from the extract step (each csv file is compressed in the ZSTD format).
+The original CSVs from the extract step (each CSV file is compressed in the ZSTD format).
 [OneDrive](https://1drv.ms/u/s!AtpEocFNRNBWhDLuZqcmXYOIieKQ?e=xP4Azs)
 
 ### Interactive Data Exploration
