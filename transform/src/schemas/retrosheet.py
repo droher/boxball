@@ -854,7 +854,7 @@ class Park(Base):
 
     park_id = Column(CHAR(5), primary_key=True, doc="Park ID")
     name = Column(String(41), doc="Park name")
-    aka = Column(String(40), doc="Common park alias")
+    aka = Column(String(55), doc="Common park alias")
     city = Column(String(17), doc="City")
     state = Column(String(9), doc="State")
     # TODO: Handle this MySQL edge case so these can be dates again

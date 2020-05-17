@@ -8,14 +8,16 @@ metadata = Base.metadata
 class AllstarFull(Base):
     __tablename__ = 'allstar_full'
 
-    player_id = Column(String(9), primary_key=True, nullable=False)
-    year_id = Column(SmallInteger, primary_key=True, nullable=False)
-    game_num = Column(SmallInteger, primary_key=True, nullable=False)
+    player_id = Column(String(9),nullable=False)
+    year_id = Column(SmallInteger, nullable=False)
+    game_num = Column(SmallInteger, nullable=False)
     game_id = Column(String(12))
     team_id = Column(String(3))
     lg_id = Column(String(2))
     gp = Column(SmallInteger)
     starting_pos = Column(SmallInteger)
+    # Note -- Billy Herman's 1934 record prevents us from using the true PK, player-year-gamenum
+    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
 class Appearance(Base):
@@ -298,7 +300,7 @@ class Parks(Base):
 
     park_id = Column(String(5), primary_key=True, nullable=False)
     park_name = Column(String(40))
-    park_alias = Column(String(45))
+    park_alias = Column(String(55))
     city = Column(String(25))
     state = Column(String(16))
     country = Column(String(2))
