@@ -8,7 +8,7 @@ metadata = Base.metadata
 class AllstarFull(Base):
     __tablename__ = 'allstar_full'
 
-    player_id = Column(String(9),nullable=False)
+    player_id = Column(String(9), nullable=False)
     # Should be non-nullable, see https://github.com/chadwickbureau/baseballdatabank/issues/105
     year_id = Column(SmallInteger)
     game_num = Column(SmallInteger)
