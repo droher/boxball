@@ -898,7 +898,7 @@ class Schedule(Base):
     home_team_league = Column(CHAR(2), doc="Home team league ID")
     home_team_game_number = Column(Integer, primary_key=True, doc="Home team game number")
     day_night = Column(CHAR(1), doc="D - day, N - night")
-    postponement_indicator = Column(String(30), doc="""
+    postponement_indicator = Column(String(120), doc="""
         This field will contain one or more phrases related to the game if it was
         not played as scheduled. If there is more than one phrase, they are separated
         by a semi-colon (";"). There are three possible outcomes for games not played
@@ -907,7 +907,7 @@ class Schedule(Base):
         -- The game was played on the original date but at another site
         -- The game was not played
         """)
-    makeup_dates = Column(String(20), doc="""
+    makeup_dates = Column(String(120), doc="""
         This field will contain a makeup date if the postponed game was played at
         another time or place. If an attempt was known to have been made on a date but
         postponed again, that date will be listed. In that case, there will be a second

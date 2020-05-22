@@ -9,8 +9,9 @@ class AllstarFull(Base):
     __tablename__ = 'allstar_full'
 
     player_id = Column(String(9),nullable=False)
-    year_id = Column(SmallInteger, nullable=False)
-    game_num = Column(SmallInteger, nullable=False)
+    # Should be non-nullable, see https://github.com/chadwickbureau/baseballdatabank/issues/105
+    year_id = Column(SmallInteger)
+    game_num = Column(SmallInteger)
     game_id = Column(String(12))
     team_id = Column(String(3))
     lg_id = Column(String(2))
@@ -49,12 +50,14 @@ class Appearance(Base):
 class AwardsManager(Base):
     __tablename__ = 'awards_managers'
 
-    player_id = Column(String(10), primary_key=True, nullable=False)
-    award_id = Column(String(75), primary_key=True, nullable=False)
-    year_id = Column(SmallInteger, primary_key=True, nullable=False)
-    lg_id = Column(String(2), primary_key=True, nullable=False)
+    player_id = Column(String(10), nullable=False)
+    award_id = Column(String(75), nullable=False)
+    year_id = Column(SmallInteger, nullable=False)
+    lg_id = Column(String(2))
     tie = Column(String(1))
     notes = Column(String(100))
+    # PK should be player/award/year/lg, see https://github.com/chadwickbureau/baseballdatabank/issues/105
+    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
 class AwardsPlayer(Base):
