@@ -22,7 +22,7 @@ ENV PYTHONPATH="/"
 # `prod` gets the full datasets, while `test` provides fixtures with small sample data for each file
 FROM build-common as get-retrosheet-prod
 ARG RETROSHEET_VERSION
-RUN wget https://github.com/chadwickbureau/retrosheet/archive/${RETROSHEET_VERSION}.zip -O retrosheet.zip
+RUN wget https://github.com/droher/retrosheet/archive/${RETROSHEET_VERSION}.zip -O retrosheet.zip
 
 FROM build-common as get-retrosheet-test
 COPY fixtures/raw/retrosheet.zip .
