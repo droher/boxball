@@ -176,4 +176,4 @@ services:
     << : *sqlite
   sqlite-latest:
     << : *sqlite
-      image: ${REPO}:sqlite-latest
+    image: ${REPO}:sqlite-latest
