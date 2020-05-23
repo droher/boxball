@@ -35,9 +35,9 @@ jobs:
             environment:
                 BUILD_ENV: test
             command: |
+              docker-compose build
               docker-compose up -d
-              sleep 180s
-              docker-compose ps -q
+              sleep 30s
               total_exits=$(docker-compose ps -q | wc -l)
               clean_exits=$(docker-compose ps -q | xargs docker inspect -f '{{ .State.ExitCode }}' | grep -c 0)
               echo "Total containers: ${total_exits} Clean exits: ${clean_exits}"
