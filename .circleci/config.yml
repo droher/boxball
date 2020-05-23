@@ -35,12 +35,7 @@ jobs:
             environment:
                 BUILD_ENV: test
             command: |
-              docker-compose up -d
-              sleep 60s
-              total_exits=$(docker-compose ps -q | wc -l)
-              clean_exits=$(docker-compose ps -q | xargs docker inspect -f '{{ .State.ExitCode }}' | grep -c 0)
-              echo "Total containers: ${total_exits} Clean exits: ${clean_exits}"
-              ((${clean_exits}==${total_exits})) || (echo "At least one container had a non-zero exit" && exit 1);
+              docker-compose build
 
 
 # Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/

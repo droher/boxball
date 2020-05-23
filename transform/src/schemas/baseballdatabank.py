@@ -8,14 +8,17 @@ metadata = Base.metadata
 class AllstarFull(Base):
     __tablename__ = 'allstar_full'
 
-    player_id = Column(String(9), primary_key=True, nullable=False)
-    year_id = Column(SmallInteger, primary_key=True, nullable=False)
-    game_num = Column(SmallInteger, primary_key=True, nullable=False)
+    player_id = Column(String(9), nullable=False)
+    # Should be non-nullable, see https://github.com/chadwickbureau/baseballdatabank/issues/105
+    year_id = Column(SmallInteger)
+    game_num = Column(SmallInteger)
     game_id = Column(String(12))
     team_id = Column(String(3))
     lg_id = Column(String(2))
     gp = Column(SmallInteger)
     starting_pos = Column(SmallInteger)
+    # Note -- Billy Herman's 1934 record prevents us from using the true PK, player-year-gamenum
+    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
 class Appearance(Base):
@@ -47,12 +50,14 @@ class Appearance(Base):
 class AwardsManager(Base):
     __tablename__ = 'awards_managers'
 
-    player_id = Column(String(10), primary_key=True, nullable=False)
-    award_id = Column(String(75), primary_key=True, nullable=False)
-    year_id = Column(SmallInteger, primary_key=True, nullable=False)
-    lg_id = Column(String(2), primary_key=True, nullable=False)
+    player_id = Column(String(10), nullable=False)
+    award_id = Column(String(75), nullable=False)
+    year_id = Column(SmallInteger, nullable=False)
+    lg_id = Column(String(2))
     tie = Column(String(1))
     notes = Column(String(100))
+    # PK should be player/award/year/lg, see https://github.com/chadwickbureau/baseballdatabank/issues/105
+    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
 class AwardsPlayer(Base):
@@ -298,7 +303,7 @@ class Parks(Base):
 
     park_id = Column(String(5), primary_key=True, nullable=False)
     park_name = Column(String(40))
-    park_alias = Column(String(45))
+    park_alias = Column(String(55))
     city = Column(String(25))
     state = Column(String(16))
     country = Column(String(2))
