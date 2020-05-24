@@ -5,204 +5,190 @@ Base = declarative_base(metadata=MetaData(schema="retrosheet"))
 metadata: MetaData = Base.metadata
 
 
-class Event(Base):
+class Sub(Base):
     """
-    The event table is the most granular data available, containing one row for every play of every game
-    for which Retrosheet has data. This includes all postseason games in history, all All-Star games in history,
-    all regular season games dating back to 1937, and a majority of regular season games dating back to 1921.
-
-    Each row in the table does not necessarily constitute a new or complete plate appearance, as events like
-    stolen bases and balks have their own rows.
-
-    If you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage
-    option like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for
-    traditional row-oriented stores.
-
-    While all games present in the table have the bare minimum of information about every play in the game,
-    there are significant differences in data quality from game to game. These differences in data quality often
-    complicate historical analyses.
-    -- A significant number of games from 1937-1973 do not have complete play-by-play accounts available. For these
-        missing games, Retrosheet has derived play-by-play data using a combination of box scores and game stories.
-        These derived games are likely to have less granular data around fielding plays.
-    -- The overwhelming majority of games prior to 1988 do not have pitch-by-pitch data available (the most notable
-        exceptions to this are the 1950s Dodgers home games). From 1988-1999, nearly all games have pitch sequences,
-        but a significant number of games are missing pitch sequences from at least one plate appearance, making
-        pitch count analysis a bit more difficult. Games from 2000 on have complete pitch data.
-    -- A similar situation exists for hit location data, although location data is more frequently populated for
-        older games than pitch data is.
+    A complement to `event` that provides convenient information about substitutions.
     """
-    __tablename__ = 'event'
+    __tablename__ = 'sub'
+
+    game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
+    inn_ct = Column(SmallInteger, doc="Inning of substitution")
+    # TODO: Handle -1 so this can be a boolean
+    bat_home_id = Column(SmallInteger, doc="Is home team batting (-1 for N/A)")
+    sub_id = Column(CHAR(8), doc="Player ID of substitute")
+    sub_home_id = Column(Boolean, doc="Is the home team making the substitution")
+    sub_lineup_id = Column(SmallInteger, doc="Lineup position of substitution")
+    sub_fld_cd = Column(SmallInteger, doc="Fielding position of substitution")
+    removed_id = Column(CHAR(8), doc="ID of removed player")
+    removed_fld_cd = Column(SmallInteger, doc="Fielding position of removed player")
+    event_id = Column(SmallInteger, doc="Event number in which substitution occurred")
+    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
+
+
+class Comment(Base):
+    """
+    A complement to `event` that sources detailed text comments from play-by-play files. When present,
+    these comments can be helpful in figuring out what happened on unusual plays.
+    """
+    __tablename__ = 'comment'
+
+    game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
+    event_id = Column(SmallInteger, doc="Commented event number")
+    comment = Column(String(1638), doc="Comment text")
+    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
+
+
+class Park(Base):
+    """
+    Basic information about ballparks.
+    """
+    __tablename__ = 'park'
+
+    park_id = Column(CHAR(5), primary_key=True, doc="Park ID")
+    name = Column(String(41), doc="Park name")
+    aka = Column(String(55), doc="Common park alias")
+    city = Column(String(17), doc="City")
+    state = Column(String(9), doc="State")
+    # TODO: Handle this MySQL edge case so these can be dates again
+    start_date = Column(String(10), doc="First game")
+    end_date = Column(String(10), doc="Last game")
+    league = Column(CHAR(2), doc="League ID")
+    notes = Column(String(54), doc="Misc. notes")
+
+
+class Roster(Base):
+    """
+    Contains one row for each unique combination of player, team, and year. For more detailed/convenient player
+    biographical data, use the `people` table from the Baseball Databank schema, joining on `retro_id`.
+    """
+    __tablename__ = 'roster'
+    # We inserted the year in preprocessing
+    year = Column(Integer, primary_key=True, doc="Year of roster")
+    player_id = Column(CHAR(8), primary_key=True, doc="Player ID")
+    last_name = Column(String(32), doc="Player last name")
+    first_name = Column(String(32), doc="Player first name")
+    bats = Column(CHAR(1), doc="Bat handedness")
+    throws = Column(CHAR(1), doc="Throw handedness")
+    team_id = Column(CHAR(3), primary_key=True, doc="Team ID")
+    position = Column(String(2), doc="Primary fielding position")
+
+
+class Schedule(Base):
+    """
+    Contains the original regular season schedules for all seasons dating back to 1877.
+    """
+    __tablename__ = 'schedule'
+
+    date = Column(Date, primary_key=True, doc="Scheduled game date")
+    double_header = Column(SmallInteger, doc="Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, "
+                                             "2 - second game of doubleheader")
+    day_of_week = Column(CHAR(3), doc="Day of week (3 letter abbreviation")
+    visiting_team = Column(CHAR(3), doc="Away team ID")
+    visiting_team_league = Column(CHAR(2), doc="Away team league ID")
+    visiting_team_game_number = Column(SmallInteger, doc="Away team game number")
+    home_team = Column(CHAR(3), primary_key=True, doc="Home team ID")
+    home_team_league = Column(CHAR(2), doc="Home team league ID")
+    home_team_game_number = Column(Integer, primary_key=True, doc="Home team game number")
+    day_night = Column(CHAR(1), doc="D - day, N - night")
+    postponement_indicator = Column(String(120), doc="""
+        This field will contain one or more phrases related to the game if it was
+        not played as scheduled. If there is more than one phrase, they are separated
+        by a semi-colon (";"). There are three possible outcomes for games not played
+        on the originally scheduled date:
+        -- The game was played on another date
+        -- The game was played on the original date but at another site
+        -- The game was not played
+        """)
+    makeup_dates = Column(String(120), doc="""
+        This field will contain a makeup date if the postponed game was played at
+        another time or place. If an attempt was known to have been made on a date but
+        postponed again, that date will be listed. In that case, there will be a second
+        date for the date when the game was actually played, in this form: "20150428;
+        20150528" For the note about a team folding, the team code is one of the
+        standard Retrosheet team IDs. The same is true for the team played as note.
+        Often, the two of these are combined in one field.
+        """)
+
+
+class CodeEvent(Base):
+    """
+    Descriptions for codes in `event.event_cd`
+    """
+    __tablename__ = 'code_event'
+
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
+    description = Column(String(30))
+
+
+class CodeFieldPark(Base):
+    """
+    Descriptions for codes in `game.field_park_cd`
+    """
+    __tablename__ = 'code_field_park'
+
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
+    description = Column(String(30))
+
+
+class CodeMethodRecord(Base):
+    """
+    Descriptions for codes in `game.method_record_cd`
+    """
+    __tablename__ = 'code_method_record'
+
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
+    description = Column(String(30))
+
+
+class CodePitchesRecord(Base):
+    """
+    Descriptions for codes in `game.pitches_record_cd`
+    """
+    __tablename__ = 'code_pitches_record'
+
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
+    description = Column(String(30))
+
+
+class CodePrecipPark(Base):
+    """
+    Descriptions for codes in `game.precip_park_cd`
+    """
+    __tablename__ = 'code_precip_park'
+
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
+    description = Column(String(30))
+
+
+class CodeSkyPark(Base):
+    """
+    Descriptions for codes in `game.sky_park_cd`
+    """
+    __tablename__ = 'code_sky_park'
+
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
+    description = Column(String(30))
+
+
+class CodeWindDirectionPark(Base):
+    """
+    Descriptions for codes in `game.wind_direction_park_cd`
+    """
+    __tablename__ = 'code_wind_direction_park'
+
+    code = Column(SmallInteger, primary_key=True, autoincrement=False)
+    description = Column(String(30))
+
+
+class DeducedGame(Base):
+    """
+    One-column table that contains a list of all game IDs for which the PBP account was
+    deduced from newspaper accounts of the game. The table can be used to filter out those games
+    from the event file if desired, or to create a flag variable when performing analysis.
+    """
+    __tablename__ = 'deduced_game'
 
     game_id = Column(CHAR(12), primary_key=True, doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
-    away_team_id = Column(CHAR(3), doc="Visiting Team")
-    inn_ct = Column(SmallInteger, doc="Inning")
-    bat_home_id = Column(Boolean, doc="Home team is batting")
-    outs_ct = Column(SmallInteger, doc="Outs (0-2)")
-    balls_ct = Column(SmallInteger, doc="Balls (0-3)")
-    strikes_ct = Column(SmallInteger, doc="Strikes (0-2")
-    pitch_seq_tx = Column(String(30), doc="Pitch sequence")
-    away_score_ct = Column(SmallInteger, doc="Away score")
-    home_score_ct = Column(SmallInteger, doc="Home score")
-    bat_id = Column(CHAR(8), doc="Batter ID")
-    bat_hand_cd = Column(CHAR(1), doc="Batter handedness")
-    resp_bat_id = Column(CHAR(8), doc="ID of batter charged with event")
-    resp_bat_hand_cd = Column(CHAR(1), doc="Handedness of batter charged with event")
-    pit_id = Column(CHAR(8), doc="Pitcher ID")
-    pit_hand_cd = Column(CHAR(1), doc="Pitcher handedness")
-    resp_pit_id = Column(CHAR(8), doc="ID of pitcher charged with event")
-    resp_pit_hand_cd = Column(CHAR(1), doc="Handedness of pitcher charged with event")
-    pos2_fld_id = Column(CHAR(8), doc="Catcher ID")
-    pos3_fld_id = Column(CHAR(8), doc="First baseman ID")
-    pos4_fld_id = Column(CHAR(8), doc="Second baseman ID")
-    pos5_fld_id = Column(CHAR(8), doc="Third baseman ID")
-    pos6_fld_id = Column(CHAR(8), doc="Shortstop ID")
-    pos7_fld_id = Column(CHAR(8), doc="Left fielder ID")
-    pos8_fld_id = Column(CHAR(8), doc="Center fielder ID")
-    pos9_fld_id = Column(CHAR(8), doc="Right fielder ID")
-    base1_run_id = Column(CHAR(8), doc="ID of runner on first")
-    base2_run_id = Column(CHAR(8), doc="ID of runner on second")
-    base3_run_id = Column(CHAR(8), doc="ID of runner on third")
-    event_tx = Column(String(58), doc="Event text (in scoring shorthand")
-    leadoff_fl = Column(Boolean, doc="Batter is leading off the inning")
-    ph_fl = Column(Boolean, doc="Batter is pinch-hitting")
-    bat_fld_cd = Column(SmallInteger, doc="Defensive position of batter (10 for DH, 11 for PH, 12 for PR")
-    bat_lineup_id = Column(SmallInteger, doc="Lineup position (1-9)")
-    event_cd = Column(SmallInteger, doc="Event code (join table `code_event` for descriptions")
-    bat_event_fl = Column(Boolean, doc="Event is related to the batter")
-    ab_fl = Column(Boolean, doc="Event is an at-bat")
-    h_fl = Column(SmallInteger, doc="Event is a hit")
-    sh_fl = Column(Boolean, doc="Event is a sacrifice hit")
-    sf_fl = Column(Boolean, doc="Event is a sacrifice fly")
-    event_outs_ct = Column(SmallInteger, doc="Outs recorded on event (0-3)")
-    dp_fl = Column(Boolean, doc="Event is a double play")
-    tp_fl = Column(Boolean, doc="Event is a triple play")
-    rbi_ct = Column(SmallInteger, doc="Runs batted in on event")
-    wp_fl = Column(Boolean, doc="Event is a wild pitch")
-    pb_fl = Column(Boolean, doc="Event is a passed ball")
-    fld_cd = Column(SmallInteger, doc="Position id of event fielder")
-    battedball_cd = Column(CHAR(1), doc="Batted ball code (P - pop-up, G - ground ball, F - fly ball, L - line drive")
-    bunt_fl = Column(Boolean, doc="Event is a bunt")
-    foul_fl = Column(Boolean, doc="Event is a foul ball")
-    battedball_loc_tx = Column(String(5), doc="Hit location code (see https://www.retrosheet.org/location.htm)")
-    err_ct = Column(SmallInteger, doc="Number of errors recorded during event")
-    err1_fld_cd = Column(SmallInteger, doc="Position code of fielder committing first error during event")
-    err1_cd = Column(CHAR(1), doc="First error type (T - throwing, F - fielding)")
-    err2_fld_cd = Column(SmallInteger, doc="Position code of fielder committing second error during event")
-    err2_cd = Column(CHAR(1), doc="Second error type (T - throwing, F - fielding)")
-    err3_fld_cd = Column(SmallInteger, doc="Position code of fielder committing third error during event")
-    err3_cd = Column(CHAR(1), doc="Third error type (T - throwing, F - fielding)")
-    bat_dest_id = Column(SmallInteger, doc="Destination of batter after event (0 - putout, 1-3 - bases, 4 - scored as"
-                                           "earned run, 5 - scored as unearned, 6 - scored as unearned to team "
-                                           "earned to pitcher)")
-    run1_dest_id = Column(SmallInteger, doc="Destination of runner on first after event (0 - putout, 1-3 - bases, "
-                                            "4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned "
-                                            "to team earned to pitcher)")
-    run2_dest_id = Column(SmallInteger, doc="Destination of runner on second after event (0 - putout, 1-3 - bases, "
-                                            "4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned "
-                                            "to team earned to pitcher)")
-    run3_dest_id = Column(SmallInteger, doc="Destination of runner on third after event (0 - putout, 1-3 - bases, "
-                                            "4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned "
-                                            "to team earned to pitcher)")
-    bat_play_tx = Column(String(15), doc="Fielding play on batter")
-    run1_play_tx = Column(String(15), doc="Fielding play on runner on first")
-    run2_play_tx = Column(String(15), doc="Fielding play on runner on second")
-    run3_play_tx = Column(String(15), doc="Fielding play on runner on third")
-    run1_sb_fl = Column(Boolean, doc="Runner on first steals base")
-    run2_sb_fl = Column(Boolean, doc="Runner on second steals base")
-    run3_sb_fl = Column(Boolean, doc="Runner on third steals base")
-    run1_cs_fl = Column(Boolean, doc="Runner on first caught stealing")
-    run2_cs_fl = Column(Boolean, doc="Runner on second caught stealing")
-    run3_cs_fl = Column(Boolean, doc="Runner on third caught stealing")
-    run1_pk_fl = Column(Boolean, doc="Runner on first picked off")
-    run2_pk_fl = Column(Boolean, doc="Runner on second picked off")
-    run3_pk_fl = Column(Boolean, doc="Runner on third picked off")
-    run1_resp_pit_id = Column(CHAR(8), doc="ID of pitcher charged with runner on first")
-    run2_resp_pit_id = Column(CHAR(8), doc="ID of pitcher charged with runner on second")
-    run3_resp_pit_id = Column(CHAR(8), doc="ID of pitcher charged with runner on third")
-    game_new_fl = Column(Boolean, doc="Start of game flag")
-    game_end_fl = Column(Boolean, doc="End of game flag")
-    pr_run1_fl = Column(Boolean, doc="Pinch-runner on first")
-    pr_run2_fl = Column(Boolean, doc="Pinch-runner on second")
-    pr_run3_fl = Column(Boolean, doc="Runner on third")
-    removed_for_pr_run1_id = Column(CHAR(8), doc="ID of former runner on first removed for pinch-runner")
-    removed_for_pr_run2_id = Column(CHAR(8), doc="ID of former runner on second removed for pinch-runner")
-    removed_for_pr_run3_id = Column(CHAR(8), doc="ID of former runner on third removed for pinch-runner")
-    removed_for_ph_bat_id = Column(CHAR(8), doc="ID of former batter removed for pinch-hitter")
-    removed_for_ph_bat_fld_cd = Column(Integer, doc="Position code of batter removed for pinch-hitter")
-    po1_fld_cd = Column(SmallInteger, doc="Position code of fielder with first putout")
-    po2_fld_cd = Column(SmallInteger, doc="Position code of fielder with second putout")
-    po3_fld_cd = Column(SmallInteger, doc="Position code of fielder with third putout")
-    ass1_fld_cd = Column(SmallInteger, doc="Position code of fielder with first assist")
-    ass2_fld_cd = Column(SmallInteger, doc="Position code of fielder with second assist")
-    ass3_fld_cd = Column(SmallInteger, doc="Position code of fielder with third assist")
-    ass4_fld_cd = Column(SmallInteger, doc="Position code of fielder with fourth assist")
-    ass5_fld_cd = Column(SmallInteger, doc="Position code of fielder with fifth assist")
-    event_id = Column(Integer, primary_key=True, doc="Event number of game")
-    home_team_id = Column(CHAR(3), doc="Home team ID")
-    bat_team_id = Column(CHAR(3), doc="Batting team ID")
-    fld_team_id = Column(CHAR(3), doc="Fielding team ID")
-    bat_last_id = Column(SmallInteger, doc="Half inning (differs from batting team if home team bats first)")
-    inn_new_fl = Column(Boolean, doc="Start of half-inning flag")
-    inn_end_fl = Column(Boolean, doc="End of half-inning flag")
-    start_bat_score_ct = Column(SmallInteger, doc="Runs scored by batting team (prior to this event)")
-    start_fld_score_ct = Column(SmallInteger, doc="Runs scored by fielding team")
-    inn_runs_ct = Column(SmallInteger, doc="Runs scored in this half-inning (prior to this event)")
-    game_pa_ct = Column(SmallInteger, doc="Batting team PA total (prior to this event)")
-    inn_pa_ct = Column(SmallInteger, doc="Half-inning PA total (prior to this event)")
-    pa_new_fl = Column(Boolean, doc="Event is the start of a plate appearance")
-    pa_trunc_fl = Column(Boolean, doc="Event is a truncated plate appearance")
-    start_bases_cd = Column(SmallInteger, doc="Base state at start of event (0-7, binary value is flags for "
-                                              "runners on third, second, and first left-to-right)")
-    end_bases_cd = Column(SmallInteger, doc="Base state end of event (0-7, binary value is flags for "
-                                            "runners on third, second, and first left-to-right)")
-    bat_start_fl = Column(Boolean, doc="Batter started game")
-    resp_bat_start_fl = Column(Boolean, doc="Result-charged batter is a starter")
-    bat_on_deck_id = Column(CHAR(8), doc="ID of batter on deck")
-    bat_in_hold_id = Column(CHAR(8), doc="Id of batter in the hole")
-    pit_start_fl = Column(Boolean, doc="Pitcher started game")
-    resp_pit_start_fl = Column(Boolean, doc="Result-charged pitcher started game")
-    run1_fld_cd = Column(SmallInteger, doc="Defensive position code of runner on first")
-    run1_lineup_cd = Column(SmallInteger, doc="Lineup position of runner on first")
-    run1_origin_event_id = Column(SmallInteger, doc="Event number on which runner on first reached base")
-    run2_fld_cd = Column(SmallInteger, doc="Defensive position code of runner on second")
-    run2_lineup_cd = Column(SmallInteger, doc="Lineup position of runner on second")
-    run2_origin_event_id = Column(SmallInteger, doc="Event number on which runner on second reached base")
-    run3_fld_cd = Column(SmallInteger, doc="Defensive position code of runner on third")
-    run3_lineup_cd = Column(SmallInteger, doc="Lineup position of runner on third")
-    run3_origin_event_id = Column(SmallInteger, doc="Event number on which runner on third reached base")
-    run1_resp_cat_id = Column(CHAR(8), doc="ID of responsible catcher for runner on first")
-    run2_resp_cat_id = Column(CHAR(8), doc="ID of responsible catcher for runner on second")
-    run3_resp_cat_id = Column(CHAR(8), doc="ID of responsible catcher for runner on third")
-    pa_ball_ct = Column(SmallInteger, doc="Number of balls in plate appearance")
-    pa_called_ball_ct = Column(SmallInteger, doc="Number of called balls in plate appearance")
-    pa_intent_ball_ct = Column(SmallInteger, doc="Number of intentional balls in plate appearance")
-    pa_pitchout_ball_ct = Column(SmallInteger, doc="Number of pitchouts in plate appearance")
-    pa_hitbatter_ball_ct = Column(SmallInteger, doc="Number of pitches hitting batter in plate appearance")
-    pa_other_ball_ct = Column(SmallInteger, doc="Number of other balls in plate appearance")
-    pa_strike_ct = Column(SmallInteger, doc="Number of strikes in plate appearance")
-    pa_called_strike_ct = Column(SmallInteger, doc="Number of called strikes in plate appearance")
-    pa_swingmiss_strike_ct = Column(SmallInteger, doc="Number of swing-and-miss strikes in plate appearance")
-    pa_foul_strike_ct = Column(SmallInteger, doc="Number of foul balls in plate appearance")
-    pa_inplay_strike_ct = Column(SmallInteger, doc="Number of balls in play in plate appearance")
-    pa_other_strike_ct = Column(SmallInteger, doc="Number of other strikes in plate appearance")
-    event_runs_ct = Column(SmallInteger, doc="Number of runs on play")
-    fld_id = Column(CHAR(8), doc="ID of player fielding batted ball")
-    base2_force_fl = Column(Boolean, doc="Event has force play at second")
-    base3_force_fl = Column(Boolean, doc="Event has force play at third")
-    base4_force_fl = Column(Boolean, doc="Event has force play at home")
-    bat_safe_err_fl = Column(Boolean, doc="Event has batter safe on an error")
-    bat_fate_id = Column(SmallInteger, doc="Ultimate fate of batter (see `dest_id` cols for code meaning")
-    run1_fate_id = Column(SmallInteger, doc="Ultimate fate of runner on first (see `dest_id` cols for code meaning")
-    run2_fate_id = Column(SmallInteger, doc="Ultimate fate of runner on second (see `dest_id` cols for code meaning")
-    run3_fate_id = Column(SmallInteger, doc="Ultimate fate of runner on third (see `dest_id` cols for code meaning")
-    fate_runs_ct = Column(SmallInteger, doc="Additional runs scored in half inning after this event")
-    ass6_fld_cd = Column(SmallInteger, doc="Position code of fielder with sixth assist")
-    ass7_fld_cd = Column(SmallInteger, doc="Position code of fielder with seventh assist")
-    ass8_fld_cd = Column(SmallInteger, doc="Position code of fielder with eighth assist")
-    ass9_fld_cd = Column(SmallInteger, doc="Position code of fielder with ninth assist")
-    ass10_fld_cd = Column(SmallInteger, doc="Position code of fielder with tenth assist")
-    unknown_out_exc_fl = Column(Boolean, doc="Unknown fielding credit flag")
-    uncertain_play_exc_fl = Column(Boolean, doc="Uncertain play flag")
 
 
 class Game(Base):
@@ -424,214 +410,6 @@ class Game(Base):
     acq_info_tx = Column(String(26), doc="Acquisition information")
 
 
-class Daily(Base):
-    """
-    Contains one row per player per game. In addition to providing more convenient summaries of player data than the
-    `event` table, the `daily` table also includes information from box score event files, giving it complete coverage
-    for all games dating back to 1906 (as well as the 1871 and 1872 seasons).
-
-    If you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage
-    option like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for
-    traditional row-oriented stores.
-
-    The same caveats around data quality from `event` apply here as well. Additionally, there appear to be some minor
-    referential integrity issues in a couple rows: in at least one case, a player truly appeared in a single game more
-    than once (in the 1934 All-Star Game), while a parsing error caused this to appear in at least one other case.
-    """
-    __tablename__ = "daily"
-
-    game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
-    game_dt = Column(Date, doc="Game date")
-    game_ct = Column(SmallInteger, doc="Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, "
-                                       "2 - second game of doubleheader")
-    appearance_dt = Column(Date, doc="Player appearance date. Can be different from game date if the game was "
-                                     "suspended and the player entered the game at the later date")
-    team_id = Column(CHAR(3), doc="Team ID of player")
-    player_id = Column(CHAR(8), doc="Player ID")
-    slot_ct = Column(SmallInteger, doc="Player lineup position")
-    seq_ct = Column(SmallInteger, doc="Player is nth person of game to play in that lineup slot")
-    home_fl = Column(Boolean, doc="Player is playing at home")
-    opponent_id = Column(CHAR(3), doc="Team opponent ID")
-    park_id = Column(CHAR(5), doc="Park ID")
-    b_g = Column(SmallInteger, doc="Games played")
-    b_pa = Column(SmallInteger, doc="Plate appearances")
-    b_ab = Column(SmallInteger, doc="At bats")
-    b_r = Column(SmallInteger, doc="Runs scored")
-    b_h = Column(SmallInteger, doc="Hits")
-    b_tb = Column(SmallInteger, doc="Total bases")
-    b_2b = Column(SmallInteger, doc="Doubles")
-    b_3b = Column(SmallInteger, doc="Triples")
-    b_hr = Column(SmallInteger, doc="Home runs")
-    b_hr4 = Column(SmallInteger, doc="Grand slams")
-    b_rbi = Column(SmallInteger, doc="Runs batted in")
-    b_gw = Column(SmallInteger, doc="Game winning RBI")
-    b_bb = Column(SmallInteger, doc="Walks")
-    b_ibb = Column(SmallInteger, doc="Intentional walks")
-    b_so = Column(SmallInteger, doc="Strikeouts")
-    b_gdp = Column(SmallInteger, doc="Grounded into double plays")
-    b_hp = Column(SmallInteger, doc="Hit by pitches")
-    b_sh = Column(SmallInteger, doc="Sacrifice hits")
-    b_sf = Column(SmallInteger, doc="Sacrifice files")
-    b_sb = Column(SmallInteger, doc="Stolen bases")
-    b_cs = Column(SmallInteger, doc="Caught stealing")
-    b_xi = Column(SmallInteger, doc="Reached on interference")
-    b_g_dh = Column(SmallInteger, doc="Games as DH")
-    b_g_ph = Column(SmallInteger, doc="Games as pinch hitter")
-    b_g_pr = Column(SmallInteger, doc="Games as pinch runner")
-    p_g = Column(SmallInteger, doc="Games pitched")
-    p_gs = Column(SmallInteger, doc="Games as starting pitcher")
-    p_cg = Column(SmallInteger, doc="Complete games")
-    p_sho = Column(SmallInteger, doc="Shutouts")
-    p_gf = Column(SmallInteger, doc="Games finished")
-    p_w = Column(SmallInteger, doc="Wins")
-    p_l = Column(SmallInteger, doc="Losses")
-    p_sv = Column(SmallInteger, doc="Saves")
-    p_out = Column(SmallInteger, doc="Outs recorded")
-    p_tbf = Column(SmallInteger, doc="Total batters faced")
-    p_ab = Column(SmallInteger, doc="At bats against")
-    p_r = Column(SmallInteger, doc="Runs allowed")
-    p_er = Column(SmallInteger, doc="Earned runs allowed")
-    p_h = Column(SmallInteger, doc="Hits allowed")
-    p_tb = Column(SmallInteger, doc="Total bases allowed")
-    p_2b = Column(SmallInteger, doc="Doubles allowed")
-    p_3b = Column(SmallInteger, doc="Triples allowed")
-    p_hr = Column(SmallInteger, doc="Home runs allowed")
-    p_hr4 = Column(SmallInteger, doc="Grand slams allowed")
-    p_bb = Column(SmallInteger, doc="Walks allowed")
-    p_ibb = Column(SmallInteger, doc="Intentional walks allowed")
-    p_so = Column(SmallInteger, doc="Strikeouts against")
-    p_gdp = Column(SmallInteger, doc="Grounded into double plays against")
-    p_hp = Column(SmallInteger, doc="Hit by pitches allowed")
-    p_sh = Column(SmallInteger, doc="Sacrifice hits allowed")
-    p_sf = Column(SmallInteger, doc="Sacrifice flies allowed")
-    p_xi = Column(SmallInteger, doc="Reached on interference allowed")
-    p_wp = Column(SmallInteger, doc="Wild pitches allowed")
-    p_bk = Column(SmallInteger, doc="Balks allowed")
-    p_ir = Column(SmallInteger, doc="Inherited runners")
-    p_irs = Column(SmallInteger, doc="Inherited runners scored")
-    p_go = Column(SmallInteger, doc="Groundouts recorded")
-    p_ao = Column(SmallInteger, doc="Fly ball outs recorded")
-    p_pitch = Column(SmallInteger, doc="Pitches thrown")
-    p_strike = Column(SmallInteger, doc="Strikes thrown")
-    f_p_g = Column(SmallInteger, doc="Appearances at pitcher")
-    f_p_gs = Column(SmallInteger, doc="Starts at pitcher")
-    f_p_out = Column(SmallInteger, doc="Outs played as pitcher")
-    f_p_tc = Column(SmallInteger, doc="Total chances as pitcher")
-    f_p_po = Column(SmallInteger, doc="Putouts as pitcher")
-    f_p_a = Column(SmallInteger, doc="Assists as pitcher")
-    f_p_e = Column(SmallInteger, doc="Errors as pitcher")
-    f_p_dp = Column(SmallInteger, doc="Double plays turned as pitcher")
-    f_p_tp = Column(SmallInteger, doc="Triple pays turned as pitcher")
-    f_c_g = Column(SmallInteger, doc="Appearances at catcher")
-    f_c_gs = Column(SmallInteger, doc="Starts at catcher")
-    f_c_out = Column(SmallInteger, doc="Outs played as catcher")
-    f_c_tc = Column(SmallInteger, doc="Total chances as catcher")
-    f_c_po = Column(SmallInteger, doc="Putouts as catcher")
-    f_c_a = Column(SmallInteger, doc="Assists as catcher")
-    f_c_e = Column(SmallInteger, doc="Errors as catcher")
-    f_c_dp = Column(SmallInteger, doc="Double plays turned as catcher")
-    f_c_tp = Column(SmallInteger, doc="Triple pays turned as catcher")
-    f_c_pb = Column(SmallInteger, doc="Passed balls")
-    f_c_xi = Column(SmallInteger, doc="Catcher's interference")
-    f_1b_g = Column(SmallInteger, doc="Appearances at first baseman")
-    f_1b_gs = Column(SmallInteger, doc="Starts at first baseman")
-    f_1b_out = Column(SmallInteger, doc="Outs played as first baseman")
-    f_1b_tc = Column(SmallInteger, doc="Total chances as first baseman")
-    f_1b_po = Column(SmallInteger, doc="Putouts as first baseman")
-    f_1b_a = Column(SmallInteger, doc="Assists as first baseman")
-    f_1b_e = Column(SmallInteger, doc="Errors as first baseman")
-    f_1b_dp = Column(SmallInteger, doc="Double plays turned as first baseman")
-    f_1b_tp = Column(SmallInteger, doc="Triple pays turned as first baseman")
-    f_2b_g = Column(SmallInteger, doc="Appearances at second baseman")
-    f_2b_gs = Column(SmallInteger, doc="Starts at second baseman")
-    f_2b_out = Column(SmallInteger, doc="Outs played as second baseman")
-    f_2b_tc = Column(SmallInteger, doc="Total chances as second baseman")
-    f_2b_po = Column(SmallInteger, doc="Putouts as second baseman")
-    f_2b_a = Column(SmallInteger, doc="Assists as second baseman")
-    f_2b_e = Column(SmallInteger, doc="Errors as second baseman")
-    f_2b_dp = Column(SmallInteger, doc="Double plays turned as second baseman")
-    f_2b_tp = Column(SmallInteger, doc="Triple pays turned as second baseman")
-    f_3b_g = Column(SmallInteger, doc="Appearances at third baseman")
-    f_3b_gs = Column(SmallInteger, doc="Starts at third baseman")
-    f_3b_out = Column(SmallInteger, doc="Outs played as third baseman")
-    f_3b_tc = Column(SmallInteger, doc="Total chances as third baseman")
-    f_3b_po = Column(SmallInteger, doc="Putouts as third baseman")
-    f_3b_a = Column(SmallInteger, doc="Assists as third baseman")
-    f_3b_e = Column(SmallInteger, doc="Errors as third baseman")
-    f_3b_dp = Column(SmallInteger, doc="Double plays turned as third baseman")
-    f_3b_tp = Column(SmallInteger, doc="Triple pays turned as third baseman")
-    f_ss_g = Column(SmallInteger, doc="Appearances at shortstop")
-    f_ss_gs = Column(SmallInteger, doc="Starts at shortstop")
-    f_ss_out = Column(SmallInteger, doc="Outs played as shortstop")
-    f_ss_tc = Column(SmallInteger, doc="Total chances as shortstop")
-    f_ss_po = Column(SmallInteger, doc="Putouts as shortstop")
-    f_ss_a = Column(SmallInteger, doc="Assists as shortstop")
-    f_ss_e = Column(SmallInteger, doc="Errors as shortstop")
-    f_ss_dp = Column(SmallInteger, doc="Double plays turned as shortstop")
-    f_ss_tp = Column(SmallInteger, doc="Triple pays turned as shortstop")
-    f_lf_g = Column(SmallInteger, doc="Appearances at left fielder")
-    f_lf_gs = Column(SmallInteger, doc="Starts at left fielder")
-    f_lf_out = Column(SmallInteger, doc="Outs played as left fielder")
-    f_lf_tc = Column(SmallInteger, doc="Total chances as left fielder")
-    f_lf_po = Column(SmallInteger, doc="Putouts as left fielder")
-    f_lf_a = Column(SmallInteger, doc="Assists as left fielder")
-    f_lf_e = Column(SmallInteger, doc="Errors as left fielder")
-    f_lf_dp = Column(SmallInteger, doc="Double plays turned as left fielder")
-    f_lf_tp = Column(SmallInteger, doc="Triple pays turned as left fielder")
-    f_cf_g = Column(SmallInteger, doc="Appearances at center fielder")
-    f_cf_gs = Column(SmallInteger, doc="Starts at center fielder")
-    f_cf_out = Column(SmallInteger, doc="Outs played as center fielder")
-    f_cf_tc = Column(SmallInteger, doc="Total chances as center fielder")
-    f_cf_po = Column(SmallInteger, doc="Putouts as center fielder")
-    f_cf_a = Column(SmallInteger, doc="Assists as center fielder")
-    f_cf_e = Column(SmallInteger, doc="Errors as center fielder")
-    f_cf_dp = Column(SmallInteger, doc="Double plays turned as center fielder")
-    f_cf_tp = Column(SmallInteger, doc="Triple pays turned as center fielder")
-    f_rf_g = Column(SmallInteger, doc="Appearances at right fielder")
-    f_rf_gs = Column(SmallInteger, doc="Starts at right fielder")
-    f_rf_out = Column(SmallInteger, doc="Outs played as right fielder")
-    f_rf_tc = Column(SmallInteger, doc="Total chances as right fielder")
-    f_rf_po = Column(SmallInteger, doc="Putouts as right fielder")
-    f_rf_a = Column(SmallInteger, doc="Assists as right fielder")
-    f_rf_e = Column(SmallInteger, doc="Errors as right fielder")
-    f_rf_dp = Column(SmallInteger, doc="Double plays turned as right fielder")
-    f_rf_tp = Column(SmallInteger, doc="Triple pays turned as right fielder")
-    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
-
-
-class Sub(Base):
-    """
-    A complement to `event` that provides convenient information about substitutions.
-    """
-    __tablename__ = 'sub'
-
-    game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
-    inn_ct = Column(SmallInteger, doc="Inning of substitution")
-    # TODO: Handle -1 so this can be a boolean
-    bat_home_id = Column(SmallInteger, doc="Is home team batting (-1 for N/A)")
-    sub_id = Column(CHAR(8), doc="Player ID of substitute")
-    sub_home_id = Column(Boolean, doc="Is the home team making the substitution")
-    sub_lineup_id = Column(SmallInteger, doc="Lineup position of substitution")
-    sub_fld_cd = Column(SmallInteger, doc="Fielding position of substitution")
-    removed_id = Column(CHAR(8), doc="ID of removed player")
-    removed_fld_cd = Column(SmallInteger, doc="Fielding position of removed player")
-    event_id = Column(SmallInteger, doc="Event number in which substitution occurred")
-    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
-
-
-class Comment(Base):
-    """
-    A complement to `event` that sources detailed text comments from play-by-play files. When present,
-    these comments can be helpful in figuring out what happened on unusual plays.
-    """
-    __tablename__ = 'comment'
-
-    game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
-    event_id = Column(SmallInteger, doc="Commented event number")
-    comment = Column(String(1638), doc="Comment text")
-    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
-
-
 class Gamelog(Base):
     """
     Contains one row for every game in major league history. While a bare minimum of result information exists
@@ -846,154 +624,376 @@ class Gamelog(Base):
                                            "P - portions of game information")
 
 
-class Park(Base):
+class Daily(Base):
     """
-    Basic information about ballparks.
+    Contains one row per player per game. In addition to providing more convenient summaries of player data than the
+    `event` table, the `daily` table also includes information from box score event files, giving it complete coverage
+    for all games dating back to 1906 (as well as the 1871 and 1872 seasons).
+
+    If you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage
+    option like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for
+    traditional row-oriented stores.
+
+    The same caveats around data quality from `event` apply here as well. Additionally, there appear to be some minor
+    referential integrity issues in a couple rows: in at least one case, a player truly appeared in a single game more
+    than once (in the 1934 All-Star Game), while a parsing error caused this to appear in at least one other case.
     """
-    __tablename__ = 'park'
+    __tablename__ = "daily"
 
-    park_id = Column(CHAR(5), primary_key=True, doc="Park ID")
-    name = Column(String(41), doc="Park name")
-    aka = Column(String(55), doc="Common park alias")
-    city = Column(String(17), doc="City")
-    state = Column(String(9), doc="State")
-    # TODO: Handle this MySQL edge case so these can be dates again
-    start_date = Column(String(10), doc="First game")
-    end_date = Column(String(10), doc="Last game")
-    league = Column(CHAR(2), doc="League ID")
-    notes = Column(String(54), doc="Misc. notes")
+    game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
+    game_dt = Column(Date, doc="Game date")
+    game_ct = Column(SmallInteger, doc="Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, "
+                                       "2 - second game of doubleheader")
+    appearance_dt = Column(Date, doc="Player appearance date. Can be different from game date if the game was "
+                                     "suspended and the player entered the game at the later date")
+    team_id = Column(CHAR(3), doc="Team ID of player")
+    player_id = Column(CHAR(8), doc="Player ID")
+    slot_ct = Column(SmallInteger, doc="Player lineup position")
+    seq_ct = Column(SmallInteger, doc="Player is nth person of game to play in that lineup slot")
+    home_fl = Column(Boolean, doc="Player is playing at home")
+    opponent_id = Column(CHAR(3), doc="Team opponent ID")
+    park_id = Column(CHAR(5), doc="Park ID")
+    b_g = Column(SmallInteger, doc="Games played")
+    b_pa = Column(SmallInteger, doc="Plate appearances")
+    b_ab = Column(SmallInteger, doc="At bats")
+    b_r = Column(SmallInteger, doc="Runs scored")
+    b_h = Column(SmallInteger, doc="Hits")
+    b_tb = Column(SmallInteger, doc="Total bases")
+    b_2b = Column(SmallInteger, doc="Doubles")
+    b_3b = Column(SmallInteger, doc="Triples")
+    b_hr = Column(SmallInteger, doc="Home runs")
+    b_hr4 = Column(SmallInteger, doc="Grand slams")
+    b_rbi = Column(SmallInteger, doc="Runs batted in")
+    b_gw = Column(SmallInteger, doc="Game winning RBI")
+    b_bb = Column(SmallInteger, doc="Walks")
+    b_ibb = Column(SmallInteger, doc="Intentional walks")
+    b_so = Column(SmallInteger, doc="Strikeouts")
+    b_gdp = Column(SmallInteger, doc="Grounded into double plays")
+    b_hp = Column(SmallInteger, doc="Hit by pitches")
+    b_sh = Column(SmallInteger, doc="Sacrifice hits")
+    b_sf = Column(SmallInteger, doc="Sacrifice files")
+    b_sb = Column(SmallInteger, doc="Stolen bases")
+    b_cs = Column(SmallInteger, doc="Caught stealing")
+    b_xi = Column(SmallInteger, doc="Reached on interference")
+    b_g_dh = Column(SmallInteger, doc="Games as DH")
+    b_g_ph = Column(SmallInteger, doc="Games as pinch hitter")
+    b_g_pr = Column(SmallInteger, doc="Games as pinch runner")
+    p_g = Column(SmallInteger, doc="Games pitched")
+    p_gs = Column(SmallInteger, doc="Games as starting pitcher")
+    p_cg = Column(SmallInteger, doc="Complete games")
+    p_sho = Column(SmallInteger, doc="Shutouts")
+    p_gf = Column(SmallInteger, doc="Games finished")
+    p_w = Column(SmallInteger, doc="Wins")
+    p_l = Column(SmallInteger, doc="Losses")
+    p_sv = Column(SmallInteger, doc="Saves")
+    p_out = Column(SmallInteger, doc="Outs recorded")
+    p_tbf = Column(SmallInteger, doc="Total batters faced")
+    p_ab = Column(SmallInteger, doc="At bats against")
+    p_r = Column(SmallInteger, doc="Runs allowed")
+    p_er = Column(SmallInteger, doc="Earned runs allowed")
+    p_h = Column(SmallInteger, doc="Hits allowed")
+    p_tb = Column(SmallInteger, doc="Total bases allowed")
+    p_2b = Column(SmallInteger, doc="Doubles allowed")
+    p_3b = Column(SmallInteger, doc="Triples allowed")
+    p_hr = Column(SmallInteger, doc="Home runs allowed")
+    p_hr4 = Column(SmallInteger, doc="Grand slams allowed")
+    p_bb = Column(SmallInteger, doc="Walks allowed")
+    p_ibb = Column(SmallInteger, doc="Intentional walks allowed")
+    p_so = Column(SmallInteger, doc="Strikeouts against")
+    p_gdp = Column(SmallInteger, doc="Grounded into double plays against")
+    p_hp = Column(SmallInteger, doc="Hit by pitches allowed")
+    p_sh = Column(SmallInteger, doc="Sacrifice hits allowed")
+    p_sf = Column(SmallInteger, doc="Sacrifice flies allowed")
+    p_xi = Column(SmallInteger, doc="Reached on interference allowed")
+    p_wp = Column(SmallInteger, doc="Wild pitches allowed")
+    p_bk = Column(SmallInteger, doc="Balks allowed")
+    p_ir = Column(SmallInteger, doc="Inherited runners")
+    p_irs = Column(SmallInteger, doc="Inherited runners scored")
+    p_go = Column(SmallInteger, doc="Groundouts recorded")
+    p_ao = Column(SmallInteger, doc="Fly ball outs recorded")
+    p_pitch = Column(SmallInteger, doc="Pitches thrown")
+    p_strike = Column(SmallInteger, doc="Strikes thrown")
+    f_p_g = Column(SmallInteger, doc="Appearances at pitcher")
+    f_p_gs = Column(SmallInteger, doc="Starts at pitcher")
+    f_p_out = Column(SmallInteger, doc="Outs played as pitcher")
+    f_p_tc = Column(SmallInteger, doc="Total chances as pitcher")
+    f_p_po = Column(SmallInteger, doc="Putouts as pitcher")
+    f_p_a = Column(SmallInteger, doc="Assists as pitcher")
+    f_p_e = Column(SmallInteger, doc="Errors as pitcher")
+    f_p_dp = Column(SmallInteger, doc="Double plays turned as pitcher")
+    f_p_tp = Column(SmallInteger, doc="Triple pays turned as pitcher")
+    f_c_g = Column(SmallInteger, doc="Appearances at catcher")
+    f_c_gs = Column(SmallInteger, doc="Starts at catcher")
+    f_c_out = Column(SmallInteger, doc="Outs played as catcher")
+    f_c_tc = Column(SmallInteger, doc="Total chances as catcher")
+    f_c_po = Column(SmallInteger, doc="Putouts as catcher")
+    f_c_a = Column(SmallInteger, doc="Assists as catcher")
+    f_c_e = Column(SmallInteger, doc="Errors as catcher")
+    f_c_dp = Column(SmallInteger, doc="Double plays turned as catcher")
+    f_c_tp = Column(SmallInteger, doc="Triple pays turned as catcher")
+    f_c_pb = Column(SmallInteger, doc="Passed balls")
+    f_c_xi = Column(SmallInteger, doc="Catcher's interference")
+    f_1b_g = Column(SmallInteger, doc="Appearances at first baseman")
+    f_1b_gs = Column(SmallInteger, doc="Starts at first baseman")
+    f_1b_out = Column(SmallInteger, doc="Outs played as first baseman")
+    f_1b_tc = Column(SmallInteger, doc="Total chances as first baseman")
+    f_1b_po = Column(SmallInteger, doc="Putouts as first baseman")
+    f_1b_a = Column(SmallInteger, doc="Assists as first baseman")
+    f_1b_e = Column(SmallInteger, doc="Errors as first baseman")
+    f_1b_dp = Column(SmallInteger, doc="Double plays turned as first baseman")
+    f_1b_tp = Column(SmallInteger, doc="Triple pays turned as first baseman")
+    f_2b_g = Column(SmallInteger, doc="Appearances at second baseman")
+    f_2b_gs = Column(SmallInteger, doc="Starts at second baseman")
+    f_2b_out = Column(SmallInteger, doc="Outs played as second baseman")
+    f_2b_tc = Column(SmallInteger, doc="Total chances as second baseman")
+    f_2b_po = Column(SmallInteger, doc="Putouts as second baseman")
+    f_2b_a = Column(SmallInteger, doc="Assists as second baseman")
+    f_2b_e = Column(SmallInteger, doc="Errors as second baseman")
+    f_2b_dp = Column(SmallInteger, doc="Double plays turned as second baseman")
+    f_2b_tp = Column(SmallInteger, doc="Triple pays turned as second baseman")
+    f_3b_g = Column(SmallInteger, doc="Appearances at third baseman")
+    f_3b_gs = Column(SmallInteger, doc="Starts at third baseman")
+    f_3b_out = Column(SmallInteger, doc="Outs played as third baseman")
+    f_3b_tc = Column(SmallInteger, doc="Total chances as third baseman")
+    f_3b_po = Column(SmallInteger, doc="Putouts as third baseman")
+    f_3b_a = Column(SmallInteger, doc="Assists as third baseman")
+    f_3b_e = Column(SmallInteger, doc="Errors as third baseman")
+    f_3b_dp = Column(SmallInteger, doc="Double plays turned as third baseman")
+    f_3b_tp = Column(SmallInteger, doc="Triple pays turned as third baseman")
+    f_ss_g = Column(SmallInteger, doc="Appearances at shortstop")
+    f_ss_gs = Column(SmallInteger, doc="Starts at shortstop")
+    f_ss_out = Column(SmallInteger, doc="Outs played as shortstop")
+    f_ss_tc = Column(SmallInteger, doc="Total chances as shortstop")
+    f_ss_po = Column(SmallInteger, doc="Putouts as shortstop")
+    f_ss_a = Column(SmallInteger, doc="Assists as shortstop")
+    f_ss_e = Column(SmallInteger, doc="Errors as shortstop")
+    f_ss_dp = Column(SmallInteger, doc="Double plays turned as shortstop")
+    f_ss_tp = Column(SmallInteger, doc="Triple pays turned as shortstop")
+    f_lf_g = Column(SmallInteger, doc="Appearances at left fielder")
+    f_lf_gs = Column(SmallInteger, doc="Starts at left fielder")
+    f_lf_out = Column(SmallInteger, doc="Outs played as left fielder")
+    f_lf_tc = Column(SmallInteger, doc="Total chances as left fielder")
+    f_lf_po = Column(SmallInteger, doc="Putouts as left fielder")
+    f_lf_a = Column(SmallInteger, doc="Assists as left fielder")
+    f_lf_e = Column(SmallInteger, doc="Errors as left fielder")
+    f_lf_dp = Column(SmallInteger, doc="Double plays turned as left fielder")
+    f_lf_tp = Column(SmallInteger, doc="Triple pays turned as left fielder")
+    f_cf_g = Column(SmallInteger, doc="Appearances at center fielder")
+    f_cf_gs = Column(SmallInteger, doc="Starts at center fielder")
+    f_cf_out = Column(SmallInteger, doc="Outs played as center fielder")
+    f_cf_tc = Column(SmallInteger, doc="Total chances as center fielder")
+    f_cf_po = Column(SmallInteger, doc="Putouts as center fielder")
+    f_cf_a = Column(SmallInteger, doc="Assists as center fielder")
+    f_cf_e = Column(SmallInteger, doc="Errors as center fielder")
+    f_cf_dp = Column(SmallInteger, doc="Double plays turned as center fielder")
+    f_cf_tp = Column(SmallInteger, doc="Triple pays turned as center fielder")
+    f_rf_g = Column(SmallInteger, doc="Appearances at right fielder")
+    f_rf_gs = Column(SmallInteger, doc="Starts at right fielder")
+    f_rf_out = Column(SmallInteger, doc="Outs played as right fielder")
+    f_rf_tc = Column(SmallInteger, doc="Total chances as right fielder")
+    f_rf_po = Column(SmallInteger, doc="Putouts as right fielder")
+    f_rf_a = Column(SmallInteger, doc="Assists as right fielder")
+    f_rf_e = Column(SmallInteger, doc="Errors as right fielder")
+    f_rf_dp = Column(SmallInteger, doc="Double plays turned as right fielder")
+    f_rf_tp = Column(SmallInteger, doc="Triple pays turned as right fielder")
+    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
-class Roster(Base):
+class Event(Base):
     """
-    Contains one row for each unique combination of player, team, and year. For more detailed/convenient player
-    biographical data, use the `people` table from the Baseball Databank schema, joining on `retro_id`.
+    The event table is the most granular data available, containing one row for every play of every game
+    for which Retrosheet has data. This includes all postseason games in history, all All-Star games in history,
+    all regular season games dating back to 1937, and a majority of regular season games dating back to 1921.
+
+    Each row in the table does not necessarily constitute a new or complete plate appearance, as events like
+    stolen bases and balks have their own rows.
+
+    If you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage
+    option like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for
+    traditional row-oriented stores.
+
+    While all games present in the table have the bare minimum of information about every play in the game,
+    there are significant differences in data quality from game to game. These differences in data quality often
+    complicate historical analyses.
+    -- A significant number of games from 1937-1973 do not have complete play-by-play accounts available. For these
+        missing games, Retrosheet has derived play-by-play data using a combination of box scores and game stories.
+        These derived games are likely to have less granular data around fielding plays.
+    -- The overwhelming majority of games prior to 1988 do not have pitch-by-pitch data available (the most notable
+        exceptions to this are the 1950s Dodgers home games). From 1988-1999, nearly all games have pitch sequences,
+        but a significant number of games are missing pitch sequences from at least one plate appearance, making
+        pitch count analysis a bit more difficult. Games from 2000 on have complete pitch data.
+    -- A similar situation exists for hit location data, although location data is more frequently populated for
+        older games than pitch data is.
     """
-    __tablename__ = 'roster'
-    # We inserted the year in preprocessing
-    year = Column(Integer, primary_key=True, doc="Year of roster")
-    player_id = Column(CHAR(8), primary_key=True, doc="Player ID")
-    last_name = Column(String(32), doc="Player last name")
-    first_name = Column(String(32), doc="Player first name")
-    bats = Column(CHAR(1), doc="Bat handedness")
-    throws = Column(CHAR(1), doc="Throw handedness")
-    team_id = Column(CHAR(3), primary_key=True, doc="Team ID")
-    position = Column(String(2), doc="Primary fielding position")
-
-
-class Schedule(Base):
-    """
-    Contains the original regular season schedules for all seasons dating back to 1877.
-    """
-    __tablename__ = 'schedule'
-
-    date = Column(Date, primary_key=True, doc="Scheduled game date")
-    double_header = Column(SmallInteger, doc="Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, "
-                                             "2 - second game of doubleheader")
-    day_of_week = Column(CHAR(3), doc="Day of week (3 letter abbreviation")
-    visiting_team = Column(CHAR(3), doc="Away team ID")
-    visiting_team_league = Column(CHAR(2), doc="Away team league ID")
-    visiting_team_game_number = Column(SmallInteger, doc="Away team game number")
-    home_team = Column(CHAR(3), primary_key=True, doc="Home team ID")
-    home_team_league = Column(CHAR(2), doc="Home team league ID")
-    home_team_game_number = Column(Integer, primary_key=True, doc="Home team game number")
-    day_night = Column(CHAR(1), doc="D - day, N - night")
-    postponement_indicator = Column(String(120), doc="""
-        This field will contain one or more phrases related to the game if it was
-        not played as scheduled. If there is more than one phrase, they are separated
-        by a semi-colon (";"). There are three possible outcomes for games not played
-        on the originally scheduled date:
-        -- The game was played on another date
-        -- The game was played on the original date but at another site
-        -- The game was not played
-        """)
-    makeup_dates = Column(String(120), doc="""
-        This field will contain a makeup date if the postponed game was played at
-        another time or place. If an attempt was known to have been made on a date but
-        postponed again, that date will be listed. In that case, there will be a second
-        date for the date when the game was actually played, in this form: "20150428;
-        20150528" For the note about a team folding, the team code is one of the
-        standard Retrosheet team IDs. The same is true for the team played as note.
-        Often, the two of these are combined in one field.
-        """)
-
-
-class CodeEvent(Base):
-    """
-    Descriptions for codes in `event.event_cd`
-    """
-    __tablename__ = 'code_event'
-
-    code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
-
-
-class CodeFieldPark(Base):
-    """
-    Descriptions for codes in `game.field_park_cd`
-    """
-    __tablename__ = 'code_field_park'
-
-    code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
-
-
-class CodeMethodRecord(Base):
-    """
-    Descriptions for codes in `game.method_record_cd`
-    """
-    __tablename__ = 'code_method_record'
-
-    code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
-
-
-class CodePitchesRecord(Base):
-    """
-    Descriptions for codes in `game.pitches_record_cd`
-    """
-    __tablename__ = 'code_pitches_record'
-
-    code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
-
-
-class CodePrecipPark(Base):
-    """
-    Descriptions for codes in `game.precip_park_cd`
-    """
-    __tablename__ = 'code_precip_park'
-
-    code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
-
-
-class CodeSkyPark(Base):
-    """
-    Descriptions for codes in `game.sky_park_cd`
-    """
-    __tablename__ = 'code_sky_park'
-
-    code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
-
-
-class CodeWindDirectionPark(Base):
-    """
-    Descriptions for codes in `game.wind_direction_park_cd`
-    """
-    __tablename__ = 'code_wind_direction_park'
-
-    code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
-
-
-class DeducedGame(Base):
-    """
-    One-column table that contains a list of all game IDs for which the PBP account was
-    deduced from newspaper accounts of the game. The table can be used to filter out those games
-    from the event file if desired, or to create a flag variable when performing analysis.
-    """
-    __tablename__ = 'deduced_game'
+    __tablename__ = 'event'
 
     game_id = Column(CHAR(12), primary_key=True, doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
+    away_team_id = Column(CHAR(3), doc="Visiting Team")
+    inn_ct = Column(SmallInteger, doc="Inning")
+    bat_home_id = Column(Boolean, doc="Home team is batting")
+    outs_ct = Column(SmallInteger, doc="Outs (0-2)")
+    balls_ct = Column(SmallInteger, doc="Balls (0-3)")
+    strikes_ct = Column(SmallInteger, doc="Strikes (0-2")
+    pitch_seq_tx = Column(String(30), doc="Pitch sequence")
+    away_score_ct = Column(SmallInteger, doc="Away score")
+    home_score_ct = Column(SmallInteger, doc="Home score")
+    bat_id = Column(CHAR(8), doc="Batter ID")
+    bat_hand_cd = Column(CHAR(1), doc="Batter handedness")
+    resp_bat_id = Column(CHAR(8), doc="ID of batter charged with event")
+    resp_bat_hand_cd = Column(CHAR(1), doc="Handedness of batter charged with event")
+    pit_id = Column(CHAR(8), doc="Pitcher ID")
+    pit_hand_cd = Column(CHAR(1), doc="Pitcher handedness")
+    resp_pit_id = Column(CHAR(8), doc="ID of pitcher charged with event")
+    resp_pit_hand_cd = Column(CHAR(1), doc="Handedness of pitcher charged with event")
+    pos2_fld_id = Column(CHAR(8), doc="Catcher ID")
+    pos3_fld_id = Column(CHAR(8), doc="First baseman ID")
+    pos4_fld_id = Column(CHAR(8), doc="Second baseman ID")
+    pos5_fld_id = Column(CHAR(8), doc="Third baseman ID")
+    pos6_fld_id = Column(CHAR(8), doc="Shortstop ID")
+    pos7_fld_id = Column(CHAR(8), doc="Left fielder ID")
+    pos8_fld_id = Column(CHAR(8), doc="Center fielder ID")
+    pos9_fld_id = Column(CHAR(8), doc="Right fielder ID")
+    base1_run_id = Column(CHAR(8), doc="ID of runner on first")
+    base2_run_id = Column(CHAR(8), doc="ID of runner on second")
+    base3_run_id = Column(CHAR(8), doc="ID of runner on third")
+    event_tx = Column(String(58), doc="Event text (in scoring shorthand")
+    leadoff_fl = Column(Boolean, doc="Batter is leading off the inning")
+    ph_fl = Column(Boolean, doc="Batter is pinch-hitting")
+    bat_fld_cd = Column(SmallInteger, doc="Defensive position of batter (10 for DH, 11 for PH, 12 for PR")
+    bat_lineup_id = Column(SmallInteger, doc="Lineup position (1-9)")
+    event_cd = Column(SmallInteger, doc="Event code (join table `code_event` for descriptions")
+    bat_event_fl = Column(Boolean, doc="Event is related to the batter")
+    ab_fl = Column(Boolean, doc="Event is an at-bat")
+    h_fl = Column(SmallInteger, doc="Event is a hit")
+    sh_fl = Column(Boolean, doc="Event is a sacrifice hit")
+    sf_fl = Column(Boolean, doc="Event is a sacrifice fly")
+    event_outs_ct = Column(SmallInteger, doc="Outs recorded on event (0-3)")
+    dp_fl = Column(Boolean, doc="Event is a double play")
+    tp_fl = Column(Boolean, doc="Event is a triple play")
+    rbi_ct = Column(SmallInteger, doc="Runs batted in on event")
+    wp_fl = Column(Boolean, doc="Event is a wild pitch")
+    pb_fl = Column(Boolean, doc="Event is a passed ball")
+    fld_cd = Column(SmallInteger, doc="Position id of event fielder")
+    battedball_cd = Column(CHAR(1), doc="Batted ball code (P - pop-up, G - ground ball, F - fly ball, L - line drive")
+    bunt_fl = Column(Boolean, doc="Event is a bunt")
+    foul_fl = Column(Boolean, doc="Event is a foul ball")
+    battedball_loc_tx = Column(String(5), doc="Hit location code (see https://www.retrosheet.org/location.htm)")
+    err_ct = Column(SmallInteger, doc="Number of errors recorded during event")
+    err1_fld_cd = Column(SmallInteger, doc="Position code of fielder committing first error during event")
+    err1_cd = Column(CHAR(1), doc="First error type (T - throwing, F - fielding)")
+    err2_fld_cd = Column(SmallInteger, doc="Position code of fielder committing second error during event")
+    err2_cd = Column(CHAR(1), doc="Second error type (T - throwing, F - fielding)")
+    err3_fld_cd = Column(SmallInteger, doc="Position code of fielder committing third error during event")
+    err3_cd = Column(CHAR(1), doc="Third error type (T - throwing, F - fielding)")
+    bat_dest_id = Column(SmallInteger, doc="Destination of batter after event (0 - putout, 1-3 - bases, 4 - scored as"
+                                           "earned run, 5 - scored as unearned, 6 - scored as unearned to team "
+                                           "earned to pitcher)")
+    run1_dest_id = Column(SmallInteger, doc="Destination of runner on first after event (0 - putout, 1-3 - bases, "
+                                            "4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned "
+                                            "to team earned to pitcher)")
+    run2_dest_id = Column(SmallInteger, doc="Destination of runner on second after event (0 - putout, 1-3 - bases, "
+                                            "4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned "
+                                            "to team earned to pitcher)")
+    run3_dest_id = Column(SmallInteger, doc="Destination of runner on third after event (0 - putout, 1-3 - bases, "
+                                            "4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned "
+                                            "to team earned to pitcher)")
+    bat_play_tx = Column(String(15), doc="Fielding play on batter")
+    run1_play_tx = Column(String(15), doc="Fielding play on runner on first")
+    run2_play_tx = Column(String(15), doc="Fielding play on runner on second")
+    run3_play_tx = Column(String(15), doc="Fielding play on runner on third")
+    run1_sb_fl = Column(Boolean, doc="Runner on first steals base")
+    run2_sb_fl = Column(Boolean, doc="Runner on second steals base")
+    run3_sb_fl = Column(Boolean, doc="Runner on third steals base")
+    run1_cs_fl = Column(Boolean, doc="Runner on first caught stealing")
+    run2_cs_fl = Column(Boolean, doc="Runner on second caught stealing")
+    run3_cs_fl = Column(Boolean, doc="Runner on third caught stealing")
+    run1_pk_fl = Column(Boolean, doc="Runner on first picked off")
+    run2_pk_fl = Column(Boolean, doc="Runner on second picked off")
+    run3_pk_fl = Column(Boolean, doc="Runner on third picked off")
+    run1_resp_pit_id = Column(CHAR(8), doc="ID of pitcher charged with runner on first")
+    run2_resp_pit_id = Column(CHAR(8), doc="ID of pitcher charged with runner on second")
+    run3_resp_pit_id = Column(CHAR(8), doc="ID of pitcher charged with runner on third")
+    game_new_fl = Column(Boolean, doc="Start of game flag")
+    game_end_fl = Column(Boolean, doc="End of game flag")
+    pr_run1_fl = Column(Boolean, doc="Pinch-runner on first")
+    pr_run2_fl = Column(Boolean, doc="Pinch-runner on second")
+    pr_run3_fl = Column(Boolean, doc="Runner on third")
+    removed_for_pr_run1_id = Column(CHAR(8), doc="ID of former runner on first removed for pinch-runner")
+    removed_for_pr_run2_id = Column(CHAR(8), doc="ID of former runner on second removed for pinch-runner")
+    removed_for_pr_run3_id = Column(CHAR(8), doc="ID of former runner on third removed for pinch-runner")
+    removed_for_ph_bat_id = Column(CHAR(8), doc="ID of former batter removed for pinch-hitter")
+    removed_for_ph_bat_fld_cd = Column(Integer, doc="Position code of batter removed for pinch-hitter")
+    po1_fld_cd = Column(SmallInteger, doc="Position code of fielder with first putout")
+    po2_fld_cd = Column(SmallInteger, doc="Position code of fielder with second putout")
+    po3_fld_cd = Column(SmallInteger, doc="Position code of fielder with third putout")
+    ass1_fld_cd = Column(SmallInteger, doc="Position code of fielder with first assist")
+    ass2_fld_cd = Column(SmallInteger, doc="Position code of fielder with second assist")
+    ass3_fld_cd = Column(SmallInteger, doc="Position code of fielder with third assist")
+    ass4_fld_cd = Column(SmallInteger, doc="Position code of fielder with fourth assist")
+    ass5_fld_cd = Column(SmallInteger, doc="Position code of fielder with fifth assist")
+    event_id = Column(Integer, primary_key=True, doc="Event number of game")
+    home_team_id = Column(CHAR(3), doc="Home team ID")
+    bat_team_id = Column(CHAR(3), doc="Batting team ID")
+    fld_team_id = Column(CHAR(3), doc="Fielding team ID")
+    bat_last_id = Column(SmallInteger, doc="Half inning (differs from batting team if home team bats first)")
+    inn_new_fl = Column(Boolean, doc="Start of half-inning flag")
+    inn_end_fl = Column(Boolean, doc="End of half-inning flag")
+    start_bat_score_ct = Column(SmallInteger, doc="Runs scored by batting team (prior to this event)")
+    start_fld_score_ct = Column(SmallInteger, doc="Runs scored by fielding team")
+    inn_runs_ct = Column(SmallInteger, doc="Runs scored in this half-inning (prior to this event)")
+    game_pa_ct = Column(SmallInteger, doc="Batting team PA total (prior to this event)")
+    inn_pa_ct = Column(SmallInteger, doc="Half-inning PA total (prior to this event)")
+    pa_new_fl = Column(Boolean, doc="Event is the start of a plate appearance")
+    pa_trunc_fl = Column(Boolean, doc="Event is a truncated plate appearance")
+    start_bases_cd = Column(SmallInteger, doc="Base state at start of event (0-7, binary value is flags for "
+                                              "runners on third, second, and first left-to-right)")
+    end_bases_cd = Column(SmallInteger, doc="Base state end of event (0-7, binary value is flags for "
+                                            "runners on third, second, and first left-to-right)")
+    bat_start_fl = Column(Boolean, doc="Batter started game")
+    resp_bat_start_fl = Column(Boolean, doc="Result-charged batter is a starter")
+    bat_on_deck_id = Column(CHAR(8), doc="ID of batter on deck")
+    bat_in_hold_id = Column(CHAR(8), doc="Id of batter in the hole")
+    pit_start_fl = Column(Boolean, doc="Pitcher started game")
+    resp_pit_start_fl = Column(Boolean, doc="Result-charged pitcher started game")
+    run1_fld_cd = Column(SmallInteger, doc="Defensive position code of runner on first")
+    run1_lineup_cd = Column(SmallInteger, doc="Lineup position of runner on first")
+    run1_origin_event_id = Column(SmallInteger, doc="Event number on which runner on first reached base")
+    run2_fld_cd = Column(SmallInteger, doc="Defensive position code of runner on second")
+    run2_lineup_cd = Column(SmallInteger, doc="Lineup position of runner on second")
+    run2_origin_event_id = Column(SmallInteger, doc="Event number on which runner on second reached base")
+    run3_fld_cd = Column(SmallInteger, doc="Defensive position code of runner on third")
+    run3_lineup_cd = Column(SmallInteger, doc="Lineup position of runner on third")
+    run3_origin_event_id = Column(SmallInteger, doc="Event number on which runner on third reached base")
+    run1_resp_cat_id = Column(CHAR(8), doc="ID of responsible catcher for runner on first")
+    run2_resp_cat_id = Column(CHAR(8), doc="ID of responsible catcher for runner on second")
+    run3_resp_cat_id = Column(CHAR(8), doc="ID of responsible catcher for runner on third")
+    pa_ball_ct = Column(SmallInteger, doc="Number of balls in plate appearance")
+    pa_called_ball_ct = Column(SmallInteger, doc="Number of called balls in plate appearance")
+    pa_intent_ball_ct = Column(SmallInteger, doc="Number of intentional balls in plate appearance")
+    pa_pitchout_ball_ct = Column(SmallInteger, doc="Number of pitchouts in plate appearance")
+    pa_hitbatter_ball_ct = Column(SmallInteger, doc="Number of pitches hitting batter in plate appearance")
+    pa_other_ball_ct = Column(SmallInteger, doc="Number of other balls in plate appearance")
+    pa_strike_ct = Column(SmallInteger, doc="Number of strikes in plate appearance")
+    pa_called_strike_ct = Column(SmallInteger, doc="Number of called strikes in plate appearance")
+    pa_swingmiss_strike_ct = Column(SmallInteger, doc="Number of swing-and-miss strikes in plate appearance")
+    pa_foul_strike_ct = Column(SmallInteger, doc="Number of foul balls in plate appearance")
+    pa_inplay_strike_ct = Column(SmallInteger, doc="Number of balls in play in plate appearance")
+    pa_other_strike_ct = Column(SmallInteger, doc="Number of other strikes in plate appearance")
+    event_runs_ct = Column(SmallInteger, doc="Number of runs on play")
+    fld_id = Column(CHAR(8), doc="ID of player fielding batted ball")
+    base2_force_fl = Column(Boolean, doc="Event has force play at second")
+    base3_force_fl = Column(Boolean, doc="Event has force play at third")
+    base4_force_fl = Column(Boolean, doc="Event has force play at home")
+    bat_safe_err_fl = Column(Boolean, doc="Event has batter safe on an error")
+    bat_fate_id = Column(SmallInteger, doc="Ultimate fate of batter (see `dest_id` cols for code meaning")
+    run1_fate_id = Column(SmallInteger, doc="Ultimate fate of runner on first (see `dest_id` cols for code meaning")
+    run2_fate_id = Column(SmallInteger, doc="Ultimate fate of runner on second (see `dest_id` cols for code meaning")
+    run3_fate_id = Column(SmallInteger, doc="Ultimate fate of runner on third (see `dest_id` cols for code meaning")
+    fate_runs_ct = Column(SmallInteger, doc="Additional runs scored in half inning after this event")
+    ass6_fld_cd = Column(SmallInteger, doc="Position code of fielder with sixth assist")
+    ass7_fld_cd = Column(SmallInteger, doc="Position code of fielder with seventh assist")
+    ass8_fld_cd = Column(SmallInteger, doc="Position code of fielder with eighth assist")
+    ass9_fld_cd = Column(SmallInteger, doc="Position code of fielder with ninth assist")
+    ass10_fld_cd = Column(SmallInteger, doc="Position code of fielder with tenth assist")
+    unknown_out_exc_fl = Column(Boolean, doc="Unknown fielding credit flag")
+    uncertain_play_exc_fl = Column(Boolean, doc="Uncertain play flag")
