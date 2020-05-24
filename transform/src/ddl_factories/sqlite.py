@@ -49,7 +49,7 @@ class SqliteDdlFactory(TargetDdlFactory):
                 col_name = col.name
                 null_case = f"{col_name}=NULLIF({col_name}, '')"
                 set_statements.append(null_case)
-                if isinstance(col.type, Boolean):
+                if isinstance(col.type, SmallInteger):
                     bool_case = f"{col_name}=CASE {col_name} WHEN 'T' THEN 1 WHEN 'F' THEN 0 ELSE {col_name} END"
                     set_statements.append(bool_case)
             set_statement = ",\n".join(set_statements) + ";"
