@@ -1,9 +1,11 @@
-import fileinput
 import re
 import subprocess
 import sys
+from functools import lru_cache
 from pathlib import Path
-from typing import Callable
+
+import fileinput
+from typing import Callable, Set
 
 from parsers.util import compress, OUTPUT_PATH
 
@@ -25,10 +27,79 @@ PARSE_FUNCS = {
 }
 
 
+def _pbp_game_ids(pattern) -> Set[str]:
+    print(f"Searching for game ids under pattern {pattern}...")
+    ids = set()
+    files = RETROSHEET_PATH.glob(pattern)
+    with fileinput.input(files) as fin:
+        for line in fin:
+            if line.startswith("id,"):
+                ids.add(line.split(",")[1])
+    print(f"Found {len(ids)} games under pattern {pattern}")
+    return ids
+
+
+@lru_cache(maxsize=1)
+def event_game_ids() -> Set[str]:
+    return _pbp_game_ids("**/*.EV*")
+
+
+@lru_cache(maxsize=1)
+def deduced_game_ids() -> Set[str]:
+    deduced_games = _pbp_game_ids("**/*.ED*")
+    dupes = deduced_games & event_game_ids()
+    if dupes:
+        raise ValueError(f"Deduced games already appear in non-deduced files: {dupes}")
+    return deduced_games
+
+
+@lru_cache(maxsize=1)
+def all_pbp_game_ids() -> Set[str]:
+    return event_game_ids() | deduced_game_ids()
+
+
+def remove_redundant_box_score_files() -> None:
+    pbp_ids = all_pbp_game_ids()
+    # Un-lazify the generator to prevent it picking up new file
+    boxfiles = list(RETROSHEET_PATH.glob("**/*.EB*"))
+    for boxfile in sorted(boxfiles):
+        temp_path = boxfile.with_suffix(".tmp")
+        keep = True
+        removed_all = True
+        removed = 0
+        print(f"Searching {boxfile} for box scores already existing in PBP accounts...")
+        with open(boxfile, "r") as f_in, open(temp_path, "w") as f_out:
+            for line in f_in:
+                if line.startswith("id,"):
+                    game_id = line.split(",")[1]
+                    if game_id in pbp_ids:
+                        removed += 1
+                        keep = False
+                    else:
+                        keep = True
+                if keep:
+                    removed_all = False
+                    f_out.write(line)
+        print(f"Removing {removed} accounts from {boxfile}")
+        boxfile.unlink()
+        if removed_all:
+            print(f"Removed all accounts, not rewriting {boxfile}")
+            temp_path.unlink()
+        else:
+            temp_path.rename(boxfile)
+
+
 class RetrosheetParser:
     """
     Class for running Retrosheet extract. Mostly in a class for testing convenience.
     """
+
+    @staticmethod
+    def write_deduced_gamelist():
+        tmpfile = OUTPUT_PATH / "deduced_game.csv"
+        tmpfile.write_text("\n".join(sorted(all_pbp_game_ids())) + "\n")
+        print("Writing list of deduced PBP game IDs...")
+        compress(tmpfile, OUTPUT_PATH)
 
     @staticmethod
     def parse_code_tables() -> None:
@@ -102,7 +173,7 @@ class RetrosheetParser:
             compress(output_file, OUTPUT_PATH)
 
         def drop_boxscore_files() -> None:
-            for f in RETROSHEET_PATH.rglob("*.EB*"):
+            for f in RETROSHEET_PATH.glob("**/*.EB*"):
                 f.unlink()
 
         def find_malformed_comments(file: Path) -> None:
@@ -119,14 +190,16 @@ class RetrosheetParser:
             file.unlink()
             new_output_file.rename(file)
 
-        parse_events("sub")
+        remove_redundant_box_score_files()
         parse_events("daily")
         drop_boxscore_files()
+        parse_events("sub")
         parse_events("comment", clean_func=find_malformed_comments)
         parse_events("game")
         parse_events("event")
 
     def run(self, use_parallel=True):
+        self.write_deduced_gamelist()
         self.parse_code_tables()
         self.parse_simple_files()
         self.parse_event_types(use_parallel=use_parallel)
