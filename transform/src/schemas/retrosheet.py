@@ -986,3 +986,14 @@ class CodeWindDirectionPark(Base):
 
     code = Column(SmallInteger, primary_key=True, autoincrement=False)
     description = Column(String(30))
+
+
+class DeducedGame(Base):
+    """
+    One-column table that contains a list of all game IDs for which the PBP account was
+    deduced from newspaper accounts of the game. The table can be used to filter out those games
+    from the event file if desired, or to create a flag variable when performing analysis.
+    """
+    __tablename__ = 'deduced_game'
+
+    game_id = Column(CHAR(12), primary_key=True, doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")

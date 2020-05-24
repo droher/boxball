@@ -42,8 +42,6 @@ FROM ${BASEBALLDATABANK_IMAGE} as get-baseballdatabank
 
 FROM build-common as extract-retrosheet
 ARG CHADWICK_VERSION
-COPY code_tables/ /code_tables
-COPY parsers/ /parsers
 # Download and install Chadwick
 RUN wget https://github.com/chadwickbureau/chadwick/archive/${CHADWICK_VERSION}.zip -O chadwick.zip && \
     unzip chadwick.zip && \
@@ -58,14 +56,16 @@ COPY --from=get-retrosheet retrosheet.zip .
 RUN unzip retrosheet.zip && \
     mv retrosheet-* retrosheet
 # Assemble parsed Retrosheet files
+COPY code_tables/ /code_tables
+COPY parsers/ /parsers
 RUN python -u /parsers/retrosheet.py
 
 FROM build-common as extract-baseballdatabank
 ARG BASEBALLDATABANK_VERSION
-COPY parsers/ /parsers
 COPY --from=get-baseballdatabank baseballdatabank.zip .
 RUN unzip baseballdatabank.zip && \
     mv baseballdatabank-* baseballdatabank
+COPY parsers/ /parsers
 # Assemble parsed Baseball Databank files
 RUN python -u /parsers/baseballdatabank.py
 
