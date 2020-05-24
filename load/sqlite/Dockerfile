@@ -12,7 +12,7 @@ COPY --from=csv /transform/csv /data
 RUN echo "Decompressing fies..." && \
     for f in /data/**/*.csv.zst; do zstd --rm -d ${f}; done && \
     echo "Building db..." && \
-    < sqlite.sql sqlite3 -bail boxball.db && \
+    < sqlite.sql sqlite3 -bail -echo boxball.db && \
     rm -rf /data && \
     zstd --rm boxball.db
 

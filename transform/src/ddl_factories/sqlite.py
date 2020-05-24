@@ -33,8 +33,6 @@ class SqliteDdlFactory(TargetDdlFactory):
 
     def make_copy_ddl(self, metadata: MetaData) -> DdlString:
         copy_ddl_template = ".import {csv_file} {table_name}"
-        null_template = "UPDATE {table_name} SET {col_name}=NULL WHERE {col_name}='';"
-        bool_template = "UPDATE {table_name} SET {col_name}={bool_int} WHERE {col_name} = '{bool_str}';"
         ddl = [".mode csv"]
         for table_obj in metadata.tables.values():
             table_name: str = table_obj.fullname
@@ -45,11 +43,15 @@ class SqliteDdlFactory(TargetDdlFactory):
             copy_ddl = copy_ddl_template.format(table_name=table_name, csv_file=csv_file)
             ddl.append(copy_ddl)
 
+            ddl.append(f"UPDATE {table_name} SET")
+            set_statements = []
             for col in table_obj.columns.values():
                 col_name = col.name
-                base_kwargs = dict(table_name=table_name, col_name=col_name)
-                ddl.append(null_template.format(**base_kwargs))
+                null_case = f"{col_name}=NULLIF({col_name}, '')"
+                set_statements.append(null_case)
                 if isinstance(col.type, Boolean):
-                    ddl.append(bool_template.format(bool_int=1, bool_str="T", **base_kwargs))
-                    ddl.append(bool_template.format(bool_int=0, bool_str="F", **base_kwargs))
+                    bool_case = f"{col_name}=CASE {col_name} WHEN 'T' THEN 1 WHEN 'F' THEN 0 ELSE {col_name} END"
+                    set_statements.append(bool_case)
+            set_statement = ",\n".join(set_statements) + ";"
+            ddl.append(set_statement)
         return "\n".join(ddl)
