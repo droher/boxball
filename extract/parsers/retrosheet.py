@@ -1,12 +1,10 @@
-import itertools
-from functools import lru_cache
-from io import TextIOWrapper, StringIO
-
-import fileinput
 import re
 import subprocess
 import sys
+from functools import lru_cache
 from pathlib import Path
+
+import fileinput
 from typing import Callable, Set
 
 from parsers.util import compress, OUTPUT_PATH
@@ -40,9 +38,11 @@ def _pbp_game_ids(pattern) -> Set[str]:
     print(f"Found {len(ids)} games under pattern {pattern}")
     return ids
 
+
 @lru_cache(maxsize=1)
 def event_game_ids() -> Set[str]:
     return _pbp_game_ids("**/*.EV*")
+
 
 @lru_cache(maxsize=1)
 def deduced_game_ids() -> Set[str]:
@@ -51,6 +51,7 @@ def deduced_game_ids() -> Set[str]:
     if dupes:
         raise ValueError(f"Deduced games already appear in non-deduced files: {dupes}")
     return deduced_games
+
 
 @lru_cache(maxsize=1)
 def all_pbp_game_ids() -> Set[str]:
@@ -86,6 +87,7 @@ def remove_redundant_box_score_files() -> None:
             temp_path.unlink()
         else:
             temp_path.rename(boxfile)
+
 
 class RetrosheetParser:
     """
