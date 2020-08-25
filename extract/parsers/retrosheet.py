@@ -34,7 +34,7 @@ def _pbp_game_ids(pattern) -> Set[str]:
     with fileinput.input(files) as fin:
         for line in fin:
             if line.startswith("id,"):
-                ids.add(line.split(",")[1])
+                ids.add(line.split(",")[1].strip())
     print(f"Found {len(ids)} games under pattern {pattern}")
     return ids
 
@@ -97,7 +97,7 @@ class RetrosheetParser:
     @staticmethod
     def write_deduced_gamelist():
         tmpfile = OUTPUT_PATH / "deduced_game.csv"
-        tmpfile.write_text("\n".join(sorted(all_pbp_game_ids())) + "\n")
+        tmpfile.write_text("\n".join(sorted(deduced_game_ids())) + "\n")
         print("Writing list of deduced PBP game IDs...")
         compress(tmpfile, OUTPUT_PATH)
 
