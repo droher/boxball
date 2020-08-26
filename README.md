@@ -150,7 +150,7 @@ Coming soon
 ## Acknowledgements
 Ted Turocy's [Chadwick Bureau](http://chadwick-bureau.com/) developed the tools and repos that made this project possible. I am also grateful to [Sean
 Lahman](http://www.seanlahman.com/) for creating his database, which I have been using for over 15 years. I was able
-to develop and host this project for free thanks to the generous open-source plans of CircleCI, Github, and Docker Hub.
+to develop and host this project for free thanks to the generous open-source plans of [Jetbrains](https://www.jetbrains.com/?from=boxball), CircleCI, Github, and Docker Hub.
 
 Retrosheet represents the collective effort of thousands of baseball fans over 150 years of scorekeeping and data entry.
 I hope Boxball facilitates more historical research to continue this tradition.
