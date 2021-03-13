@@ -4,6 +4,7 @@ from typing import Dict, Type, Iterator, List, Tuple
 
 import pandas as pd
 import pyarrow as pa
+import pyarrow.csv as pcsv
 from pandas.io.parsers import TextFileReader
 from pyarrow import parquet as pq
 from sqlalchemy import MetaData as AlchemyMetadata, Table as AlchemyTable
@@ -51,8 +52,8 @@ sql_type_lookup: Dict[Type[TypeEngine], Types] = {
     Text: Types('str'),
     Boolean: Types('bool'),
     # Some Parquet targets can't handle Parquet dates, so we need to parse and pass timestamps
-    Date: Types('str', 'timestamp[ms]'),
-    DateTime: Types('str', 'timestamp[ms]')
+    Date: Types('timestamp[ms]'),
+    DateTime: Types('timestamp[ms]')
 }
 
 
@@ -124,14 +125,25 @@ def write_files(metadata: AlchemyMetadata) -> None:
         in_buf = pa.OSFile(str(extract_file), mode="r")
         reader = pa.CompressedInputStream(in_buf, compression="zstd")
 
-        # Have to use snappy codec for Parquet because Drill doesn't read zstd
-        parquet_writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='snappy',
+        parquet_writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='zstd',
                                           version="2.0", use_dictionary=True)
-        df_iterator: TextFileReader = pd.read_csv(reader, header=None, names=column_names, dtype=dict(pandas_fields),
-                                                  true_values=map_to_bytes('T'), false_values=map_to_bytes('F'),
-                                                  chunksize=BUFFER_SIZE_ROWS, parse_dates=date_cols)
+        read_options = pcsv.ReadOptions(column_names=column_names)
+        parse_options = pcsv.ParseOptions()
+        convert_options = pcsv.ConvertOptions(column_types=arrow_schema, timestamp_parsers=["%Y%m%d", "%Y-%m-%d"],
+                                              true_values=["1", "T"], false_values=["0", "F"], strings_can_be_null=True)
 
-        chunked_write(df_iterator, parquet_writer, date_cols)
+        while True:
+            chunk = reader.read(100000)
+            if not chunk:
+                break
+            try:
+                table: pa.Table = pcsv.read_csv(pa.BufferReader(chunk), read_options=read_options, parse_options=parse_options,
+                                                convert_options=convert_options)
+            except Exception:
+                print(chunk[:1000].decode("utf-8"))
+                raise
+
+            parquet_writer.write_table(table)
 
 
 if __name__ == "__main__":
