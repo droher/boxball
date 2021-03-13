@@ -35,6 +35,13 @@ class Comment(Base):
     game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
     event_id = Column(SmallInteger, doc="Commented event number")
     comment = Column(String(1638), doc="Comment text")
+    ejected_person_id = Column(String(256), doc="ID of ejected person")
+    ejected_person_role_cd = Column(String(256))
+    eject_umpire_id = Column(String(256), doc="ID of umpire who ejected person")
+    eject_reason = Column(String(1639))
+    umpchange_inning = Column(String(256))
+    umpchange_position = Column(String(256))
+    umpchange_person_id = Column(String(256), doc="ID of new umpire")
     dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
@@ -216,11 +223,11 @@ class Game(Base):
     park_id = Column(String(5), doc="Park ID")
     away_start_pit_id = Column(CHAR(8), doc="Away team starting pitcher ID")
     home_start_pit_id = Column(CHAR(8), doc="Home team starting pitcher ID")
-    # 9 rather than 8 to protect against "(unknown)"
-    base4_ump_id = Column(String(9), doc="Home plate umpire ID")
-    base1_ump_id = Column(String(9), doc="First base umpire ID")
-    base2_ump_id = Column(String(9), doc="Second base umpire ID")
-    base3_ump_id = Column(String(9), doc="Third base umpire ID")
+    # 32 rather than 8 to protect against "(unknown)" and names where there should be IDs
+    base4_ump_id = Column(String(32), doc="Home plate umpire ID")
+    base1_ump_id = Column(String(32), doc="First base umpire ID")
+    base2_ump_id = Column(String(32), doc="Second base umpire ID")
+    base3_ump_id = Column(String(32), doc="Third base umpire ID")
     lf_ump_id = Column(CHAR(8), doc="Left field umpire ID")
     rf_ump_id = Column(CHAR(8), doc="Right field umpire ID")
     attend_park_ct = Column(Integer, doc="Attendance")

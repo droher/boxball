@@ -1,11 +1,8 @@
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Type, Iterator, List, Tuple
 
-import pandas as pd
 import pyarrow as pa
-import pyarrow.csv as pcsv
-from pandas.io.parsers import TextFileReader
+from pyarrow import csv as pcsv
 from pyarrow import parquet as pq
 from sqlalchemy import MetaData as AlchemyMetadata, Table as AlchemyTable
 from sqlalchemy import Integer, SmallInteger, Float, String, CHAR, Text, Boolean, Date, DateTime
@@ -16,84 +13,28 @@ from src import EXTRACT_PATH_PREFIX, TRANSFORM_PATH_PREFIX
 
 PARQUET_PREFIX = TRANSFORM_PATH_PREFIX.joinpath("parquet")
 CSV_PREFIX = TRANSFORM_PATH_PREFIX.joinpath("csv")
-# How many rows in each CSV chunk to bring into memory.
+# How many bytes in each CSV chunk to bring into memory.
 # Larger sizes result in better compression and slightly faster time,
 # but don't want to risk OOM issues on small build boxes.
-# 300K keeps us around 1GB peak execution memory
-BUFFER_SIZE_ROWS = 300000
+BUFFER_SIZE_BYTES = 1000000000
 
-
-@dataclass
-class Types:
-    """
-    Quick way to handle that Pandas and Arrow have different types sometimes.
-    Also an excuse to write my first dataclass.
-    """
-    pandas_type: str
-    arrow_type: str = None
-
-    @property
-    def pd(self) -> str:
-        return self.pandas_type
-
-    @property
-    def pa(self) -> str:
-        return self.arrow_type or self.pandas_type
-
-
-sql_type_lookup: Dict[Type[TypeEngine], Types] = {
-    # Pandas doesn't accept null integers, so we have to treat them as floats. Fortunately Arrow has no issue
-    # with either null ints or casting Pandas floats to ints.
-    Integer: Types('float32', 'int32'),
-    SmallInteger: Types('float32', 'int16'),
-    Float: Types('float64'),
-    String: Types('str'),
-    CHAR: Types('str'),
-    Text: Types('str'),
-    Boolean: Types('bool'),
+sql_type_lookup: Dict[Type[TypeEngine], str] = {
+    Integer: 'int32',
+    SmallInteger: 'int16',
+    Float: 'float64',
+    String: 'str',
+    CHAR: 'str',
+    Text: 'str',
+    Boolean: 'bool',
     # Some Parquet targets can't handle Parquet dates, so we need to parse and pass timestamps
-    Date: Types('timestamp[ms]'),
-    DateTime: Types('timestamp[ms]')
+    Date: 'timestamp[ms]',
+    DateTime: 'timestamp[ms]'
 }
 
 
-def get_fields(table: AlchemyTable) -> List[Tuple[str, Types]]:
+def get_fields(table: AlchemyTable) -> List[Tuple[str, str]]:
     cols = [(c.name, c.type) for c in table.columns.values() if c.autoincrement is not True]
     return [(name, sql_type_lookup[type(dtype)]) for name, dtype in cols]
-
-
-def get_pandas_fields(table: AlchemyTable) -> List[Tuple[str, str]]:
-    return [(name, dtype.pd) for name, dtype in get_fields(table)]
-
-
-def get_arrow_fields(table: AlchemyTable) -> List[Tuple[str, str]]:
-    return [(name, dtype.pa) for name, dtype in get_fields(table)]
-
-
-def map_to_bytes(*strs: str) -> List[bytes]:
-    """
-    Helper for weird read_csv parameter that makes you encode the string in bytes first
-    """
-    return [bytes(s, encoding="utf-8") for s in strs]
-
-
-def chunked_write(df_iterator: TextFileReader, parquet_writer: pq.ParquetWriter, date_cols: List[str]):
-    """
-    Writes  Parquet version of the chunked dataframe input.
-
-    Arrow table creation and Parquet-writes take up around 25% of the time on this function.
-    The CSV read takes around 75%.
-    """
-    rows_processed = 0
-    for df in df_iterator:
-        rows_processed += min(BUFFER_SIZE_ROWS, len(df))
-        for col_name in date_cols:
-            df[col_name] = pd.to_datetime(df[col_name], unit="ms")
-        pa_table = pa.Table.from_pandas(df=df, schema=parquet_writer.schema)
-        parquet_writer.write_table(pa_table)
-
-        print("Rows processed: {}".format(rows_processed), end="\r", flush=True)
-    print()
 
 
 def write_files(metadata: AlchemyMetadata) -> None:
@@ -113,37 +54,22 @@ def write_files(metadata: AlchemyMetadata) -> None:
         extract_file = get_path(EXTRACT_PATH_PREFIX, ".csv.zst")
         parquet_file = get_path(PARQUET_PREFIX, ".parquet")
 
-        pandas_fields = get_pandas_fields(table)
-        arrow_fields = get_arrow_fields(table)
-        arrow_schema = pa.schema(get_arrow_fields(table))
-        column_names = [name for name, dtype in pandas_fields]
-        date_cols = [name for name, dtype in arrow_fields if "timestamp" in dtype]
+        arrow_schema = pa.schema(get_fields(table))
+        column_names = [name for name, dtype in get_fields(table)]
 
-        # Using both Arrow and Pandas allows each library to cover the other's current shortcomings.
-        # Pandas's read_csv can handle chunked/complex reads, while Arrow's WriteParquet can handle chunked writes.
-        # Arrow's input streams are capable of handling zstd files, which Pandas hasn't implemented yet.
-        in_buf = pa.OSFile(str(extract_file), mode="r")
-        reader = pa.CompressedInputStream(in_buf, compression="zstd")
-
-        parquet_writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='zstd',
-                                          version="2.0", use_dictionary=True)
-        read_options = pcsv.ReadOptions(column_names=column_names)
-        parse_options = pcsv.ParseOptions()
+        read_options = pcsv.ReadOptions(column_names=column_names, block_size=1000000000)
+        parse_options = pcsv.ParseOptions(newlines_in_values=True)
         convert_options = pcsv.ConvertOptions(column_types=arrow_schema, timestamp_parsers=["%Y%m%d", "%Y-%m-%d"],
                                               true_values=["1", "T"], false_values=["0", "F"], strings_can_be_null=True)
 
-        while True:
-            chunk = reader.read(100000)
-            if not chunk:
-                break
-            try:
-                table: pa.Table = pcsv.read_csv(pa.BufferReader(chunk), read_options=read_options, parse_options=parse_options,
-                                                convert_options=convert_options)
-            except Exception:
-                print(chunk[:1000].decode("utf-8"))
-                raise
-
+        parquet_writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='zstd',
+                                          version="2.0", use_dictionary=True)
+        stream_reader = pcsv.open_csv(extract_file, read_options=read_options, parse_options=parse_options,
+                                      convert_options=convert_options)
+        for batch in stream_reader:
+            table = pa.Table.from_batches([batch])
             parquet_writer.write_table(table)
+        parquet_writer.close()
 
 
 if __name__ == "__main__":
