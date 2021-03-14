@@ -2,8 +2,6 @@ ARG VERSION
 FROM doublewick/boxball:ddl-${VERSION} as ddl
 FROM doublewick/boxball:csv-${VERSION} as csv
 
-ENV POSTGRES_PASSWORD="N/A"
-
 FROM postgres:13.2
 RUN apt-get update && apt-get install -y --no-install-recommends zstd && \
     apt-get clean && \
