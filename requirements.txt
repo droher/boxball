@@ -1,10 +1,9 @@
-pyhumps==1.2.2
-zstandard==0.11.0
-SQLAlchemy==1.3.3
+pyhumps==1.6.1
+zstandard==0.15.2
+SQLAlchemy==1.3.23
 sqlalchemy-fdw==0.3.0
-clickhouse-sqlalchemy==0.0.10
-pandas==0.24.2
-pyarrow==0.13.0
-pytest==4.6.2
-pytest-cov==2.7.1
+clickhouse-sqlalchemy==0.1.5
+pyarrow==3.0.0
+pytest==6.2.2
+pytest-cov==2.11.1
 codacy-coverage==1.3.11

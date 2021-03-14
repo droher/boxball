@@ -29,7 +29,7 @@ COPY fixtures/raw/retrosheet.zip .
 
 FROM build-common as get-baseballdatabank-prod
 ARG BASEBALLDATABANK_VERSION
-RUN wget https://github.com/chadwickbureau/baseballdatabank/archive/${BASEBALLDATABANK_VERSION}.zip -O baseballdatabank.zip
+RUN wget https://github.com/droher/baseballdatabank/archive/${BASEBALLDATABANK_VERSION}.zip -O baseballdatabank.zip
 
 FROM build-common as get-baseballdatabank-test
 COPY fixtures/raw/baseballdatabank.zip .

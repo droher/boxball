@@ -1,7 +1,7 @@
 import logging
 from pathlib import Path
 
-import zstd
+import zstandard as zstd
 
 
 OUTPUT_PATH = Path("parsed")

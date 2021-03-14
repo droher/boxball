@@ -21,8 +21,8 @@
 ## Introduction
 **Boxball** creates prepopulated databases of the two most significant open source baseball datasets:
 [Retrosheet](http://retrosheet.org) and the [Baseball Databank](https://github.com/chadwickbureau/baseballdatabank).
-Retrosheet contains information on every major-league pitch since 2000, every play since 1937,
-every box score since 1906, and every game since 1871.
+Retrosheet contains information on every major-league pitch since 2000, every play since 1928,
+every box score since 1901, and every game since 1871.
 The Databank (based on the [Lahman Database](http://www.seanlahman.com/baseball-archive/statistics/)) contains yearly
 summaries for every player and team in history. In addition to the data and databases themselves, Boxball relies on the following tools:
 *   [Docker](https://docs.docker.com/engine/docker-overview/) for repeatable builds and easy distribution
@@ -53,9 +53,10 @@ This distribution uses the [cstore_fdw](https://github.com/citusdata/cstore_fdw)
 into a column-oriented database. This means that you get the rich featureset of Postgres,
 but with a huge improvement in speed and disk usage. To install and run the database server:
 
-`docker run --name postgres-cstore-fdw -d -p 5433:5432 -v ~/boxball/postgres-cstore-fdw:/var/lib/postgresql/data doublewick/boxball:postgres-cstore-fdw-latest`
+`docker run --name postgres-cstore-fdw -d -p 5433:5432 -e POSTGRES_PASSWORD="postgres" -v ~/boxball/postgres-cstore-fdw:/var/lib/postgresql/data doublewick/boxball:postgres-cstore-fdw-latest`
 
-Roughly an hour after the image is downloaded, the data will be fully loaded into the database, and you can connect to it as the user `postgres` on port `5433`
+Roughly an hour after the image is downloaded, the data will be fully loaded into the database, and you can connect to it as the user `postgres`
+with password `postgres` on port `5433`
 (either using the `psql` command line tool or a database client of your choice). The data will be persisted on your machine in
 `~/boxball/postgres-cstore-fdw` (~1.5GB), which means you can stop/remove the container without having to reload the data
 when you turn it back on.
@@ -84,20 +85,16 @@ Data will be immediately available to query after the image is downloaded. Use p
 You may also attach the container and query from the command line.
 The data will be persisted on your machine in `~/boxball/drill` (~700MB).
 
-#### Spark
-
-Coming soon
-
 ### Traditional (Row-oriented) Databases
 Note: these frameworks are likely to be prohibitively slow when querying play-by-play data, and they take up significantly
 more disk space than their columnar counterparts.
 #### Postgres
 Similar configuration to the cstore_fdw extended version above, but stored in the conventional way.
 
-`docker run --name postgres -d -p 5432:5432 -v ~/boxball/postgres:/var/lib/postgresql/data doublewick/boxball:postgres-latest`
+`docker run --name postgres -d -p 5432:5432 -e POSTGRES_PASSWORD="postgres" -v ~/boxball/postgres:/var/lib/postgresql/data doublewick/boxball:postgres-latest`
 
 Roughly 90 minutes after the image is downloaded, the data will be fully loaded into the database,
-and you can connect to it on port `5432` as the user `postgres`
+and you can connect to it as the user `postgres` with password `postgres` on port `5433`
 (either using the `psql` command line tool or a database client of your choice). The data will be persisted on your machine in
 `~/boxball/postgres` (~12GB), which means you can stop/remove the container without having to reload the data
 when you turn it back on.
@@ -130,22 +127,6 @@ and many other frameworks.
 #### CSV
 The original CSVs from the extract step (each CSV file is compressed in the ZSTD format).
 [OneDrive](https://1drv.ms/u/s!AtpEocFNRNBWhDLuZqcmXYOIieKQ?e=xP4Azs)
-
-### Interactive Data Exploration
-
-#### Superset
-Coming soon
-
-### Programming Framework Environments
-
-#### RStudio Server
-Coming soon
-
-#### Jupyter/Anaconda
-Coming soon
-
-#### Julia
-Coming soon
 
 ## Acknowledgements
 Ted Turocy's [Chadwick Bureau](http://chadwick-bureau.com/) developed the tools and repos that made this project possible. I am also grateful to [Sean
