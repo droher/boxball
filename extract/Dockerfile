@@ -2,7 +2,7 @@ ARG BUILD_ENV
 ARG RETROSHEET_IMAGE=get-retrosheet-${BUILD_ENV}
 ARG BASEBALLDATABANK_IMAGE=get-baseballdatabank-${BUILD_ENV}
 
-FROM python:3.7.3-alpine3.9 AS build-common
+FROM python:3.10.4-alpine3.15 AS build-common
 RUN apk add --no-cache \
     parallel \
     libtool \
@@ -29,7 +29,7 @@ COPY fixtures/raw/retrosheet.zip .
 
 FROM build-common as get-baseballdatabank-prod
 ARG BASEBALLDATABANK_VERSION
-RUN wget https://github.com/droher/baseballdatabank/archive/${BASEBALLDATABANK_VERSION}.zip -O baseballdatabank.zip
+RUN wget https://github.com/chadwickbureau/baseballdatabank/archive/${BASEBALLDATABANK_VERSION}.zip -O baseballdatabank.zip
 
 FROM build-common as get-baseballdatabank-test
 COPY fixtures/raw/baseballdatabank.zip .

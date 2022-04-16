@@ -2,7 +2,7 @@ ARG VERSION
 FROM doublewick/boxball:ddl-${VERSION} as ddl
 FROM doublewick/boxball:csv-${VERSION} as csv
 
-FROM mysql:8.0.23 as mysql-build
+FROM mysql:8.0.28-debian as mysql-build
 ENV MYSQL_ALLOW_EMPTY_PASSWORD=yes
 COPY my.cnf /etc/mysql/conf.d/
 COPY A_unzip_csvs.sh z_remove_csvs.sh /docker-entrypoint-initdb.d/

@@ -863,7 +863,7 @@ class Event(Base):
     base1_run_id = Column(CHAR(8), doc="ID of runner on first")
     base2_run_id = Column(CHAR(8), doc="ID of runner on second")
     base3_run_id = Column(CHAR(8), doc="ID of runner on third")
-    event_tx = Column(String(58), doc="Event text (in scoring shorthand")
+    event_tx = Column(String(128), doc="Event text (in scoring shorthand")
     leadoff_fl = Column(Boolean, doc="Batter is leading off the inning")
     ph_fl = Column(Boolean, doc="Batter is pinch-hitting")
     bat_fld_cd = Column(SmallInteger, doc="Defensive position of batter (10 for DH, 11 for PH, 12 for PR")
