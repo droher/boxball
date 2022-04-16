@@ -5,11 +5,14 @@ import humps
 from parsers.util import compress, OUTPUT_PATH
 
 DOS_EOF = chr(26)
-BASEBALLDATABANK_PATH = Path("baseballdatabank/core")
+BASEBALLDATABANK_PATHS = Path("baseballdatabank/core"), Path("baseballdatabank/contrib")
 
 
 def get_baseballdatabank_files():
-    for file in BASEBALLDATABANK_PATH.glob("*.csv"):
+    files = [f for path in BASEBALLDATABANK_PATHS
+             for f in path.glob("*.csv")]
+    print("Processing Baseball Databank files:", files)
+    for file in files:
         # Just need to change from PascalCase to snake_case to match table names
         # Editing OF fielding files to get PascalCasev conformity for all databank filenames
         file_name = file.name.replace("OFs", "OfS").replace("OF", "Of")
