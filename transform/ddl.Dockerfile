@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bullseye AS build-common
+FROM python:3.11-slim-bullseye AS build-common
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 ENV PYTHONPATH="/"

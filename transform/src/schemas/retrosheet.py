@@ -77,7 +77,8 @@ class Roster(Base):
     bats = Column(CHAR(1), doc="Bat handedness")
     throws = Column(CHAR(1), doc="Throw handedness")
     team_id = Column(CHAR(3), primary_key=True, doc="Team ID")
-    position = Column(String(2), doc="Primary fielding position")
+    # TODO: Remove duplicate roster entry(s)
+    position = Column(String(2), primary_key=True, doc="Primary fielding position")
 
 
 class Schedule(Base):

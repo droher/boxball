@@ -246,9 +246,10 @@ class HallOfFame(Base):
     player_id = Column(String(10), primary_key=True, nullable=False)
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     voted_by = Column(String(64), primary_key=True, nullable=False)
-    ballots = Column(SmallInteger)
-    needed = Column(SmallInteger)
-    votes = Column(SmallInteger)
+    # The 3 below are actually ints but there are some irregular nulls
+    ballots = Column(String(64))
+    needed = Column(String(64))
+    votes = Column(String(64))
     inducted = Column(String(1))
     category = Column(String(20))
     needed_note = Column(String(25))

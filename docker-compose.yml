@@ -42,6 +42,10 @@ x-clickhouse:
   &clickhouse
   build:
     context: load/clickhouse
+    dockerfile: ../Dockerfile
+    target: clickhouse
+    platforms:
+      - "linux/amd64"
     args:
       - VERSION
   image: ${REPO}:clickhouse-${VERSION}
@@ -55,6 +59,10 @@ x-drill:
   &drill
   build:
     context: load/drill
+    dockerfile: ../Dockerfile
+    target: drill
+    platforms:
+      - "linux/amd64"
     args:
       - VERSION
   image: ${REPO}:drill-${VERSION}
@@ -68,6 +76,10 @@ x-postgres:
   &postgres
   build:
     context: load/postgres
+    dockerfile: ../Dockerfile
+    target: postgres
+    platforms:
+      - "linux/amd64"
     args:
       - VERSION
   image: ${REPO}:postgres-${VERSION}
@@ -81,6 +93,10 @@ x-postgres-cstore-fdw:
   &postgres-cstore-fdw
   build:
     context: load/postgres_cstore_fdw
+    dockerfile: ../Dockerfile
+    target: postgres-cstore-fdw
+    platforms:
+      - "linux/amd64"
     args:
       - VERSION
   image: ${REPO}:postgres-cstore-fdw-${VERSION}
@@ -94,6 +110,10 @@ x-mysql:
   &mysql
   build:
     context: load/mysql
+    dockerfile: ../Dockerfile
+    target: mysql
+    platforms:
+      - "linux/amd64"
     args:
       - VERSION
   image: ${REPO}:mysql-${VERSION}
@@ -107,6 +127,10 @@ x-sqlite:
   &sqlite
   build:
     context: load/sqlite
+    dockerfile: ../Dockerfile
+    target: sqlite
+    platforms:
+      - "linux/amd64"
     args:
       - VERSION
   image: ${REPO}:sqlite-${VERSION}

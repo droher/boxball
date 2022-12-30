@@ -16,7 +16,7 @@ CSV_PREFIX = TRANSFORM_PATH_PREFIX.joinpath("csv")
 # How many bytes in each CSV chunk to bring into memory.
 # Larger sizes result in better compression and slightly faster time,
 # but don't want to risk OOM issues on small build boxes.
-BUFFER_SIZE_BYTES = 1000000000
+BUFFER_SIZE_BYTES = 500000000
 
 sql_type_lookup: Dict[Type[TypeEngine], str] = {
     Integer: 'int32',
@@ -57,7 +57,7 @@ def write_files(metadata: AlchemyMetadata) -> None:
         arrow_schema = pa.schema(get_fields(table))
         column_names = [name for name, dtype in get_fields(table)]
 
-        read_options = pcsv.ReadOptions(column_names=column_names, block_size=1000000000)
+        read_options = pcsv.ReadOptions(column_names=column_names, block_size=BUFFER_SIZE_BYTES)
         parse_options = pcsv.ParseOptions(newlines_in_values=True)
         convert_options = pcsv.ConvertOptions(column_types=arrow_schema, timestamp_parsers=["%Y%m%d", "%Y-%m-%d"],
                                               true_values=["1", "T"], false_values=["0", "F"], strings_can_be_null=True)
