@@ -2,7 +2,7 @@ ARG BUILD_ENV
 ARG RETROSHEET_IMAGE=get-retrosheet-${BUILD_ENV}
 ARG BASEBALLDATABANK_IMAGE=get-baseballdatabank-${BUILD_ENV}
 
-FROM python:3.10.4-alpine3.15 AS build-common
+FROM python:3.11-alpine3.17 AS build-common
 RUN apk add --no-cache \
     parallel \
     libtool \
