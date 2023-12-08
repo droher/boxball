@@ -25,7 +25,7 @@ def generate_column_markdown(column):
 
 def generate_table_markdown(model):
     """Generate markdown for a single table."""
-    markdown_lines = [f'<details>\n <summary><font size="+2">{model.__tablename__}</font></summary>\n\n']
+    markdown_lines = [f'<details>\n <summary> <b>{model.__tablename__}</b></summary>\n\n']
     
     # Sort columns so that primary key columns are listed first
     columns = sorted(model.__table__.columns, key=lambda column: not column.primary_key)

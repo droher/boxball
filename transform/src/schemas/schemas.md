@@ -4,49 +4,49 @@ This document contains the schemas for the boxball database.
 Columns with a &#128273; next to the name represent the primary keys of the table, and will always be listed first in a given table.
 ## retrosheet
 <details>
- <summary><font size="+2">code_event</font></summary>
+ <summary> <b>code_event</b></summary>
 
   #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
- <summary><font size="+2">code_field_park</font></summary>
+ <summary> <b>code_field_park</b></summary>
 
   #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
- <summary><font size="+2">code_method_record</font></summary>
+ <summary> <b>code_method_record</b></summary>
 
   #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
- <summary><font size="+2">code_pitches_record</font></summary>
+ <summary> <b>code_pitches_record</b></summary>
 
   #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
- <summary><font size="+2">code_precip_park</font></summary>
+ <summary> <b>code_precip_park</b></summary>
 
   #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
- <summary><font size="+2">code_sky_park</font></summary>
+ <summary> <b>code_sky_park</b></summary>
 
   #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
- <summary><font size="+2">code_wind_direction_park</font></summary>
+ <summary> <b>code_wind_direction_park</b></summary>
 
   #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
- <summary><font size="+2">comment</font></summary>
+ <summary> <b>comment</b></summary>
 
   #### &#128273; dummy_id: integer
   #### game_id: char(12)
@@ -67,7 +67,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
    >ID of new umpire
 </details><br>
 <details>
- <summary><font size="+2">daily</font></summary>
+ <summary> <b>daily</b></summary>
 
   #### &#128273; dummy_id: integer
   #### game_id: char(12)
@@ -380,13 +380,13 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
    >Triple pays turned as right fielder
 </details><br>
 <details>
- <summary><font size="+2">deduced_game</font></summary>
+ <summary> <b>deduced_game</b></summary>
 
   #### &#128273; game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
 </details><br>
 <details>
- <summary><font size="+2">event</font></summary>
+ <summary> <b>event</b></summary>
 
   #### &#128273; game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
@@ -710,7 +710,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
    >Uncertain play flag
 </details><br>
 <details>
- <summary><font size="+2">game</font></summary>
+ <summary> <b>game</b></summary>
 
   #### &#128273; game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
@@ -1072,7 +1072,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
    >Acquisition information
 </details><br>
 <details>
- <summary><font size="+2">gamelog</font></summary>
+ <summary> <b>gamelog</b></summary>
 
   #### &#128273; date: date
    >Game date
@@ -1434,7 +1434,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
    >Y - complete game information, N - no game information, D - game derived from box score and game story, P - portions of game information
 </details><br>
 <details>
- <summary><font size="+2">park</font></summary>
+ <summary> <b>park</b></summary>
 
   #### &#128273; park_id: char(5)
    >Park ID
@@ -1456,7 +1456,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
    >Misc. notes
 </details><br>
 <details>
- <summary><font size="+2">roster</font></summary>
+ <summary> <b>roster</b></summary>
 
   #### &#128273; year: integer
    >Year of roster
@@ -1476,7 +1476,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
    >Throw handedness
 </details><br>
 <details>
- <summary><font size="+2">schedule</font></summary>
+ <summary> <b>schedule</b></summary>
 
   #### &#128273; date: date
    >Scheduled game date
@@ -1520,7 +1520,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
         
 </details><br>
 <details>
- <summary><font size="+2">sub</font></summary>
+ <summary> <b>sub</b></summary>
 
   #### &#128273; dummy_id: integer
   #### game_id: char(12)
@@ -1548,7 +1548,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
 
 ## baseballdatabank
 <details>
- <summary><font size="+2">allstar_full</font></summary>
+ <summary> <b>allstar_full</b></summary>
 
   #### &#128273; dummy_id: integer
   #### player_id: varchar(9)
@@ -1561,7 +1561,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### starting_pos: smallint
 </details><br>
 <details>
- <summary><font size="+2">appearances</font></summary>
+ <summary> <b>appearances</b></summary>
 
   #### &#128273; year_id: smallint
   #### &#128273; team_id: varchar(3)
@@ -1586,7 +1586,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### g_pr: smallint
 </details><br>
 <details>
- <summary><font size="+2">awards_managers</font></summary>
+ <summary> <b>awards_managers</b></summary>
 
   #### &#128273; dummy_id: integer
   #### player_id: varchar(10)
@@ -1597,7 +1597,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### notes: varchar(100)
 </details><br>
 <details>
- <summary><font size="+2">awards_players</font></summary>
+ <summary> <b>awards_players</b></summary>
 
   #### &#128273; dummy_id: integer
   #### player_id: varchar(9)
@@ -1608,7 +1608,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### notes: varchar(100)
 </details><br>
 <details>
- <summary><font size="+2">awards_share_managers</font></summary>
+ <summary> <b>awards_share_managers</b></summary>
 
   #### &#128273; award_id: varchar(25)
   #### &#128273; year_id: integer
@@ -1619,7 +1619,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### votes_first: integer
 </details><br>
 <details>
- <summary><font size="+2">awards_share_players</font></summary>
+ <summary> <b>awards_share_players</b></summary>
 
   #### &#128273; award_id: varchar(25)
   #### &#128273; year_id: smallint
@@ -1630,7 +1630,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### votes_first: float
 </details><br>
 <details>
- <summary><font size="+2">batting</font></summary>
+ <summary> <b>batting</b></summary>
 
   #### &#128273; player_id: varchar(9)
   #### &#128273; year_id: smallint
@@ -1656,7 +1656,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### gidp: smallint
 </details><br>
 <details>
- <summary><font size="+2">batting_post</font></summary>
+ <summary> <b>batting_post</b></summary>
 
   #### &#128273; year_id: smallint
   #### &#128273; round: varchar(10)
@@ -1682,14 +1682,14 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### gidp: smallint
 </details><br>
 <details>
- <summary><font size="+2">college_playing</font></summary>
+ <summary> <b>college_playing</b></summary>
 
   #### &#128273; player_id: varchar(9)
   #### &#128273; school_id: varchar(15)
   #### &#128273; year_id: smallint
 </details><br>
 <details>
- <summary><font size="+2">fielding</font></summary>
+ <summary> <b>fielding</b></summary>
 
   #### &#128273; player_id: varchar(9)
   #### &#128273; year_id: smallint
@@ -1711,7 +1711,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### zr: float
 </details><br>
 <details>
- <summary><font size="+2">fielding_of</font></summary>
+ <summary> <b>fielding_of</b></summary>
 
   #### &#128273; player_id: varchar(9)
   #### &#128273; year_id: smallint
@@ -1721,7 +1721,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### g_rf: smallint
 </details><br>
 <details>
- <summary><font size="+2">fielding_of_split</font></summary>
+ <summary> <b>fielding_of_split</b></summary>
 
   #### &#128273; player_id: varchar(9)
   #### &#128273; year_id: smallint
@@ -1743,7 +1743,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### zr: float
 </details><br>
 <details>
- <summary><font size="+2">fielding_post</font></summary>
+ <summary> <b>fielding_post</b></summary>
 
   #### &#128273; player_id: varchar(9)
   #### &#128273; year_id: smallint
@@ -1764,7 +1764,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### cs: smallint
 </details><br>
 <details>
- <summary><font size="+2">hall_of_fame</font></summary>
+ <summary> <b>hall_of_fame</b></summary>
 
   #### &#128273; player_id: varchar(10)
   #### &#128273; year_id: smallint
@@ -1777,7 +1777,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### needed_note: varchar(25)
 </details><br>
 <details>
- <summary><font size="+2">home_games</font></summary>
+ <summary> <b>home_games</b></summary>
 
   #### &#128273; year_id: smallint
   #### &#128273; lg_id: varchar(2)
@@ -1790,7 +1790,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### attendance: integer
 </details><br>
 <details>
- <summary><font size="+2">managers</font></summary>
+ <summary> <b>managers</b></summary>
 
   #### &#128273; year_id: smallint
   #### &#128273; team_id: varchar(3)
@@ -1804,7 +1804,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### plyr_mgr: varchar(1)
 </details><br>
 <details>
- <summary><font size="+2">managers_half</font></summary>
+ <summary> <b>managers_half</b></summary>
 
   #### &#128273; player_id: varchar(10)
   #### &#128273; year_id: smallint
@@ -1818,7 +1818,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### rank: smallint
 </details><br>
 <details>
- <summary><font size="+2">parks</font></summary>
+ <summary> <b>parks</b></summary>
 
   #### &#128273; park_id: varchar(5)
   #### park_name: varchar(40)
@@ -1828,7 +1828,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### country: varchar(2)
 </details><br>
 <details>
- <summary><font size="+2">people</font></summary>
+ <summary> <b>people</b></summary>
 
   #### &#128273; player_id: varchar(10)
   #### birth_year: smallint
@@ -1856,7 +1856,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### bbref_id: varchar(9)
 </details><br>
 <details>
- <summary><font size="+2">pitching</font></summary>
+ <summary> <b>pitching</b></summary>
 
   #### &#128273; player_id: varchar(9)
   #### &#128273; year_id: smallint
@@ -1890,7 +1890,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### gidp: smallint
 </details><br>
 <details>
- <summary><font size="+2">pitching_post</font></summary>
+ <summary> <b>pitching_post</b></summary>
 
   #### &#128273; player_id: varchar(9)
   #### &#128273; year_id: smallint
@@ -1924,7 +1924,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### gidp: smallint
 </details><br>
 <details>
- <summary><font size="+2">salaries</font></summary>
+ <summary> <b>salaries</b></summary>
 
   #### &#128273; year_id: smallint
   #### &#128273; team_id: varchar(3)
@@ -1933,7 +1933,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### salary: float
 </details><br>
 <details>
- <summary><font size="+2">schools</font></summary>
+ <summary> <b>schools</b></summary>
 
   #### &#128273; school_id: varchar(15)
   #### name_full: varchar(255)
@@ -1942,7 +1942,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### country: varchar(55)
 </details><br>
 <details>
- <summary><font size="+2">series_post</font></summary>
+ <summary> <b>series_post</b></summary>
 
   #### &#128273; year_id: smallint
   #### &#128273; round: varchar(5)
@@ -1955,7 +1955,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### ties: smallint
 </details><br>
 <details>
- <summary><font size="+2">teams</font></summary>
+ <summary> <b>teams</b></summary>
 
   #### &#128273; year_id: smallint
   #### &#128273; lg_id: varchar(2)
@@ -2007,7 +2007,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### team_id_retro: varchar(3)
 </details><br>
 <details>
- <summary><font size="+2">teams_franchises</font></summary>
+ <summary> <b>teams_franchises</b></summary>
 
   #### &#128273; franch_id: varchar(3)
   #### franch_name: varchar(50)
@@ -2015,7 +2015,7 @@ Columns with a &#128273; next to the name represent the primary keys of the tabl
   #### na_assoc: varchar(3)
 </details><br>
 <details>
- <summary><font size="+2">teams_half</font></summary>
+ <summary> <b>teams_half</b></summary>
 
   #### &#128273; year_id: integer
   #### &#128273; lg_id: varchar(2)
