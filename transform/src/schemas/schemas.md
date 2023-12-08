@@ -1,54 +1,54 @@
 # Boxball Schemas
 This document contains the schemas for the boxball database.
 
-Columns whose name are in <span style="color: red;"> red </span> represent the primary keys of the table, and will always be listed first in a given table.
+Columns with a &#128273; next to the name represent the primary keys of the table, and will always be listed first in a given table.
 ## retrosheet
 <details>
  <summary><font size="+2">code_event</font></summary>
 
-  #### <span style="color: red;">code</span>: smallint
+  #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_field_park</font></summary>
 
-  #### <span style="color: red;">code</span>: smallint
+  #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_method_record</font></summary>
 
-  #### <span style="color: red;">code</span>: smallint
+  #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_pitches_record</font></summary>
 
-  #### <span style="color: red;">code</span>: smallint
+  #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_precip_park</font></summary>
 
-  #### <span style="color: red;">code</span>: smallint
+  #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_sky_park</font></summary>
 
-  #### <span style="color: red;">code</span>: smallint
+  #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_wind_direction_park</font></summary>
 
-  #### <span style="color: red;">code</span>: smallint
+  #### &#128273; code: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">comment</font></summary>
 
-  #### <span style="color: red;">dummy_id</span>: integer
+  #### &#128273; dummy_id: integer
   #### game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
   #### event_id: smallint
@@ -69,7 +69,7 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">daily</font></summary>
 
-  #### <span style="color: red;">dummy_id</span>: integer
+  #### &#128273; dummy_id: integer
   #### game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
   #### game_dt: date
@@ -382,15 +382,15 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">deduced_game</font></summary>
 
-  #### <span style="color: red;">game_id</span>: char(12)
+  #### &#128273; game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
 </details><br>
 <details>
  <summary><font size="+2">event</font></summary>
 
-  #### <span style="color: red;">game_id</span>: char(12)
+  #### &#128273; game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
-  #### <span style="color: red;">event_id</span>: integer
+  #### &#128273; event_id: integer
    >Event number of game
   #### away_team_id: char(3)
    >Visiting Team
@@ -712,7 +712,7 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">game</font></summary>
 
-  #### <span style="color: red;">game_id</span>: char(12)
+  #### &#128273; game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
   #### game_dt: date
    >Game date
@@ -1074,9 +1074,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">gamelog</font></summary>
 
-  #### <span style="color: red;">date</span>: date
+  #### &#128273; date: date
    >Game date
-  #### <span style="color: red;">double_header</span>: char(1)
+  #### &#128273; double_header: char(1)
    >
         Number of game:
          "0" -- a single game
@@ -1088,9 +1088,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
          "A" -- the first game of a double-header involving 3 teams
          "B" -- the second game of a double-header involving 3 teams
          
-  #### <span style="color: red;">visiting_team</span>: char(3)
+  #### &#128273; visiting_team: char(3)
    >Visiting team ID
-  #### <span style="color: red;">home_team</span>: char(3)
+  #### &#128273; home_team: char(3)
    >Home team ID
   #### day_of_week: char(3)
    >Day of week (3 char abbreviation)
@@ -1436,7 +1436,7 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">park</font></summary>
 
-  #### <span style="color: red;">park_id</span>: char(5)
+  #### &#128273; park_id: char(5)
    >Park ID
   #### name: varchar(41)
    >Park name
@@ -1458,13 +1458,13 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">roster</font></summary>
 
-  #### <span style="color: red;">year</span>: integer
+  #### &#128273; year: integer
    >Year of roster
-  #### <span style="color: red;">player_id</span>: char(8)
+  #### &#128273; player_id: char(8)
    >Player ID
-  #### <span style="color: red;">team_id</span>: char(3)
+  #### &#128273; team_id: char(3)
    >Team ID
-  #### <span style="color: red;">position</span>: varchar(2)
+  #### &#128273; position: varchar(2)
    >Primary fielding position
   #### last_name: varchar(32)
    >Player last name
@@ -1478,11 +1478,11 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">schedule</font></summary>
 
-  #### <span style="color: red;">date</span>: date
+  #### &#128273; date: date
    >Scheduled game date
-  #### <span style="color: red;">home_team</span>: char(3)
+  #### &#128273; home_team: char(3)
    >Home team ID
-  #### <span style="color: red;">home_team_game_number</span>: integer
+  #### &#128273; home_team_game_number: integer
    >Home team game number
   #### double_header: smallint
    >Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader
@@ -1522,7 +1522,7 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">sub</font></summary>
 
-  #### <span style="color: red;">dummy_id</span>: integer
+  #### &#128273; dummy_id: integer
   #### game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
   #### inn_ct: smallint
@@ -1550,7 +1550,7 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">allstar_full</font></summary>
 
-  #### <span style="color: red;">dummy_id</span>: integer
+  #### &#128273; dummy_id: integer
   #### player_id: varchar(9)
   #### year_id: smallint
   #### game_num: smallint
@@ -1563,9 +1563,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">appearances</font></summary>
 
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">team_id</span>: varchar(3)
-  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### &#128273; year_id: smallint
+  #### &#128273; team_id: varchar(3)
+  #### &#128273; player_id: varchar(9)
   #### lg_id: varchar(2)
   #### g_all: smallint
   #### gs: smallint
@@ -1588,7 +1588,7 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">awards_managers</font></summary>
 
-  #### <span style="color: red;">dummy_id</span>: integer
+  #### &#128273; dummy_id: integer
   #### player_id: varchar(10)
   #### award_id: varchar(75)
   #### year_id: smallint
@@ -1599,7 +1599,7 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">awards_players</font></summary>
 
-  #### <span style="color: red;">dummy_id</span>: integer
+  #### &#128273; dummy_id: integer
   #### player_id: varchar(9)
   #### award_id: varchar(255)
   #### year_id: smallint
@@ -1610,9 +1610,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">awards_share_managers</font></summary>
 
-  #### <span style="color: red;">award_id</span>: varchar(25)
-  #### <span style="color: red;">year_id</span>: integer
-  #### <span style="color: red;">player_id</span>: varchar(10)
+  #### &#128273; award_id: varchar(25)
+  #### &#128273; year_id: integer
+  #### &#128273; player_id: varchar(10)
   #### lg_id: varchar(2)
   #### points_won: integer
   #### points_max: integer
@@ -1621,9 +1621,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">awards_share_players</font></summary>
 
-  #### <span style="color: red;">award_id</span>: varchar(25)
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### &#128273; award_id: varchar(25)
+  #### &#128273; year_id: smallint
+  #### &#128273; player_id: varchar(9)
   #### lg_id: varchar(2)
   #### points_won: float
   #### points_max: integer
@@ -1632,9 +1632,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">batting</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(9)
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">stint</span>: smallint
+  #### &#128273; player_id: varchar(9)
+  #### &#128273; year_id: smallint
+  #### &#128273; stint: smallint
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1658,9 +1658,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">batting_post</font></summary>
 
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">round</span>: varchar(10)
-  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### &#128273; year_id: smallint
+  #### &#128273; round: varchar(10)
+  #### &#128273; player_id: varchar(9)
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1684,17 +1684,17 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">college_playing</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(9)
-  #### <span style="color: red;">school_id</span>: varchar(15)
-  #### <span style="color: red;">year_id</span>: smallint
+  #### &#128273; player_id: varchar(9)
+  #### &#128273; school_id: varchar(15)
+  #### &#128273; year_id: smallint
 </details><br>
 <details>
  <summary><font size="+2">fielding</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(9)
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">stint</span>: smallint
-  #### <span style="color: red;">pos</span>: varchar(2)
+  #### &#128273; player_id: varchar(9)
+  #### &#128273; year_id: smallint
+  #### &#128273; stint: smallint
+  #### &#128273; pos: varchar(2)
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1713,9 +1713,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">fielding_of</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(9)
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">stint</span>: smallint
+  #### &#128273; player_id: varchar(9)
+  #### &#128273; year_id: smallint
+  #### &#128273; stint: smallint
   #### g_lf: smallint
   #### g_cf: smallint
   #### g_rf: smallint
@@ -1723,10 +1723,10 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">fielding_of_split</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(9)
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">stint</span>: smallint
-  #### <span style="color: red;">pos</span>: varchar(2)
+  #### &#128273; player_id: varchar(9)
+  #### &#128273; year_id: smallint
+  #### &#128273; stint: smallint
+  #### &#128273; pos: varchar(2)
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1745,10 +1745,10 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">fielding_post</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(9)
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">round</span>: varchar(10)
-  #### <span style="color: red;">pos</span>: varchar(2)
+  #### &#128273; player_id: varchar(9)
+  #### &#128273; year_id: smallint
+  #### &#128273; round: varchar(10)
+  #### &#128273; pos: varchar(2)
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1766,9 +1766,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">hall_of_fame</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(10)
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">voted_by</span>: varchar(64)
+  #### &#128273; player_id: varchar(10)
+  #### &#128273; year_id: smallint
+  #### &#128273; voted_by: varchar(64)
   #### ballots: varchar(64)
   #### needed: varchar(64)
   #### votes: varchar(64)
@@ -1779,10 +1779,10 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">home_games</font></summary>
 
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">lg_id</span>: varchar(2)
-  #### <span style="color: red;">team_id</span>: varchar(3)
-  #### <span style="color: red;">park_id</span>: varchar(5)
+  #### &#128273; year_id: smallint
+  #### &#128273; lg_id: varchar(2)
+  #### &#128273; team_id: varchar(3)
+  #### &#128273; park_id: varchar(5)
   #### first_game: date
   #### last_game: date
   #### games: smallint
@@ -1792,9 +1792,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">managers</font></summary>
 
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">team_id</span>: varchar(3)
-  #### <span style="color: red;">inseason</span>: smallint
+  #### &#128273; year_id: smallint
+  #### &#128273; team_id: varchar(3)
+  #### &#128273; inseason: smallint
   #### player_id: varchar(10)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1806,10 +1806,10 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">managers_half</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(10)
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">team_id</span>: varchar(3)
-  #### <span style="color: red;">half</span>: smallint
+  #### &#128273; player_id: varchar(10)
+  #### &#128273; year_id: smallint
+  #### &#128273; team_id: varchar(3)
+  #### &#128273; half: smallint
   #### lg_id: varchar(2)
   #### inseason: smallint
   #### g: smallint
@@ -1820,7 +1820,7 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">parks</font></summary>
 
-  #### <span style="color: red;">park_id</span>: varchar(5)
+  #### &#128273; park_id: varchar(5)
   #### park_name: varchar(40)
   #### park_alias: varchar(55)
   #### city: varchar(25)
@@ -1830,7 +1830,7 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">people</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(10)
+  #### &#128273; player_id: varchar(10)
   #### birth_year: smallint
   #### birth_month: smallint
   #### birth_day: smallint
@@ -1858,9 +1858,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">pitching</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(9)
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">stint</span>: smallint
+  #### &#128273; player_id: varchar(9)
+  #### &#128273; year_id: smallint
+  #### &#128273; stint: smallint
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### w: smallint
@@ -1892,9 +1892,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">pitching_post</font></summary>
 
-  #### <span style="color: red;">player_id</span>: varchar(9)
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">round</span>: varchar(10)
+  #### &#128273; player_id: varchar(9)
+  #### &#128273; year_id: smallint
+  #### &#128273; round: varchar(10)
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### w: smallint
@@ -1926,16 +1926,16 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">salaries</font></summary>
 
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">team_id</span>: varchar(3)
-  #### <span style="color: red;">lg_id</span>: varchar(2)
-  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### &#128273; year_id: smallint
+  #### &#128273; team_id: varchar(3)
+  #### &#128273; lg_id: varchar(2)
+  #### &#128273; player_id: varchar(9)
   #### salary: float
 </details><br>
 <details>
  <summary><font size="+2">schools</font></summary>
 
-  #### <span style="color: red;">school_id</span>: varchar(15)
+  #### &#128273; school_id: varchar(15)
   #### name_full: varchar(255)
   #### city: varchar(55)
   #### state: varchar(55)
@@ -1944,8 +1944,8 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">series_post</font></summary>
 
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">round</span>: varchar(5)
+  #### &#128273; year_id: smallint
+  #### &#128273; round: varchar(5)
   #### team_id_winner: varchar(3)
   #### lg_id_winner: varchar(2)
   #### team_id_loser: varchar(3)
@@ -1957,9 +1957,9 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">teams</font></summary>
 
-  #### <span style="color: red;">year_id</span>: smallint
-  #### <span style="color: red;">lg_id</span>: varchar(2)
-  #### <span style="color: red;">team_id</span>: varchar(3)
+  #### &#128273; year_id: smallint
+  #### &#128273; lg_id: varchar(2)
+  #### &#128273; team_id: varchar(3)
   #### franch_id: varchar(3)
   #### div_id: varchar(1)
   #### rank: integer
@@ -2009,7 +2009,7 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">teams_franchises</font></summary>
 
-  #### <span style="color: red;">franch_id</span>: varchar(3)
+  #### &#128273; franch_id: varchar(3)
   #### franch_name: varchar(50)
   #### active: varchar(2)
   #### na_assoc: varchar(3)
@@ -2017,10 +2017,10 @@ Columns whose name are in <span style="color: red;"> red </span> represent the p
 <details>
  <summary><font size="+2">teams_half</font></summary>
 
-  #### <span style="color: red;">year_id</span>: integer
-  #### <span style="color: red;">lg_id</span>: varchar(2)
-  #### <span style="color: red;">team_id</span>: varchar(3)
-  #### <span style="color: red;">half</span>: varchar(1)
+  #### &#128273; year_id: integer
+  #### &#128273; lg_id: varchar(2)
+  #### &#128273; team_id: varchar(3)
+  #### &#128273; half: varchar(1)
   #### div_id: varchar(1)
   #### div_win: varchar(1)
   #### rank: integer
