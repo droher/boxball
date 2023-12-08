@@ -1,54 +1,54 @@
 # Boxball Schemas
 This document contains the schemas for the boxball database.
 
-Columns whose name are in <font color="#FF0000"> red </font> represent the primary keys of the table, and will always be listed first in a given table.
+Columns whose name are in <span style="color: red;"> red </span> represent the primary keys of the table, and will always be listed first in a given table.
 ## retrosheet
 <details>
  <summary><font size="+2">code_event</font></summary>
 
-  #### <font color="#FF0000">code</font>: smallint
+  #### <span style="color: red;">code</span>: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_field_park</font></summary>
 
-  #### <font color="#FF0000">code</font>: smallint
+  #### <span style="color: red;">code</span>: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_method_record</font></summary>
 
-  #### <font color="#FF0000">code</font>: smallint
+  #### <span style="color: red;">code</span>: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_pitches_record</font></summary>
 
-  #### <font color="#FF0000">code</font>: smallint
+  #### <span style="color: red;">code</span>: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_precip_park</font></summary>
 
-  #### <font color="#FF0000">code</font>: smallint
+  #### <span style="color: red;">code</span>: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_sky_park</font></summary>
 
-  #### <font color="#FF0000">code</font>: smallint
+  #### <span style="color: red;">code</span>: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">code_wind_direction_park</font></summary>
 
-  #### <font color="#FF0000">code</font>: smallint
+  #### <span style="color: red;">code</span>: smallint
   #### description: varchar(30)
 </details><br>
 <details>
  <summary><font size="+2">comment</font></summary>
 
-  #### <font color="#FF0000">dummy_id</font>: integer
+  #### <span style="color: red;">dummy_id</span>: integer
   #### game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
   #### event_id: smallint
@@ -69,7 +69,7 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">daily</font></summary>
 
-  #### <font color="#FF0000">dummy_id</font>: integer
+  #### <span style="color: red;">dummy_id</span>: integer
   #### game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
   #### game_dt: date
@@ -382,15 +382,15 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">deduced_game</font></summary>
 
-  #### <font color="#FF0000">game_id</font>: char(12)
+  #### <span style="color: red;">game_id</span>: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
 </details><br>
 <details>
  <summary><font size="+2">event</font></summary>
 
-  #### <font color="#FF0000">game_id</font>: char(12)
+  #### <span style="color: red;">game_id</span>: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
-  #### <font color="#FF0000">event_id</font>: integer
+  #### <span style="color: red;">event_id</span>: integer
    >Event number of game
   #### away_team_id: char(3)
    >Visiting Team
@@ -712,7 +712,7 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">game</font></summary>
 
-  #### <font color="#FF0000">game_id</font>: char(12)
+  #### <span style="color: red;">game_id</span>: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
   #### game_dt: date
    >Game date
@@ -1074,9 +1074,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">gamelog</font></summary>
 
-  #### <font color="#FF0000">date</font>: date
+  #### <span style="color: red;">date</span>: date
    >Game date
-  #### <font color="#FF0000">double_header</font>: char(1)
+  #### <span style="color: red;">double_header</span>: char(1)
    >
         Number of game:
          "0" -- a single game
@@ -1088,9 +1088,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
          "A" -- the first game of a double-header involving 3 teams
          "B" -- the second game of a double-header involving 3 teams
          
-  #### <font color="#FF0000">visiting_team</font>: char(3)
+  #### <span style="color: red;">visiting_team</span>: char(3)
    >Visiting team ID
-  #### <font color="#FF0000">home_team</font>: char(3)
+  #### <span style="color: red;">home_team</span>: char(3)
    >Home team ID
   #### day_of_week: char(3)
    >Day of week (3 char abbreviation)
@@ -1436,7 +1436,7 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">park</font></summary>
 
-  #### <font color="#FF0000">park_id</font>: char(5)
+  #### <span style="color: red;">park_id</span>: char(5)
    >Park ID
   #### name: varchar(41)
    >Park name
@@ -1458,13 +1458,13 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">roster</font></summary>
 
-  #### <font color="#FF0000">year</font>: integer
+  #### <span style="color: red;">year</span>: integer
    >Year of roster
-  #### <font color="#FF0000">player_id</font>: char(8)
+  #### <span style="color: red;">player_id</span>: char(8)
    >Player ID
-  #### <font color="#FF0000">team_id</font>: char(3)
+  #### <span style="color: red;">team_id</span>: char(3)
    >Team ID
-  #### <font color="#FF0000">position</font>: varchar(2)
+  #### <span style="color: red;">position</span>: varchar(2)
    >Primary fielding position
   #### last_name: varchar(32)
    >Player last name
@@ -1478,11 +1478,11 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">schedule</font></summary>
 
-  #### <font color="#FF0000">date</font>: date
+  #### <span style="color: red;">date</span>: date
    >Scheduled game date
-  #### <font color="#FF0000">home_team</font>: char(3)
+  #### <span style="color: red;">home_team</span>: char(3)
    >Home team ID
-  #### <font color="#FF0000">home_team_game_number</font>: integer
+  #### <span style="color: red;">home_team_game_number</span>: integer
    >Home team game number
   #### double_header: smallint
    >Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader
@@ -1522,7 +1522,7 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">sub</font></summary>
 
-  #### <font color="#FF0000">dummy_id</font>: integer
+  #### <span style="color: red;">dummy_id</span>: integer
   #### game_id: char(12)
    >Game ID (home team ID + YYYYMMDD + doubleheader flag
   #### inn_ct: smallint
@@ -1550,7 +1550,7 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">allstar_full</font></summary>
 
-  #### <font color="#FF0000">dummy_id</font>: integer
+  #### <span style="color: red;">dummy_id</span>: integer
   #### player_id: varchar(9)
   #### year_id: smallint
   #### game_num: smallint
@@ -1563,9 +1563,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">appearances</font></summary>
 
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">team_id</font>: varchar(3)
-  #### <font color="#FF0000">player_id</font>: varchar(9)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">team_id</span>: varchar(3)
+  #### <span style="color: red;">player_id</span>: varchar(9)
   #### lg_id: varchar(2)
   #### g_all: smallint
   #### gs: smallint
@@ -1588,7 +1588,7 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">awards_managers</font></summary>
 
-  #### <font color="#FF0000">dummy_id</font>: integer
+  #### <span style="color: red;">dummy_id</span>: integer
   #### player_id: varchar(10)
   #### award_id: varchar(75)
   #### year_id: smallint
@@ -1599,7 +1599,7 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">awards_players</font></summary>
 
-  #### <font color="#FF0000">dummy_id</font>: integer
+  #### <span style="color: red;">dummy_id</span>: integer
   #### player_id: varchar(9)
   #### award_id: varchar(255)
   #### year_id: smallint
@@ -1610,9 +1610,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">awards_share_managers</font></summary>
 
-  #### <font color="#FF0000">award_id</font>: varchar(25)
-  #### <font color="#FF0000">year_id</font>: integer
-  #### <font color="#FF0000">player_id</font>: varchar(10)
+  #### <span style="color: red;">award_id</span>: varchar(25)
+  #### <span style="color: red;">year_id</span>: integer
+  #### <span style="color: red;">player_id</span>: varchar(10)
   #### lg_id: varchar(2)
   #### points_won: integer
   #### points_max: integer
@@ -1621,9 +1621,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">awards_share_players</font></summary>
 
-  #### <font color="#FF0000">award_id</font>: varchar(25)
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">player_id</font>: varchar(9)
+  #### <span style="color: red;">award_id</span>: varchar(25)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">player_id</span>: varchar(9)
   #### lg_id: varchar(2)
   #### points_won: float
   #### points_max: integer
@@ -1632,9 +1632,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">batting</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(9)
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">stint</font>: smallint
+  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">stint</span>: smallint
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1658,9 +1658,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">batting_post</font></summary>
 
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">round</font>: varchar(10)
-  #### <font color="#FF0000">player_id</font>: varchar(9)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">round</span>: varchar(10)
+  #### <span style="color: red;">player_id</span>: varchar(9)
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1684,17 +1684,17 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">college_playing</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(9)
-  #### <font color="#FF0000">school_id</font>: varchar(15)
-  #### <font color="#FF0000">year_id</font>: smallint
+  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### <span style="color: red;">school_id</span>: varchar(15)
+  #### <span style="color: red;">year_id</span>: smallint
 </details><br>
 <details>
  <summary><font size="+2">fielding</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(9)
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">stint</font>: smallint
-  #### <font color="#FF0000">pos</font>: varchar(2)
+  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">stint</span>: smallint
+  #### <span style="color: red;">pos</span>: varchar(2)
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1713,9 +1713,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">fielding_of</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(9)
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">stint</font>: smallint
+  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">stint</span>: smallint
   #### g_lf: smallint
   #### g_cf: smallint
   #### g_rf: smallint
@@ -1723,10 +1723,10 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">fielding_of_split</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(9)
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">stint</font>: smallint
-  #### <font color="#FF0000">pos</font>: varchar(2)
+  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">stint</span>: smallint
+  #### <span style="color: red;">pos</span>: varchar(2)
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1745,10 +1745,10 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">fielding_post</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(9)
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">round</font>: varchar(10)
-  #### <font color="#FF0000">pos</font>: varchar(2)
+  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">round</span>: varchar(10)
+  #### <span style="color: red;">pos</span>: varchar(2)
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1766,9 +1766,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">hall_of_fame</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(10)
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">voted_by</font>: varchar(64)
+  #### <span style="color: red;">player_id</span>: varchar(10)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">voted_by</span>: varchar(64)
   #### ballots: varchar(64)
   #### needed: varchar(64)
   #### votes: varchar(64)
@@ -1779,10 +1779,10 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">home_games</font></summary>
 
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">lg_id</font>: varchar(2)
-  #### <font color="#FF0000">team_id</font>: varchar(3)
-  #### <font color="#FF0000">park_id</font>: varchar(5)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">lg_id</span>: varchar(2)
+  #### <span style="color: red;">team_id</span>: varchar(3)
+  #### <span style="color: red;">park_id</span>: varchar(5)
   #### first_game: date
   #### last_game: date
   #### games: smallint
@@ -1792,9 +1792,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">managers</font></summary>
 
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">team_id</font>: varchar(3)
-  #### <font color="#FF0000">inseason</font>: smallint
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">team_id</span>: varchar(3)
+  #### <span style="color: red;">inseason</span>: smallint
   #### player_id: varchar(10)
   #### lg_id: varchar(2)
   #### g: smallint
@@ -1806,10 +1806,10 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">managers_half</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(10)
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">team_id</font>: varchar(3)
-  #### <font color="#FF0000">half</font>: smallint
+  #### <span style="color: red;">player_id</span>: varchar(10)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">team_id</span>: varchar(3)
+  #### <span style="color: red;">half</span>: smallint
   #### lg_id: varchar(2)
   #### inseason: smallint
   #### g: smallint
@@ -1820,7 +1820,7 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">parks</font></summary>
 
-  #### <font color="#FF0000">park_id</font>: varchar(5)
+  #### <span style="color: red;">park_id</span>: varchar(5)
   #### park_name: varchar(40)
   #### park_alias: varchar(55)
   #### city: varchar(25)
@@ -1830,7 +1830,7 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">people</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(10)
+  #### <span style="color: red;">player_id</span>: varchar(10)
   #### birth_year: smallint
   #### birth_month: smallint
   #### birth_day: smallint
@@ -1858,9 +1858,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">pitching</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(9)
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">stint</font>: smallint
+  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">stint</span>: smallint
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### w: smallint
@@ -1892,9 +1892,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">pitching_post</font></summary>
 
-  #### <font color="#FF0000">player_id</font>: varchar(9)
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">round</font>: varchar(10)
+  #### <span style="color: red;">player_id</span>: varchar(9)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">round</span>: varchar(10)
   #### team_id: varchar(3)
   #### lg_id: varchar(2)
   #### w: smallint
@@ -1926,16 +1926,16 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">salaries</font></summary>
 
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">team_id</font>: varchar(3)
-  #### <font color="#FF0000">lg_id</font>: varchar(2)
-  #### <font color="#FF0000">player_id</font>: varchar(9)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">team_id</span>: varchar(3)
+  #### <span style="color: red;">lg_id</span>: varchar(2)
+  #### <span style="color: red;">player_id</span>: varchar(9)
   #### salary: float
 </details><br>
 <details>
  <summary><font size="+2">schools</font></summary>
 
-  #### <font color="#FF0000">school_id</font>: varchar(15)
+  #### <span style="color: red;">school_id</span>: varchar(15)
   #### name_full: varchar(255)
   #### city: varchar(55)
   #### state: varchar(55)
@@ -1944,8 +1944,8 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">series_post</font></summary>
 
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">round</font>: varchar(5)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">round</span>: varchar(5)
   #### team_id_winner: varchar(3)
   #### lg_id_winner: varchar(2)
   #### team_id_loser: varchar(3)
@@ -1957,9 +1957,9 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">teams</font></summary>
 
-  #### <font color="#FF0000">year_id</font>: smallint
-  #### <font color="#FF0000">lg_id</font>: varchar(2)
-  #### <font color="#FF0000">team_id</font>: varchar(3)
+  #### <span style="color: red;">year_id</span>: smallint
+  #### <span style="color: red;">lg_id</span>: varchar(2)
+  #### <span style="color: red;">team_id</span>: varchar(3)
   #### franch_id: varchar(3)
   #### div_id: varchar(1)
   #### rank: integer
@@ -2009,7 +2009,7 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">teams_franchises</font></summary>
 
-  #### <font color="#FF0000">franch_id</font>: varchar(3)
+  #### <span style="color: red;">franch_id</span>: varchar(3)
   #### franch_name: varchar(50)
   #### active: varchar(2)
   #### na_assoc: varchar(3)
@@ -2017,10 +2017,10 @@ Columns whose name are in <font color="#FF0000"> red </font> represent the prima
 <details>
  <summary><font size="+2">teams_half</font></summary>
 
-  #### <font color="#FF0000">year_id</font>: integer
-  #### <font color="#FF0000">lg_id</font>: varchar(2)
-  #### <font color="#FF0000">team_id</font>: varchar(3)
-  #### <font color="#FF0000">half</font>: varchar(1)
+  #### <span style="color: red;">year_id</span>: integer
+  #### <span style="color: red;">lg_id</span>: varchar(2)
+  #### <span style="color: red;">team_id</span>: varchar(3)
+  #### <span style="color: red;">half</span>: varchar(1)
   #### div_id: varchar(1)
   #### div_win: varchar(1)
   #### rank: integer

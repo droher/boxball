@@ -11,7 +11,7 @@ def generate_column_markdown(column):
     """Generate markdown for a single column."""
     column_name = ""
     if column.primary_key:
-        column_name = f'  #### <font color="#FF0000">{column.name}</font>'
+        column_name = f'  #### <span style=\"color: red;\">{column.name}</span>'
     else:
         column_name = f'  #### {column.name}'
     column_name += ": " + str(column.type).lower()
@@ -56,7 +56,7 @@ retrosheet_markdown = generate_schema_markdown(retrosheet)
 baseballdatabank_markdown = generate_schema_markdown(baseballdatabank)
 
 markdown = "# Boxball Schemas\n" + "This document contains the schemas for the boxball database.\n\n" 
-markdown += "Columns whose name are in <font color=\"#FF0000\"> red </font> represent the primary keys of the table, and will always be listed first in a given table.\n"
+markdown += "Columns whose name are in <span style=\"color: red;\"> red </span> represent the primary keys of the table, and will always be listed first in a given table.\n"
 markdown += "## retrosheet\n" + retrosheet_markdown + "\n\n" + "## baseballdatabank\n" + baseballdatabank_markdown
 
 pwd = sys.path[0]
