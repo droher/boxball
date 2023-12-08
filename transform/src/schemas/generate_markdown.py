@@ -10,27 +10,30 @@ def is_sqlalchemy_model(obj,base_class):
 def generate_column_markdown(column):
     """Generate markdown for a single column."""
     column_name = ""
-    need_to_close_italic = False
     if column.primary_key:
-        column_name = f'### *{column.name}'
-        need_to_close_italic = True
+        column_name = f'  #### <font color="#FF0000">{column.name}</font>'
     else:
-        column_name = f'#### {column.name}'
+        column_name = f'  #### {column.name}'
     column_name += ": " + str(column.type).lower()
-    column_name += "*" if need_to_close_italic else ""
-    line = f'{column_name}\n >{column.doc or "No description"}'
+    line = ""
+    if(column.doc is None):
+        line = f'{column_name}'
+    else:
+        line = f'{column_name}\n   >{column.doc}'
     return line + '\n'
 
 def generate_table_markdown(model):
     """Generate markdown for a single table."""
-    markdown_lines = [f'## {model.__tablename__}\n']
+    markdown_lines = [f'<details>\n <summary><font size="+2">{model.__tablename__}</font></summary>\n\n']
     
     # Sort columns so that primary key columns are listed first
     columns = sorted(model.__table__.columns, key=lambda column: not column.primary_key)
     
     for column in columns:
         markdown_lines.append(generate_column_markdown(column))
-    return ''.join(markdown_lines)
+    
+    table_markdown = ''.join(markdown_lines)
+    return table_markdown + '</details><br>\n'
 
 
 
@@ -52,7 +55,9 @@ def write_markdown_to_file(filename, markdown):
 retrosheet_markdown = generate_schema_markdown(retrosheet)
 baseballdatabank_markdown = generate_schema_markdown(baseballdatabank)
 
-markdown = "# retrosheet\n" + retrosheet_markdown + "\n\n" + "# baseballdatabank\n" + baseballdatabank_markdown
+markdown = "# Boxball Schemas\n" + "This document contains the schemas for the boxball database.\n\n" 
+markdown += "Columns whose name are in <font color=\"#FF0000\"> red </font> represent the primary keys of the table, and will always be listed first in a given table.\n"
+markdown += "## retrosheet\n" + retrosheet_markdown + "\n\n" + "## baseballdatabank\n" + baseballdatabank_markdown
 
 pwd = sys.path[0]
 write_markdown_to_file(pwd+'/schemas.md', markdown)
