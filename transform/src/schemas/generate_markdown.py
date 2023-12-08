@@ -11,10 +11,10 @@ def generate_column_markdown(column):
     """Generate markdown for a single column."""
     column_name = ""
     if column.primary_key:
-        column_name = f'  #### &#128273; {column.name}'
+        column_name = f'  ##### &#128273; {column.name}'
         
     else:
-        column_name = f'  #### {column.name}'
+        column_name = f'  ##### {column.name}'
     column_name += ": " + str(column.type).lower()
     line = ""
     if(column.doc is None):
