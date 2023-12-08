@@ -7,6 +7,20 @@ def is_sqlalchemy_model(obj,base_class):
     """Check if the given object is a SQLAlchemy model."""
     return inspect.isclass(obj) and issubclass(obj, base_class) and obj != base_class
 
+def generate_column_markdown(column):
+    """Generate markdown for a single column."""
+    column_name = ""
+    need_to_close_italic = False
+    if column.primary_key:
+        column_name = f'### *{column.name}'
+        need_to_close_italic = True
+    else:
+        column_name = f'#### {column.name}'
+    column_name += ": " + str(column.type).lower()
+    column_name += "*" if need_to_close_italic else ""
+    line = f'{column_name}\n >{column.doc or "No description"}'
+    return line + '\n'
+
 def generate_table_markdown(model):
     """Generate markdown for a single table."""
     markdown_lines = [f'## {model.__tablename__}\n']
@@ -15,13 +29,10 @@ def generate_table_markdown(model):
     columns = sorted(model.__table__.columns, key=lambda column: not column.primary_key)
     
     for column in columns:
-        # Make primary key column names bold
-        column_name = f'**{column.name}**' if column.primary_key else column.name
-        line = f'### {column_name}\n- Type: {column.type}\n- Description: {column.doc or "No description"}'
-        if column.primary_key:
-            line += '\n- Primary Key: Yes'
-        markdown_lines.append(line + '\n')
+        markdown_lines.append(generate_column_markdown(column))
     return ''.join(markdown_lines)
+
+
 
 def generate_schema_markdown(models_module):
     """Generate markdown for all tables in the given module."""
