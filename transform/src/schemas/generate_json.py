@@ -3,6 +3,9 @@ import sys
 import retrosheet as retrosheet
 import baseballdatabank as baseballdatabank
 import json
+from generate_markdown import MarkdownGenerator, PyMDGenerator
+from generate_html import HtmlGenerator
+
 def is_sqlalchemy_model(obj,base_class):
     """Check if the given object is a SQLAlchemy model."""
     return inspect.isclass(obj) and issubclass(obj, base_class) and obj != base_class
@@ -32,13 +35,19 @@ def generate_table_json(model):
     
     return table_json
 
-def generate_schema_json(models_module):
+def generate_schema_json(schema_name, models_module):
     """Generate json for all tables in the given module."""
     base_class = models_module.Base
-    schema_json = []
+    
+    schema_cols = []
     for name, obj in inspect.getmembers(models_module):
         if is_sqlalchemy_model(obj,base_class):
-            schema_json.append(generate_table_json(obj))
+            schema_cols.append(generate_table_json(obj))
+    
+    schema_json = {
+        "schema_name": schema_name,
+        "tables": schema_cols
+    }
     return schema_json
 
 def write_json_to_file(filename, data):
@@ -46,11 +55,15 @@ def write_json_to_file(filename, data):
     with open(filename, 'w') as f:
         json.dump(data, f, indent=4)
 
-# Generate the json and write it to a file
-retrosheet_json = generate_schema_json(retrosheet)
-baseballdatabank_json = generate_schema_json(baseballdatabank)
+def get_json_string(data):
+    """Return a json string from the given data."""
+    return json.dumps(data, indent=4)
 
-schema_json = {
+# Generate the json and write it to a file
+retrosheet_json = generate_schema_json("retrosheet", retrosheet)
+baseballdatabank_json = generate_schema_json("baseballdatabank", baseballdatabank)
+
+database_json = {
     "database_name": "Boxball",
     "schemas": {
         "retrosheet": retrosheet_json,
@@ -59,4 +72,9 @@ schema_json = {
 }
 
 pwd = sys.path[0]
-write_json_to_file(pwd+'/schemas.json', schema_json)
+
+write_json_to_file(pwd+'/schemas.json', database_json)
+github_markdown = MarkdownGenerator(database_json).write_markdown_to_file(pwd + "/schemas.md")
+python_markdown = PyMDGenerator(database_json).write_markdown_to_file(pwd + "/schemas.py.md")
+HtmlGenerator(python_markdown).write_html_to_file(pwd + "/schemas.html")
+

@@ -1,65 +1,104 @@
-import inspect
-import sys
-import retrosheet as retrosheet
-import baseballdatabank as baseballdatabank
+import json
+from typing import Dict, Any
+import json
+from typing import Dict, Any, List
+JsObject = Dict[str, Any]
 
-def is_sqlalchemy_model(obj,base_class):
-    """Check if the given object is a SQLAlchemy model."""
-    return inspect.isclass(obj) and issubclass(obj, base_class) and obj != base_class
+class MarkdownGenerator(object):
+    """Generate markdown for the Boxball schema."""
+    def __init__(self, database: JsObject):
+        """Initialize the MarkdownGenerator with the given schema json."""
+        self._lines = []
+        self.generate_database_markdown(database)
 
-def generate_column_markdown(column):
-    """Generate markdown for a single column."""
-    column_name = ""
-    if column.primary_key:
-        column_name = f'  ### &#128273; {column.name}'
-        
-    else:
-        column_name = f'  ### {column.name}'
-    column_name += ": " + str(column.type).lower()
-    line = ""
-    if(column.doc is None):
-        line = f'{column_name}'
-    else:
-        line = f'{column_name}\n   >{column.doc}'
-    return line + '\n'
-
-def generate_table_markdown(model):
-    """Generate markdown for a single table."""
-    markdown_lines = [f'<details>\n <summary> <b>{model.__tablename__}</b></summary>\n\n']
+    def _indent(self, indent: int) -> str:
+        """Return a string of spaces for the given indent level."""
+        return '    ' * indent
     
-    # Sort columns so that primary key columns are listed first
-    columns = sorted(model.__table__.columns, key=lambda column: not column.primary_key)
+    def add_line(self, indent: int, line: str) -> None:
+        """Add a line to the given markdown."""
+        self._lines.append(self._indent(indent) + line)
     
-    for column in columns:
-        markdown_lines.append(generate_column_markdown(column))
+    def _column_title_string(self, column: JsObject) -> str:
+        """Return a string for the given column title."""
+        titleString=""
+        if column["primary_key"]:
+            titleString+="&#128273; "
+        titleString+=f'**{column["name"]}**'
+        titleString+=f' : ({column["type"]})'
+        return titleString
+
+    def generate_column_markdown(self, indent: int, column: JsObject):
+        """Generate markdown for a single column."""
+        self.add_line(indent, f'<detail>')
+        self.add_line(indent, f'  <summary>{self._column_title_string(column)}</summary>\n')
+        self.add_line(indent, f'  {column["doc"]}')
+        self.add_line(indent, f'</detail>')
     
-    table_markdown = ''.join(markdown_lines)
-    return table_markdown + '</details><br>\n'
+    
+    def generate_table_markdown(self, indent: int, table: JsObject):
+        """Generate markdown for a single table."""
+        self.add_line(indent, f'### {table["table_name"]}')
+        for column in table["columns"]:
+            self.generate_column_markdown(indent+2,column)
 
+    def generate_schema_markdown(self, indent: int, schema: JsObject):
+        """Generate markdown for all tables in the given schema."""
+        self.add_line(indent, f'## {schema["schema_name"]}')
+        for table in schema["tables"]:
+            self.generate_table_markdown(indent+2, table)
 
+    def generate_database_markdown(self, database: JsObject):
+        """Generate markdown for all schemas in the given database."""
+        self.add_line(0, f'# {database["database_name"]}')
+        for schema in database["schemas"].values():
+            self.generate_schema_markdown(1, schema)
 
-def generate_schema_markdown(models_module):
-    """Generate markdown for all tables in the given module."""
-    base_class = models_module.Base
-    markdown_lines = []
-    for name, obj in inspect.getmembers(models_module):
-        if is_sqlalchemy_model(obj,base_class):
-            markdown_lines.append(generate_table_markdown(obj))
-    return ''.join(markdown_lines)
+    def generate_markdown_string(self):
+        """Return a markdown string from the given data."""
+        return '\n'.join(self._lines)
+    
+    def write_markdown_to_file(self, filename: str):
+            """
+            Writes the generated markdown string to a file.
 
-def write_markdown_to_file(filename, markdown):
-    """Write the given markdown to a file."""
-    with open(filename, 'w') as f:
-        f.write(markdown)
+            Args:
+                filename (str): The name of the file to write the markdown to.
+            """
+            retStr = self.generate_markdown_string()
+            with open(filename, 'w') as f:
+                f.write(retStr)
+            return retStr
+    
+class PyMDGenerator(MarkdownGenerator):
+    def __init__(self, database: JsObject):
+        super().__init__(database)
 
-# Generate the markdown and write it to a file
-retrosheet_markdown = generate_schema_markdown(retrosheet)
-baseballdatabank_markdown = generate_schema_markdown(baseballdatabank)
+    def generate_column_markdown(self, indent: int, column: JsObject):
+        """Generate markdown for a single column."""       
+        style = "columnstyle" if not column["primary_key"] else "keycolumnstyle"
+        self.add_line(indent, f'??? {style} \"{column["name"]}\"\n')
+        self.add_line(indent+1, f'```{column["doc"]}```')
+        self.add_line(indent, f'\n')
+    
+    
+    def generate_table_markdown(self, indent: int, table: JsObject):
+        """Generate markdown for a single table."""
+        self.add_line(indent, f'??? tablestyle \"{table["table_name"]}\"\n')
+        for column in table["columns"]:
+            self.generate_column_markdown(indent+1,column)
+        self.add_line(indent, f'\n')
 
-markdown = "# Boxball Schemas\n" + "This document contains the schemas for the boxball database. It is automatically generated by generate_markdown.py\n\n"
-markdown += "I do not love the styling of this, but it is the best I could do since there is very limited control over text size. It looks especially wonky when the columns do not have a description.\n\n" 
-markdown += "Columns with a &#128273; next to the name represent the primary keys of the table, and will always be listed first in a given table.\n"
-markdown += "## retrosheet\n" + retrosheet_markdown + "\n\n" + "## baseballdatabank\n" + baseballdatabank_markdown
+    def generate_schema_markdown(self, indent: int, schema: JsObject):
+        """Generate markdown for all tables in the given schema."""
+        self.add_line(indent, f'??? schemastyle  \" {schema["schema_name"]}\"\n')
+        for table in schema["tables"]:
+            self.generate_table_markdown(indent+1, table)
+        self.add_line(indent, f'\n')
 
-pwd = sys.path[0]
-write_markdown_to_file(pwd+'/schemas.md', markdown)
+    def generate_database_markdown(self, database: JsObject):
+        """Generate markdown for all schemas in the given database."""
+        self.add_line(0, f'??? databasestyle  \"{database["database_name"]}\"\n')
+        for schema in database["schemas"].values():
+            self.generate_schema_markdown(1, schema)
+

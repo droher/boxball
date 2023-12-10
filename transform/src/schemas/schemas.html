@@ -1,0 +1,4600 @@
+<style>
+    .tablestyle {
+        font-size: 18px;
+        font-weight: bold;
+        padding-left: 20px;
+    }
+
+    .columnstyle {
+        font-size: 14px;
+        font-weight: bold;
+        padding-left: 40px;
+    }
+
+    .keycolumnstyle {
+        font-size: 14px;
+        font-weight: bold;
+        color: rgb(89, 0, 0);
+        padding-left: 30px;
+    }
+
+    .schemastyle {
+        font-size: 24px;
+        font-weight: bold;
+        padding-left: 10px;
+    }
+
+    .databasestyle {
+        font-size: 36px;
+        font-weight: bold;
+    }
+    </style>
+<details class="databasestyle">
+<summary>Boxball</summary>
+<details class="schemastyle">
+<summary> retrosheet</summary>
+<details class="tablestyle">
+<summary>code_event</summary>
+<details class="keycolumnstyle">
+<summary>code</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>description</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>code_field_park</summary>
+<details class="keycolumnstyle">
+<summary>code</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>description</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>code_method_record</summary>
+<details class="keycolumnstyle">
+<summary>code</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>description</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>code_pitches_record</summary>
+<details class="keycolumnstyle">
+<summary>code</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>description</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>code_precip_park</summary>
+<details class="keycolumnstyle">
+<summary>code</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>description</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>code_sky_park</summary>
+<details class="keycolumnstyle">
+<summary>code</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>description</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>code_wind_direction_park</summary>
+<details class="keycolumnstyle">
+<summary>code</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>description</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>comment</summary>
+<details class="keycolumnstyle">
+<summary>dummy_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_id</summary>
+<p><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></p>
+</details>
+<details class="columnstyle">
+<summary>event_id</summary>
+<p><code>Commented event number</code></p>
+</details>
+<details class="columnstyle">
+<summary>comment</summary>
+<p><code>Comment text</code></p>
+</details>
+<details class="columnstyle">
+<summary>ejected_person_id</summary>
+<p><code>ID of ejected person</code></p>
+</details>
+<details class="columnstyle">
+<summary>ejected_person_role_cd</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>eject_umpire_id</summary>
+<p><code>ID of umpire who ejected person</code></p>
+</details>
+<details class="columnstyle">
+<summary>eject_reason</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>umpchange_inning</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>umpchange_position</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>umpchange_person_id</summary>
+<p><code>ID of new umpire</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>daily</summary>
+<details class="keycolumnstyle">
+<summary>dummy_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_id</summary>
+<p><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_dt</summary>
+<p><code>Game date</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_ct</summary>
+<p><code>Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader</code></p>
+</details>
+<details class="columnstyle">
+<summary>appearance_dt</summary>
+<p><code>Player appearance date. Can be different from game date if the game was suspended and the player entered the game at the later date</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id</summary>
+<p><code>Team ID of player</code></p>
+</details>
+<details class="columnstyle">
+<summary>player_id</summary>
+<p><code>Player ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>slot_ct</summary>
+<p><code>Player lineup position</code></p>
+</details>
+<details class="columnstyle">
+<summary>seq_ct</summary>
+<p><code>Player is nth person of game to play in that lineup slot</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_fl</summary>
+<p><code>Player is playing at home</code></p>
+</details>
+<details class="columnstyle">
+<summary>opponent_id</summary>
+<p><code>Team opponent ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>park_id</summary>
+<p><code>Park ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_g</summary>
+<p><code>Games played</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_pa</summary>
+<p><code>Plate appearances</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_ab</summary>
+<p><code>At bats</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_r</summary>
+<p><code>Runs scored</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_h</summary>
+<p><code>Hits</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_tb</summary>
+<p><code>Total bases</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_2b</summary>
+<p><code>Doubles</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_3b</summary>
+<p><code>Triples</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_hr</summary>
+<p><code>Home runs</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_hr4</summary>
+<p><code>Grand slams</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_rbi</summary>
+<p><code>Runs batted in</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_gw</summary>
+<p><code>Game winning RBI</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_bb</summary>
+<p><code>Walks</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_ibb</summary>
+<p><code>Intentional walks</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_so</summary>
+<p><code>Strikeouts</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_gdp</summary>
+<p><code>Grounded into double plays</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_hp</summary>
+<p><code>Hit by pitches</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_sh</summary>
+<p><code>Sacrifice hits</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_sf</summary>
+<p><code>Sacrifice files</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_sb</summary>
+<p><code>Stolen bases</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_cs</summary>
+<p><code>Caught stealing</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_xi</summary>
+<p><code>Reached on interference</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_g_dh</summary>
+<p><code>Games as DH</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_g_ph</summary>
+<p><code>Games as pinch hitter</code></p>
+</details>
+<details class="columnstyle">
+<summary>b_g_pr</summary>
+<p><code>Games as pinch runner</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_g</summary>
+<p><code>Games pitched</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_gs</summary>
+<p><code>Games as starting pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_cg</summary>
+<p><code>Complete games</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_sho</summary>
+<p><code>Shutouts</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_gf</summary>
+<p><code>Games finished</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_w</summary>
+<p><code>Wins</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_l</summary>
+<p><code>Losses</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_sv</summary>
+<p><code>Saves</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_out</summary>
+<p><code>Outs recorded</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_tbf</summary>
+<p><code>Total batters faced</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_ab</summary>
+<p><code>At bats against</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_r</summary>
+<p><code>Runs allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_er</summary>
+<p><code>Earned runs allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_h</summary>
+<p><code>Hits allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_tb</summary>
+<p><code>Total bases allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_2b</summary>
+<p><code>Doubles allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_3b</summary>
+<p><code>Triples allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_hr</summary>
+<p><code>Home runs allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_hr4</summary>
+<p><code>Grand slams allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_bb</summary>
+<p><code>Walks allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_ibb</summary>
+<p><code>Intentional walks allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_so</summary>
+<p><code>Strikeouts against</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_gdp</summary>
+<p><code>Grounded into double plays against</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_hp</summary>
+<p><code>Hit by pitches allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_sh</summary>
+<p><code>Sacrifice hits allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_sf</summary>
+<p><code>Sacrifice flies allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_xi</summary>
+<p><code>Reached on interference allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_wp</summary>
+<p><code>Wild pitches allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_bk</summary>
+<p><code>Balks allowed</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_ir</summary>
+<p><code>Inherited runners</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_irs</summary>
+<p><code>Inherited runners scored</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_go</summary>
+<p><code>Groundouts recorded</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_ao</summary>
+<p><code>Fly ball outs recorded</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_pitch</summary>
+<p><code>Pitches thrown</code></p>
+</details>
+<details class="columnstyle">
+<summary>p_strike</summary>
+<p><code>Strikes thrown</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_p_g</summary>
+<p><code>Appearances at pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_p_gs</summary>
+<p><code>Starts at pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_p_out</summary>
+<p><code>Outs played as pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_p_tc</summary>
+<p><code>Total chances as pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_p_po</summary>
+<p><code>Putouts as pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_p_a</summary>
+<p><code>Assists as pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_p_e</summary>
+<p><code>Errors as pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_p_dp</summary>
+<p><code>Double plays turned as pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_p_tp</summary>
+<p><code>Triple pays turned as pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_g</summary>
+<p><code>Appearances at catcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_gs</summary>
+<p><code>Starts at catcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_out</summary>
+<p><code>Outs played as catcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_tc</summary>
+<p><code>Total chances as catcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_po</summary>
+<p><code>Putouts as catcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_a</summary>
+<p><code>Assists as catcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_e</summary>
+<p><code>Errors as catcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_dp</summary>
+<p><code>Double plays turned as catcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_tp</summary>
+<p><code>Triple pays turned as catcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_pb</summary>
+<p><code>Passed balls</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_c_xi</summary>
+<p><code>Catcher's interference</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_1b_g</summary>
+<p><code>Appearances at first baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_1b_gs</summary>
+<p><code>Starts at first baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_1b_out</summary>
+<p><code>Outs played as first baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_1b_tc</summary>
+<p><code>Total chances as first baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_1b_po</summary>
+<p><code>Putouts as first baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_1b_a</summary>
+<p><code>Assists as first baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_1b_e</summary>
+<p><code>Errors as first baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_1b_dp</summary>
+<p><code>Double plays turned as first baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_1b_tp</summary>
+<p><code>Triple pays turned as first baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_2b_g</summary>
+<p><code>Appearances at second baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_2b_gs</summary>
+<p><code>Starts at second baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_2b_out</summary>
+<p><code>Outs played as second baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_2b_tc</summary>
+<p><code>Total chances as second baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_2b_po</summary>
+<p><code>Putouts as second baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_2b_a</summary>
+<p><code>Assists as second baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_2b_e</summary>
+<p><code>Errors as second baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_2b_dp</summary>
+<p><code>Double plays turned as second baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_2b_tp</summary>
+<p><code>Triple pays turned as second baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_3b_g</summary>
+<p><code>Appearances at third baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_3b_gs</summary>
+<p><code>Starts at third baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_3b_out</summary>
+<p><code>Outs played as third baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_3b_tc</summary>
+<p><code>Total chances as third baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_3b_po</summary>
+<p><code>Putouts as third baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_3b_a</summary>
+<p><code>Assists as third baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_3b_e</summary>
+<p><code>Errors as third baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_3b_dp</summary>
+<p><code>Double plays turned as third baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_3b_tp</summary>
+<p><code>Triple pays turned as third baseman</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_ss_g</summary>
+<p><code>Appearances at shortstop</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_ss_gs</summary>
+<p><code>Starts at shortstop</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_ss_out</summary>
+<p><code>Outs played as shortstop</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_ss_tc</summary>
+<p><code>Total chances as shortstop</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_ss_po</summary>
+<p><code>Putouts as shortstop</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_ss_a</summary>
+<p><code>Assists as shortstop</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_ss_e</summary>
+<p><code>Errors as shortstop</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_ss_dp</summary>
+<p><code>Double plays turned as shortstop</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_ss_tp</summary>
+<p><code>Triple pays turned as shortstop</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_lf_g</summary>
+<p><code>Appearances at left fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_lf_gs</summary>
+<p><code>Starts at left fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_lf_out</summary>
+<p><code>Outs played as left fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_lf_tc</summary>
+<p><code>Total chances as left fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_lf_po</summary>
+<p><code>Putouts as left fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_lf_a</summary>
+<p><code>Assists as left fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_lf_e</summary>
+<p><code>Errors as left fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_lf_dp</summary>
+<p><code>Double plays turned as left fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_lf_tp</summary>
+<p><code>Triple pays turned as left fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_cf_g</summary>
+<p><code>Appearances at center fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_cf_gs</summary>
+<p><code>Starts at center fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_cf_out</summary>
+<p><code>Outs played as center fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_cf_tc</summary>
+<p><code>Total chances as center fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_cf_po</summary>
+<p><code>Putouts as center fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_cf_a</summary>
+<p><code>Assists as center fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_cf_e</summary>
+<p><code>Errors as center fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_cf_dp</summary>
+<p><code>Double plays turned as center fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_cf_tp</summary>
+<p><code>Triple pays turned as center fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_rf_g</summary>
+<p><code>Appearances at right fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_rf_gs</summary>
+<p><code>Starts at right fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_rf_out</summary>
+<p><code>Outs played as right fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_rf_tc</summary>
+<p><code>Total chances as right fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_rf_po</summary>
+<p><code>Putouts as right fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_rf_a</summary>
+<p><code>Assists as right fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_rf_e</summary>
+<p><code>Errors as right fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_rf_dp</summary>
+<p><code>Double plays turned as right fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>f_rf_tp</summary>
+<p><code>Triple pays turned as right fielder</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>deduced_game</summary>
+<details class="keycolumnstyle">
+<summary>game_id</summary>
+<p><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>event</summary>
+<details class="keycolumnstyle">
+<summary>game_id</summary>
+<p><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>event_id</summary>
+<p><code>Event number of game</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_team_id</summary>
+<p><code>Visiting Team</code></p>
+</details>
+<details class="columnstyle">
+<summary>inn_ct</summary>
+<p><code>Inning</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_home_id</summary>
+<p><code>Home team is batting</code></p>
+</details>
+<details class="columnstyle">
+<summary>outs_ct</summary>
+<p><code>Outs (0-2)</code></p>
+</details>
+<details class="columnstyle">
+<summary>balls_ct</summary>
+<p><code>Balls (0-3)</code></p>
+</details>
+<details class="columnstyle">
+<summary>strikes_ct</summary>
+<p><code>Strikes (0-2</code></p>
+</details>
+<details class="columnstyle">
+<summary>pitch_seq_tx</summary>
+<p><code>Pitch sequence</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_score_ct</summary>
+<p><code>Away score</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_score_ct</summary>
+<p><code>Home score</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_id</summary>
+<p><code>Batter ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_hand_cd</summary>
+<p><code>Batter handedness</code></p>
+</details>
+<details class="columnstyle">
+<summary>resp_bat_id</summary>
+<p><code>ID of batter charged with event</code></p>
+</details>
+<details class="columnstyle">
+<summary>resp_bat_hand_cd</summary>
+<p><code>Handedness of batter charged with event</code></p>
+</details>
+<details class="columnstyle">
+<summary>pit_id</summary>
+<p><code>Pitcher ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>pit_hand_cd</summary>
+<p><code>Pitcher handedness</code></p>
+</details>
+<details class="columnstyle">
+<summary>resp_pit_id</summary>
+<p><code>ID of pitcher charged with event</code></p>
+</details>
+<details class="columnstyle">
+<summary>resp_pit_hand_cd</summary>
+<p><code>Handedness of pitcher charged with event</code></p>
+</details>
+<details class="columnstyle">
+<summary>pos2_fld_id</summary>
+<p><code>Catcher ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>pos3_fld_id</summary>
+<p><code>First baseman ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>pos4_fld_id</summary>
+<p><code>Second baseman ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>pos5_fld_id</summary>
+<p><code>Third baseman ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>pos6_fld_id</summary>
+<p><code>Shortstop ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>pos7_fld_id</summary>
+<p><code>Left fielder ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>pos8_fld_id</summary>
+<p><code>Center fielder ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>pos9_fld_id</summary>
+<p><code>Right fielder ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>base1_run_id</summary>
+<p><code>ID of runner on first</code></p>
+</details>
+<details class="columnstyle">
+<summary>base2_run_id</summary>
+<p><code>ID of runner on second</code></p>
+</details>
+<details class="columnstyle">
+<summary>base3_run_id</summary>
+<p><code>ID of runner on third</code></p>
+</details>
+<details class="columnstyle">
+<summary>event_tx</summary>
+<p><code>Event text (in scoring shorthand</code></p>
+</details>
+<details class="columnstyle">
+<summary>leadoff_fl</summary>
+<p><code>Batter is leading off the inning</code></p>
+</details>
+<details class="columnstyle">
+<summary>ph_fl</summary>
+<p><code>Batter is pinch-hitting</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_fld_cd</summary>
+<p><code>Defensive position of batter (10 for DH, 11 for PH, 12 for PR</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_lineup_id</summary>
+<p><code>Lineup position (1-9)</code></p>
+</details>
+<details class="columnstyle">
+<summary>event_cd</summary>
+<p><code>Event code (join table `code_event` for descriptions</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_event_fl</summary>
+<p><code>Event is related to the batter</code></p>
+</details>
+<details class="columnstyle">
+<summary>ab_fl</summary>
+<p><code>Event is an at-bat</code></p>
+</details>
+<details class="columnstyle">
+<summary>h_fl</summary>
+<p><code>Event is a hit</code></p>
+</details>
+<details class="columnstyle">
+<summary>sh_fl</summary>
+<p><code>Event is a sacrifice hit</code></p>
+</details>
+<details class="columnstyle">
+<summary>sf_fl</summary>
+<p><code>Event is a sacrifice fly</code></p>
+</details>
+<details class="columnstyle">
+<summary>event_outs_ct</summary>
+<p><code>Outs recorded on event (0-3)</code></p>
+</details>
+<details class="columnstyle">
+<summary>dp_fl</summary>
+<p><code>Event is a double play</code></p>
+</details>
+<details class="columnstyle">
+<summary>tp_fl</summary>
+<p><code>Event is a triple play</code></p>
+</details>
+<details class="columnstyle">
+<summary>rbi_ct</summary>
+<p><code>Runs batted in on event</code></p>
+</details>
+<details class="columnstyle">
+<summary>wp_fl</summary>
+<p><code>Event is a wild pitch</code></p>
+</details>
+<details class="columnstyle">
+<summary>pb_fl</summary>
+<p><code>Event is a passed ball</code></p>
+</details>
+<details class="columnstyle">
+<summary>fld_cd</summary>
+<p><code>Position id of event fielder</code></p>
+</details>
+<details class="columnstyle">
+<summary>battedball_cd</summary>
+<p><code>Batted ball code (P - pop-up, G - ground ball, F - fly ball, L - line drive</code></p>
+</details>
+<details class="columnstyle">
+<summary>bunt_fl</summary>
+<p><code>Event is a bunt</code></p>
+</details>
+<details class="columnstyle">
+<summary>foul_fl</summary>
+<p><code>Event is a foul ball</code></p>
+</details>
+<details class="columnstyle">
+<summary>battedball_loc_tx</summary>
+<p><code>Hit location code (see https://www.retrosheet.org/location.htm)</code></p>
+</details>
+<details class="columnstyle">
+<summary>err_ct</summary>
+<p><code>Number of errors recorded during event</code></p>
+</details>
+<details class="columnstyle">
+<summary>err1_fld_cd</summary>
+<p><code>Position code of fielder committing first error during event</code></p>
+</details>
+<details class="columnstyle">
+<summary>err1_cd</summary>
+<p><code>First error type (T - throwing, F - fielding)</code></p>
+</details>
+<details class="columnstyle">
+<summary>err2_fld_cd</summary>
+<p><code>Position code of fielder committing second error during event</code></p>
+</details>
+<details class="columnstyle">
+<summary>err2_cd</summary>
+<p><code>Second error type (T - throwing, F - fielding)</code></p>
+</details>
+<details class="columnstyle">
+<summary>err3_fld_cd</summary>
+<p><code>Position code of fielder committing third error during event</code></p>
+</details>
+<details class="columnstyle">
+<summary>err3_cd</summary>
+<p><code>Third error type (T - throwing, F - fielding)</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_dest_id</summary>
+<p><code>Destination of batter after event (0 - putout, 1-3 - bases, 4 - scored asearned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_dest_id</summary>
+<p><code>Destination of runner on first after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_dest_id</summary>
+<p><code>Destination of runner on second after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_dest_id</summary>
+<p><code>Destination of runner on third after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_play_tx</summary>
+<p><code>Fielding play on batter</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_play_tx</summary>
+<p><code>Fielding play on runner on first</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_play_tx</summary>
+<p><code>Fielding play on runner on second</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_play_tx</summary>
+<p><code>Fielding play on runner on third</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_sb_fl</summary>
+<p><code>Runner on first steals base</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_sb_fl</summary>
+<p><code>Runner on second steals base</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_sb_fl</summary>
+<p><code>Runner on third steals base</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_cs_fl</summary>
+<p><code>Runner on first caught stealing</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_cs_fl</summary>
+<p><code>Runner on second caught stealing</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_cs_fl</summary>
+<p><code>Runner on third caught stealing</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_pk_fl</summary>
+<p><code>Runner on first picked off</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_pk_fl</summary>
+<p><code>Runner on second picked off</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_pk_fl</summary>
+<p><code>Runner on third picked off</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_resp_pit_id</summary>
+<p><code>ID of pitcher charged with runner on first</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_resp_pit_id</summary>
+<p><code>ID of pitcher charged with runner on second</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_resp_pit_id</summary>
+<p><code>ID of pitcher charged with runner on third</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_new_fl</summary>
+<p><code>Start of game flag</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_end_fl</summary>
+<p><code>End of game flag</code></p>
+</details>
+<details class="columnstyle">
+<summary>pr_run1_fl</summary>
+<p><code>Pinch-runner on first</code></p>
+</details>
+<details class="columnstyle">
+<summary>pr_run2_fl</summary>
+<p><code>Pinch-runner on second</code></p>
+</details>
+<details class="columnstyle">
+<summary>pr_run3_fl</summary>
+<p><code>Runner on third</code></p>
+</details>
+<details class="columnstyle">
+<summary>removed_for_pr_run1_id</summary>
+<p><code>ID of former runner on first removed for pinch-runner</code></p>
+</details>
+<details class="columnstyle">
+<summary>removed_for_pr_run2_id</summary>
+<p><code>ID of former runner on second removed for pinch-runner</code></p>
+</details>
+<details class="columnstyle">
+<summary>removed_for_pr_run3_id</summary>
+<p><code>ID of former runner on third removed for pinch-runner</code></p>
+</details>
+<details class="columnstyle">
+<summary>removed_for_ph_bat_id</summary>
+<p><code>ID of former batter removed for pinch-hitter</code></p>
+</details>
+<details class="columnstyle">
+<summary>removed_for_ph_bat_fld_cd</summary>
+<p><code>Position code of batter removed for pinch-hitter</code></p>
+</details>
+<details class="columnstyle">
+<summary>po1_fld_cd</summary>
+<p><code>Position code of fielder with first putout</code></p>
+</details>
+<details class="columnstyle">
+<summary>po2_fld_cd</summary>
+<p><code>Position code of fielder with second putout</code></p>
+</details>
+<details class="columnstyle">
+<summary>po3_fld_cd</summary>
+<p><code>Position code of fielder with third putout</code></p>
+</details>
+<details class="columnstyle">
+<summary>ass1_fld_cd</summary>
+<p><code>Position code of fielder with first assist</code></p>
+</details>
+<details class="columnstyle">
+<summary>ass2_fld_cd</summary>
+<p><code>Position code of fielder with second assist</code></p>
+</details>
+<details class="columnstyle">
+<summary>ass3_fld_cd</summary>
+<p><code>Position code of fielder with third assist</code></p>
+</details>
+<details class="columnstyle">
+<summary>ass4_fld_cd</summary>
+<p><code>Position code of fielder with fourth assist</code></p>
+</details>
+<details class="columnstyle">
+<summary>ass5_fld_cd</summary>
+<p><code>Position code of fielder with fifth assist</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_team_id</summary>
+<p><code>Home team ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_team_id</summary>
+<p><code>Batting team ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>fld_team_id</summary>
+<p><code>Fielding team ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_last_id</summary>
+<p><code>Half inning (differs from batting team if home team bats first)</code></p>
+</details>
+<details class="columnstyle">
+<summary>inn_new_fl</summary>
+<p><code>Start of half-inning flag</code></p>
+</details>
+<details class="columnstyle">
+<summary>inn_end_fl</summary>
+<p><code>End of half-inning flag</code></p>
+</details>
+<details class="columnstyle">
+<summary>start_bat_score_ct</summary>
+<p><code>Runs scored by batting team (prior to this event)</code></p>
+</details>
+<details class="columnstyle">
+<summary>start_fld_score_ct</summary>
+<p><code>Runs scored by fielding team</code></p>
+</details>
+<details class="columnstyle">
+<summary>inn_runs_ct</summary>
+<p><code>Runs scored in this half-inning (prior to this event)</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_pa_ct</summary>
+<p><code>Batting team PA total (prior to this event)</code></p>
+</details>
+<details class="columnstyle">
+<summary>inn_pa_ct</summary>
+<p><code>Half-inning PA total (prior to this event)</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_new_fl</summary>
+<p><code>Event is the start of a plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_trunc_fl</summary>
+<p><code>Event is a truncated plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>start_bases_cd</summary>
+<p><code>Base state at start of event (0-7, binary value is flags for runners on third, second, and first left-to-right)</code></p>
+</details>
+<details class="columnstyle">
+<summary>end_bases_cd</summary>
+<p><code>Base state end of event (0-7, binary value is flags for runners on third, second, and first left-to-right)</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_start_fl</summary>
+<p><code>Batter started game</code></p>
+</details>
+<details class="columnstyle">
+<summary>resp_bat_start_fl</summary>
+<p><code>Result-charged batter is a starter</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_on_deck_id</summary>
+<p><code>ID of batter on deck</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_in_hold_id</summary>
+<p><code>Id of batter in the hole</code></p>
+</details>
+<details class="columnstyle">
+<summary>pit_start_fl</summary>
+<p><code>Pitcher started game</code></p>
+</details>
+<details class="columnstyle">
+<summary>resp_pit_start_fl</summary>
+<p><code>Result-charged pitcher started game</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_fld_cd</summary>
+<p><code>Defensive position code of runner on first</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_lineup_cd</summary>
+<p><code>Lineup position of runner on first</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_origin_event_id</summary>
+<p><code>Event number on which runner on first reached base</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_fld_cd</summary>
+<p><code>Defensive position code of runner on second</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_lineup_cd</summary>
+<p><code>Lineup position of runner on second</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_origin_event_id</summary>
+<p><code>Event number on which runner on second reached base</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_fld_cd</summary>
+<p><code>Defensive position code of runner on third</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_lineup_cd</summary>
+<p><code>Lineup position of runner on third</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_origin_event_id</summary>
+<p><code>Event number on which runner on third reached base</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_resp_cat_id</summary>
+<p><code>ID of responsible catcher for runner on first</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_resp_cat_id</summary>
+<p><code>ID of responsible catcher for runner on second</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_resp_cat_id</summary>
+<p><code>ID of responsible catcher for runner on third</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_ball_ct</summary>
+<p><code>Number of balls in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_called_ball_ct</summary>
+<p><code>Number of called balls in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_intent_ball_ct</summary>
+<p><code>Number of intentional balls in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_pitchout_ball_ct</summary>
+<p><code>Number of pitchouts in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_hitbatter_ball_ct</summary>
+<p><code>Number of pitches hitting batter in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_other_ball_ct</summary>
+<p><code>Number of other balls in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_strike_ct</summary>
+<p><code>Number of strikes in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_called_strike_ct</summary>
+<p><code>Number of called strikes in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_swingmiss_strike_ct</summary>
+<p><code>Number of swing-and-miss strikes in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_foul_strike_ct</summary>
+<p><code>Number of foul balls in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_inplay_strike_ct</summary>
+<p><code>Number of balls in play in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>pa_other_strike_ct</summary>
+<p><code>Number of other strikes in plate appearance</code></p>
+</details>
+<details class="columnstyle">
+<summary>event_runs_ct</summary>
+<p><code>Number of runs on play</code></p>
+</details>
+<details class="columnstyle">
+<summary>fld_id</summary>
+<p><code>ID of player fielding batted ball</code></p>
+</details>
+<details class="columnstyle">
+<summary>base2_force_fl</summary>
+<p><code>Event has force play at second</code></p>
+</details>
+<details class="columnstyle">
+<summary>base3_force_fl</summary>
+<p><code>Event has force play at third</code></p>
+</details>
+<details class="columnstyle">
+<summary>base4_force_fl</summary>
+<p><code>Event has force play at home</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_safe_err_fl</summary>
+<p><code>Event has batter safe on an error</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_fate_id</summary>
+<p><code>Ultimate fate of batter (see `dest_id` cols for code meaning</code></p>
+</details>
+<details class="columnstyle">
+<summary>run1_fate_id</summary>
+<p><code>Ultimate fate of runner on first (see `dest_id` cols for code meaning</code></p>
+</details>
+<details class="columnstyle">
+<summary>run2_fate_id</summary>
+<p><code>Ultimate fate of runner on second (see `dest_id` cols for code meaning</code></p>
+</details>
+<details class="columnstyle">
+<summary>run3_fate_id</summary>
+<p><code>Ultimate fate of runner on third (see `dest_id` cols for code meaning</code></p>
+</details>
+<details class="columnstyle">
+<summary>fate_runs_ct</summary>
+<p><code>Additional runs scored in half inning after this event</code></p>
+</details>
+<details class="columnstyle">
+<summary>ass6_fld_cd</summary>
+<p><code>Position code of fielder with sixth assist</code></p>
+</details>
+<details class="columnstyle">
+<summary>ass7_fld_cd</summary>
+<p><code>Position code of fielder with seventh assist</code></p>
+</details>
+<details class="columnstyle">
+<summary>ass8_fld_cd</summary>
+<p><code>Position code of fielder with eighth assist</code></p>
+</details>
+<details class="columnstyle">
+<summary>ass9_fld_cd</summary>
+<p><code>Position code of fielder with ninth assist</code></p>
+</details>
+<details class="columnstyle">
+<summary>ass10_fld_cd</summary>
+<p><code>Position code of fielder with tenth assist</code></p>
+</details>
+<details class="columnstyle">
+<summary>unknown_out_exc_fl</summary>
+<p><code>Unknown fielding credit flag</code></p>
+</details>
+<details class="columnstyle">
+<summary>uncertain_play_exc_fl</summary>
+<p><code>Uncertain play flag</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>game</summary>
+<details class="keycolumnstyle">
+<summary>game_id</summary>
+<p><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_dt</summary>
+<p><code>Game date</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_ct</summary>
+<p><code>Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_dy</summary>
+<p><code>Day of week</code></p>
+</details>
+<details class="columnstyle">
+<summary>start_game_tm</summary>
+<p><code>Game start time (12HMM coded as integer, eg 1015 for 10:15 PM)</code></p>
+</details>
+<details class="columnstyle">
+<summary>dh_fl</summary>
+<p><code>DH used</code></p>
+</details>
+<details class="columnstyle">
+<summary>daynight_park_cd</summary>
+<p><code>D - day game, N - night game</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_team_id</summary>
+<p><code>Away team ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_team_id</summary>
+<p><code>Home team ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>park_id</summary>
+<p><code>Park ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_start_pit_id</summary>
+<p><code>Away team starting pitcher ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_start_pit_id</summary>
+<p><code>Home team starting pitcher ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>base4_ump_id</summary>
+<p><code>Home plate umpire ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>base1_ump_id</summary>
+<p><code>First base umpire ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>base2_ump_id</summary>
+<p><code>Second base umpire ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>base3_ump_id</summary>
+<p><code>Third base umpire ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>lf_ump_id</summary>
+<p><code>Left field umpire ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>rf_ump_id</summary>
+<p><code>Right field umpire ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>attend_park_ct</summary>
+<p><code>Attendance</code></p>
+</details>
+<details class="columnstyle">
+<summary>scorer_record_id</summary>
+<p><code>Scorekeeper</code></p>
+</details>
+<details class="columnstyle">
+<summary>translator_record_id</summary>
+<p><code>Translator</code></p>
+</details>
+<details class="columnstyle">
+<summary>inputter_record_id</summary>
+<p><code>Inputter</code></p>
+</details>
+<details class="columnstyle">
+<summary>input_record_ts</summary>
+<p><code>Date and time of record input</code></p>
+</details>
+<details class="columnstyle">
+<summary>edit_record_ts</summary>
+<p><code>Date and time of Most recent record edit</code></p>
+</details>
+<details class="columnstyle">
+<summary>method_record_cd</summary>
+<p><code>How the game was scored (join `code_method_record` for details</code></p>
+</details>
+<details class="columnstyle">
+<summary>pitches_record_cd</summary>
+<p><code>Highest detail of pitches recorded (join `code_pitches_record` for details). Note that many games with pitch detail do not have that info for all events, so pitch totals may not be accurate.</code></p>
+</details>
+<details class="columnstyle">
+<summary>temp_park_ct</summary>
+<p><code>Park temperature in degrees F (0 if unknown)</code></p>
+</details>
+<details class="columnstyle">
+<summary>wind_direction_park_cd</summary>
+<p><code>Wind direction park code (join `code_wind_direction_park` for details)</code></p>
+</details>
+<details class="columnstyle">
+<summary>wind_speed_park_ct</summary>
+<p><code>Wind speed in miles per hour (-1 if unknown)</code></p>
+</details>
+<details class="columnstyle">
+<summary>field_park_cd</summary>
+<p><code>Park field condition code (join `code_field_park` for details)</code></p>
+</details>
+<details class="columnstyle">
+<summary>precip_park_cd</summary>
+<p><code>Park precipitation code (join `code_precip_park` for details</code></p>
+</details>
+<details class="columnstyle">
+<summary>sky_park_cd</summary>
+<p><code>Park sky condition code (join `code_sky_park` for details</code></p>
+</details>
+<details class="columnstyle">
+<summary>minutes_game_ct</summary>
+<p><code>Length of game in minutes</code></p>
+</details>
+<details class="columnstyle">
+<summary>inn_ct</summary>
+<p><code>Length of game in innings</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_score_ct</summary>
+<p><code>Away team final score</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_score_ct</summary>
+<p><code>Home team final score</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_hits_ct</summary>
+<p><code>Away team hits</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_hits_ct</summary>
+<p><code>Home team hits</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_err_ct</summary>
+<p><code>Away team errors</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_err_ct</summary>
+<p><code>Home team errors</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lob_ct</summary>
+<p><code>Away team left on base</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lob_ct</summary>
+<p><code>Home team left on base</code></p>
+</details>
+<details class="columnstyle">
+<summary>win_pit_id</summary>
+<p><code>ID of winning pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>lose_pit_id</summary>
+<p><code>ID of losing pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>save_pit_id</summary>
+<p><code>ID of saving pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>gwrbi_bat_id</summary>
+<p><code>ID of batter wit game-winning RBI</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup1_bat_id</summary>
+<p><code>ID of away team starting batter in lineup position 1</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup1_fld_cd</summary>
+<p><code>Fielding position code of away team starting batter in lineup position 1</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup2_bat_id</summary>
+<p><code>ID of away team starting batter in lineup position 2</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup2_fld_cd</summary>
+<p><code>Fielding position code of away team starting batter in lineup position 2</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup3_bat_id</summary>
+<p><code>ID of away team starting batter in lineup position 3</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup3_fld_cd</summary>
+<p><code>Fielding position code of away team starting batter in lineup position 3</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup4_bat_id</summary>
+<p><code>ID of away team starting batter in lineup position 4</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup4_fld_cd</summary>
+<p><code>Fielding position code of away team starting batter in lineup position 4</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup5_bat_id</summary>
+<p><code>ID of away team starting batter in lineup position 5</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup5_fld_cd</summary>
+<p><code>Fielding position code of away team starting batter in lineup position 5</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup6_bat_id</summary>
+<p><code>ID of away team starting batter in lineup position 6</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup6_fld_cd</summary>
+<p><code>Fielding position code of away team starting batter in lineup position 6</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup7_bat_id</summary>
+<p><code>ID of away team starting batter in lineup position 7</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup7_fld_cd</summary>
+<p><code>Fielding position code of away team starting batter in lineup position 7</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup8_bat_id</summary>
+<p><code>ID of away team starting batter in lineup position 8</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup8_fld_cd</summary>
+<p><code>Fielding position code of away team starting batter in lineup position 8</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup9_bat_id</summary>
+<p><code>ID of away team starting batter in lineup position 9</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup9_fld_cd</summary>
+<p><code>Fielding position code of away team starting batter in lineup position 9</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup1_bat_id</summary>
+<p><code>ID of home team starting batter in lineup position 1</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup1_fld_cd</summary>
+<p><code>Fielding position code of home team starting batter in lineup position 1</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup2_bat_id</summary>
+<p><code>ID of home team starting batter in lineup position 2</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup2_fld_cd</summary>
+<p><code>Fielding position code of home team starting batter in lineup position 2</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup3_bat_id</summary>
+<p><code>ID of home team starting batter in lineup position 3</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup3_fld_cd</summary>
+<p><code>Fielding position code of home team starting batter in lineup position 3</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup4_bat_id</summary>
+<p><code>ID of home team starting batter in lineup position 4</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup4_fld_cd</summary>
+<p><code>Fielding position code of home team starting batter in lineup position 4</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup5_bat_id</summary>
+<p><code>ID of home team starting batter in lineup position 5</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup5_fld_cd</summary>
+<p><code>Fielding position code of home team starting batter in lineup position 5</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup6_bat_id</summary>
+<p><code>ID of home team starting batter in lineup position 6</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup6_fld_cd</summary>
+<p><code>Fielding position code of home team starting batter in lineup position 6</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup7_bat_id</summary>
+<p><code>ID of home team starting batter in lineup position 7</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup7_fld_cd</summary>
+<p><code>Fielding position code of home team starting batter in lineup position 7</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup8_bat_id</summary>
+<p><code>ID of home team starting batter in lineup position 8</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup8_fld_cd</summary>
+<p><code>Fielding position code of home team starting batter in lineup position 8</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup9_bat_id</summary>
+<p><code>ID of home team starting batter in lineup position 9</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup9_fld_cd</summary>
+<p><code>Fielding position code of home team starting batter in lineup position 9</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_finish_pit_id</summary>
+<p><code>Away team finishing pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_finish_pit_id</summary>
+<p><code>Home team finishing pitcher</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_team_league_id</summary>
+<p><code>Away team league (1 char ID)</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_team_league_id</summary>
+<p><code>Home team league (1 char ID)</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_team_game_ct</summary>
+<p><code>Away team game number</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_team_game_ct</summary>
+<p><code>Home team game number</code></p>
+</details>
+<details class="columnstyle">
+<summary>outs_ct</summary>
+<p><code>Length of game in outs</code></p>
+</details>
+<details class="columnstyle">
+<summary>completion_tx</summary>
+<p><code>Information on completion of game</code></p>
+</details>
+<details class="columnstyle">
+<summary>forfeit_tx</summary>
+<p><code>Information on forfeit of game</code></p>
+</details>
+<details class="columnstyle">
+<summary>protest_tx</summary>
+<p><code>Information on protest of game</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_line_tx</summary>
+<p><code>Away team linescore</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_line_tx</summary>
+<p><code>Home team linescore</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_ab_ct</summary>
+<p><code>Away team at bats</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_2b_ct</summary>
+<p><code>Away team doubles</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_3b_ct</summary>
+<p><code>Away team triples</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_hr_ct</summary>
+<p><code>Away team home runs</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_bi_ct</summary>
+<p><code>Away team runs batted in</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_sh_ct</summary>
+<p><code>Away team sacrifice hits</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_sf_ct</summary>
+<p><code>Away team sacrifice flies</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_hp_ct</summary>
+<p><code>Away team hit by pitches</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_bb_ct</summary>
+<p><code>Away team walks</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_ibb_ct</summary>
+<p><code>Away team intentional walks</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_so_ct</summary>
+<p><code>Away team strikeouts</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_sb_ct</summary>
+<p><code>Away team stolen bases</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_cs_ct</summary>
+<p><code>Away team caught stealing</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_gdp_ct</summary>
+<p><code>Away team grounded into double plays</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_xi_ct</summary>
+<p><code>Away team reached on interference</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_pitcher_ct</summary>
+<p><code>Away team number of pitchers used</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_er_ct</summary>
+<p><code>Away team individual earned runs</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_ter_ct</summary>
+<p><code>Away team team earned runs</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_wp_ct</summary>
+<p><code>Away team wild pitches</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_bk_ct</summary>
+<p><code>Away team balks</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_po_ct</summary>
+<p><code>Away team putouts</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_a_ct</summary>
+<p><code>Away team assists</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_pb_ct</summary>
+<p><code>Away team passed balls</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_dp_ct</summary>
+<p><code>Away team double plays turned</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_tp_ct</summary>
+<p><code>Away team triple plays turned</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_ab_ct</summary>
+<p><code>Home team at bats</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_2b_ct</summary>
+<p><code>Home team doubles</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_3b_ct</summary>
+<p><code>Home team triples</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_hr_ct</summary>
+<p><code>Home team home runs</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_bi_ct</summary>
+<p><code>Home team runs batted in</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_sh_ct</summary>
+<p><code>Home team sacrifice hits</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_sf_ct</summary>
+<p><code>Home team sacrifice flies</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_hp_ct</summary>
+<p><code>Home team hit by pitches</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_bb_ct</summary>
+<p><code>Home team walks</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_ibb_ct</summary>
+<p><code>Home team intentional walks</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_so_ct</summary>
+<p><code>Home team strikeouts</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_sb_ct</summary>
+<p><code>Home team stolen bases</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_cs_ct</summary>
+<p><code>Home team caught stealing</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_gdp_ct</summary>
+<p><code>Home team grounded into double plays</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_xi_ct</summary>
+<p><code>Home team reached on interference</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_pitcher_ct</summary>
+<p><code>Home team number of pitchers used</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_er_ct</summary>
+<p><code>Home team individual earned runs</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_ter_ct</summary>
+<p><code>Home team team earned runs</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_wp_ct</summary>
+<p><code>Home team wild pitches</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_bk_ct</summary>
+<p><code>Home team balks</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_po_ct</summary>
+<p><code>Home team putouts</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_a_ct</summary>
+<p><code>Home team assists</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_pb_ct</summary>
+<p><code>Home team passed balls</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_dp_ct</summary>
+<p><code>Home team double plays turned</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_tp_ct</summary>
+<p><code>Home team triple plays turned</code></p>
+</details>
+<details class="columnstyle">
+<summary>ump_home_name_tx</summary>
+<p><code>Home plate umpire name</code></p>
+</details>
+<details class="columnstyle">
+<summary>ump_1b_name_tx</summary>
+<p><code>First base umpire name</code></p>
+</details>
+<details class="columnstyle">
+<summary>ump_2b_name_tx</summary>
+<p><code>Second base umpire name</code></p>
+</details>
+<details class="columnstyle">
+<summary>ump_3b_name_tx</summary>
+<p><code>Third base umpire name</code></p>
+</details>
+<details class="columnstyle">
+<summary>ump_lf_name_tx</summary>
+<p><code>Left field umpire name</code></p>
+</details>
+<details class="columnstyle">
+<summary>ump_rf_name_tx</summary>
+<p><code>Right field umpire name</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_manager_id</summary>
+<p><code>Away manager ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_manager_name_tx</summary>
+<p><code>Away manager name</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_manager_id</summary>
+<p><code>Home manager ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_manager_name_tx</summary>
+<p><code>Home manager name</code></p>
+</details>
+<details class="columnstyle">
+<summary>win_pit_name_tx</summary>
+<p><code>Wining pitcher name</code></p>
+</details>
+<details class="columnstyle">
+<summary>lose_pit_name_tx</summary>
+<p><code>Losing pitcher name</code></p>
+</details>
+<details class="columnstyle">
+<summary>save_pit_name_tx</summary>
+<p><code>Saving pitcher name</code></p>
+</details>
+<details class="columnstyle">
+<summary>goahead_rbi_id</summary>
+<p><code>ID of batter with goahead RBI</code></p>
+</details>
+<details class="columnstyle">
+<summary>goahead_rbi_name_tx</summary>
+<p><code>Name of batter with goahead RBI</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup1_bat_name_tx</summary>
+<p><code>Name of away team batter in lineup position 1</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup2_bat_name_tx</summary>
+<p><code>Name of away team batter in lineup position 2</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup3_bat_name_tx</summary>
+<p><code>Name of away team batter in lineup position 3</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup4_bat_name_tx</summary>
+<p><code>Name of away team batter in lineup position 4</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup5_bat_name_tx</summary>
+<p><code>Name of away team batter in lineup position 5</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup6_bat_name_tx</summary>
+<p><code>Name of away team batter in lineup position 6</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup7_bat_name_tx</summary>
+<p><code>Name of away team batter in lineup position 7</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup8_bat_name_tx</summary>
+<p><code>Name of away team batter in lineup position 8</code></p>
+</details>
+<details class="columnstyle">
+<summary>away_lineup9_bat_name_tx</summary>
+<p><code>Name of home team batter in lineup position 9</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup1_bat_name_tx</summary>
+<p><code>Name of home team batter in lineup position 1</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup2_bat_name_tx</summary>
+<p><code>Name of home team batter in lineup position 2</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup3_bat_name_tx</summary>
+<p><code>Name of home team batter in lineup position 3</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup4_bat_name_tx</summary>
+<p><code>Name of home team batter in lineup position 4</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup5_bat_name_tx</summary>
+<p><code>Name of home team batter in lineup position 5</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup6_bat_name_tx</summary>
+<p><code>Name of home team batter in lineup position 6</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup7_bat_name_tx</summary>
+<p><code>Name of home team batter in lineup position 7</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup8_bat_name_tx</summary>
+<p><code>Name of home team batter in lineup position 8</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_lineup9_bat_name_tx</summary>
+<p><code>Name of home team batter in lineup position 9</code></p>
+</details>
+<details class="columnstyle">
+<summary>add_info_tx</summary>
+<p><code>Additional information</code></p>
+</details>
+<details class="columnstyle">
+<summary>acq_info_tx</summary>
+<p><code>Acquisition information</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>gamelog</summary>
+<details class="keycolumnstyle">
+<summary>date</summary>
+<p><code>Game date</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>double_header</summary>
+<p>```</p>
+</details>
+</details>
+<p>Number of game:
+ "0" -- a single game
+ "1" -- the first game of a double (or triple) header
+        including separate admission doubleheaders
+ "2" -- the second game of a double (or triple) header
+        including separate admission doubleheaders
+ "3" -- the third game of a triple-header
+ "A" -- the first game of a double-header involving 3 teams
+ "B" -- the second game of a double-header involving 3 teams
+ ```</p>
+<pre><code>??? keycolumnstyle "visiting_team"
+
+    ```Visiting team ID```
+
+??? keycolumnstyle "home_team"
+
+    ```Home team ID```
+
+??? columnstyle "day_of_week"
+
+    ```Day of week (3 char abbreviation)```
+
+??? columnstyle "visiting_team_league"
+
+    ```Away team league ID```
+
+??? columnstyle "visiting_team_game_number"
+
+    ```Away team game number```
+
+??? columnstyle "home_team_league"
+
+    ```Home team league ID```
+
+??? columnstyle "home_team_game_number"
+
+    ```Home team game number```
+
+??? columnstyle "visitor_runs_scored"
+
+    ```Away team runs scored```
+
+??? columnstyle "home_runs_score"
+
+    ```Home team runs scored```
+
+??? columnstyle "length_in_outs"
+
+    ```Game length in outs```
+
+??? columnstyle "day_night"
+
+    ```D - day game, N - night game```
+
+??? columnstyle "completion_info"
+
+    ```
+</code></pre>
+<p>Completion information.  If the game was completed at a
+later date (either due to a suspension or an upheld protest)
+this field will include:
+    "yyyymmdd,park,vs,hs,len" Where
+yyyymmdd -- the date the game was completed
+park -- the park ID where the game was completed
+vs -- the visitor score at the time of interruption
+hs -- the home score at the time of interruption
+len -- the length of the game in outs at time of interruption
+All the rest of the information in the record refers to the
+entire game.
+```</p>
+<pre><code>??? columnstyle "forfeit_info"
+
+    ```V - forfeited to away team, H - forfeited to home team, T - ruled a no-decision```
+
+??? columnstyle "protest_info"
+
+    ```P - protested by unidentified team, V - disallowed protest by away team, H - disallowed protest by home team, X - upheld protest by away team, Y - upheld protest by home team```
+
+??? columnstyle "park_id"
+
+    ```Park ID```
+
+??? columnstyle "attendance"
+
+    ```Attendance```
+
+??? columnstyle "duration"
+
+    ```Time of game in minutes```
+
+??? columnstyle "vistor_line_score"
+
+    ```Away team line score, e.g. 010000(10)0x```
+
+??? columnstyle "home_line_score"
+
+    ```Home team line score, e.g. 010000(10)0x```
+
+??? columnstyle "visitor_ab"
+
+    ```Away team at bats```
+
+??? columnstyle "visitor_h"
+
+    ```Away team hits```
+
+??? columnstyle "visitor_d"
+
+    ```Away team doubles```
+
+??? columnstyle "visitor_t"
+
+    ```Away team triples```
+
+??? columnstyle "visitor_hr"
+
+    ```Away team home runs```
+
+??? columnstyle "visitor_rbi"
+
+    ```Away team runs batted in```
+
+??? columnstyle "visitor_sh"
+
+    ```Away team sacrifice hits (may include sac flies before 1954)```
+
+??? columnstyle "visitor_sf"
+
+    ```Away team sacrifice flies (since 1954)```
+
+??? columnstyle "visitor_hbp"
+
+    ```Away team hit by pitches```
+
+??? columnstyle "visitor_bb"
+
+    ```Away team walks```
+
+??? columnstyle "visitor_ibb"
+
+    ```Away team intentional walks```
+
+??? columnstyle "visitor_k"
+
+    ```Away team strikeouts```
+
+??? columnstyle "visitor_sb"
+
+    ```Away team stolen bases```
+
+??? columnstyle "visitor_cs"
+
+    ```Away team caught stealing```
+
+??? columnstyle "visitor_gdp"
+
+    ```Away team grounded into double plays```
+
+??? columnstyle "visitor_ci"
+
+    ```Away team reached on interference```
+
+??? columnstyle "visitor_lob"
+
+    ```Away team left on base```
+
+??? columnstyle "visitor_pitchers"
+
+    ```Away team pitchers used```
+
+??? columnstyle "visitor_er"
+
+    ```Away team individual earned runs allowed```
+
+??? columnstyle "visitor_ter"
+
+    ```Away team team earned runs allowed```
+
+??? columnstyle "visitor_wp"
+
+    ```Away team wild pitches allowed```
+
+??? columnstyle "visitor_balks"
+
+    ```Away team balks allowed```
+
+??? columnstyle "visitor_po"
+
+    ```Away team putouts```
+
+??? columnstyle "visitor_a"
+
+    ```Away team assists```
+
+??? columnstyle "visitor_e"
+
+    ```Away team errors```
+
+??? columnstyle "visitor_passed"
+
+    ```Away team passed balls```
+
+??? columnstyle "visitor_db"
+
+    ```Away team double plays turned```
+
+??? columnstyle "visitor_tp"
+
+    ```Away team triple plays turned```
+
+??? columnstyle "home_ab"
+
+    ```Home team at bats```
+
+??? columnstyle "home_h"
+
+    ```Home team hits```
+
+??? columnstyle "home_d"
+
+    ```Home team doubles```
+
+??? columnstyle "home_t"
+
+    ```Home team triples```
+
+??? columnstyle "home_hr"
+
+    ```Home team home runs```
+
+??? columnstyle "home_rbi"
+
+    ```Home team runs batted in```
+
+??? columnstyle "home_sh"
+
+    ```Home team sacrifice hits (may include sac flies before 1954)```
+
+??? columnstyle "home_sf"
+
+    ```Home team sacrifice flies (since 1954)```
+
+??? columnstyle "home_hbp"
+
+    ```Home team hit by pitches```
+
+??? columnstyle "home_bb"
+
+    ```Home team walks```
+
+??? columnstyle "home_ibb"
+
+    ```Home team intentional walks```
+
+??? columnstyle "home_k"
+
+    ```Home team strikeouts```
+
+??? columnstyle "home_sb"
+
+    ```Home team stolen bases```
+
+??? columnstyle "home_cs"
+
+    ```Home team caught stealing```
+
+??? columnstyle "home_gdp"
+
+    ```Home team grounded into double plays```
+
+??? columnstyle "home_ci"
+
+    ```Home team reached on interference```
+
+??? columnstyle "home_lob"
+
+    ```Home team left on base```
+
+??? columnstyle "home_pitchers"
+
+    ```Home team pitchers used```
+
+??? columnstyle "home_er"
+
+    ```Home team individual earned runs allowed```
+
+??? columnstyle "home_ter"
+
+    ```Home team team earned runs allowed```
+
+??? columnstyle "home_wp"
+
+    ```Home team wild pitches allowed```
+
+??? columnstyle "home_balks"
+
+    ```Home team balks allowed```
+
+??? columnstyle "home_po"
+
+    ```Home team putouts```
+
+??? columnstyle "home_a"
+
+    ```Home team assists```
+
+??? columnstyle "home_e"
+
+    ```Home team errors```
+
+??? columnstyle "home_passed"
+
+    ```Home team passed balls```
+
+??? columnstyle "home_db"
+
+    ```Home team double plays turned```
+
+??? columnstyle "home_tp"
+
+    ```Home team triple plays turned```
+
+??? columnstyle "umpire_h_id"
+
+    ```Home plate umpire ID```
+
+??? columnstyle "umpire_h_name"
+
+    ```Home plate umpire name```
+
+??? columnstyle "umpire_1b_id"
+
+    ```First base umpire ID```
+
+??? columnstyle "umpire_1b_name"
+
+    ```First base umpire name```
+
+??? columnstyle "umpire_2b_id"
+
+    ```Second base umpire ID```
+
+??? columnstyle "umpire_2b_name"
+
+    ```Second base umpire name```
+
+??? columnstyle "umpire_3b_id"
+
+    ```Third base umpire ID```
+
+??? columnstyle "umpire_3b_name"
+
+    ```Third base umpire name```
+
+??? columnstyle "umpire_lf_id"
+
+    ```Left field umpire ID```
+
+??? columnstyle "umpire_lf_name"
+
+    ```Left field umpire name```
+
+??? columnstyle "umpire_rf_id"
+
+    ```Right field umpire ID```
+
+??? columnstyle "umpire_rf_name"
+
+    ```Right field umpire name```
+
+??? columnstyle "visitor_manager_id"
+
+    ```Away team manager ID```
+
+??? columnstyle "visitor_manager_name"
+
+    ```Away team manager name```
+
+??? columnstyle "home_manager_id"
+
+    ```Home team manager ID```
+
+??? columnstyle "home_manager_name"
+
+    ```Home team manager name```
+
+??? columnstyle "winning_pitcher_id"
+
+    ```Winning pitcher ID```
+
+??? columnstyle "winning_pitcher_name"
+
+    ```Winning pitcher name```
+
+??? columnstyle "losing_pitcher_id"
+
+    ```Losing pitcher ID```
+
+??? columnstyle "losing_pitcher_name"
+
+    ```Losing pitcher name```
+
+??? columnstyle "saving_pitcher_id"
+
+    ```Saving pitcher ID```
+
+??? columnstyle "saving_pitcher_name"
+
+    ```Saving pitcher name```
+
+??? columnstyle "game_winning_rbi_id"
+
+    ```Game-winning RBI ID```
+
+??? columnstyle "game_winning_rbi_name"
+
+    ```Game-winning RBI name```
+
+??? columnstyle "visitor_starting_pitcher_id"
+
+    ```Away team starting pitcher ID```
+
+??? columnstyle "visitor_starting_pitcher_name"
+
+    ```Away team starting pitcher name```
+
+??? columnstyle "home_starting_pitcher_id"
+
+    ```Home team starting pitcher ID```
+
+??? columnstyle "home_starting_pitcher_name"
+
+    ```Home team starting pitcher name```
+
+??? columnstyle "visitor_batting_1_player_id"
+
+    ```Away team lineup slot 1 starting player ID```
+
+??? columnstyle "visitor_batting_1_name"
+
+    ```Away team lineup slot 1 starting player name```
+
+??? columnstyle "visitor_batting_1_position"
+
+    ```Away team lineup slot 1 starting player fielding position```
+
+??? columnstyle "visitor_batting_2_player_id"
+
+    ```Away team lineup slot 2 starting player ID```
+
+??? columnstyle "visitor_batting_2_name"
+
+    ```Away team lineup slot 2 starting player name```
+
+??? columnstyle "visitor_batting_2_position"
+
+    ```Away team lineup slot 2 starting player fielding position```
+
+??? columnstyle "visitor_batting_3_player_id"
+
+    ```Away team lineup slot 3 starting player ID```
+
+??? columnstyle "visitor_batting_3_name"
+
+    ```Away team lineup slot 3 starting player name```
+
+??? columnstyle "visitor_batting_3_position"
+
+    ```Away team lineup slot 3 starting player fielding position```
+
+??? columnstyle "visitor_batting_4_player_id"
+
+    ```Away team lineup slot 4 starting player ID```
+
+??? columnstyle "visitor_batting_4_name"
+
+    ```Away team lineup slot 4 starting player name```
+
+??? columnstyle "visitor_batting_4_position"
+
+    ```Away team lineup slot 4 starting player fielding position```
+
+??? columnstyle "visitor_batting_5_player_id"
+
+    ```Away team lineup slot 5 starting player ID```
+
+??? columnstyle "visitor_batting_5_name"
+
+    ```Away team lineup slot 5 starting player name```
+
+??? columnstyle "visitor_batting_5_position"
+
+    ```Away team lineup slot 5 starting player fielding position```
+
+??? columnstyle "visitor_batting_6_player_id"
+
+    ```Away team lineup slot 6 starting player ID```
+
+??? columnstyle "visitor_batting_6_name"
+
+    ```Away team lineup slot 6 starting player name```
+
+??? columnstyle "visitor_batting_6_position"
+
+    ```Away team lineup slot 6 starting player fielding position```
+
+??? columnstyle "visitor_batting_7_player_id"
+
+    ```Away team lineup slot 7 starting player ID```
+
+??? columnstyle "visitor_batting_7_name"
+
+    ```Away team lineup slot 7 starting player name```
+
+??? columnstyle "visitor_batting_7_position"
+
+    ```Away team lineup slot 7 starting player fielding position```
+
+??? columnstyle "visitor_batting_8_player_id"
+
+    ```Away team lineup slot 8 starting player ID```
+
+??? columnstyle "visitor_batting_8_name"
+
+    ```Away team lineup slot 8 starting player name```
+
+??? columnstyle "visitor_batting_8_position"
+
+    ```Away team lineup slot 8 starting player fielding position```
+
+??? columnstyle "visitor_batting_9_player_id"
+
+    ```Away team lineup slot 9 starting player ID```
+
+??? columnstyle "visitor_batting_9_name"
+
+    ```Away team lineup slot 9 starting player name```
+
+??? columnstyle "visitor_batting_9_position"
+
+    ```Away team lineup slot 9 starting player fielding position```
+
+??? columnstyle "home_batting_1_player_id"
+
+    ```Home team lineup slot 1 starting player ID```
+
+??? columnstyle "home_batting_1_name"
+
+    ```Home team lineup slot 1 starting player name```
+
+??? columnstyle "home_batting_1_position"
+
+    ```Home team lineup slot 1 starting player fielding position```
+
+??? columnstyle "home_batting_2_player_id"
+
+    ```Home team lineup slot 2 starting player ID```
+
+??? columnstyle "home_batting_2_name"
+
+    ```Home team lineup slot 2 starting player name```
+
+??? columnstyle "home_batting_2_position"
+
+    ```Home team lineup slot 2 starting player fielding position```
+
+??? columnstyle "home_batting_3_player_id"
+
+    ```Home team lineup slot 3 starting player ID```
+
+??? columnstyle "home_batting_3_name"
+
+    ```Home team lineup slot 3 starting player name```
+
+??? columnstyle "home_batting_3_position"
+
+    ```Home team lineup slot 3 starting player fielding position```
+
+??? columnstyle "home_batting_4_player_id"
+
+    ```Home team lineup slot 4 starting player ID```
+
+??? columnstyle "home_batting_4_name"
+
+    ```Home team lineup slot 4 starting player name```
+
+??? columnstyle "home_batting_4_position"
+
+    ```Home team lineup slot 4 starting player fielding position```
+
+??? columnstyle "home_batting_5_player_id"
+
+    ```Home team lineup slot 5 starting player ID```
+
+??? columnstyle "home_batting_5_name"
+
+    ```Home team lineup slot 5 starting player name```
+
+??? columnstyle "home_batting_5_position"
+
+    ```Home team lineup slot 5 starting player fielding position```
+
+??? columnstyle "home_batting_6_player_id"
+
+    ```Home team lineup slot 6 starting player ID```
+
+??? columnstyle "home_batting_6_name"
+
+    ```Home team lineup slot 6 starting player name```
+
+??? columnstyle "home_batting_6_position"
+
+    ```Home team lineup slot 6 starting player fielding position```
+
+??? columnstyle "home_batting_7_player_id"
+
+    ```Home team lineup slot 7 starting player ID```
+
+??? columnstyle "home_batting_7_name"
+
+    ```Home team lineup slot 7 starting player name```
+
+??? columnstyle "home_batting_7_position"
+
+    ```Home team lineup slot 7 starting player fielding position```
+
+??? columnstyle "home_batting_8_player_id"
+
+    ```Home team lineup slot 8 starting player ID```
+
+??? columnstyle "home_batting_8_name"
+
+    ```Home team lineup slot 8 starting player name```
+
+??? columnstyle "home_batting_8_position"
+
+    ```Home team lineup slot 8 starting player fielding position```
+
+??? columnstyle "home_batting_9_player_id"
+
+    ```Home team lineup slot 9 starting player ID```
+
+??? columnstyle "home_batting_9_name"
+
+    ```Home team lineup slot 9 starting player name```
+
+??? columnstyle "home_batting_9_position"
+
+    ```Home team lineup slot 9 starting player fielding position```
+
+??? columnstyle "additional_info"
+
+    ```
+</code></pre>
+<p>Additional information.  This is a grab-bag of informational
+      items that might not warrant a field on their own.  The field
+      is alpha-numeric. Some items are represented by tokens such as:
+         "HTBF" -- home team batted first.
+         Note: if "HTBF" is specified it would be possible to see
+         something like "01002000x" in the visitor's line score.
+      Changes in umpire positions during a game will also appear in
+      this field.  These will be in the form:
+         umpchange,inning,umpPosition,umpid with the latter three
+         repeated for each umpire.
+      These changes occur with umpire injuries, late arrival of
+      umpires or changes from completion of suspended games. Details
+      of suspended games are in field <code>completion_information</code>.
+```</p>
+<pre><code>??? columnstyle "acquisition_info"
+
+    ```Y - complete game information, N - no game information, D - game derived from box score and game story, P - portions of game information```
+</code></pre>
+<details class="tablestyle">
+<summary>park</summary>
+<details class="keycolumnstyle">
+<summary>park_id</summary>
+<p><code>Park ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>name</summary>
+<p><code>Park name</code></p>
+</details>
+<details class="columnstyle">
+<summary>aka</summary>
+<p><code>Common park alias</code></p>
+</details>
+<details class="columnstyle">
+<summary>city</summary>
+<p><code>City</code></p>
+</details>
+<details class="columnstyle">
+<summary>state</summary>
+<p><code>State</code></p>
+</details>
+<details class="columnstyle">
+<summary>start_date</summary>
+<p><code>First game</code></p>
+</details>
+<details class="columnstyle">
+<summary>end_date</summary>
+<p><code>Last game</code></p>
+</details>
+<details class="columnstyle">
+<summary>league</summary>
+<p><code>League ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>notes</summary>
+<p><code>Misc. notes</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>roster</summary>
+<details class="keycolumnstyle">
+<summary>year</summary>
+<p><code>Year of roster</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>Player ID</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id</summary>
+<p><code>Team ID</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>position</summary>
+<p><code>Primary fielding position</code></p>
+</details>
+<details class="columnstyle">
+<summary>last_name</summary>
+<p><code>Player last name</code></p>
+</details>
+<details class="columnstyle">
+<summary>first_name</summary>
+<p><code>Player first name</code></p>
+</details>
+<details class="columnstyle">
+<summary>bats</summary>
+<p><code>Bat handedness</code></p>
+</details>
+<details class="columnstyle">
+<summary>throws</summary>
+<p><code>Throw handedness</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>schedule</summary>
+<details class="keycolumnstyle">
+<summary>date</summary>
+<p><code>Scheduled game date</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>home_team</summary>
+<p><code>Home team ID</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>home_team_game_number</summary>
+<p><code>Home team game number</code></p>
+</details>
+<details class="columnstyle">
+<summary>double_header</summary>
+<p><code>Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader</code></p>
+</details>
+<details class="columnstyle">
+<summary>day_of_week</summary>
+<p><code>Day of week (3 letter abbreviation</code></p>
+</details>
+<details class="columnstyle">
+<summary>visiting_team</summary>
+<p><code>Away team ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>visiting_team_league</summary>
+<p><code>Away team league ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>visiting_team_game_number</summary>
+<p><code>Away team game number</code></p>
+</details>
+<details class="columnstyle">
+<summary>home_team_league</summary>
+<p><code>Home team league ID</code></p>
+</details>
+<details class="columnstyle">
+<summary>day_night</summary>
+<p><code>D - day, N - night</code></p>
+</details>
+<details class="columnstyle">
+<summary>postponement_indicator</summary>
+<p>```</p>
+</details>
+</details>
+<p>This field will contain one or more phrases related to the game if it was
+not played as scheduled. If there is more than one phrase, they are separated
+by a semi-colon (";"). There are three possible outcomes for games not played
+on the originally scheduled date:
+-- The game was played on another date
+-- The game was played on the original date but at another site
+-- The game was not played
+```</p>
+<pre><code>??? columnstyle "makeup_dates"
+
+    ```
+</code></pre>
+<p>This field will contain a makeup date if the postponed game was played at
+another time or place. If an attempt was known to have been made on a date but
+postponed again, that date will be listed. In that case, there will be a second
+date for the date when the game was actually played, in this form: "20150428;
+20150528" For the note about a team folding, the team code is one of the
+standard Retrosheet team IDs. The same is true for the team played as note.
+Often, the two of these are combined in one field.
+```</p>
+<details class="tablestyle">
+<summary>sub</summary>
+<details class="keycolumnstyle">
+<summary>dummy_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_id</summary>
+<p><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></p>
+</details>
+<details class="columnstyle">
+<summary>inn_ct</summary>
+<p><code>Inning of substitution</code></p>
+</details>
+<details class="columnstyle">
+<summary>bat_home_id</summary>
+<p><code>Is home team batting (-1 for N/A)</code></p>
+</details>
+<details class="columnstyle">
+<summary>sub_id</summary>
+<p><code>Player ID of substitute</code></p>
+</details>
+<details class="columnstyle">
+<summary>sub_home_id</summary>
+<p><code>Is the home team making the substitution</code></p>
+</details>
+<details class="columnstyle">
+<summary>sub_lineup_id</summary>
+<p><code>Lineup position of substitution</code></p>
+</details>
+<details class="columnstyle">
+<summary>sub_fld_cd</summary>
+<p><code>Fielding position of substitution</code></p>
+</details>
+<details class="columnstyle">
+<summary>removed_id</summary>
+<p><code>ID of removed player</code></p>
+</details>
+<details class="columnstyle">
+<summary>removed_fld_cd</summary>
+<p><code>Fielding position of removed player</code></p>
+</details>
+<details class="columnstyle">
+<summary>event_id</summary>
+<p><code>Event number in which substitution occurred</code></p>
+</details>
+</details>
+</details>
+<details class="schemastyle">
+<summary> baseballdatabank</summary>
+<details class="tablestyle">
+<summary>allstar_full</summary>
+<details class="keycolumnstyle">
+<summary>dummy_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_num</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>game_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>starting_pos</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>appearances</summary>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_all</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_batting</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_defense</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_p</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_c</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_1b</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_2b</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_3b</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_ss</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_lf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_cf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_rf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_of</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_dh</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_ph</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_pr</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>awards_managers</summary>
+<details class="keycolumnstyle">
+<summary>dummy_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>award_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>tie</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>notes</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>awards_players</summary>
+<details class="keycolumnstyle">
+<summary>dummy_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>award_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>tie</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>notes</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>awards_share_managers</summary>
+<details class="keycolumnstyle">
+<summary>award_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>points_won</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>points_max</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>votes_first</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>awards_share_players</summary>
+<details class="keycolumnstyle">
+<summary>award_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>points_won</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>points_max</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>votes_first</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>batting</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>stint</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ab</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>r</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>h</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>_2b</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>_3b</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hr</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>rbi</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>cs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>so</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ibb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hbp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sh</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gidp</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>batting_post</summary>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>round</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ab</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>r</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>h</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>_2b</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>_3b</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hr</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>rbi</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>cs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>so</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ibb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hbp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sh</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gidp</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>college_playing</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>school_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>fielding</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>stint</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>pos</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>inn_outs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>po</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>a</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>e</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>dp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>pb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>wp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>cs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>zr</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>fielding_of</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>stint</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_lf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_cf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_rf</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>fielding_of_split</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>stint</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>pos</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>inn_outs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>po</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>a</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>e</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>dp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>pb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>wp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>cs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>zr</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>fielding_post</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>round</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>pos</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>inn_outs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>po</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>a</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>e</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>dp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>tp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>pb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>cs</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>hall_of_fame</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>voted_by</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ballots</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>needed</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>votes</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>inducted</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>category</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>needed_note</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>home_games</summary>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>park_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>first_game</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>last_game</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>games</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>openings</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>attendance</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>managers</summary>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>inseason</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>w</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>l</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>rank</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>plyr_mgr</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>managers_half</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>half</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>inseason</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>w</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>l</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>rank</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>parks</summary>
+<details class="keycolumnstyle">
+<summary>park_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>park_name</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>park_alias</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>city</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>state</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>country</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>people</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>birth_year</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>birth_month</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>birth_day</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>birth_country</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>birth_state</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>birth_city</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>death_year</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>death_month</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>death_day</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>death_country</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>death_state</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>death_city</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>name_first</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>name_last</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>name_given</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>weight</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>height</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bats</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>throws</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>debut</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>final_game</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>retro_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bbref_id</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>pitching</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>stint</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>w</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>l</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>cg</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sho</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sv</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ip_outs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>h</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>er</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hr</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>so</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ba_opp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>era</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ibb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>wp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hbp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bk</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bfp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>r</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sh</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gidp</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>pitching_post</summary>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>round</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>w</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>l</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>cg</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sho</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sv</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ip_outs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>h</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>er</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hr</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>so</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ba_opp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>era</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ibb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>wp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hbp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bk</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bfp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>r</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sh</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>gidp</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>salaries</summary>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>salary</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>schools</summary>
+<details class="keycolumnstyle">
+<summary>school_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>name_full</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>city</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>state</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>country</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>series_post</summary>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>round</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id_winner</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id_winner</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id_loser</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_id_loser</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>wins</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>losses</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ties</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>teams</summary>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>franch_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>div_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>rank</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g_home</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>w</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>l</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>div_win</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>wc_win</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>lg_win</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ws_win</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>r</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ab</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>h</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>_2b</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>_3b</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hr</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>so</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sb</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>cs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hbp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ra</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>er</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>era</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>cg</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sho</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>sv</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ip_outs</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>h_a</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>hr_a</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bb_a</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>so_a</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>e</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>dp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>fp</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>name</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>park</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>attendance</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>bpf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>ppf</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id_br</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id_lahman45</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>team_id_retro</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>teams_franchises</summary>
+<details class="keycolumnstyle">
+<summary>franch_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>franch_name</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>active</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>na_assoc</summary>
+<p><code>None</code></p>
+</details>
+</details>
+<details class="tablestyle">
+<summary>teams_half</summary>
+<details class="keycolumnstyle">
+<summary>year_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>lg_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="keycolumnstyle">
+<summary>half</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>div_id</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>div_win</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>rank</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>g</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>w</summary>
+<p><code>None</code></p>
+</details>
+<details class="columnstyle">
+<summary>l</summary>
+<p><code>None</code></p>
+</details>
+</details>
+</details>
+</details>
