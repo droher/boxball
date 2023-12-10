@@ -4,84 +4,84 @@
                     <detail>
                       <summary>&#128273; **code** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**description** : (varchar(30))</summary>
 
-                      None
+                      
                     </detail>
             ### code_field_park
                     <detail>
                       <summary>&#128273; **code** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**description** : (varchar(30))</summary>
 
-                      None
+                      
                     </detail>
             ### code_method_record
                     <detail>
                       <summary>&#128273; **code** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**description** : (varchar(30))</summary>
 
-                      None
+                      
                     </detail>
             ### code_pitches_record
                     <detail>
                       <summary>&#128273; **code** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**description** : (varchar(30))</summary>
 
-                      None
+                      
                     </detail>
             ### code_precip_park
                     <detail>
                       <summary>&#128273; **code** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**description** : (varchar(30))</summary>
 
-                      None
+                      
                     </detail>
             ### code_sky_park
                     <detail>
                       <summary>&#128273; **code** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**description** : (varchar(30))</summary>
 
-                      None
+                      
                     </detail>
             ### code_wind_direction_park
                     <detail>
                       <summary>&#128273; **code** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**description** : (varchar(30))</summary>
 
-                      None
+                      
                     </detail>
             ### comment
                     <detail>
                       <summary>&#128273; **dummy_id** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**game_id** : (char(12))</summary>
@@ -106,7 +106,7 @@
                     <detail>
                       <summary>**ejected_person_role_cd** : (varchar(256))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**eject_umpire_id** : (varchar(256))</summary>
@@ -116,17 +116,17 @@
                     <detail>
                       <summary>**eject_reason** : (varchar(1639))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**umpchange_inning** : (varchar(256))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**umpchange_position** : (varchar(256))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**umpchange_person_id** : (varchar(256))</summary>
@@ -137,7 +137,7 @@
                     <detail>
                       <summary>&#128273; **dummy_id** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**game_id** : (char(12))</summary>
@@ -2622,15 +2622,15 @@
                       <summary>&#128273; **double_header** : (char(1))</summary>
 
                       Number of game:
-"0" -- a single game
-"1" -- the first game of a double (or triple) header
-       including separate admission doubleheaders
-"2" -- the second game of a double (or triple) header
-       including separate admission doubleheaders
-"3" -- the third game of a triple-header
-"A" -- the first game of a double-header involving 3 teams
-"B" -- the second game of a double-header involving 3 teams
-
+ "0" -- a single game
+ "1" -- the first game of a double (or triple) header
+        including separate admission doubleheaders
+ "2" -- the second game of a double (or triple) header
+        including separate admission doubleheaders
+ "3" -- the third game of a triple-header
+ "A" -- the first game of a double-header involving 3 teams
+ "B" -- the second game of a double-header involving 3 teams
+ 
                     </detail>
                     <detail>
                       <summary>&#128273; **visiting_team** : (char(3))</summary>
@@ -2701,7 +2701,6 @@ hs -- the home score at the time of interruption
 len -- the length of the game in outs at time of interruption
 All the rest of the information in the record refers to the
 entire game.
-
                     </detail>
                     <detail>
                       <summary>**forfeit_info** : (varchar(3))</summary>
@@ -3432,19 +3431,18 @@ entire game.
                       <summary>**additional_info** : (varchar(128))</summary>
 
                       Additional information.  This is a grab-bag of informational
-items that might not warrant a field on their own.  The field
-is alpha-numeric. Some items are represented by tokens such as:
-   "HTBF" -- home team batted first.
-   Note: if "HTBF" is specified it would be possible to see
-   something like "01002000x" in the visitor's line score.
-Changes in umpire positions during a game will also appear in
-this field.  These will be in the form:
-   umpchange,inning,umpPosition,umpid with the latter three
-   repeated for each umpire.
-These changes occur with umpire injuries, late arrival of
-umpires or changes from completion of suspended games. Details
-of suspended games are in field `completion_information`.
-
+      items that might not warrant a field on their own.  The field
+      is alpha-numeric. Some items are represented by tokens such as:
+         "HTBF" -- home team batted first.
+         Note: if "HTBF" is specified it would be possible to see
+         something like "01002000x" in the visitor's line score.
+      Changes in umpire positions during a game will also appear in
+      this field.  These will be in the form:
+         umpchange,inning,umpPosition,umpid with the latter three
+         repeated for each umpire.
+      These changes occur with umpire injuries, late arrival of
+      umpires or changes from completion of suspended games. Details
+      of suspended games are in field `completion_information`.
                     </detail>
                     <detail>
                       <summary>**acquisition_info** : (char(1))</summary>
@@ -3599,7 +3597,6 @@ on the originally scheduled date:
 -- The game was played on another date
 -- The game was played on the original date but at another site
 -- The game was not played
-
                     </detail>
                     <detail>
                       <summary>**makeup_dates** : (varchar(120))</summary>
@@ -3611,13 +3608,12 @@ date for the date when the game was actually played, in this form: "20150428;
 20150528" For the note about a team folding, the team code is one of the
 standard Retrosheet team IDs. The same is true for the team played as note.
 Often, the two of these are combined in one field.
-
                     </detail>
             ### sub
                     <detail>
                       <summary>&#128273; **dummy_id** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**game_id** : (char(12))</summary>
@@ -3674,1891 +3670,1891 @@ Often, the two of these are combined in one field.
                     <detail>
                       <summary>&#128273; **dummy_id** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**game_num** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**game_id** : (varchar(12))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**starting_pos** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### appearances
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_all** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_batting** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_defense** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_p** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_c** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_1b** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_2b** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_3b** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_ss** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_lf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_cf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_rf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_of** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_dh** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_ph** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_pr** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### awards_managers
                     <detail>
                       <summary>&#128273; **dummy_id** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**player_id** : (varchar(10))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**award_id** : (varchar(75))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**tie** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**notes** : (varchar(100))</summary>
 
-                      None
+                      
                     </detail>
             ### awards_players
                     <detail>
                       <summary>&#128273; **dummy_id** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**award_id** : (varchar(255))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**tie** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**notes** : (varchar(100))</summary>
 
-                      None
+                      
                     </detail>
             ### awards_share_managers
                     <detail>
                       <summary>&#128273; **award_id** : (varchar(25))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(10))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**points_won** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**points_max** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**votes_first** : (integer)</summary>
 
-                      None
+                      
                     </detail>
             ### awards_share_players
                     <detail>
                       <summary>&#128273; **award_id** : (varchar(25))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**points_won** : (float)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**points_max** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**votes_first** : (float)</summary>
 
-                      None
+                      
                     </detail>
             ### batting
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **stint** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ab** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**r** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**h** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**_2b** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**_3b** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hr** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**rbi** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**cs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**so** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ibb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hbp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sh** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gidp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### batting_post
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **round** : (varchar(10))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ab** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**r** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**h** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**_2b** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**_3b** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hr** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**rbi** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**cs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**so** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ibb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hbp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sh** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gidp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### college_playing
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **school_id** : (varchar(15))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### fielding
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **stint** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **pos** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**inn_outs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**po** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**a** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**e** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**dp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**pb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**wp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**cs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**zr** : (float)</summary>
 
-                      None
+                      
                     </detail>
             ### fielding_of
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **stint** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_lf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_cf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_rf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### fielding_of_split
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **stint** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **pos** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**inn_outs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**po** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**a** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**e** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**dp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**pb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**wp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**cs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**zr** : (float)</summary>
 
-                      None
+                      
                     </detail>
             ### fielding_post
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **round** : (varchar(10))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **pos** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**inn_outs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**po** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**a** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**e** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**dp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**tp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**pb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**cs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### hall_of_fame
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(10))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **voted_by** : (varchar(64))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ballots** : (varchar(64))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**needed** : (varchar(64))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**votes** : (varchar(64))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**inducted** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**category** : (varchar(20))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**needed_note** : (varchar(25))</summary>
 
-                      None
+                      
                     </detail>
             ### home_games
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **park_id** : (varchar(5))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**first_game** : (date)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**last_game** : (date)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**games** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**openings** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**attendance** : (integer)</summary>
 
-                      None
+                      
                     </detail>
             ### managers
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **inseason** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**player_id** : (varchar(10))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**w** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**l** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**rank** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**plyr_mgr** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
             ### managers_half
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(10))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **half** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**inseason** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**w** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**l** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**rank** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### parks
                     <detail>
                       <summary>&#128273; **park_id** : (varchar(5))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**park_name** : (varchar(40))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**park_alias** : (varchar(55))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**city** : (varchar(25))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**state** : (varchar(16))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**country** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
             ### people
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(10))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**birth_year** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**birth_month** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**birth_day** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**birth_country** : (varchar(50))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**birth_state** : (varchar(50))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**birth_city** : (varchar(50))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**death_year** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**death_month** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**death_day** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**death_country** : (varchar(50))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**death_state** : (varchar(50))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**death_city** : (varchar(50))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**name_first** : (varchar(50))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**name_last** : (varchar(50))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**name_given** : (varchar(255))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**weight** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**height** : (float)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bats** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**throws** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**debut** : (date)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**final_game** : (date)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**retro_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bbref_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
             ### pitching
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **stint** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**w** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**l** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**cg** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sho** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sv** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ip_outs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**h** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**er** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hr** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**so** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ba_opp** : (float)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**era** : (float)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ibb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**wp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hbp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bk** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bfp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**r** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sh** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gidp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### pitching_post
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **round** : (varchar(10))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**w** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**l** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**cg** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sho** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sv** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ip_outs** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**h** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**er** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hr** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**so** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ba_opp** : (float)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**era** : (float)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ibb** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**wp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hbp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bk** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bfp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**r** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sh** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sf** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**gidp** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### salaries
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **player_id** : (varchar(9))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**salary** : (float)</summary>
 
-                      None
+                      
                     </detail>
             ### schools
                     <detail>
                       <summary>&#128273; **school_id** : (varchar(15))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**name_full** : (varchar(255))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**city** : (varchar(55))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**state** : (varchar(55))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**country** : (varchar(55))</summary>
 
-                      None
+                      
                     </detail>
             ### series_post
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **round** : (varchar(5))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id_winner** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id_winner** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id_loser** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_id_loser** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**wins** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**losses** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ties** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
             ### teams
                     <detail>
                       <summary>&#128273; **year_id** : (smallint)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**franch_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**div_id** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**rank** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g_home** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**w** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**l** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**div_win** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**wc_win** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**lg_win** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ws_win** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**r** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ab** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**h** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**_2b** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**_3b** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hr** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bb** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**so** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sb** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**cs** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hbp** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sf** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ra** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**er** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**era** : (float)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**cg** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sho** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**sv** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ip_outs** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**h_a** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**hr_a** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bb_a** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**so_a** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**e** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**dp** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**fp** : (float)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**name** : (varchar(50))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**park** : (varchar(255))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**attendance** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**bpf** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**ppf** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id_br** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id_lahman45** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**team_id_retro** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
             ### teams_franchises
                     <detail>
                       <summary>&#128273; **franch_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**franch_name** : (varchar(50))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**active** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**na_assoc** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
             ### teams_half
                     <detail>
                       <summary>&#128273; **year_id** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **lg_id** : (varchar(2))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **team_id** : (varchar(3))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>&#128273; **half** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**div_id** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**div_win** : (varchar(1))</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**rank** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**g** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**w** : (integer)</summary>
 
-                      None
+                      
                     </detail>
                     <detail>
                       <summary>**l** : (integer)</summary>
 
-                      None
+                      
                     </detail>

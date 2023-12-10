@@ -34,10 +34,21 @@ class PyMDGenerator(MarkdownGenerator):
         self.add_line(indent, "```")
         self.add_line(indent, f'\n')
 
+    def generate_column_name_text(self, column: JsObject):
+        """Generate markdown for a single column."""
+        style = "keycolumnstyle" if column["primary_key"] else "columnstyle"
+        """
+        name_prepend = "\"&#128273; " if column["primary_key"] else "\""
+        text_line = f'??? {style} {name_prepend}{column["name"] + "    (" +column["type"]})"'
+        """
+        name_postpend= "&#128273;" if column["primary_key"] else ""
+        text_line = f'??? {style} "{column["name"] + "    (" +column["type"]}) {name_postpend}"'
+        
+        return text_line
+        
     def generate_column_markdown(self, indent: int, column: JsObject):
-        """Generate markdown for a single column."""       
-        style = "columnstyle" if not column["primary_key"] else "keycolumnstyle"
-        self.add_line(0, f'??? {style} "{column["name"] + "    (" +column["type"]})"')
+        """Generate markdown for a single column."""     
+        self.add_line(0, self.generate_column_name_text(column))
         self.generate_code_block(1, column["doc"])
     
     def generate_table_markdown(self, indent: int, table: JsObject):

@@ -1,7 +1,7 @@
 from generate_json import JsonGenerator
-from generate_markdown import MarkdownGenerator
 from generate_html import HtmlGenerator
 from PyMDGenerator import PyMDGenerator
+from GitHubMDGenerator import GitHubMDGenerator
 import sys
 
 #Modules to generate schemas for
@@ -36,7 +36,7 @@ database_json = {
 pwd = sys.path[0]
 
 JsonGenerator.write_json_to_file(pwd+'/schemas.json', database_json)
-github_markdown = MarkdownGenerator(database_json).write_markdown_to_file(pwd + "/schemas.md")
+github_markdown = GitHubMDGenerator(database_json).write_markdown_to_file(pwd + "/schemas.md")
 python_markdown = PyMDGenerator(database_json).write_markdown_to_file(pwd + "/schemas.py.md")
 HtmlGenerator(
         python_markdown,

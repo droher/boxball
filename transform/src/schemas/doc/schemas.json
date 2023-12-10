@@ -11,13 +11,13 @@
                             "name": "code",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "description",
                             "type": "varchar(30)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": "Descriptions for codes in `event.event_cd`"
@@ -29,13 +29,13 @@
                             "name": "code",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "description",
                             "type": "varchar(30)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": "Descriptions for codes in `game.field_park_cd`"
@@ -47,13 +47,13 @@
                             "name": "code",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "description",
                             "type": "varchar(30)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": "Descriptions for codes in `game.method_record_cd`"
@@ -65,13 +65,13 @@
                             "name": "code",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "description",
                             "type": "varchar(30)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": "Descriptions for codes in `game.pitches_record_cd`"
@@ -83,13 +83,13 @@
                             "name": "code",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "description",
                             "type": "varchar(30)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": "Descriptions for codes in `game.precip_park_cd`"
@@ -101,13 +101,13 @@
                             "name": "code",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "description",
                             "type": "varchar(30)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": "Descriptions for codes in `game.sky_park_cd`"
@@ -119,13 +119,13 @@
                             "name": "code",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "description",
                             "type": "varchar(30)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": "Descriptions for codes in `game.wind_direction_park_cd`"
@@ -137,7 +137,7 @@
                             "name": "dummy_id",
                             "type": "integer",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "game_id",
@@ -167,7 +167,7 @@
                             "name": "ejected_person_role_cd",
                             "type": "varchar(256)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "eject_umpire_id",
@@ -179,19 +179,19 @@
                             "name": "eject_reason",
                             "type": "varchar(1639)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "umpchange_inning",
                             "type": "varchar(256)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "umpchange_position",
                             "type": "varchar(256)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "umpchange_person_id",
@@ -209,7 +209,7 @@
                             "name": "dummy_id",
                             "type": "integer",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "game_id",
@@ -3209,7 +3209,7 @@
                             "name": "double_header",
                             "type": "char(1)",
                             "primary_key": true,
-                            "doc": "Number of game:\n\"0\" -- a single game\n\"1\" -- the first game of a double (or triple) header\n       including separate admission doubleheaders\n\"2\" -- the second game of a double (or triple) header\n       including separate admission doubleheaders\n\"3\" -- the third game of a triple-header\n\"A\" -- the first game of a double-header involving 3 teams\n\"B\" -- the second game of a double-header involving 3 teams\n"
+                            "doc": "Number of game:\n \"0\" -- a single game\n \"1\" -- the first game of a double (or triple) header\n        including separate admission doubleheaders\n \"2\" -- the second game of a double (or triple) header\n        including separate admission doubleheaders\n \"3\" -- the third game of a triple-header\n \"A\" -- the first game of a double-header involving 3 teams\n \"B\" -- the second game of a double-header involving 3 teams\n "
                         },
                         {
                             "name": "visiting_team",
@@ -3281,7 +3281,7 @@
                             "name": "completion_info",
                             "type": "varchar(23)",
                             "primary_key": false,
-                            "doc": "Completion information.  If the game was completed at a\nlater date (either due to a suspension or an upheld protest)\nthis field will include:\n    \"yyyymmdd,park,vs,hs,len\" Where\nyyyymmdd -- the date the game was completed\npark -- the park ID where the game was completed\nvs -- the visitor score at the time of interruption\nhs -- the home score at the time of interruption\nlen -- the length of the game in outs at time of interruption\nAll the rest of the information in the record refers to the\nentire game.\n"
+                            "doc": "Completion information.  If the game was completed at a\nlater date (either due to a suspension or an upheld protest)\nthis field will include:\n    \"yyyymmdd,park,vs,hs,len\" Where\nyyyymmdd -- the date the game was completed\npark -- the park ID where the game was completed\nvs -- the visitor score at the time of interruption\nhs -- the home score at the time of interruption\nlen -- the length of the game in outs at time of interruption\nAll the rest of the information in the record refers to the\nentire game."
                         },
                         {
                             "name": "forfeit_info",
@@ -4157,7 +4157,7 @@
                             "name": "additional_info",
                             "type": "varchar(128)",
                             "primary_key": false,
-                            "doc": "Additional information.  This is a grab-bag of informational\nitems that might not warrant a field on their own.  The field\nis alpha-numeric. Some items are represented by tokens such as:\n   \"HTBF\" -- home team batted first.\n   Note: if \"HTBF\" is specified it would be possible to see\n   something like \"01002000x\" in the visitor's line score.\nChanges in umpire positions during a game will also appear in\nthis field.  These will be in the form:\n   umpchange,inning,umpPosition,umpid with the latter three\n   repeated for each umpire.\nThese changes occur with umpire injuries, late arrival of\numpires or changes from completion of suspended games. Details\nof suspended games are in field `completion_information`.\n"
+                            "doc": "Additional information.  This is a grab-bag of informational\n      items that might not warrant a field on their own.  The field\n      is alpha-numeric. Some items are represented by tokens such as:\n         \"HTBF\" -- home team batted first.\n         Note: if \"HTBF\" is specified it would be possible to see\n         something like \"01002000x\" in the visitor's line score.\n      Changes in umpire positions during a game will also appear in\n      this field.  These will be in the form:\n         umpchange,inning,umpPosition,umpid with the latter three\n         repeated for each umpire.\n      These changes occur with umpire injuries, late arrival of\n      umpires or changes from completion of suspended games. Details\n      of suspended games are in field `completion_information`."
                         },
                         {
                             "name": "acquisition_info",
@@ -4349,13 +4349,13 @@
                             "name": "postponement_indicator",
                             "type": "varchar(120)",
                             "primary_key": false,
-                            "doc": "This field will contain one or more phrases related to the game if it was\nnot played as scheduled. If there is more than one phrase, they are separated\nby a semi-colon (\";\"). There are three possible outcomes for games not played\non the originally scheduled date:\n-- The game was played on another date\n-- The game was played on the original date but at another site\n-- The game was not played\n"
+                            "doc": "This field will contain one or more phrases related to the game if it was\nnot played as scheduled. If there is more than one phrase, they are separated\nby a semi-colon (\";\"). There are three possible outcomes for games not played\non the originally scheduled date:\n-- The game was played on another date\n-- The game was played on the original date but at another site\n-- The game was not played"
                         },
                         {
                             "name": "makeup_dates",
                             "type": "varchar(120)",
                             "primary_key": false,
-                            "doc": "This field will contain a makeup date if the postponed game was played at\nanother time or place. If an attempt was known to have been made on a date but\npostponed again, that date will be listed. In that case, there will be a second\ndate for the date when the game was actually played, in this form: \"20150428;\n20150528\" For the note about a team folding, the team code is one of the\nstandard Retrosheet team IDs. The same is true for the team played as note.\nOften, the two of these are combined in one field.\n"
+                            "doc": "This field will contain a makeup date if the postponed game was played at\nanother time or place. If an attempt was known to have been made on a date but\npostponed again, that date will be listed. In that case, there will be a second\ndate for the date when the game was actually played, in this form: \"20150428;\n20150528\" For the note about a team folding, the team code is one of the\nstandard Retrosheet team IDs. The same is true for the team played as note.\nOften, the two of these are combined in one field."
                         }
                     ],
                     "table_doc": "Contains the original regular season schedules for all seasons dating back to 1877."
@@ -4367,7 +4367,7 @@
                             "name": "dummy_id",
                             "type": "integer",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "game_id",
@@ -4444,55 +4444,55 @@
                             "name": "dummy_id",
                             "type": "integer",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "game_num",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "game_id",
                             "type": "varchar(12)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "starting_pos",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -4504,127 +4504,127 @@
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_all",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_batting",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_defense",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_p",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_c",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_1b",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_2b",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_3b",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_ss",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_lf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_cf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_rf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_of",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_dh",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_ph",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_pr",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -4636,43 +4636,43 @@
                             "name": "dummy_id",
                             "type": "integer",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "player_id",
                             "type": "varchar(10)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "award_id",
                             "type": "varchar(75)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "tie",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "notes",
                             "type": "varchar(100)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -4684,43 +4684,43 @@
                             "name": "dummy_id",
                             "type": "integer",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "award_id",
                             "type": "varchar(255)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "tie",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "notes",
                             "type": "varchar(100)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -4732,43 +4732,43 @@
                             "name": "award_id",
                             "type": "varchar(25)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "integer",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "player_id",
                             "type": "varchar(10)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "points_won",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "points_max",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "votes_first",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -4780,43 +4780,43 @@
                             "name": "award_id",
                             "type": "varchar(25)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "points_won",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "points_max",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "votes_first",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -4828,133 +4828,133 @@
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "stint",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ab",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "r",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "h",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "_2b",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "_3b",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hr",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "rbi",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "cs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "so",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ibb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hbp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sh",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gidp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -4966,133 +4966,133 @@
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "round",
                             "type": "varchar(10)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ab",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "r",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "h",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "_2b",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "_3b",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hr",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "rbi",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "cs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "so",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ibb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hbp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sh",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gidp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5104,19 +5104,19 @@
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "school_id",
                             "type": "varchar(15)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5128,109 +5128,109 @@
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "stint",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "pos",
                             "type": "varchar(2)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "inn_outs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "po",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "a",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "e",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "dp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "pb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "wp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "cs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "zr",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5242,37 +5242,37 @@
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "stint",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_lf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_cf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_rf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5284,109 +5284,109 @@
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "stint",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "pos",
                             "type": "varchar(2)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "inn_outs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "po",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "a",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "e",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "dp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "pb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "wp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "cs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "zr",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": "Disaggregates outfield statistics from `Fielding` into LF, CF, and RF"
@@ -5398,103 +5398,103 @@
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "round",
                             "type": "varchar(10)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "pos",
                             "type": "varchar(2)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "inn_outs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "po",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "a",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "e",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "dp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "tp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "pb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "cs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5506,55 +5506,55 @@
                             "name": "player_id",
                             "type": "varchar(10)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "voted_by",
                             "type": "varchar(64)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ballots",
                             "type": "varchar(64)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "needed",
                             "type": "varchar(64)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "votes",
                             "type": "varchar(64)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "inducted",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "category",
                             "type": "varchar(20)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "needed_note",
                             "type": "varchar(25)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5566,55 +5566,55 @@
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "park_id",
                             "type": "varchar(5)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "first_game",
                             "type": "date",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "last_game",
                             "type": "date",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "games",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "openings",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "attendance",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5626,61 +5626,61 @@
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "inseason",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "player_id",
                             "type": "varchar(10)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "w",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "l",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "rank",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "plyr_mgr",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5692,61 +5692,61 @@
                             "name": "player_id",
                             "type": "varchar(10)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "half",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "inseason",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "w",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "l",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "rank",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5758,37 +5758,37 @@
                             "name": "park_id",
                             "type": "varchar(5)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "park_name",
                             "type": "varchar(40)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "park_alias",
                             "type": "varchar(55)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "city",
                             "type": "varchar(25)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "state",
                             "type": "varchar(16)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "country",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5800,145 +5800,145 @@
                             "name": "player_id",
                             "type": "varchar(10)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "birth_year",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "birth_month",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "birth_day",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "birth_country",
                             "type": "varchar(50)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "birth_state",
                             "type": "varchar(50)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "birth_city",
                             "type": "varchar(50)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "death_year",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "death_month",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "death_day",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "death_country",
                             "type": "varchar(50)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "death_state",
                             "type": "varchar(50)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "death_city",
                             "type": "varchar(50)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "name_first",
                             "type": "varchar(50)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "name_last",
                             "type": "varchar(50)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "name_given",
                             "type": "varchar(255)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "weight",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "height",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bats",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "throws",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "debut",
                             "type": "date",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "final_game",
                             "type": "date",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "retro_id",
                             "type": "varchar(9)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bbref_id",
                             "type": "varchar(9)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -5950,181 +5950,181 @@
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "stint",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "w",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "l",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "cg",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sho",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sv",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ip_outs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "h",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "er",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hr",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "so",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ba_opp",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "era",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ibb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "wp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hbp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bk",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bfp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "r",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sh",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gidp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -6136,181 +6136,181 @@
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "round",
                             "type": "varchar(10)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "w",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "l",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "cg",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sho",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sv",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ip_outs",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "h",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "er",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hr",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "so",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ba_opp",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "era",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ibb",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "wp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hbp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bk",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bfp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "r",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sh",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sf",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "gidp",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -6322,31 +6322,31 @@
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "player_id",
                             "type": "varchar(9)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "salary",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -6358,31 +6358,31 @@
                             "name": "school_id",
                             "type": "varchar(15)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "name_full",
                             "type": "varchar(255)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "city",
                             "type": "varchar(55)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "state",
                             "type": "varchar(55)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "country",
                             "type": "varchar(55)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -6394,55 +6394,55 @@
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "round",
                             "type": "varchar(5)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id_winner",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id_winner",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id_loser",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id_loser",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "wins",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "losses",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ties",
                             "type": "smallint",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -6454,289 +6454,289 @@
                             "name": "year_id",
                             "type": "smallint",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "franch_id",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "div_id",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "rank",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g_home",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "w",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "l",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "div_win",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "wc_win",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_win",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ws_win",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "r",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ab",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "h",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "_2b",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "_3b",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hr",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bb",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "so",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sb",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "cs",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hbp",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sf",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ra",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "er",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "era",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "cg",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sho",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "sv",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ip_outs",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "h_a",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "hr_a",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bb_a",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "so_a",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "e",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "dp",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "fp",
                             "type": "float",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "name",
                             "type": "varchar(50)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "park",
                             "type": "varchar(255)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "attendance",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "bpf",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "ppf",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id_br",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id_lahman45",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id_retro",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -6748,25 +6748,25 @@
                             "name": "franch_id",
                             "type": "varchar(3)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "franch_name",
                             "type": "varchar(50)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "active",
                             "type": "varchar(2)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "na_assoc",
                             "type": "varchar(3)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": ""
@@ -6778,61 +6778,61 @@
                             "name": "year_id",
                             "type": "integer",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "lg_id",
                             "type": "varchar(2)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "team_id",
                             "type": "varchar(3)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "half",
                             "type": "varchar(1)",
                             "primary_key": true,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "div_id",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "div_win",
                             "type": "varchar(1)",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "rank",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "g",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "w",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         },
                         {
                             "name": "l",
                             "type": "integer",
                             "primary_key": false,
-                            "doc": null
+                            "doc": ""
                         }
                     ],
                     "table_doc": "Table for years in MLB history that the season was divided into halves (e.g. 1981)"

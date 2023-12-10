@@ -4,7 +4,7 @@ class GitHubMDGenerator(MarkdownGenerator):
     """Generate markdown for the Boxball schema."""
     def __init__(self, database: JsObject):
         """Initialize the MarkdownGenerator with the given schema json."""
-        super.__init__(database)
+        super().__init__(database)
     
     def _column_title_string(self, column: JsObject) -> str:
         """Return a string for the given column title."""
