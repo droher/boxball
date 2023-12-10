@@ -1,0 +1,89 @@
+.tablestyle {
+    font-size: 36px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.columnstyle {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 30px;
+}
+
+.keycolumnstyle {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(151, 0, 0);
+    padding-left: 30px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: bold;
+    padding-left: 40px;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 60px;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 80px;
+}
+
+.codeblock {
+    background-color: rgb(246, 248, 250);
+    border-bottom-color: rgb(208, 215, 222);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-style: solid;
+    border-bottom-width: 0.8px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(208, 215, 222);
+    border-left-style: solid;
+    border-left-width: 0.8px;
+    border-right-color: rgb(208, 215, 222);
+    border-right-style: solid;
+    border-right-width: 0.8px;
+    border-top-color: rgb(208, 215, 222);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-top-style: solid;
+    border-top-width: 0.8px;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 13.6px;
+    line-height: 19.72px;
+    margin-bottom: 16px;
+    margin-top: 8px;
+    margin-left: 80px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+}
+
+summary {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 60px;
+}

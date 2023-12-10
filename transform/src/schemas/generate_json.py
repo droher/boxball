@@ -90,6 +90,13 @@ def get_json_string(data):
     """Return a json string from the given data."""
     return json.dumps(data, indent=4)
 
+def load_styles(path):
+    """Load the styles from the styles.css file."""
+    styles = None
+    with open(path, 'r') as f:
+        styles = f.read()
+    return styles
+
 # Generate the json and write it to a file
 retrosheet_json = generate_schema_json("retrosheet", retrosheet)
 baseballdatabank_json = generate_schema_json("baseballdatabank", baseballdatabank)
@@ -102,10 +109,12 @@ database_json = {
     }
 }
 
+
+
 pwd = sys.path[0]
 
 write_json_to_file(pwd+'/schemas.json', database_json)
 github_markdown = MarkdownGenerator(database_json).write_markdown_to_file(pwd + "/schemas.md")
 python_markdown = PyMDGenerator(database_json).write_markdown_to_file(pwd + "/schemas.py.md")
-HtmlGenerator(python_markdown).write_html_to_file(pwd + "/schemas.html")
+HtmlGenerator(python_markdown,load_styles(pwd + "/styles.css")).write_html_to_file(pwd + "/schemas.html")
 

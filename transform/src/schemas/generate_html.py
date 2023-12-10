@@ -1,59 +1,27 @@
 import markdown
 import pymdownx
+from pymdownx import superfences
 
 class HtmlGenerator:
-    def __init__(self, markdown_string:str):
+    def __init__(self, markdown_string:str, css_classes:str):
         self._markdown_string = markdown_string
+        self._css_classes = css_classes
 
-    extensions = ['pymdownx.details']
+    extensions = ['pymdownx.details','extra','pymdownx.superfences','toc']
     
+    superfences_configs = {
+        'custom_fences': [
+            {
+                'name': 'codeblock',
+                'class': 'codeblock',
+                'format': superfences.fence_code_format
+            }
+        ]
+    }
+
     extension_configs = {
+        'pymdownx.superfences': superfences_configs,
     }
-
-    css_classes = """
-    .tablestyle {
-        font-size: 36px;
-        font-weight: bold;
-        padding-left: 20px;
-    }
-
-    .columnstyle {
-        font-size: 24px;
-        font-weight: bold;
-        padding-left: 30px;
-    }
-
-    .keycolumnstyle {
-        font-size: 24px;
-        font-weight: bold;
-        color: rgb(89, 0, 0);
-        padding-left: 30px;
-    }
-
-    h1 {
-        font-size: 48px;
-        font-weight: bold;
-        padding-left: 20px;
-    }
-
-    h2 {
-        font-size: 36px;
-        font-weight: bold;
-        padding-left: 40px;
-    }
-
-    h3 {
-        font-size: 24px;
-        font-weight: bold;
-        padding-left: 60px;
-    }
-
-    p { 
-        background-color: rgb(200, 200, 200);
-        font-size: 18px;
-        padding-left: 80px;
-    }
-    """
 
     def _markdown_to_html(self):
         """Return an html string from the given markdown string."""
@@ -62,7 +30,7 @@ class HtmlGenerator:
             extensions=HtmlGenerator.extensions,
             extension_configs=HtmlGenerator.extension_configs
             )
-        return  f"<style>{HtmlGenerator.css_classes}</style>\n{html}"
+        return  f"<body><style>{self._css_classes}</style>\n{html}</body>"
     
     def write_html_to_file(self, filename:str):
         """Write the given html string to a file."""
