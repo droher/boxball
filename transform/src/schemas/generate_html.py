@@ -12,33 +12,46 @@ class HtmlGenerator:
 
     css_classes = """
     .tablestyle {
-        font-size: 18px;
+        font-size: 36px;
         font-weight: bold;
         padding-left: 20px;
     }
 
     .columnstyle {
-        font-size: 14px;
+        font-size: 24px;
         font-weight: bold;
-        padding-left: 40px;
+        padding-left: 30px;
     }
 
     .keycolumnstyle {
-        font-size: 14px;
+        font-size: 24px;
         font-weight: bold;
         color: rgb(89, 0, 0);
         padding-left: 30px;
     }
 
-    .schemastyle {
-        font-size: 24px;
+    h1 {
+        font-size: 48px;
         font-weight: bold;
-        padding-left: 10px;
+        padding-left: 20px;
     }
 
-    .databasestyle {
+    h2 {
         font-size: 36px;
         font-weight: bold;
+        padding-left: 40px;
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: bold;
+        padding-left: 60px;
+    }
+
+    p { 
+        background-color: rgb(200, 200, 200);
+        font-size: 18px;
+        padding-left: 80px;
     }
     """
 

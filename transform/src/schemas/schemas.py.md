@@ -1,2735 +1,4866 @@
-??? databasestyle  "Boxball"
+# Boxball
+## retrosheet
+??? tablestyle "code_event"
 
-    ??? schemastyle  " retrosheet"
+    ??? keycolumnstyle "code"
 
-        ??? tablestyle "code_event"
+        ```
+        Type: smallint
 
-            ??? keycolumnstyle "code"
+        No documentation provided.
+        ```
+    
 
-                ```None```
-            
+    ??? columnstyle "description"
 
-            ??? columnstyle "description"
+        ```
+        Type: varchar(30)
 
-                ```None```
-            
+        No documentation provided.
+        ```
+    
 
-        
 
-        ??? tablestyle "code_field_park"
 
-            ??? keycolumnstyle "code"
+??? tablestyle "code_field_park"
 
-                ```None```
-            
+    ??? keycolumnstyle "code"
 
-            ??? columnstyle "description"
+        ```
+        Type: smallint
 
-                ```None```
-            
+        No documentation provided.
+        ```
+    
 
-        
+    ??? columnstyle "description"
 
-        ??? tablestyle "code_method_record"
+        ```
+        Type: varchar(30)
 
-            ??? keycolumnstyle "code"
+        No documentation provided.
+        ```
+    
 
-                ```None```
-            
 
-            ??? columnstyle "description"
 
-                ```None```
-            
+??? tablestyle "code_method_record"
 
-        
+    ??? keycolumnstyle "code"
 
-        ??? tablestyle "code_pitches_record"
+        ```
+        Type: smallint
 
-            ??? keycolumnstyle "code"
+        No documentation provided.
+        ```
+    
 
-                ```None```
-            
+    ??? columnstyle "description"
 
-            ??? columnstyle "description"
+        ```
+        Type: varchar(30)
 
-                ```None```
-            
+        No documentation provided.
+        ```
+    
 
-        
 
-        ??? tablestyle "code_precip_park"
 
-            ??? keycolumnstyle "code"
+??? tablestyle "code_pitches_record"
 
-                ```None```
-            
+    ??? keycolumnstyle "code"
 
-            ??? columnstyle "description"
+        ```
+        Type: smallint
 
-                ```None```
-            
+        No documentation provided.
+        ```
+    
 
-        
+    ??? columnstyle "description"
 
-        ??? tablestyle "code_sky_park"
+        ```
+        Type: varchar(30)
 
-            ??? keycolumnstyle "code"
+        No documentation provided.
+        ```
+    
 
-                ```None```
-            
 
-            ??? columnstyle "description"
 
-                ```None```
-            
+??? tablestyle "code_precip_park"
 
-        
+    ??? keycolumnstyle "code"
 
-        ??? tablestyle "code_wind_direction_park"
+        ```
+        Type: smallint
 
-            ??? keycolumnstyle "code"
+        No documentation provided.
+        ```
+    
 
-                ```None```
-            
+    ??? columnstyle "description"
 
-            ??? columnstyle "description"
+        ```
+        Type: varchar(30)
 
-                ```None```
-            
+        No documentation provided.
+        ```
+    
 
-        
 
-        ??? tablestyle "comment"
 
-            ??? keycolumnstyle "dummy_id"
+??? tablestyle "code_sky_park"
 
-                ```None```
-            
+    ??? keycolumnstyle "code"
 
-            ??? columnstyle "game_id"
+        ```
+        Type: smallint
 
-                ```Game ID (home team ID + YYYYMMDD + doubleheader flag```
-            
+        No documentation provided.
+        ```
+    
 
-            ??? columnstyle "event_id"
+    ??? columnstyle "description"
 
-                ```Commented event number```
-            
+        ```
+        Type: varchar(30)
 
-            ??? columnstyle "comment"
+        No documentation provided.
+        ```
+    
 
-                ```Comment text```
-            
 
-            ??? columnstyle "ejected_person_id"
 
-                ```ID of ejected person```
-            
+??? tablestyle "code_wind_direction_park"
 
-            ??? columnstyle "ejected_person_role_cd"
+    ??? keycolumnstyle "code"
 
-                ```None```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "eject_umpire_id"
+        No documentation provided.
+        ```
+    
 
-                ```ID of umpire who ejected person```
-            
+    ??? columnstyle "description"
 
-            ??? columnstyle "eject_reason"
+        ```
+        Type: varchar(30)
 
-                ```None```
-            
+        No documentation provided.
+        ```
+    
 
-            ??? columnstyle "umpchange_inning"
 
-                ```None```
-            
 
-            ??? columnstyle "umpchange_position"
+??? tablestyle "comment"
 
-                ```None```
-            
+    ??? keycolumnstyle "dummy_id"
 
-            ??? columnstyle "umpchange_person_id"
+        ```
+        Type: integer
 
-                ```ID of new umpire```
-            
+        No documentation provided.
+        ```
+    
 
-        
+    ??? columnstyle "game_id"
 
-        ??? tablestyle "daily"
+        ```
+        Type: char(12)
 
-            ??? keycolumnstyle "dummy_id"
+        Game ID (home team ID + YYYYMMDD + doubleheader flag
+        ```
+    
 
-                ```None```
-            
+    ??? columnstyle "event_id"
 
-            ??? columnstyle "game_id"
+        ```
+        Type: smallint
 
-                ```Game ID (home team ID + YYYYMMDD + doubleheader flag```
-            
+        Commented event number
+        ```
+    
 
-            ??? columnstyle "game_dt"
+    ??? columnstyle "comment"
 
-                ```Game date```
-            
+        ```
+        Type: varchar(1638)
 
-            ??? columnstyle "game_ct"
+        Comment text
+        ```
+    
 
-                ```Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader```
-            
+    ??? columnstyle "ejected_person_id"
 
-            ??? columnstyle "appearance_dt"
+        ```
+        Type: varchar(256)
 
-                ```Player appearance date. Can be different from game date if the game was suspended and the player entered the game at the later date```
-            
+        ID of ejected person
+        ```
+    
 
-            ??? columnstyle "team_id"
+    ??? columnstyle "ejected_person_role_cd"
 
-                ```Team ID of player```
-            
+        ```
+        Type: varchar(256)
 
-            ??? columnstyle "player_id"
+        No documentation provided.
+        ```
+    
 
-                ```Player ID```
-            
+    ??? columnstyle "eject_umpire_id"
 
-            ??? columnstyle "slot_ct"
+        ```
+        Type: varchar(256)
 
-                ```Player lineup position```
-            
+        ID of umpire who ejected person
+        ```
+    
 
-            ??? columnstyle "seq_ct"
+    ??? columnstyle "eject_reason"
 
-                ```Player is nth person of game to play in that lineup slot```
-            
+        ```
+        Type: varchar(1639)
 
-            ??? columnstyle "home_fl"
+        No documentation provided.
+        ```
+    
 
-                ```Player is playing at home```
-            
+    ??? columnstyle "umpchange_inning"
 
-            ??? columnstyle "opponent_id"
+        ```
+        Type: varchar(256)
 
-                ```Team opponent ID```
-            
+        No documentation provided.
+        ```
+    
 
-            ??? columnstyle "park_id"
+    ??? columnstyle "umpchange_position"
 
-                ```Park ID```
-            
+        ```
+        Type: varchar(256)
 
-            ??? columnstyle "b_g"
+        No documentation provided.
+        ```
+    
 
-                ```Games played```
-            
+    ??? columnstyle "umpchange_person_id"
 
-            ??? columnstyle "b_pa"
+        ```
+        Type: varchar(256)
 
-                ```Plate appearances```
-            
+        ID of new umpire
+        ```
+    
 
-            ??? columnstyle "b_ab"
 
-                ```At bats```
-            
 
-            ??? columnstyle "b_r"
+??? tablestyle "daily"
 
-                ```Runs scored```
-            
+    ??? keycolumnstyle "dummy_id"
 
-            ??? columnstyle "b_h"
+        ```
+        Type: integer
 
-                ```Hits```
-            
+        No documentation provided.
+        ```
+    
 
-            ??? columnstyle "b_tb"
+    ??? columnstyle "game_id"
 
-                ```Total bases```
-            
+        ```
+        Type: char(12)
 
-            ??? columnstyle "b_2b"
+        Game ID (home team ID + YYYYMMDD + doubleheader flag
+        ```
+    
 
-                ```Doubles```
-            
+    ??? columnstyle "game_dt"
 
-            ??? columnstyle "b_3b"
+        ```
+        Type: date
 
-                ```Triples```
-            
+        Game date
+        ```
+    
 
-            ??? columnstyle "b_hr"
+    ??? columnstyle "game_ct"
 
-                ```Home runs```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "b_hr4"
+        Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader
+        ```
+    
 
-                ```Grand slams```
-            
+    ??? columnstyle "appearance_dt"
 
-            ??? columnstyle "b_rbi"
+        ```
+        Type: date
 
-                ```Runs batted in```
-            
+        Player appearance date. Can be different from game date if the game was suspended and the player entered the game at the later date
+        ```
+    
 
-            ??? columnstyle "b_gw"
+    ??? columnstyle "team_id"
 
-                ```Game winning RBI```
-            
+        ```
+        Type: char(3)
 
-            ??? columnstyle "b_bb"
+        Team ID of player
+        ```
+    
 
-                ```Walks```
-            
+    ??? columnstyle "player_id"
 
-            ??? columnstyle "b_ibb"
+        ```
+        Type: char(8)
 
-                ```Intentional walks```
-            
+        Player ID
+        ```
+    
 
-            ??? columnstyle "b_so"
+    ??? columnstyle "slot_ct"
 
-                ```Strikeouts```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "b_gdp"
+        Player lineup position
+        ```
+    
 
-                ```Grounded into double plays```
-            
+    ??? columnstyle "seq_ct"
 
-            ??? columnstyle "b_hp"
+        ```
+        Type: smallint
 
-                ```Hit by pitches```
-            
+        Player is nth person of game to play in that lineup slot
+        ```
+    
 
-            ??? columnstyle "b_sh"
+    ??? columnstyle "home_fl"
 
-                ```Sacrifice hits```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "b_sf"
+        Player is playing at home
+        ```
+    
 
-                ```Sacrifice files```
-            
+    ??? columnstyle "opponent_id"
 
-            ??? columnstyle "b_sb"
+        ```
+        Type: char(3)
 
-                ```Stolen bases```
-            
+        Team opponent ID
+        ```
+    
 
-            ??? columnstyle "b_cs"
+    ??? columnstyle "park_id"
 
-                ```Caught stealing```
-            
+        ```
+        Type: char(5)
 
-            ??? columnstyle "b_xi"
+        Park ID
+        ```
+    
 
-                ```Reached on interference```
-            
+    ??? columnstyle "b_g"
 
-            ??? columnstyle "b_g_dh"
+        ```
+        Type: smallint
 
-                ```Games as DH```
-            
+        Games played
+        ```
+    
 
-            ??? columnstyle "b_g_ph"
+    ??? columnstyle "b_pa"
 
-                ```Games as pinch hitter```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "b_g_pr"
+        Plate appearances
+        ```
+    
 
-                ```Games as pinch runner```
-            
+    ??? columnstyle "b_ab"
 
-            ??? columnstyle "p_g"
+        ```
+        Type: smallint
 
-                ```Games pitched```
-            
+        At bats
+        ```
+    
 
-            ??? columnstyle "p_gs"
+    ??? columnstyle "b_r"
 
-                ```Games as starting pitcher```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_cg"
+        Runs scored
+        ```
+    
 
-                ```Complete games```
-            
+    ??? columnstyle "b_h"
 
-            ??? columnstyle "p_sho"
+        ```
+        Type: smallint
 
-                ```Shutouts```
-            
+        Hits
+        ```
+    
 
-            ??? columnstyle "p_gf"
+    ??? columnstyle "b_tb"
 
-                ```Games finished```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_w"
+        Total bases
+        ```
+    
 
-                ```Wins```
-            
+    ??? columnstyle "b_2b"
 
-            ??? columnstyle "p_l"
+        ```
+        Type: smallint
 
-                ```Losses```
-            
+        Doubles
+        ```
+    
 
-            ??? columnstyle "p_sv"
+    ??? columnstyle "b_3b"
 
-                ```Saves```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_out"
+        Triples
+        ```
+    
 
-                ```Outs recorded```
-            
+    ??? columnstyle "b_hr"
 
-            ??? columnstyle "p_tbf"
+        ```
+        Type: smallint
 
-                ```Total batters faced```
-            
+        Home runs
+        ```
+    
 
-            ??? columnstyle "p_ab"
+    ??? columnstyle "b_hr4"
 
-                ```At bats against```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_r"
+        Grand slams
+        ```
+    
 
-                ```Runs allowed```
-            
+    ??? columnstyle "b_rbi"
 
-            ??? columnstyle "p_er"
+        ```
+        Type: smallint
 
-                ```Earned runs allowed```
-            
+        Runs batted in
+        ```
+    
 
-            ??? columnstyle "p_h"
+    ??? columnstyle "b_gw"
 
-                ```Hits allowed```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_tb"
+        Game winning RBI
+        ```
+    
 
-                ```Total bases allowed```
-            
+    ??? columnstyle "b_bb"
 
-            ??? columnstyle "p_2b"
+        ```
+        Type: smallint
 
-                ```Doubles allowed```
-            
+        Walks
+        ```
+    
 
-            ??? columnstyle "p_3b"
+    ??? columnstyle "b_ibb"
 
-                ```Triples allowed```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_hr"
+        Intentional walks
+        ```
+    
 
-                ```Home runs allowed```
-            
+    ??? columnstyle "b_so"
 
-            ??? columnstyle "p_hr4"
+        ```
+        Type: smallint
 
-                ```Grand slams allowed```
-            
+        Strikeouts
+        ```
+    
 
-            ??? columnstyle "p_bb"
+    ??? columnstyle "b_gdp"
 
-                ```Walks allowed```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_ibb"
+        Grounded into double plays
+        ```
+    
 
-                ```Intentional walks allowed```
-            
+    ??? columnstyle "b_hp"
 
-            ??? columnstyle "p_so"
+        ```
+        Type: smallint
 
-                ```Strikeouts against```
-            
+        Hit by pitches
+        ```
+    
 
-            ??? columnstyle "p_gdp"
+    ??? columnstyle "b_sh"
 
-                ```Grounded into double plays against```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_hp"
+        Sacrifice hits
+        ```
+    
 
-                ```Hit by pitches allowed```
-            
+    ??? columnstyle "b_sf"
 
-            ??? columnstyle "p_sh"
+        ```
+        Type: smallint
 
-                ```Sacrifice hits allowed```
-            
+        Sacrifice files
+        ```
+    
 
-            ??? columnstyle "p_sf"
+    ??? columnstyle "b_sb"
 
-                ```Sacrifice flies allowed```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_xi"
+        Stolen bases
+        ```
+    
 
-                ```Reached on interference allowed```
-            
+    ??? columnstyle "b_cs"
 
-            ??? columnstyle "p_wp"
+        ```
+        Type: smallint
 
-                ```Wild pitches allowed```
-            
+        Caught stealing
+        ```
+    
 
-            ??? columnstyle "p_bk"
+    ??? columnstyle "b_xi"
 
-                ```Balks allowed```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_ir"
+        Reached on interference
+        ```
+    
 
-                ```Inherited runners```
-            
+    ??? columnstyle "b_g_dh"
 
-            ??? columnstyle "p_irs"
+        ```
+        Type: smallint
 
-                ```Inherited runners scored```
-            
+        Games as DH
+        ```
+    
 
-            ??? columnstyle "p_go"
+    ??? columnstyle "b_g_ph"
 
-                ```Groundouts recorded```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "p_ao"
+        Games as pinch hitter
+        ```
+    
 
-                ```Fly ball outs recorded```
-            
+    ??? columnstyle "b_g_pr"
 
-            ??? columnstyle "p_pitch"
+        ```
+        Type: smallint
 
-                ```Pitches thrown```
-            
+        Games as pinch runner
+        ```
+    
 
-            ??? columnstyle "p_strike"
+    ??? columnstyle "p_g"
 
-                ```Strikes thrown```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_p_g"
+        Games pitched
+        ```
+    
 
-                ```Appearances at pitcher```
-            
+    ??? columnstyle "p_gs"
 
-            ??? columnstyle "f_p_gs"
+        ```
+        Type: smallint
 
-                ```Starts at pitcher```
-            
+        Games as starting pitcher
+        ```
+    
 
-            ??? columnstyle "f_p_out"
+    ??? columnstyle "p_cg"
 
-                ```Outs played as pitcher```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_p_tc"
+        Complete games
+        ```
+    
 
-                ```Total chances as pitcher```
-            
+    ??? columnstyle "p_sho"
 
-            ??? columnstyle "f_p_po"
+        ```
+        Type: smallint
 
-                ```Putouts as pitcher```
-            
+        Shutouts
+        ```
+    
 
-            ??? columnstyle "f_p_a"
+    ??? columnstyle "p_gf"
 
-                ```Assists as pitcher```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_p_e"
+        Games finished
+        ```
+    
 
-                ```Errors as pitcher```
-            
+    ??? columnstyle "p_w"
 
-            ??? columnstyle "f_p_dp"
+        ```
+        Type: smallint
 
-                ```Double plays turned as pitcher```
-            
+        Wins
+        ```
+    
 
-            ??? columnstyle "f_p_tp"
+    ??? columnstyle "p_l"
 
-                ```Triple pays turned as pitcher```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_c_g"
+        Losses
+        ```
+    
 
-                ```Appearances at catcher```
-            
+    ??? columnstyle "p_sv"
 
-            ??? columnstyle "f_c_gs"
+        ```
+        Type: smallint
 
-                ```Starts at catcher```
-            
+        Saves
+        ```
+    
 
-            ??? columnstyle "f_c_out"
+    ??? columnstyle "p_out"
 
-                ```Outs played as catcher```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_c_tc"
+        Outs recorded
+        ```
+    
 
-                ```Total chances as catcher```
-            
+    ??? columnstyle "p_tbf"
 
-            ??? columnstyle "f_c_po"
+        ```
+        Type: smallint
 
-                ```Putouts as catcher```
-            
+        Total batters faced
+        ```
+    
 
-            ??? columnstyle "f_c_a"
+    ??? columnstyle "p_ab"
 
-                ```Assists as catcher```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_c_e"
+        At bats against
+        ```
+    
 
-                ```Errors as catcher```
-            
+    ??? columnstyle "p_r"
 
-            ??? columnstyle "f_c_dp"
+        ```
+        Type: smallint
 
-                ```Double plays turned as catcher```
-            
+        Runs allowed
+        ```
+    
 
-            ??? columnstyle "f_c_tp"
+    ??? columnstyle "p_er"
 
-                ```Triple pays turned as catcher```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_c_pb"
+        Earned runs allowed
+        ```
+    
 
-                ```Passed balls```
-            
+    ??? columnstyle "p_h"
 
-            ??? columnstyle "f_c_xi"
+        ```
+        Type: smallint
 
-                ```Catcher's interference```
-            
+        Hits allowed
+        ```
+    
 
-            ??? columnstyle "f_1b_g"
+    ??? columnstyle "p_tb"
 
-                ```Appearances at first baseman```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_1b_gs"
+        Total bases allowed
+        ```
+    
 
-                ```Starts at first baseman```
-            
+    ??? columnstyle "p_2b"
 
-            ??? columnstyle "f_1b_out"
+        ```
+        Type: smallint
 
-                ```Outs played as first baseman```
-            
+        Doubles allowed
+        ```
+    
 
-            ??? columnstyle "f_1b_tc"
+    ??? columnstyle "p_3b"
 
-                ```Total chances as first baseman```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_1b_po"
+        Triples allowed
+        ```
+    
 
-                ```Putouts as first baseman```
-            
+    ??? columnstyle "p_hr"
 
-            ??? columnstyle "f_1b_a"
+        ```
+        Type: smallint
 
-                ```Assists as first baseman```
-            
+        Home runs allowed
+        ```
+    
 
-            ??? columnstyle "f_1b_e"
+    ??? columnstyle "p_hr4"
 
-                ```Errors as first baseman```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_1b_dp"
+        Grand slams allowed
+        ```
+    
 
-                ```Double plays turned as first baseman```
-            
+    ??? columnstyle "p_bb"
 
-            ??? columnstyle "f_1b_tp"
+        ```
+        Type: smallint
 
-                ```Triple pays turned as first baseman```
-            
+        Walks allowed
+        ```
+    
 
-            ??? columnstyle "f_2b_g"
+    ??? columnstyle "p_ibb"
 
-                ```Appearances at second baseman```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_2b_gs"
+        Intentional walks allowed
+        ```
+    
 
-                ```Starts at second baseman```
-            
+    ??? columnstyle "p_so"
 
-            ??? columnstyle "f_2b_out"
+        ```
+        Type: smallint
 
-                ```Outs played as second baseman```
-            
+        Strikeouts against
+        ```
+    
 
-            ??? columnstyle "f_2b_tc"
+    ??? columnstyle "p_gdp"
 
-                ```Total chances as second baseman```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_2b_po"
+        Grounded into double plays against
+        ```
+    
 
-                ```Putouts as second baseman```
-            
+    ??? columnstyle "p_hp"
 
-            ??? columnstyle "f_2b_a"
+        ```
+        Type: smallint
 
-                ```Assists as second baseman```
-            
+        Hit by pitches allowed
+        ```
+    
 
-            ??? columnstyle "f_2b_e"
+    ??? columnstyle "p_sh"
 
-                ```Errors as second baseman```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_2b_dp"
+        Sacrifice hits allowed
+        ```
+    
 
-                ```Double plays turned as second baseman```
-            
+    ??? columnstyle "p_sf"
 
-            ??? columnstyle "f_2b_tp"
+        ```
+        Type: smallint
 
-                ```Triple pays turned as second baseman```
-            
+        Sacrifice flies allowed
+        ```
+    
 
-            ??? columnstyle "f_3b_g"
+    ??? columnstyle "p_xi"
 
-                ```Appearances at third baseman```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_3b_gs"
+        Reached on interference allowed
+        ```
+    
 
-                ```Starts at third baseman```
-            
+    ??? columnstyle "p_wp"
 
-            ??? columnstyle "f_3b_out"
+        ```
+        Type: smallint
 
-                ```Outs played as third baseman```
-            
+        Wild pitches allowed
+        ```
+    
 
-            ??? columnstyle "f_3b_tc"
+    ??? columnstyle "p_bk"
 
-                ```Total chances as third baseman```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_3b_po"
+        Balks allowed
+        ```
+    
 
-                ```Putouts as third baseman```
-            
+    ??? columnstyle "p_ir"
 
-            ??? columnstyle "f_3b_a"
+        ```
+        Type: smallint
 
-                ```Assists as third baseman```
-            
+        Inherited runners
+        ```
+    
 
-            ??? columnstyle "f_3b_e"
+    ??? columnstyle "p_irs"
 
-                ```Errors as third baseman```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_3b_dp"
+        Inherited runners scored
+        ```
+    
 
-                ```Double plays turned as third baseman```
-            
+    ??? columnstyle "p_go"
 
-            ??? columnstyle "f_3b_tp"
+        ```
+        Type: smallint
 
-                ```Triple pays turned as third baseman```
-            
+        Groundouts recorded
+        ```
+    
 
-            ??? columnstyle "f_ss_g"
+    ??? columnstyle "p_ao"
 
-                ```Appearances at shortstop```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_ss_gs"
+        Fly ball outs recorded
+        ```
+    
 
-                ```Starts at shortstop```
-            
+    ??? columnstyle "p_pitch"
 
-            ??? columnstyle "f_ss_out"
+        ```
+        Type: smallint
 
-                ```Outs played as shortstop```
-            
+        Pitches thrown
+        ```
+    
 
-            ??? columnstyle "f_ss_tc"
+    ??? columnstyle "p_strike"
 
-                ```Total chances as shortstop```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_ss_po"
+        Strikes thrown
+        ```
+    
 
-                ```Putouts as shortstop```
-            
+    ??? columnstyle "f_p_g"
 
-            ??? columnstyle "f_ss_a"
+        ```
+        Type: smallint
 
-                ```Assists as shortstop```
-            
+        Appearances at pitcher
+        ```
+    
 
-            ??? columnstyle "f_ss_e"
+    ??? columnstyle "f_p_gs"
 
-                ```Errors as shortstop```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_ss_dp"
+        Starts at pitcher
+        ```
+    
 
-                ```Double plays turned as shortstop```
-            
+    ??? columnstyle "f_p_out"
 
-            ??? columnstyle "f_ss_tp"
+        ```
+        Type: smallint
 
-                ```Triple pays turned as shortstop```
-            
+        Outs played as pitcher
+        ```
+    
 
-            ??? columnstyle "f_lf_g"
+    ??? columnstyle "f_p_tc"
 
-                ```Appearances at left fielder```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_lf_gs"
+        Total chances as pitcher
+        ```
+    
 
-                ```Starts at left fielder```
-            
+    ??? columnstyle "f_p_po"
 
-            ??? columnstyle "f_lf_out"
+        ```
+        Type: smallint
 
-                ```Outs played as left fielder```
-            
+        Putouts as pitcher
+        ```
+    
 
-            ??? columnstyle "f_lf_tc"
+    ??? columnstyle "f_p_a"
 
-                ```Total chances as left fielder```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_lf_po"
+        Assists as pitcher
+        ```
+    
 
-                ```Putouts as left fielder```
-            
+    ??? columnstyle "f_p_e"
 
-            ??? columnstyle "f_lf_a"
+        ```
+        Type: smallint
 
-                ```Assists as left fielder```
-            
+        Errors as pitcher
+        ```
+    
 
-            ??? columnstyle "f_lf_e"
+    ??? columnstyle "f_p_dp"
 
-                ```Errors as left fielder```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_lf_dp"
+        Double plays turned as pitcher
+        ```
+    
 
-                ```Double plays turned as left fielder```
-            
+    ??? columnstyle "f_p_tp"
 
-            ??? columnstyle "f_lf_tp"
+        ```
+        Type: smallint
 
-                ```Triple pays turned as left fielder```
-            
+        Triple pays turned as pitcher
+        ```
+    
 
-            ??? columnstyle "f_cf_g"
+    ??? columnstyle "f_c_g"
 
-                ```Appearances at center fielder```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_cf_gs"
+        Appearances at catcher
+        ```
+    
 
-                ```Starts at center fielder```
-            
+    ??? columnstyle "f_c_gs"
 
-            ??? columnstyle "f_cf_out"
+        ```
+        Type: smallint
 
-                ```Outs played as center fielder```
-            
+        Starts at catcher
+        ```
+    
 
-            ??? columnstyle "f_cf_tc"
+    ??? columnstyle "f_c_out"
 
-                ```Total chances as center fielder```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_cf_po"
+        Outs played as catcher
+        ```
+    
 
-                ```Putouts as center fielder```
-            
+    ??? columnstyle "f_c_tc"
 
-            ??? columnstyle "f_cf_a"
+        ```
+        Type: smallint
 
-                ```Assists as center fielder```
-            
+        Total chances as catcher
+        ```
+    
 
-            ??? columnstyle "f_cf_e"
+    ??? columnstyle "f_c_po"
 
-                ```Errors as center fielder```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_cf_dp"
+        Putouts as catcher
+        ```
+    
 
-                ```Double plays turned as center fielder```
-            
+    ??? columnstyle "f_c_a"
 
-            ??? columnstyle "f_cf_tp"
+        ```
+        Type: smallint
 
-                ```Triple pays turned as center fielder```
-            
+        Assists as catcher
+        ```
+    
 
-            ??? columnstyle "f_rf_g"
+    ??? columnstyle "f_c_e"
 
-                ```Appearances at right fielder```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_rf_gs"
+        Errors as catcher
+        ```
+    
 
-                ```Starts at right fielder```
-            
+    ??? columnstyle "f_c_dp"
 
-            ??? columnstyle "f_rf_out"
+        ```
+        Type: smallint
 
-                ```Outs played as right fielder```
-            
+        Double plays turned as catcher
+        ```
+    
 
-            ??? columnstyle "f_rf_tc"
+    ??? columnstyle "f_c_tp"
 
-                ```Total chances as right fielder```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_rf_po"
+        Triple pays turned as catcher
+        ```
+    
 
-                ```Putouts as right fielder```
-            
+    ??? columnstyle "f_c_pb"
 
-            ??? columnstyle "f_rf_a"
+        ```
+        Type: smallint
 
-                ```Assists as right fielder```
-            
+        Passed balls
+        ```
+    
 
-            ??? columnstyle "f_rf_e"
+    ??? columnstyle "f_c_xi"
 
-                ```Errors as right fielder```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "f_rf_dp"
+        Catcher's interference
+        ```
+    
 
-                ```Double plays turned as right fielder```
-            
+    ??? columnstyle "f_1b_g"
 
-            ??? columnstyle "f_rf_tp"
+        ```
+        Type: smallint
 
-                ```Triple pays turned as right fielder```
-            
+        Appearances at first baseman
+        ```
+    
 
-        
+    ??? columnstyle "f_1b_gs"
 
-        ??? tablestyle "deduced_game"
+        ```
+        Type: smallint
 
-            ??? keycolumnstyle "game_id"
+        Starts at first baseman
+        ```
+    
 
-                ```Game ID (home team ID + YYYYMMDD + doubleheader flag```
-            
+    ??? columnstyle "f_1b_out"
 
-        
+        ```
+        Type: smallint
 
-        ??? tablestyle "event"
+        Outs played as first baseman
+        ```
+    
 
-            ??? keycolumnstyle "game_id"
+    ??? columnstyle "f_1b_tc"
 
-                ```Game ID (home team ID + YYYYMMDD + doubleheader flag```
-            
+        ```
+        Type: smallint
 
-            ??? keycolumnstyle "event_id"
+        Total chances as first baseman
+        ```
+    
 
-                ```Event number of game```
-            
+    ??? columnstyle "f_1b_po"
 
-            ??? columnstyle "away_team_id"
+        ```
+        Type: smallint
 
-                ```Visiting Team```
-            
+        Putouts as first baseman
+        ```
+    
 
-            ??? columnstyle "inn_ct"
+    ??? columnstyle "f_1b_a"
 
-                ```Inning```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "bat_home_id"
+        Assists as first baseman
+        ```
+    
 
-                ```Home team is batting```
-            
+    ??? columnstyle "f_1b_e"
 
-            ??? columnstyle "outs_ct"
+        ```
+        Type: smallint
 
-                ```Outs (0-2)```
-            
+        Errors as first baseman
+        ```
+    
 
-            ??? columnstyle "balls_ct"
+    ??? columnstyle "f_1b_dp"
 
-                ```Balls (0-3)```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "strikes_ct"
+        Double plays turned as first baseman
+        ```
+    
 
-                ```Strikes (0-2```
-            
+    ??? columnstyle "f_1b_tp"
 
-            ??? columnstyle "pitch_seq_tx"
+        ```
+        Type: smallint
 
-                ```Pitch sequence```
-            
+        Triple pays turned as first baseman
+        ```
+    
 
-            ??? columnstyle "away_score_ct"
+    ??? columnstyle "f_2b_g"
 
-                ```Away score```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_score_ct"
+        Appearances at second baseman
+        ```
+    
 
-                ```Home score```
-            
+    ??? columnstyle "f_2b_gs"
 
-            ??? columnstyle "bat_id"
+        ```
+        Type: smallint
 
-                ```Batter ID```
-            
+        Starts at second baseman
+        ```
+    
 
-            ??? columnstyle "bat_hand_cd"
+    ??? columnstyle "f_2b_out"
 
-                ```Batter handedness```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "resp_bat_id"
+        Outs played as second baseman
+        ```
+    
 
-                ```ID of batter charged with event```
-            
+    ??? columnstyle "f_2b_tc"
 
-            ??? columnstyle "resp_bat_hand_cd"
+        ```
+        Type: smallint
 
-                ```Handedness of batter charged with event```
-            
+        Total chances as second baseman
+        ```
+    
 
-            ??? columnstyle "pit_id"
+    ??? columnstyle "f_2b_po"
 
-                ```Pitcher ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "pit_hand_cd"
+        Putouts as second baseman
+        ```
+    
 
-                ```Pitcher handedness```
-            
+    ??? columnstyle "f_2b_a"
 
-            ??? columnstyle "resp_pit_id"
+        ```
+        Type: smallint
 
-                ```ID of pitcher charged with event```
-            
+        Assists as second baseman
+        ```
+    
 
-            ??? columnstyle "resp_pit_hand_cd"
+    ??? columnstyle "f_2b_e"
 
-                ```Handedness of pitcher charged with event```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "pos2_fld_id"
+        Errors as second baseman
+        ```
+    
 
-                ```Catcher ID```
-            
+    ??? columnstyle "f_2b_dp"
 
-            ??? columnstyle "pos3_fld_id"
+        ```
+        Type: smallint
 
-                ```First baseman ID```
-            
+        Double plays turned as second baseman
+        ```
+    
 
-            ??? columnstyle "pos4_fld_id"
+    ??? columnstyle "f_2b_tp"
 
-                ```Second baseman ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "pos5_fld_id"
+        Triple pays turned as second baseman
+        ```
+    
 
-                ```Third baseman ID```
-            
+    ??? columnstyle "f_3b_g"
 
-            ??? columnstyle "pos6_fld_id"
+        ```
+        Type: smallint
 
-                ```Shortstop ID```
-            
+        Appearances at third baseman
+        ```
+    
 
-            ??? columnstyle "pos7_fld_id"
+    ??? columnstyle "f_3b_gs"
 
-                ```Left fielder ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "pos8_fld_id"
+        Starts at third baseman
+        ```
+    
 
-                ```Center fielder ID```
-            
+    ??? columnstyle "f_3b_out"
 
-            ??? columnstyle "pos9_fld_id"
+        ```
+        Type: smallint
 
-                ```Right fielder ID```
-            
+        Outs played as third baseman
+        ```
+    
 
-            ??? columnstyle "base1_run_id"
+    ??? columnstyle "f_3b_tc"
 
-                ```ID of runner on first```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "base2_run_id"
+        Total chances as third baseman
+        ```
+    
 
-                ```ID of runner on second```
-            
+    ??? columnstyle "f_3b_po"
 
-            ??? columnstyle "base3_run_id"
+        ```
+        Type: smallint
 
-                ```ID of runner on third```
-            
+        Putouts as third baseman
+        ```
+    
 
-            ??? columnstyle "event_tx"
+    ??? columnstyle "f_3b_a"
 
-                ```Event text (in scoring shorthand```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "leadoff_fl"
+        Assists as third baseman
+        ```
+    
 
-                ```Batter is leading off the inning```
-            
+    ??? columnstyle "f_3b_e"
 
-            ??? columnstyle "ph_fl"
+        ```
+        Type: smallint
 
-                ```Batter is pinch-hitting```
-            
+        Errors as third baseman
+        ```
+    
 
-            ??? columnstyle "bat_fld_cd"
+    ??? columnstyle "f_3b_dp"
 
-                ```Defensive position of batter (10 for DH, 11 for PH, 12 for PR```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "bat_lineup_id"
+        Double plays turned as third baseman
+        ```
+    
 
-                ```Lineup position (1-9)```
-            
+    ??? columnstyle "f_3b_tp"
 
-            ??? columnstyle "event_cd"
+        ```
+        Type: smallint
 
-                ```Event code (join table `code_event` for descriptions```
-            
+        Triple pays turned as third baseman
+        ```
+    
 
-            ??? columnstyle "bat_event_fl"
+    ??? columnstyle "f_ss_g"
 
-                ```Event is related to the batter```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "ab_fl"
+        Appearances at shortstop
+        ```
+    
 
-                ```Event is an at-bat```
-            
+    ??? columnstyle "f_ss_gs"
 
-            ??? columnstyle "h_fl"
+        ```
+        Type: smallint
 
-                ```Event is a hit```
-            
+        Starts at shortstop
+        ```
+    
 
-            ??? columnstyle "sh_fl"
+    ??? columnstyle "f_ss_out"
 
-                ```Event is a sacrifice hit```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "sf_fl"
+        Outs played as shortstop
+        ```
+    
 
-                ```Event is a sacrifice fly```
-            
+    ??? columnstyle "f_ss_tc"
 
-            ??? columnstyle "event_outs_ct"
+        ```
+        Type: smallint
 
-                ```Outs recorded on event (0-3)```
-            
+        Total chances as shortstop
+        ```
+    
 
-            ??? columnstyle "dp_fl"
+    ??? columnstyle "f_ss_po"
 
-                ```Event is a double play```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "tp_fl"
+        Putouts as shortstop
+        ```
+    
 
-                ```Event is a triple play```
-            
+    ??? columnstyle "f_ss_a"
 
-            ??? columnstyle "rbi_ct"
+        ```
+        Type: smallint
 
-                ```Runs batted in on event```
-            
+        Assists as shortstop
+        ```
+    
 
-            ??? columnstyle "wp_fl"
+    ??? columnstyle "f_ss_e"
 
-                ```Event is a wild pitch```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "pb_fl"
+        Errors as shortstop
+        ```
+    
 
-                ```Event is a passed ball```
-            
+    ??? columnstyle "f_ss_dp"
 
-            ??? columnstyle "fld_cd"
+        ```
+        Type: smallint
 
-                ```Position id of event fielder```
-            
+        Double plays turned as shortstop
+        ```
+    
 
-            ??? columnstyle "battedball_cd"
+    ??? columnstyle "f_ss_tp"
 
-                ```Batted ball code (P - pop-up, G - ground ball, F - fly ball, L - line drive```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "bunt_fl"
+        Triple pays turned as shortstop
+        ```
+    
 
-                ```Event is a bunt```
-            
+    ??? columnstyle "f_lf_g"
 
-            ??? columnstyle "foul_fl"
+        ```
+        Type: smallint
 
-                ```Event is a foul ball```
-            
+        Appearances at left fielder
+        ```
+    
 
-            ??? columnstyle "battedball_loc_tx"
+    ??? columnstyle "f_lf_gs"
 
-                ```Hit location code (see https://www.retrosheet.org/location.htm)```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "err_ct"
+        Starts at left fielder
+        ```
+    
 
-                ```Number of errors recorded during event```
-            
+    ??? columnstyle "f_lf_out"
 
-            ??? columnstyle "err1_fld_cd"
+        ```
+        Type: smallint
 
-                ```Position code of fielder committing first error during event```
-            
+        Outs played as left fielder
+        ```
+    
 
-            ??? columnstyle "err1_cd"
+    ??? columnstyle "f_lf_tc"
 
-                ```First error type (T - throwing, F - fielding)```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "err2_fld_cd"
+        Total chances as left fielder
+        ```
+    
 
-                ```Position code of fielder committing second error during event```
-            
+    ??? columnstyle "f_lf_po"
 
-            ??? columnstyle "err2_cd"
+        ```
+        Type: smallint
 
-                ```Second error type (T - throwing, F - fielding)```
-            
+        Putouts as left fielder
+        ```
+    
 
-            ??? columnstyle "err3_fld_cd"
+    ??? columnstyle "f_lf_a"
 
-                ```Position code of fielder committing third error during event```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "err3_cd"
+        Assists as left fielder
+        ```
+    
 
-                ```Third error type (T - throwing, F - fielding)```
-            
+    ??? columnstyle "f_lf_e"
 
-            ??? columnstyle "bat_dest_id"
+        ```
+        Type: smallint
 
-                ```Destination of batter after event (0 - putout, 1-3 - bases, 4 - scored asearned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)```
-            
+        Errors as left fielder
+        ```
+    
 
-            ??? columnstyle "run1_dest_id"
+    ??? columnstyle "f_lf_dp"
 
-                ```Destination of runner on first after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "run2_dest_id"
+        Double plays turned as left fielder
+        ```
+    
 
-                ```Destination of runner on second after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)```
-            
+    ??? columnstyle "f_lf_tp"
 
-            ??? columnstyle "run3_dest_id"
+        ```
+        Type: smallint
 
-                ```Destination of runner on third after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)```
-            
+        Triple pays turned as left fielder
+        ```
+    
 
-            ??? columnstyle "bat_play_tx"
+    ??? columnstyle "f_cf_g"
 
-                ```Fielding play on batter```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "run1_play_tx"
+        Appearances at center fielder
+        ```
+    
 
-                ```Fielding play on runner on first```
-            
+    ??? columnstyle "f_cf_gs"
 
-            ??? columnstyle "run2_play_tx"
+        ```
+        Type: smallint
 
-                ```Fielding play on runner on second```
-            
+        Starts at center fielder
+        ```
+    
 
-            ??? columnstyle "run3_play_tx"
+    ??? columnstyle "f_cf_out"
 
-                ```Fielding play on runner on third```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "run1_sb_fl"
+        Outs played as center fielder
+        ```
+    
 
-                ```Runner on first steals base```
-            
+    ??? columnstyle "f_cf_tc"
 
-            ??? columnstyle "run2_sb_fl"
+        ```
+        Type: smallint
 
-                ```Runner on second steals base```
-            
+        Total chances as center fielder
+        ```
+    
 
-            ??? columnstyle "run3_sb_fl"
+    ??? columnstyle "f_cf_po"
 
-                ```Runner on third steals base```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "run1_cs_fl"
+        Putouts as center fielder
+        ```
+    
 
-                ```Runner on first caught stealing```
-            
+    ??? columnstyle "f_cf_a"
 
-            ??? columnstyle "run2_cs_fl"
+        ```
+        Type: smallint
 
-                ```Runner on second caught stealing```
-            
+        Assists as center fielder
+        ```
+    
 
-            ??? columnstyle "run3_cs_fl"
+    ??? columnstyle "f_cf_e"
 
-                ```Runner on third caught stealing```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "run1_pk_fl"
+        Errors as center fielder
+        ```
+    
 
-                ```Runner on first picked off```
-            
+    ??? columnstyle "f_cf_dp"
 
-            ??? columnstyle "run2_pk_fl"
+        ```
+        Type: smallint
 
-                ```Runner on second picked off```
-            
+        Double plays turned as center fielder
+        ```
+    
 
-            ??? columnstyle "run3_pk_fl"
+    ??? columnstyle "f_cf_tp"
 
-                ```Runner on third picked off```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "run1_resp_pit_id"
+        Triple pays turned as center fielder
+        ```
+    
 
-                ```ID of pitcher charged with runner on first```
-            
+    ??? columnstyle "f_rf_g"
 
-            ??? columnstyle "run2_resp_pit_id"
+        ```
+        Type: smallint
 
-                ```ID of pitcher charged with runner on second```
-            
+        Appearances at right fielder
+        ```
+    
 
-            ??? columnstyle "run3_resp_pit_id"
+    ??? columnstyle "f_rf_gs"
 
-                ```ID of pitcher charged with runner on third```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "game_new_fl"
+        Starts at right fielder
+        ```
+    
 
-                ```Start of game flag```
-            
+    ??? columnstyle "f_rf_out"
 
-            ??? columnstyle "game_end_fl"
+        ```
+        Type: smallint
 
-                ```End of game flag```
-            
+        Outs played as right fielder
+        ```
+    
 
-            ??? columnstyle "pr_run1_fl"
+    ??? columnstyle "f_rf_tc"
 
-                ```Pinch-runner on first```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "pr_run2_fl"
+        Total chances as right fielder
+        ```
+    
 
-                ```Pinch-runner on second```
-            
+    ??? columnstyle "f_rf_po"
 
-            ??? columnstyle "pr_run3_fl"
+        ```
+        Type: smallint
 
-                ```Runner on third```
-            
+        Putouts as right fielder
+        ```
+    
 
-            ??? columnstyle "removed_for_pr_run1_id"
+    ??? columnstyle "f_rf_a"
 
-                ```ID of former runner on first removed for pinch-runner```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "removed_for_pr_run2_id"
+        Assists as right fielder
+        ```
+    
 
-                ```ID of former runner on second removed for pinch-runner```
-            
+    ??? columnstyle "f_rf_e"
 
-            ??? columnstyle "removed_for_pr_run3_id"
+        ```
+        Type: smallint
 
-                ```ID of former runner on third removed for pinch-runner```
-            
+        Errors as right fielder
+        ```
+    
 
-            ??? columnstyle "removed_for_ph_bat_id"
+    ??? columnstyle "f_rf_dp"
 
-                ```ID of former batter removed for pinch-hitter```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "removed_for_ph_bat_fld_cd"
+        Double plays turned as right fielder
+        ```
+    
 
-                ```Position code of batter removed for pinch-hitter```
-            
+    ??? columnstyle "f_rf_tp"
 
-            ??? columnstyle "po1_fld_cd"
+        ```
+        Type: smallint
 
-                ```Position code of fielder with first putout```
-            
+        Triple pays turned as right fielder
+        ```
+    
 
-            ??? columnstyle "po2_fld_cd"
 
-                ```Position code of fielder with second putout```
-            
 
-            ??? columnstyle "po3_fld_cd"
+??? tablestyle "deduced_game"
 
-                ```Position code of fielder with third putout```
-            
+    ??? keycolumnstyle "game_id"
 
-            ??? columnstyle "ass1_fld_cd"
+        ```
+        Type: char(12)
 
-                ```Position code of fielder with first assist```
-            
+        Game ID (home team ID + YYYYMMDD + doubleheader flag
+        ```
+    
 
-            ??? columnstyle "ass2_fld_cd"
 
-                ```Position code of fielder with second assist```
-            
 
-            ??? columnstyle "ass3_fld_cd"
+??? tablestyle "event"
 
-                ```Position code of fielder with third assist```
-            
+    ??? keycolumnstyle "game_id"
 
-            ??? columnstyle "ass4_fld_cd"
+        ```
+        Type: char(12)
 
-                ```Position code of fielder with fourth assist```
-            
+        Game ID (home team ID + YYYYMMDD + doubleheader flag
+        ```
+    
 
-            ??? columnstyle "ass5_fld_cd"
+    ??? keycolumnstyle "event_id"
 
-                ```Position code of fielder with fifth assist```
-            
+        ```
+        Type: integer
 
-            ??? columnstyle "home_team_id"
+        Event number of game
+        ```
+    
 
-                ```Home team ID```
-            
+    ??? columnstyle "away_team_id"
 
-            ??? columnstyle "bat_team_id"
+        ```
+        Type: char(3)
 
-                ```Batting team ID```
-            
+        Visiting Team
+        ```
+    
 
-            ??? columnstyle "fld_team_id"
+    ??? columnstyle "inn_ct"
 
-                ```Fielding team ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "bat_last_id"
+        Inning
+        ```
+    
 
-                ```Half inning (differs from batting team if home team bats first)```
-            
+    ??? columnstyle "bat_home_id"
 
-            ??? columnstyle "inn_new_fl"
+        ```
+        Type: boolean
 
-                ```Start of half-inning flag```
-            
+        Home team is batting
+        ```
+    
 
-            ??? columnstyle "inn_end_fl"
+    ??? columnstyle "outs_ct"
 
-                ```End of half-inning flag```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "start_bat_score_ct"
+        Outs (0-2)
+        ```
+    
 
-                ```Runs scored by batting team (prior to this event)```
-            
+    ??? columnstyle "balls_ct"
 
-            ??? columnstyle "start_fld_score_ct"
+        ```
+        Type: smallint
 
-                ```Runs scored by fielding team```
-            
+        Balls (0-3)
+        ```
+    
 
-            ??? columnstyle "inn_runs_ct"
+    ??? columnstyle "strikes_ct"
 
-                ```Runs scored in this half-inning (prior to this event)```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "game_pa_ct"
+        Strikes (0-2
+        ```
+    
 
-                ```Batting team PA total (prior to this event)```
-            
+    ??? columnstyle "pitch_seq_tx"
 
-            ??? columnstyle "inn_pa_ct"
+        ```
+        Type: varchar(30)
 
-                ```Half-inning PA total (prior to this event)```
-            
+        Pitch sequence
+        ```
+    
 
-            ??? columnstyle "pa_new_fl"
+    ??? columnstyle "away_score_ct"
 
-                ```Event is the start of a plate appearance```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "pa_trunc_fl"
+        Away score
+        ```
+    
 
-                ```Event is a truncated plate appearance```
-            
+    ??? columnstyle "home_score_ct"
 
-            ??? columnstyle "start_bases_cd"
+        ```
+        Type: smallint
 
-                ```Base state at start of event (0-7, binary value is flags for runners on third, second, and first left-to-right)```
-            
+        Home score
+        ```
+    
 
-            ??? columnstyle "end_bases_cd"
+    ??? columnstyle "bat_id"
 
-                ```Base state end of event (0-7, binary value is flags for runners on third, second, and first left-to-right)```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "bat_start_fl"
+        Batter ID
+        ```
+    
 
-                ```Batter started game```
-            
+    ??? columnstyle "bat_hand_cd"
 
-            ??? columnstyle "resp_bat_start_fl"
+        ```
+        Type: char(1)
 
-                ```Result-charged batter is a starter```
-            
+        Batter handedness
+        ```
+    
 
-            ??? columnstyle "bat_on_deck_id"
+    ??? columnstyle "resp_bat_id"
 
-                ```ID of batter on deck```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "bat_in_hold_id"
+        ID of batter charged with event
+        ```
+    
 
-                ```Id of batter in the hole```
-            
+    ??? columnstyle "resp_bat_hand_cd"
 
-            ??? columnstyle "pit_start_fl"
+        ```
+        Type: char(1)
 
-                ```Pitcher started game```
-            
+        Handedness of batter charged with event
+        ```
+    
 
-            ??? columnstyle "resp_pit_start_fl"
+    ??? columnstyle "pit_id"
 
-                ```Result-charged pitcher started game```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "run1_fld_cd"
+        Pitcher ID
+        ```
+    
 
-                ```Defensive position code of runner on first```
-            
+    ??? columnstyle "pit_hand_cd"
 
-            ??? columnstyle "run1_lineup_cd"
+        ```
+        Type: char(1)
 
-                ```Lineup position of runner on first```
-            
+        Pitcher handedness
+        ```
+    
 
-            ??? columnstyle "run1_origin_event_id"
+    ??? columnstyle "resp_pit_id"
 
-                ```Event number on which runner on first reached base```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "run2_fld_cd"
+        ID of pitcher charged with event
+        ```
+    
 
-                ```Defensive position code of runner on second```
-            
+    ??? columnstyle "resp_pit_hand_cd"
 
-            ??? columnstyle "run2_lineup_cd"
+        ```
+        Type: char(1)
 
-                ```Lineup position of runner on second```
-            
+        Handedness of pitcher charged with event
+        ```
+    
 
-            ??? columnstyle "run2_origin_event_id"
+    ??? columnstyle "pos2_fld_id"
 
-                ```Event number on which runner on second reached base```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "run3_fld_cd"
+        Catcher ID
+        ```
+    
 
-                ```Defensive position code of runner on third```
-            
+    ??? columnstyle "pos3_fld_id"
 
-            ??? columnstyle "run3_lineup_cd"
+        ```
+        Type: char(8)
 
-                ```Lineup position of runner on third```
-            
+        First baseman ID
+        ```
+    
 
-            ??? columnstyle "run3_origin_event_id"
+    ??? columnstyle "pos4_fld_id"
 
-                ```Event number on which runner on third reached base```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "run1_resp_cat_id"
+        Second baseman ID
+        ```
+    
 
-                ```ID of responsible catcher for runner on first```
-            
+    ??? columnstyle "pos5_fld_id"
 
-            ??? columnstyle "run2_resp_cat_id"
+        ```
+        Type: char(8)
 
-                ```ID of responsible catcher for runner on second```
-            
+        Third baseman ID
+        ```
+    
 
-            ??? columnstyle "run3_resp_cat_id"
+    ??? columnstyle "pos6_fld_id"
 
-                ```ID of responsible catcher for runner on third```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "pa_ball_ct"
+        Shortstop ID
+        ```
+    
 
-                ```Number of balls in plate appearance```
-            
+    ??? columnstyle "pos7_fld_id"
 
-            ??? columnstyle "pa_called_ball_ct"
+        ```
+        Type: char(8)
 
-                ```Number of called balls in plate appearance```
-            
+        Left fielder ID
+        ```
+    
 
-            ??? columnstyle "pa_intent_ball_ct"
+    ??? columnstyle "pos8_fld_id"
 
-                ```Number of intentional balls in plate appearance```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "pa_pitchout_ball_ct"
+        Center fielder ID
+        ```
+    
 
-                ```Number of pitchouts in plate appearance```
-            
+    ??? columnstyle "pos9_fld_id"
 
-            ??? columnstyle "pa_hitbatter_ball_ct"
+        ```
+        Type: char(8)
 
-                ```Number of pitches hitting batter in plate appearance```
-            
+        Right fielder ID
+        ```
+    
 
-            ??? columnstyle "pa_other_ball_ct"
+    ??? columnstyle "base1_run_id"
 
-                ```Number of other balls in plate appearance```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "pa_strike_ct"
+        ID of runner on first
+        ```
+    
 
-                ```Number of strikes in plate appearance```
-            
+    ??? columnstyle "base2_run_id"
 
-            ??? columnstyle "pa_called_strike_ct"
+        ```
+        Type: char(8)
 
-                ```Number of called strikes in plate appearance```
-            
+        ID of runner on second
+        ```
+    
 
-            ??? columnstyle "pa_swingmiss_strike_ct"
+    ??? columnstyle "base3_run_id"
 
-                ```Number of swing-and-miss strikes in plate appearance```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "pa_foul_strike_ct"
+        ID of runner on third
+        ```
+    
 
-                ```Number of foul balls in plate appearance```
-            
+    ??? columnstyle "event_tx"
 
-            ??? columnstyle "pa_inplay_strike_ct"
+        ```
+        Type: varchar(128)
 
-                ```Number of balls in play in plate appearance```
-            
+        Event text (in scoring shorthand
+        ```
+    
 
-            ??? columnstyle "pa_other_strike_ct"
+    ??? columnstyle "leadoff_fl"
 
-                ```Number of other strikes in plate appearance```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "event_runs_ct"
+        Batter is leading off the inning
+        ```
+    
 
-                ```Number of runs on play```
-            
+    ??? columnstyle "ph_fl"
 
-            ??? columnstyle "fld_id"
+        ```
+        Type: boolean
 
-                ```ID of player fielding batted ball```
-            
+        Batter is pinch-hitting
+        ```
+    
 
-            ??? columnstyle "base2_force_fl"
+    ??? columnstyle "bat_fld_cd"
 
-                ```Event has force play at second```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "base3_force_fl"
+        Defensive position of batter (10 for DH, 11 for PH, 12 for PR
+        ```
+    
 
-                ```Event has force play at third```
-            
+    ??? columnstyle "bat_lineup_id"
 
-            ??? columnstyle "base4_force_fl"
+        ```
+        Type: smallint
 
-                ```Event has force play at home```
-            
+        Lineup position (1-9)
+        ```
+    
 
-            ??? columnstyle "bat_safe_err_fl"
+    ??? columnstyle "event_cd"
 
-                ```Event has batter safe on an error```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "bat_fate_id"
+        Event code (join table `code_event` for descriptions
+        ```
+    
 
-                ```Ultimate fate of batter (see `dest_id` cols for code meaning```
-            
+    ??? columnstyle "bat_event_fl"
 
-            ??? columnstyle "run1_fate_id"
+        ```
+        Type: boolean
 
-                ```Ultimate fate of runner on first (see `dest_id` cols for code meaning```
-            
+        Event is related to the batter
+        ```
+    
 
-            ??? columnstyle "run2_fate_id"
+    ??? columnstyle "ab_fl"
 
-                ```Ultimate fate of runner on second (see `dest_id` cols for code meaning```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "run3_fate_id"
+        Event is an at-bat
+        ```
+    
 
-                ```Ultimate fate of runner on third (see `dest_id` cols for code meaning```
-            
+    ??? columnstyle "h_fl"
 
-            ??? columnstyle "fate_runs_ct"
+        ```
+        Type: smallint
 
-                ```Additional runs scored in half inning after this event```
-            
+        Event is a hit
+        ```
+    
 
-            ??? columnstyle "ass6_fld_cd"
+    ??? columnstyle "sh_fl"
 
-                ```Position code of fielder with sixth assist```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "ass7_fld_cd"
+        Event is a sacrifice hit
+        ```
+    
 
-                ```Position code of fielder with seventh assist```
-            
+    ??? columnstyle "sf_fl"
 
-            ??? columnstyle "ass8_fld_cd"
+        ```
+        Type: boolean
 
-                ```Position code of fielder with eighth assist```
-            
+        Event is a sacrifice fly
+        ```
+    
 
-            ??? columnstyle "ass9_fld_cd"
+    ??? columnstyle "event_outs_ct"
 
-                ```Position code of fielder with ninth assist```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "ass10_fld_cd"
+        Outs recorded on event (0-3)
+        ```
+    
 
-                ```Position code of fielder with tenth assist```
-            
+    ??? columnstyle "dp_fl"
 
-            ??? columnstyle "unknown_out_exc_fl"
+        ```
+        Type: boolean
 
-                ```Unknown fielding credit flag```
-            
+        Event is a double play
+        ```
+    
 
-            ??? columnstyle "uncertain_play_exc_fl"
+    ??? columnstyle "tp_fl"
 
-                ```Uncertain play flag```
-            
+        ```
+        Type: boolean
 
-        
+        Event is a triple play
+        ```
+    
 
-        ??? tablestyle "game"
+    ??? columnstyle "rbi_ct"
 
-            ??? keycolumnstyle "game_id"
+        ```
+        Type: smallint
 
-                ```Game ID (home team ID + YYYYMMDD + doubleheader flag```
-            
+        Runs batted in on event
+        ```
+    
 
-            ??? columnstyle "game_dt"
+    ??? columnstyle "wp_fl"
 
-                ```Game date```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "game_ct"
+        Event is a wild pitch
+        ```
+    
 
-                ```Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader```
-            
+    ??? columnstyle "pb_fl"
 
-            ??? columnstyle "game_dy"
+        ```
+        Type: boolean
 
-                ```Day of week```
-            
+        Event is a passed ball
+        ```
+    
 
-            ??? columnstyle "start_game_tm"
+    ??? columnstyle "fld_cd"
 
-                ```Game start time (12HMM coded as integer, eg 1015 for 10:15 PM)```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "dh_fl"
+        Position id of event fielder
+        ```
+    
 
-                ```DH used```
-            
+    ??? columnstyle "battedball_cd"
 
-            ??? columnstyle "daynight_park_cd"
+        ```
+        Type: char(1)
 
-                ```D - day game, N - night game```
-            
+        Batted ball code (P - pop-up, G - ground ball, F - fly ball, L - line drive
+        ```
+    
 
-            ??? columnstyle "away_team_id"
+    ??? columnstyle "bunt_fl"
 
-                ```Away team ID```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "home_team_id"
+        Event is a bunt
+        ```
+    
 
-                ```Home team ID```
-            
+    ??? columnstyle "foul_fl"
 
-            ??? columnstyle "park_id"
+        ```
+        Type: boolean
 
-                ```Park ID```
-            
+        Event is a foul ball
+        ```
+    
 
-            ??? columnstyle "away_start_pit_id"
+    ??? columnstyle "battedball_loc_tx"
 
-                ```Away team starting pitcher ID```
-            
+        ```
+        Type: varchar(5)
 
-            ??? columnstyle "home_start_pit_id"
+        Hit location code (see https://www.retrosheet.org/location.htm)
+        ```
+    
 
-                ```Home team starting pitcher ID```
-            
+    ??? columnstyle "err_ct"
 
-            ??? columnstyle "base4_ump_id"
+        ```
+        Type: smallint
 
-                ```Home plate umpire ID```
-            
+        Number of errors recorded during event
+        ```
+    
 
-            ??? columnstyle "base1_ump_id"
+    ??? columnstyle "err1_fld_cd"
 
-                ```First base umpire ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "base2_ump_id"
+        Position code of fielder committing first error during event
+        ```
+    
 
-                ```Second base umpire ID```
-            
+    ??? columnstyle "err1_cd"
 
-            ??? columnstyle "base3_ump_id"
+        ```
+        Type: char(1)
 
-                ```Third base umpire ID```
-            
+        First error type (T - throwing, F - fielding)
+        ```
+    
 
-            ??? columnstyle "lf_ump_id"
+    ??? columnstyle "err2_fld_cd"
 
-                ```Left field umpire ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "rf_ump_id"
+        Position code of fielder committing second error during event
+        ```
+    
 
-                ```Right field umpire ID```
-            
+    ??? columnstyle "err2_cd"
 
-            ??? columnstyle "attend_park_ct"
+        ```
+        Type: char(1)
 
-                ```Attendance```
-            
+        Second error type (T - throwing, F - fielding)
+        ```
+    
 
-            ??? columnstyle "scorer_record_id"
+    ??? columnstyle "err3_fld_cd"
 
-                ```Scorekeeper```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "translator_record_id"
+        Position code of fielder committing third error during event
+        ```
+    
 
-                ```Translator```
-            
+    ??? columnstyle "err3_cd"
 
-            ??? columnstyle "inputter_record_id"
+        ```
+        Type: char(1)
 
-                ```Inputter```
-            
+        Third error type (T - throwing, F - fielding)
+        ```
+    
 
-            ??? columnstyle "input_record_ts"
+    ??? columnstyle "bat_dest_id"
 
-                ```Date and time of record input```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "edit_record_ts"
+        Destination of batter after event (0 - putout, 1-3 - bases, 4 - scored asearned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)
+        ```
+    
 
-                ```Date and time of Most recent record edit```
-            
+    ??? columnstyle "run1_dest_id"
 
-            ??? columnstyle "method_record_cd"
+        ```
+        Type: smallint
 
-                ```How the game was scored (join `code_method_record` for details```
-            
+        Destination of runner on first after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)
+        ```
+    
 
-            ??? columnstyle "pitches_record_cd"
+    ??? columnstyle "run2_dest_id"
 
-                ```Highest detail of pitches recorded (join `code_pitches_record` for details). Note that many games with pitch detail do not have that info for all events, so pitch totals may not be accurate.```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "temp_park_ct"
+        Destination of runner on second after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)
+        ```
+    
 
-                ```Park temperature in degrees F (0 if unknown)```
-            
+    ??? columnstyle "run3_dest_id"
 
-            ??? columnstyle "wind_direction_park_cd"
+        ```
+        Type: smallint
 
-                ```Wind direction park code (join `code_wind_direction_park` for details)```
-            
+        Destination of runner on third after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)
+        ```
+    
 
-            ??? columnstyle "wind_speed_park_ct"
+    ??? columnstyle "bat_play_tx"
 
-                ```Wind speed in miles per hour (-1 if unknown)```
-            
+        ```
+        Type: varchar(15)
 
-            ??? columnstyle "field_park_cd"
+        Fielding play on batter
+        ```
+    
 
-                ```Park field condition code (join `code_field_park` for details)```
-            
+    ??? columnstyle "run1_play_tx"
 
-            ??? columnstyle "precip_park_cd"
+        ```
+        Type: varchar(15)
 
-                ```Park precipitation code (join `code_precip_park` for details```
-            
+        Fielding play on runner on first
+        ```
+    
 
-            ??? columnstyle "sky_park_cd"
+    ??? columnstyle "run2_play_tx"
 
-                ```Park sky condition code (join `code_sky_park` for details```
-            
+        ```
+        Type: varchar(15)
 
-            ??? columnstyle "minutes_game_ct"
+        Fielding play on runner on second
+        ```
+    
 
-                ```Length of game in minutes```
-            
+    ??? columnstyle "run3_play_tx"
 
-            ??? columnstyle "inn_ct"
+        ```
+        Type: varchar(15)
 
-                ```Length of game in innings```
-            
+        Fielding play on runner on third
+        ```
+    
 
-            ??? columnstyle "away_score_ct"
+    ??? columnstyle "run1_sb_fl"
 
-                ```Away team final score```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "home_score_ct"
+        Runner on first steals base
+        ```
+    
 
-                ```Home team final score```
-            
+    ??? columnstyle "run2_sb_fl"
 
-            ??? columnstyle "away_hits_ct"
+        ```
+        Type: boolean
 
-                ```Away team hits```
-            
+        Runner on second steals base
+        ```
+    
 
-            ??? columnstyle "home_hits_ct"
+    ??? columnstyle "run3_sb_fl"
 
-                ```Home team hits```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "away_err_ct"
+        Runner on third steals base
+        ```
+    
 
-                ```Away team errors```
-            
+    ??? columnstyle "run1_cs_fl"
 
-            ??? columnstyle "home_err_ct"
+        ```
+        Type: boolean
 
-                ```Home team errors```
-            
+        Runner on first caught stealing
+        ```
+    
 
-            ??? columnstyle "away_lob_ct"
+    ??? columnstyle "run2_cs_fl"
 
-                ```Away team left on base```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "home_lob_ct"
+        Runner on second caught stealing
+        ```
+    
 
-                ```Home team left on base```
-            
+    ??? columnstyle "run3_cs_fl"
 
-            ??? columnstyle "win_pit_id"
+        ```
+        Type: boolean
 
-                ```ID of winning pitcher```
-            
+        Runner on third caught stealing
+        ```
+    
 
-            ??? columnstyle "lose_pit_id"
+    ??? columnstyle "run1_pk_fl"
 
-                ```ID of losing pitcher```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "save_pit_id"
+        Runner on first picked off
+        ```
+    
 
-                ```ID of saving pitcher```
-            
+    ??? columnstyle "run2_pk_fl"
 
-            ??? columnstyle "gwrbi_bat_id"
+        ```
+        Type: boolean
 
-                ```ID of batter wit game-winning RBI```
-            
+        Runner on second picked off
+        ```
+    
 
-            ??? columnstyle "away_lineup1_bat_id"
+    ??? columnstyle "run3_pk_fl"
 
-                ```ID of away team starting batter in lineup position 1```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "away_lineup1_fld_cd"
+        Runner on third picked off
+        ```
+    
 
-                ```Fielding position code of away team starting batter in lineup position 1```
-            
+    ??? columnstyle "run1_resp_pit_id"
 
-            ??? columnstyle "away_lineup2_bat_id"
+        ```
+        Type: char(8)
 
-                ```ID of away team starting batter in lineup position 2```
-            
+        ID of pitcher charged with runner on first
+        ```
+    
 
-            ??? columnstyle "away_lineup2_fld_cd"
+    ??? columnstyle "run2_resp_pit_id"
 
-                ```Fielding position code of away team starting batter in lineup position 2```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "away_lineup3_bat_id"
+        ID of pitcher charged with runner on second
+        ```
+    
 
-                ```ID of away team starting batter in lineup position 3```
-            
+    ??? columnstyle "run3_resp_pit_id"
 
-            ??? columnstyle "away_lineup3_fld_cd"
+        ```
+        Type: char(8)
 
-                ```Fielding position code of away team starting batter in lineup position 3```
-            
+        ID of pitcher charged with runner on third
+        ```
+    
 
-            ??? columnstyle "away_lineup4_bat_id"
+    ??? columnstyle "game_new_fl"
 
-                ```ID of away team starting batter in lineup position 4```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "away_lineup4_fld_cd"
+        Start of game flag
+        ```
+    
 
-                ```Fielding position code of away team starting batter in lineup position 4```
-            
+    ??? columnstyle "game_end_fl"
 
-            ??? columnstyle "away_lineup5_bat_id"
+        ```
+        Type: boolean
 
-                ```ID of away team starting batter in lineup position 5```
-            
+        End of game flag
+        ```
+    
 
-            ??? columnstyle "away_lineup5_fld_cd"
+    ??? columnstyle "pr_run1_fl"
 
-                ```Fielding position code of away team starting batter in lineup position 5```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "away_lineup6_bat_id"
+        Pinch-runner on first
+        ```
+    
 
-                ```ID of away team starting batter in lineup position 6```
-            
+    ??? columnstyle "pr_run2_fl"
 
-            ??? columnstyle "away_lineup6_fld_cd"
+        ```
+        Type: boolean
 
-                ```Fielding position code of away team starting batter in lineup position 6```
-            
+        Pinch-runner on second
+        ```
+    
 
-            ??? columnstyle "away_lineup7_bat_id"
+    ??? columnstyle "pr_run3_fl"
 
-                ```ID of away team starting batter in lineup position 7```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "away_lineup7_fld_cd"
+        Runner on third
+        ```
+    
 
-                ```Fielding position code of away team starting batter in lineup position 7```
-            
+    ??? columnstyle "removed_for_pr_run1_id"
 
-            ??? columnstyle "away_lineup8_bat_id"
+        ```
+        Type: char(8)
 
-                ```ID of away team starting batter in lineup position 8```
-            
+        ID of former runner on first removed for pinch-runner
+        ```
+    
 
-            ??? columnstyle "away_lineup8_fld_cd"
+    ??? columnstyle "removed_for_pr_run2_id"
 
-                ```Fielding position code of away team starting batter in lineup position 8```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "away_lineup9_bat_id"
+        ID of former runner on second removed for pinch-runner
+        ```
+    
 
-                ```ID of away team starting batter in lineup position 9```
-            
+    ??? columnstyle "removed_for_pr_run3_id"
 
-            ??? columnstyle "away_lineup9_fld_cd"
+        ```
+        Type: char(8)
 
-                ```Fielding position code of away team starting batter in lineup position 9```
-            
+        ID of former runner on third removed for pinch-runner
+        ```
+    
 
-            ??? columnstyle "home_lineup1_bat_id"
+    ??? columnstyle "removed_for_ph_bat_id"
 
-                ```ID of home team starting batter in lineup position 1```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "home_lineup1_fld_cd"
+        ID of former batter removed for pinch-hitter
+        ```
+    
 
-                ```Fielding position code of home team starting batter in lineup position 1```
-            
+    ??? columnstyle "removed_for_ph_bat_fld_cd"
 
-            ??? columnstyle "home_lineup2_bat_id"
+        ```
+        Type: integer
 
-                ```ID of home team starting batter in lineup position 2```
-            
+        Position code of batter removed for pinch-hitter
+        ```
+    
 
-            ??? columnstyle "home_lineup2_fld_cd"
+    ??? columnstyle "po1_fld_cd"
 
-                ```Fielding position code of home team starting batter in lineup position 2```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_lineup3_bat_id"
+        Position code of fielder with first putout
+        ```
+    
 
-                ```ID of home team starting batter in lineup position 3```
-            
+    ??? columnstyle "po2_fld_cd"
 
-            ??? columnstyle "home_lineup3_fld_cd"
+        ```
+        Type: smallint
 
-                ```Fielding position code of home team starting batter in lineup position 3```
-            
+        Position code of fielder with second putout
+        ```
+    
 
-            ??? columnstyle "home_lineup4_bat_id"
+    ??? columnstyle "po3_fld_cd"
 
-                ```ID of home team starting batter in lineup position 4```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_lineup4_fld_cd"
+        Position code of fielder with third putout
+        ```
+    
 
-                ```Fielding position code of home team starting batter in lineup position 4```
-            
+    ??? columnstyle "ass1_fld_cd"
 
-            ??? columnstyle "home_lineup5_bat_id"
+        ```
+        Type: smallint
 
-                ```ID of home team starting batter in lineup position 5```
-            
+        Position code of fielder with first assist
+        ```
+    
 
-            ??? columnstyle "home_lineup5_fld_cd"
+    ??? columnstyle "ass2_fld_cd"
 
-                ```Fielding position code of home team starting batter in lineup position 5```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_lineup6_bat_id"
+        Position code of fielder with second assist
+        ```
+    
 
-                ```ID of home team starting batter in lineup position 6```
-            
+    ??? columnstyle "ass3_fld_cd"
 
-            ??? columnstyle "home_lineup6_fld_cd"
+        ```
+        Type: smallint
 
-                ```Fielding position code of home team starting batter in lineup position 6```
-            
+        Position code of fielder with third assist
+        ```
+    
 
-            ??? columnstyle "home_lineup7_bat_id"
+    ??? columnstyle "ass4_fld_cd"
 
-                ```ID of home team starting batter in lineup position 7```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_lineup7_fld_cd"
+        Position code of fielder with fourth assist
+        ```
+    
 
-                ```Fielding position code of home team starting batter in lineup position 7```
-            
+    ??? columnstyle "ass5_fld_cd"
 
-            ??? columnstyle "home_lineup8_bat_id"
+        ```
+        Type: smallint
 
-                ```ID of home team starting batter in lineup position 8```
-            
+        Position code of fielder with fifth assist
+        ```
+    
 
-            ??? columnstyle "home_lineup8_fld_cd"
+    ??? columnstyle "home_team_id"
 
-                ```Fielding position code of home team starting batter in lineup position 8```
-            
+        ```
+        Type: char(3)
 
-            ??? columnstyle "home_lineup9_bat_id"
+        Home team ID
+        ```
+    
 
-                ```ID of home team starting batter in lineup position 9```
-            
+    ??? columnstyle "bat_team_id"
 
-            ??? columnstyle "home_lineup9_fld_cd"
+        ```
+        Type: char(3)
 
-                ```Fielding position code of home team starting batter in lineup position 9```
-            
+        Batting team ID
+        ```
+    
 
-            ??? columnstyle "away_finish_pit_id"
+    ??? columnstyle "fld_team_id"
 
-                ```Away team finishing pitcher```
-            
+        ```
+        Type: char(3)
 
-            ??? columnstyle "home_finish_pit_id"
+        Fielding team ID
+        ```
+    
 
-                ```Home team finishing pitcher```
-            
+    ??? columnstyle "bat_last_id"
 
-            ??? columnstyle "away_team_league_id"
+        ```
+        Type: smallint
 
-                ```Away team league (1 char ID)```
-            
+        Half inning (differs from batting team if home team bats first)
+        ```
+    
 
-            ??? columnstyle "home_team_league_id"
+    ??? columnstyle "inn_new_fl"
 
-                ```Home team league (1 char ID)```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "away_team_game_ct"
+        Start of half-inning flag
+        ```
+    
 
-                ```Away team game number```
-            
+    ??? columnstyle "inn_end_fl"
 
-            ??? columnstyle "home_team_game_ct"
+        ```
+        Type: boolean
 
-                ```Home team game number```
-            
+        End of half-inning flag
+        ```
+    
 
-            ??? columnstyle "outs_ct"
+    ??? columnstyle "start_bat_score_ct"
 
-                ```Length of game in outs```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "completion_tx"
+        Runs scored by batting team (prior to this event)
+        ```
+    
 
-                ```Information on completion of game```
-            
+    ??? columnstyle "start_fld_score_ct"
 
-            ??? columnstyle "forfeit_tx"
+        ```
+        Type: smallint
 
-                ```Information on forfeit of game```
-            
+        Runs scored by fielding team
+        ```
+    
 
-            ??? columnstyle "protest_tx"
+    ??? columnstyle "inn_runs_ct"
 
-                ```Information on protest of game```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "away_line_tx"
+        Runs scored in this half-inning (prior to this event)
+        ```
+    
 
-                ```Away team linescore```
-            
+    ??? columnstyle "game_pa_ct"
 
-            ??? columnstyle "home_line_tx"
+        ```
+        Type: smallint
 
-                ```Home team linescore```
-            
+        Batting team PA total (prior to this event)
+        ```
+    
 
-            ??? columnstyle "away_ab_ct"
+    ??? columnstyle "inn_pa_ct"
 
-                ```Away team at bats```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "away_2b_ct"
+        Half-inning PA total (prior to this event)
+        ```
+    
 
-                ```Away team doubles```
-            
+    ??? columnstyle "pa_new_fl"
 
-            ??? columnstyle "away_3b_ct"
+        ```
+        Type: boolean
 
-                ```Away team triples```
-            
+        Event is the start of a plate appearance
+        ```
+    
 
-            ??? columnstyle "away_hr_ct"
+    ??? columnstyle "pa_trunc_fl"
 
-                ```Away team home runs```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "away_bi_ct"
+        Event is a truncated plate appearance
+        ```
+    
 
-                ```Away team runs batted in```
-            
+    ??? columnstyle "start_bases_cd"
 
-            ??? columnstyle "away_sh_ct"
+        ```
+        Type: smallint
 
-                ```Away team sacrifice hits```
-            
+        Base state at start of event (0-7, binary value is flags for runners on third, second, and first left-to-right)
+        ```
+    
 
-            ??? columnstyle "away_sf_ct"
+    ??? columnstyle "end_bases_cd"
 
-                ```Away team sacrifice flies```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "away_hp_ct"
+        Base state end of event (0-7, binary value is flags for runners on third, second, and first left-to-right)
+        ```
+    
 
-                ```Away team hit by pitches```
-            
+    ??? columnstyle "bat_start_fl"
 
-            ??? columnstyle "away_bb_ct"
+        ```
+        Type: boolean
 
-                ```Away team walks```
-            
+        Batter started game
+        ```
+    
 
-            ??? columnstyle "away_ibb_ct"
+    ??? columnstyle "resp_bat_start_fl"
 
-                ```Away team intentional walks```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "away_so_ct"
+        Result-charged batter is a starter
+        ```
+    
 
-                ```Away team strikeouts```
-            
+    ??? columnstyle "bat_on_deck_id"
 
-            ??? columnstyle "away_sb_ct"
+        ```
+        Type: char(8)
 
-                ```Away team stolen bases```
-            
+        ID of batter on deck
+        ```
+    
 
-            ??? columnstyle "away_cs_ct"
+    ??? columnstyle "bat_in_hold_id"
 
-                ```Away team caught stealing```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "away_gdp_ct"
+        Id of batter in the hole
+        ```
+    
 
-                ```Away team grounded into double plays```
-            
+    ??? columnstyle "pit_start_fl"
 
-            ??? columnstyle "away_xi_ct"
+        ```
+        Type: boolean
 
-                ```Away team reached on interference```
-            
+        Pitcher started game
+        ```
+    
 
-            ??? columnstyle "away_pitcher_ct"
+    ??? columnstyle "resp_pit_start_fl"
 
-                ```Away team number of pitchers used```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "away_er_ct"
+        Result-charged pitcher started game
+        ```
+    
 
-                ```Away team individual earned runs```
-            
+    ??? columnstyle "run1_fld_cd"
 
-            ??? columnstyle "away_ter_ct"
+        ```
+        Type: smallint
 
-                ```Away team team earned runs```
-            
+        Defensive position code of runner on first
+        ```
+    
 
-            ??? columnstyle "away_wp_ct"
+    ??? columnstyle "run1_lineup_cd"
 
-                ```Away team wild pitches```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "away_bk_ct"
+        Lineup position of runner on first
+        ```
+    
 
-                ```Away team balks```
-            
+    ??? columnstyle "run1_origin_event_id"
 
-            ??? columnstyle "away_po_ct"
+        ```
+        Type: smallint
 
-                ```Away team putouts```
-            
+        Event number on which runner on first reached base
+        ```
+    
 
-            ??? columnstyle "away_a_ct"
+    ??? columnstyle "run2_fld_cd"
 
-                ```Away team assists```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "away_pb_ct"
+        Defensive position code of runner on second
+        ```
+    
 
-                ```Away team passed balls```
-            
+    ??? columnstyle "run2_lineup_cd"
 
-            ??? columnstyle "away_dp_ct"
+        ```
+        Type: smallint
 
-                ```Away team double plays turned```
-            
+        Lineup position of runner on second
+        ```
+    
 
-            ??? columnstyle "away_tp_ct"
+    ??? columnstyle "run2_origin_event_id"
 
-                ```Away team triple plays turned```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_ab_ct"
+        Event number on which runner on second reached base
+        ```
+    
 
-                ```Home team at bats```
-            
+    ??? columnstyle "run3_fld_cd"
 
-            ??? columnstyle "home_2b_ct"
+        ```
+        Type: smallint
 
-                ```Home team doubles```
-            
+        Defensive position code of runner on third
+        ```
+    
 
-            ??? columnstyle "home_3b_ct"
+    ??? columnstyle "run3_lineup_cd"
 
-                ```Home team triples```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_hr_ct"
+        Lineup position of runner on third
+        ```
+    
 
-                ```Home team home runs```
-            
+    ??? columnstyle "run3_origin_event_id"
 
-            ??? columnstyle "home_bi_ct"
+        ```
+        Type: smallint
 
-                ```Home team runs batted in```
-            
+        Event number on which runner on third reached base
+        ```
+    
 
-            ??? columnstyle "home_sh_ct"
+    ??? columnstyle "run1_resp_cat_id"
 
-                ```Home team sacrifice hits```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "home_sf_ct"
+        ID of responsible catcher for runner on first
+        ```
+    
 
-                ```Home team sacrifice flies```
-            
+    ??? columnstyle "run2_resp_cat_id"
 
-            ??? columnstyle "home_hp_ct"
+        ```
+        Type: char(8)
 
-                ```Home team hit by pitches```
-            
+        ID of responsible catcher for runner on second
+        ```
+    
 
-            ??? columnstyle "home_bb_ct"
+    ??? columnstyle "run3_resp_cat_id"
 
-                ```Home team walks```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "home_ibb_ct"
+        ID of responsible catcher for runner on third
+        ```
+    
 
-                ```Home team intentional walks```
-            
+    ??? columnstyle "pa_ball_ct"
 
-            ??? columnstyle "home_so_ct"
+        ```
+        Type: smallint
 
-                ```Home team strikeouts```
-            
+        Number of balls in plate appearance
+        ```
+    
 
-            ??? columnstyle "home_sb_ct"
+    ??? columnstyle "pa_called_ball_ct"
 
-                ```Home team stolen bases```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_cs_ct"
+        Number of called balls in plate appearance
+        ```
+    
 
-                ```Home team caught stealing```
-            
+    ??? columnstyle "pa_intent_ball_ct"
 
-            ??? columnstyle "home_gdp_ct"
+        ```
+        Type: smallint
 
-                ```Home team grounded into double plays```
-            
+        Number of intentional balls in plate appearance
+        ```
+    
 
-            ??? columnstyle "home_xi_ct"
+    ??? columnstyle "pa_pitchout_ball_ct"
 
-                ```Home team reached on interference```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_pitcher_ct"
+        Number of pitchouts in plate appearance
+        ```
+    
 
-                ```Home team number of pitchers used```
-            
+    ??? columnstyle "pa_hitbatter_ball_ct"
 
-            ??? columnstyle "home_er_ct"
+        ```
+        Type: smallint
 
-                ```Home team individual earned runs```
-            
+        Number of pitches hitting batter in plate appearance
+        ```
+    
 
-            ??? columnstyle "home_ter_ct"
+    ??? columnstyle "pa_other_ball_ct"
 
-                ```Home team team earned runs```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_wp_ct"
+        Number of other balls in plate appearance
+        ```
+    
 
-                ```Home team wild pitches```
-            
+    ??? columnstyle "pa_strike_ct"
 
-            ??? columnstyle "home_bk_ct"
+        ```
+        Type: smallint
 
-                ```Home team balks```
-            
+        Number of strikes in plate appearance
+        ```
+    
 
-            ??? columnstyle "home_po_ct"
+    ??? columnstyle "pa_called_strike_ct"
 
-                ```Home team putouts```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_a_ct"
+        Number of called strikes in plate appearance
+        ```
+    
 
-                ```Home team assists```
-            
+    ??? columnstyle "pa_swingmiss_strike_ct"
 
-            ??? columnstyle "home_pb_ct"
+        ```
+        Type: smallint
 
-                ```Home team passed balls```
-            
+        Number of swing-and-miss strikes in plate appearance
+        ```
+    
 
-            ??? columnstyle "home_dp_ct"
+    ??? columnstyle "pa_foul_strike_ct"
 
-                ```Home team double plays turned```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_tp_ct"
+        Number of foul balls in plate appearance
+        ```
+    
 
-                ```Home team triple plays turned```
-            
+    ??? columnstyle "pa_inplay_strike_ct"
 
-            ??? columnstyle "ump_home_name_tx"
+        ```
+        Type: smallint
 
-                ```Home plate umpire name```
-            
+        Number of balls in play in plate appearance
+        ```
+    
 
-            ??? columnstyle "ump_1b_name_tx"
+    ??? columnstyle "pa_other_strike_ct"
 
-                ```First base umpire name```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "ump_2b_name_tx"
+        Number of other strikes in plate appearance
+        ```
+    
 
-                ```Second base umpire name```
-            
+    ??? columnstyle "event_runs_ct"
 
-            ??? columnstyle "ump_3b_name_tx"
+        ```
+        Type: smallint
 
-                ```Third base umpire name```
-            
+        Number of runs on play
+        ```
+    
 
-            ??? columnstyle "ump_lf_name_tx"
+    ??? columnstyle "fld_id"
 
-                ```Left field umpire name```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "ump_rf_name_tx"
+        ID of player fielding batted ball
+        ```
+    
 
-                ```Right field umpire name```
-            
+    ??? columnstyle "base2_force_fl"
 
-            ??? columnstyle "away_manager_id"
+        ```
+        Type: boolean
 
-                ```Away manager ID```
-            
+        Event has force play at second
+        ```
+    
 
-            ??? columnstyle "away_manager_name_tx"
+    ??? columnstyle "base3_force_fl"
 
-                ```Away manager name```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "home_manager_id"
+        Event has force play at third
+        ```
+    
 
-                ```Home manager ID```
-            
+    ??? columnstyle "base4_force_fl"
 
-            ??? columnstyle "home_manager_name_tx"
+        ```
+        Type: boolean
 
-                ```Home manager name```
-            
+        Event has force play at home
+        ```
+    
 
-            ??? columnstyle "win_pit_name_tx"
+    ??? columnstyle "bat_safe_err_fl"
 
-                ```Wining pitcher name```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "lose_pit_name_tx"
+        Event has batter safe on an error
+        ```
+    
 
-                ```Losing pitcher name```
-            
+    ??? columnstyle "bat_fate_id"
 
-            ??? columnstyle "save_pit_name_tx"
+        ```
+        Type: smallint
 
-                ```Saving pitcher name```
-            
+        Ultimate fate of batter (see `dest_id` cols for code meaning
+        ```
+    
 
-            ??? columnstyle "goahead_rbi_id"
+    ??? columnstyle "run1_fate_id"
 
-                ```ID of batter with goahead RBI```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "goahead_rbi_name_tx"
+        Ultimate fate of runner on first (see `dest_id` cols for code meaning
+        ```
+    
 
-                ```Name of batter with goahead RBI```
-            
+    ??? columnstyle "run2_fate_id"
 
-            ??? columnstyle "away_lineup1_bat_name_tx"
+        ```
+        Type: smallint
 
-                ```Name of away team batter in lineup position 1```
-            
+        Ultimate fate of runner on second (see `dest_id` cols for code meaning
+        ```
+    
 
-            ??? columnstyle "away_lineup2_bat_name_tx"
+    ??? columnstyle "run3_fate_id"
 
-                ```Name of away team batter in lineup position 2```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "away_lineup3_bat_name_tx"
+        Ultimate fate of runner on third (see `dest_id` cols for code meaning
+        ```
+    
 
-                ```Name of away team batter in lineup position 3```
-            
+    ??? columnstyle "fate_runs_ct"
 
-            ??? columnstyle "away_lineup4_bat_name_tx"
+        ```
+        Type: smallint
 
-                ```Name of away team batter in lineup position 4```
-            
+        Additional runs scored in half inning after this event
+        ```
+    
 
-            ??? columnstyle "away_lineup5_bat_name_tx"
+    ??? columnstyle "ass6_fld_cd"
 
-                ```Name of away team batter in lineup position 5```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "away_lineup6_bat_name_tx"
+        Position code of fielder with sixth assist
+        ```
+    
 
-                ```Name of away team batter in lineup position 6```
-            
+    ??? columnstyle "ass7_fld_cd"
 
-            ??? columnstyle "away_lineup7_bat_name_tx"
+        ```
+        Type: smallint
 
-                ```Name of away team batter in lineup position 7```
-            
+        Position code of fielder with seventh assist
+        ```
+    
 
-            ??? columnstyle "away_lineup8_bat_name_tx"
+    ??? columnstyle "ass8_fld_cd"
 
-                ```Name of away team batter in lineup position 8```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "away_lineup9_bat_name_tx"
+        Position code of fielder with eighth assist
+        ```
+    
 
-                ```Name of home team batter in lineup position 9```
-            
+    ??? columnstyle "ass9_fld_cd"
 
-            ??? columnstyle "home_lineup1_bat_name_tx"
+        ```
+        Type: smallint
 
-                ```Name of home team batter in lineup position 1```
-            
+        Position code of fielder with ninth assist
+        ```
+    
 
-            ??? columnstyle "home_lineup2_bat_name_tx"
+    ??? columnstyle "ass10_fld_cd"
 
-                ```Name of home team batter in lineup position 2```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_lineup3_bat_name_tx"
+        Position code of fielder with tenth assist
+        ```
+    
 
-                ```Name of home team batter in lineup position 3```
-            
+    ??? columnstyle "unknown_out_exc_fl"
 
-            ??? columnstyle "home_lineup4_bat_name_tx"
+        ```
+        Type: boolean
 
-                ```Name of home team batter in lineup position 4```
-            
+        Unknown fielding credit flag
+        ```
+    
 
-            ??? columnstyle "home_lineup5_bat_name_tx"
+    ??? columnstyle "uncertain_play_exc_fl"
 
-                ```Name of home team batter in lineup position 5```
-            
+        ```
+        Type: boolean
 
-            ??? columnstyle "home_lineup6_bat_name_tx"
+        Uncertain play flag
+        ```
+    
 
-                ```Name of home team batter in lineup position 6```
-            
 
-            ??? columnstyle "home_lineup7_bat_name_tx"
 
-                ```Name of home team batter in lineup position 7```
-            
+??? tablestyle "game"
 
-            ??? columnstyle "home_lineup8_bat_name_tx"
+    ??? keycolumnstyle "game_id"
 
-                ```Name of home team batter in lineup position 8```
-            
+        ```
+        Type: char(12)
 
-            ??? columnstyle "home_lineup9_bat_name_tx"
+        Game ID (home team ID + YYYYMMDD + doubleheader flag
+        ```
+    
 
-                ```Name of home team batter in lineup position 9```
-            
+    ??? columnstyle "game_dt"
 
-            ??? columnstyle "add_info_tx"
+        ```
+        Type: date
 
-                ```Additional information```
-            
+        Game date
+        ```
+    
 
-            ??? columnstyle "acq_info_tx"
+    ??? columnstyle "game_ct"
 
-                ```Acquisition information```
-            
+        ```
+        Type: smallint
 
-        
+        Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader
+        ```
+    
 
-        ??? tablestyle "gamelog"
+    ??? columnstyle "game_dy"
 
-            ??? keycolumnstyle "date"
+        ```
+        Type: varchar(9)
 
-                ```Game date```
-            
+        Day of week
+        ```
+    
 
-            ??? keycolumnstyle "double_header"
+    ??? columnstyle "start_game_tm"
 
-                ```
+        ```
+        Type: smallint
+
+        Game start time (12HMM coded as integer, eg 1015 for 10:15 PM)
+        ```
+    
+
+    ??? columnstyle "dh_fl"
+
+        ```
+        Type: varchar(1)
+
+        DH used
+        ```
+    
+
+    ??? columnstyle "daynight_park_cd"
+
+        ```
+        Type: varchar(1)
+
+        D - day game, N - night game
+        ```
+    
+
+    ??? columnstyle "away_team_id"
+
+        ```
+        Type: char(3)
+
+        Away team ID
+        ```
+    
+
+    ??? columnstyle "home_team_id"
+
+        ```
+        Type: char(3)
+
+        Home team ID
+        ```
+    
+
+    ??? columnstyle "park_id"
+
+        ```
+        Type: varchar(5)
+
+        Park ID
+        ```
+    
+
+    ??? columnstyle "away_start_pit_id"
+
+        ```
+        Type: char(8)
+
+        Away team starting pitcher ID
+        ```
+    
+
+    ??? columnstyle "home_start_pit_id"
+
+        ```
+        Type: char(8)
+
+        Home team starting pitcher ID
+        ```
+    
+
+    ??? columnstyle "base4_ump_id"
+
+        ```
+        Type: varchar(32)
+
+        Home plate umpire ID
+        ```
+    
+
+    ??? columnstyle "base1_ump_id"
+
+        ```
+        Type: varchar(32)
+
+        First base umpire ID
+        ```
+    
+
+    ??? columnstyle "base2_ump_id"
+
+        ```
+        Type: varchar(32)
+
+        Second base umpire ID
+        ```
+    
+
+    ??? columnstyle "base3_ump_id"
+
+        ```
+        Type: varchar(32)
+
+        Third base umpire ID
+        ```
+    
+
+    ??? columnstyle "lf_ump_id"
+
+        ```
+        Type: char(8)
+
+        Left field umpire ID
+        ```
+    
+
+    ??? columnstyle "rf_ump_id"
+
+        ```
+        Type: char(8)
+
+        Right field umpire ID
+        ```
+    
+
+    ??? columnstyle "attend_park_ct"
+
+        ```
+        Type: integer
+
+        Attendance
+        ```
+    
+
+    ??? columnstyle "scorer_record_id"
+
+        ```
+        Type: varchar(50)
+
+        Scorekeeper
+        ```
+    
+
+    ??? columnstyle "translator_record_id"
+
+        ```
+        Type: varchar(50)
+
+        Translator
+        ```
+    
+
+    ??? columnstyle "inputter_record_id"
+
+        ```
+        Type: varchar(50)
+
+        Inputter
+        ```
+    
+
+    ??? columnstyle "input_record_ts"
+
+        ```
+        Type: varchar(20)
+
+        Date and time of record input
+        ```
+    
+
+    ??? columnstyle "edit_record_ts"
+
+        ```
+        Type: varchar(20)
+
+        Date and time of Most recent record edit
+        ```
+    
+
+    ??? columnstyle "method_record_cd"
+
+        ```
+        Type: varchar(1)
+
+        How the game was scored (join `code_method_record` for details
+        ```
+    
+
+    ??? columnstyle "pitches_record_cd"
+
+        ```
+        Type: varchar(1)
+
+        Highest detail of pitches recorded (join `code_pitches_record` for details). Note that many games with pitch detail do not have that info for all events, so pitch totals may not be accurate.
+        ```
+    
+
+    ??? columnstyle "temp_park_ct"
+
+        ```
+        Type: smallint
+
+        Park temperature in degrees F (0 if unknown)
+        ```
+    
+
+    ??? columnstyle "wind_direction_park_cd"
+
+        ```
+        Type: smallint
+
+        Wind direction park code (join `code_wind_direction_park` for details)
+        ```
+    
+
+    ??? columnstyle "wind_speed_park_ct"
+
+        ```
+        Type: smallint
+
+        Wind speed in miles per hour (-1 if unknown)
+        ```
+    
+
+    ??? columnstyle "field_park_cd"
+
+        ```
+        Type: smallint
+
+        Park field condition code (join `code_field_park` for details)
+        ```
+    
+
+    ??? columnstyle "precip_park_cd"
+
+        ```
+        Type: smallint
+
+        Park precipitation code (join `code_precip_park` for details
+        ```
+    
+
+    ??? columnstyle "sky_park_cd"
+
+        ```
+        Type: smallint
+
+        Park sky condition code (join `code_sky_park` for details
+        ```
+    
+
+    ??? columnstyle "minutes_game_ct"
+
+        ```
+        Type: smallint
+
+        Length of game in minutes
+        ```
+    
+
+    ??? columnstyle "inn_ct"
+
+        ```
+        Type: smallint
+
+        Length of game in innings
+        ```
+    
+
+    ??? columnstyle "away_score_ct"
+
+        ```
+        Type: smallint
+
+        Away team final score
+        ```
+    
+
+    ??? columnstyle "home_score_ct"
+
+        ```
+        Type: smallint
+
+        Home team final score
+        ```
+    
+
+    ??? columnstyle "away_hits_ct"
+
+        ```
+        Type: smallint
+
+        Away team hits
+        ```
+    
+
+    ??? columnstyle "home_hits_ct"
+
+        ```
+        Type: smallint
+
+        Home team hits
+        ```
+    
+
+    ??? columnstyle "away_err_ct"
+
+        ```
+        Type: smallint
+
+        Away team errors
+        ```
+    
+
+    ??? columnstyle "home_err_ct"
+
+        ```
+        Type: smallint
+
+        Home team errors
+        ```
+    
+
+    ??? columnstyle "away_lob_ct"
+
+        ```
+        Type: smallint
+
+        Away team left on base
+        ```
+    
+
+    ??? columnstyle "home_lob_ct"
+
+        ```
+        Type: smallint
+
+        Home team left on base
+        ```
+    
+
+    ??? columnstyle "win_pit_id"
+
+        ```
+        Type: char(8)
+
+        ID of winning pitcher
+        ```
+    
+
+    ??? columnstyle "lose_pit_id"
+
+        ```
+        Type: char(8)
+
+        ID of losing pitcher
+        ```
+    
+
+    ??? columnstyle "save_pit_id"
+
+        ```
+        Type: char(8)
+
+        ID of saving pitcher
+        ```
+    
+
+    ??? columnstyle "gwrbi_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of batter wit game-winning RBI
+        ```
+    
+
+    ??? columnstyle "away_lineup1_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of away team starting batter in lineup position 1
+        ```
+    
+
+    ??? columnstyle "away_lineup1_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of away team starting batter in lineup position 1
+        ```
+    
+
+    ??? columnstyle "away_lineup2_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of away team starting batter in lineup position 2
+        ```
+    
+
+    ??? columnstyle "away_lineup2_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of away team starting batter in lineup position 2
+        ```
+    
+
+    ??? columnstyle "away_lineup3_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of away team starting batter in lineup position 3
+        ```
+    
+
+    ??? columnstyle "away_lineup3_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of away team starting batter in lineup position 3
+        ```
+    
+
+    ??? columnstyle "away_lineup4_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of away team starting batter in lineup position 4
+        ```
+    
+
+    ??? columnstyle "away_lineup4_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of away team starting batter in lineup position 4
+        ```
+    
+
+    ??? columnstyle "away_lineup5_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of away team starting batter in lineup position 5
+        ```
+    
+
+    ??? columnstyle "away_lineup5_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of away team starting batter in lineup position 5
+        ```
+    
+
+    ??? columnstyle "away_lineup6_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of away team starting batter in lineup position 6
+        ```
+    
+
+    ??? columnstyle "away_lineup6_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of away team starting batter in lineup position 6
+        ```
+    
+
+    ??? columnstyle "away_lineup7_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of away team starting batter in lineup position 7
+        ```
+    
+
+    ??? columnstyle "away_lineup7_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of away team starting batter in lineup position 7
+        ```
+    
+
+    ??? columnstyle "away_lineup8_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of away team starting batter in lineup position 8
+        ```
+    
+
+    ??? columnstyle "away_lineup8_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of away team starting batter in lineup position 8
+        ```
+    
+
+    ??? columnstyle "away_lineup9_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of away team starting batter in lineup position 9
+        ```
+    
+
+    ??? columnstyle "away_lineup9_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of away team starting batter in lineup position 9
+        ```
+    
+
+    ??? columnstyle "home_lineup1_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of home team starting batter in lineup position 1
+        ```
+    
+
+    ??? columnstyle "home_lineup1_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of home team starting batter in lineup position 1
+        ```
+    
+
+    ??? columnstyle "home_lineup2_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of home team starting batter in lineup position 2
+        ```
+    
+
+    ??? columnstyle "home_lineup2_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of home team starting batter in lineup position 2
+        ```
+    
+
+    ??? columnstyle "home_lineup3_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of home team starting batter in lineup position 3
+        ```
+    
+
+    ??? columnstyle "home_lineup3_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of home team starting batter in lineup position 3
+        ```
+    
+
+    ??? columnstyle "home_lineup4_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of home team starting batter in lineup position 4
+        ```
+    
+
+    ??? columnstyle "home_lineup4_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of home team starting batter in lineup position 4
+        ```
+    
+
+    ??? columnstyle "home_lineup5_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of home team starting batter in lineup position 5
+        ```
+    
+
+    ??? columnstyle "home_lineup5_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of home team starting batter in lineup position 5
+        ```
+    
+
+    ??? columnstyle "home_lineup6_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of home team starting batter in lineup position 6
+        ```
+    
+
+    ??? columnstyle "home_lineup6_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of home team starting batter in lineup position 6
+        ```
+    
+
+    ??? columnstyle "home_lineup7_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of home team starting batter in lineup position 7
+        ```
+    
+
+    ??? columnstyle "home_lineup7_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of home team starting batter in lineup position 7
+        ```
+    
+
+    ??? columnstyle "home_lineup8_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of home team starting batter in lineup position 8
+        ```
+    
+
+    ??? columnstyle "home_lineup8_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of home team starting batter in lineup position 8
+        ```
+    
+
+    ??? columnstyle "home_lineup9_bat_id"
+
+        ```
+        Type: char(8)
+
+        ID of home team starting batter in lineup position 9
+        ```
+    
+
+    ??? columnstyle "home_lineup9_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position code of home team starting batter in lineup position 9
+        ```
+    
+
+    ??? columnstyle "away_finish_pit_id"
+
+        ```
+        Type: char(8)
+
+        Away team finishing pitcher
+        ```
+    
+
+    ??? columnstyle "home_finish_pit_id"
+
+        ```
+        Type: char(8)
+
+        Home team finishing pitcher
+        ```
+    
+
+    ??? columnstyle "away_team_league_id"
+
+        ```
+        Type: char(1)
+
+        Away team league (1 char ID)
+        ```
+    
+
+    ??? columnstyle "home_team_league_id"
+
+        ```
+        Type: char(1)
+
+        Home team league (1 char ID)
+        ```
+    
+
+    ??? columnstyle "away_team_game_ct"
+
+        ```
+        Type: smallint
+
+        Away team game number
+        ```
+    
+
+    ??? columnstyle "home_team_game_ct"
+
+        ```
+        Type: smallint
+
+        Home team game number
+        ```
+    
+
+    ??? columnstyle "outs_ct"
+
+        ```
+        Type: smallint
+
+        Length of game in outs
+        ```
+    
+
+    ??? columnstyle "completion_tx"
+
+        ```
+        Type: varchar(26)
+
+        Information on completion of game
+        ```
+    
+
+    ??? columnstyle "forfeit_tx"
+
+        ```
+        Type: varchar(26)
+
+        Information on forfeit of game
+        ```
+    
+
+    ??? columnstyle "protest_tx"
+
+        ```
+        Type: varchar(26)
+
+        Information on protest of game
+        ```
+    
+
+    ??? columnstyle "away_line_tx"
+
+        ```
+        Type: varchar(26)
+
+        Away team linescore
+        ```
+    
+
+    ??? columnstyle "home_line_tx"
+
+        ```
+        Type: varchar(26)
+
+        Home team linescore
+        ```
+    
+
+    ??? columnstyle "away_ab_ct"
+
+        ```
+        Type: smallint
+
+        Away team at bats
+        ```
+    
+
+    ??? columnstyle "away_2b_ct"
+
+        ```
+        Type: smallint
+
+        Away team doubles
+        ```
+    
+
+    ??? columnstyle "away_3b_ct"
+
+        ```
+        Type: smallint
+
+        Away team triples
+        ```
+    
+
+    ??? columnstyle "away_hr_ct"
+
+        ```
+        Type: smallint
+
+        Away team home runs
+        ```
+    
+
+    ??? columnstyle "away_bi_ct"
+
+        ```
+        Type: smallint
+
+        Away team runs batted in
+        ```
+    
+
+    ??? columnstyle "away_sh_ct"
+
+        ```
+        Type: smallint
+
+        Away team sacrifice hits
+        ```
+    
+
+    ??? columnstyle "away_sf_ct"
+
+        ```
+        Type: smallint
+
+        Away team sacrifice flies
+        ```
+    
+
+    ??? columnstyle "away_hp_ct"
+
+        ```
+        Type: smallint
+
+        Away team hit by pitches
+        ```
+    
+
+    ??? columnstyle "away_bb_ct"
+
+        ```
+        Type: smallint
+
+        Away team walks
+        ```
+    
+
+    ??? columnstyle "away_ibb_ct"
+
+        ```
+        Type: smallint
+
+        Away team intentional walks
+        ```
+    
+
+    ??? columnstyle "away_so_ct"
+
+        ```
+        Type: smallint
+
+        Away team strikeouts
+        ```
+    
+
+    ??? columnstyle "away_sb_ct"
+
+        ```
+        Type: smallint
+
+        Away team stolen bases
+        ```
+    
+
+    ??? columnstyle "away_cs_ct"
+
+        ```
+        Type: smallint
+
+        Away team caught stealing
+        ```
+    
+
+    ??? columnstyle "away_gdp_ct"
+
+        ```
+        Type: smallint
+
+        Away team grounded into double plays
+        ```
+    
+
+    ??? columnstyle "away_xi_ct"
+
+        ```
+        Type: smallint
+
+        Away team reached on interference
+        ```
+    
+
+    ??? columnstyle "away_pitcher_ct"
+
+        ```
+        Type: smallint
+
+        Away team number of pitchers used
+        ```
+    
+
+    ??? columnstyle "away_er_ct"
+
+        ```
+        Type: smallint
+
+        Away team individual earned runs
+        ```
+    
+
+    ??? columnstyle "away_ter_ct"
+
+        ```
+        Type: smallint
+
+        Away team team earned runs
+        ```
+    
+
+    ??? columnstyle "away_wp_ct"
+
+        ```
+        Type: smallint
+
+        Away team wild pitches
+        ```
+    
+
+    ??? columnstyle "away_bk_ct"
+
+        ```
+        Type: smallint
+
+        Away team balks
+        ```
+    
+
+    ??? columnstyle "away_po_ct"
+
+        ```
+        Type: smallint
+
+        Away team putouts
+        ```
+    
+
+    ??? columnstyle "away_a_ct"
+
+        ```
+        Type: smallint
+
+        Away team assists
+        ```
+    
+
+    ??? columnstyle "away_pb_ct"
+
+        ```
+        Type: smallint
+
+        Away team passed balls
+        ```
+    
+
+    ??? columnstyle "away_dp_ct"
+
+        ```
+        Type: smallint
+
+        Away team double plays turned
+        ```
+    
+
+    ??? columnstyle "away_tp_ct"
+
+        ```
+        Type: smallint
+
+        Away team triple plays turned
+        ```
+    
+
+    ??? columnstyle "home_ab_ct"
+
+        ```
+        Type: smallint
+
+        Home team at bats
+        ```
+    
+
+    ??? columnstyle "home_2b_ct"
+
+        ```
+        Type: smallint
+
+        Home team doubles
+        ```
+    
+
+    ??? columnstyle "home_3b_ct"
+
+        ```
+        Type: smallint
+
+        Home team triples
+        ```
+    
+
+    ??? columnstyle "home_hr_ct"
+
+        ```
+        Type: smallint
+
+        Home team home runs
+        ```
+    
+
+    ??? columnstyle "home_bi_ct"
+
+        ```
+        Type: smallint
+
+        Home team runs batted in
+        ```
+    
+
+    ??? columnstyle "home_sh_ct"
+
+        ```
+        Type: smallint
+
+        Home team sacrifice hits
+        ```
+    
+
+    ??? columnstyle "home_sf_ct"
+
+        ```
+        Type: smallint
+
+        Home team sacrifice flies
+        ```
+    
+
+    ??? columnstyle "home_hp_ct"
+
+        ```
+        Type: smallint
+
+        Home team hit by pitches
+        ```
+    
+
+    ??? columnstyle "home_bb_ct"
+
+        ```
+        Type: smallint
+
+        Home team walks
+        ```
+    
+
+    ??? columnstyle "home_ibb_ct"
+
+        ```
+        Type: smallint
+
+        Home team intentional walks
+        ```
+    
+
+    ??? columnstyle "home_so_ct"
+
+        ```
+        Type: smallint
+
+        Home team strikeouts
+        ```
+    
+
+    ??? columnstyle "home_sb_ct"
+
+        ```
+        Type: smallint
+
+        Home team stolen bases
+        ```
+    
+
+    ??? columnstyle "home_cs_ct"
+
+        ```
+        Type: smallint
+
+        Home team caught stealing
+        ```
+    
+
+    ??? columnstyle "home_gdp_ct"
+
+        ```
+        Type: smallint
+
+        Home team grounded into double plays
+        ```
+    
+
+    ??? columnstyle "home_xi_ct"
+
+        ```
+        Type: smallint
+
+        Home team reached on interference
+        ```
+    
+
+    ??? columnstyle "home_pitcher_ct"
+
+        ```
+        Type: smallint
+
+        Home team number of pitchers used
+        ```
+    
+
+    ??? columnstyle "home_er_ct"
+
+        ```
+        Type: smallint
+
+        Home team individual earned runs
+        ```
+    
+
+    ??? columnstyle "home_ter_ct"
+
+        ```
+        Type: smallint
+
+        Home team team earned runs
+        ```
+    
+
+    ??? columnstyle "home_wp_ct"
+
+        ```
+        Type: smallint
+
+        Home team wild pitches
+        ```
+    
+
+    ??? columnstyle "home_bk_ct"
+
+        ```
+        Type: smallint
+
+        Home team balks
+        ```
+    
+
+    ??? columnstyle "home_po_ct"
+
+        ```
+        Type: smallint
+
+        Home team putouts
+        ```
+    
+
+    ??? columnstyle "home_a_ct"
+
+        ```
+        Type: smallint
+
+        Home team assists
+        ```
+    
+
+    ??? columnstyle "home_pb_ct"
+
+        ```
+        Type: smallint
+
+        Home team passed balls
+        ```
+    
+
+    ??? columnstyle "home_dp_ct"
+
+        ```
+        Type: smallint
+
+        Home team double plays turned
+        ```
+    
+
+    ??? columnstyle "home_tp_ct"
+
+        ```
+        Type: smallint
+
+        Home team triple plays turned
+        ```
+    
+
+    ??? columnstyle "ump_home_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Home plate umpire name
+        ```
+    
+
+    ??? columnstyle "ump_1b_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        First base umpire name
+        ```
+    
+
+    ??? columnstyle "ump_2b_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Second base umpire name
+        ```
+    
+
+    ??? columnstyle "ump_3b_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Third base umpire name
+        ```
+    
+
+    ??? columnstyle "ump_lf_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Left field umpire name
+        ```
+    
+
+    ??? columnstyle "ump_rf_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Right field umpire name
+        ```
+    
+
+    ??? columnstyle "away_manager_id"
+
+        ```
+        Type: char(8)
+
+        Away manager ID
+        ```
+    
+
+    ??? columnstyle "away_manager_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Away manager name
+        ```
+    
+
+    ??? columnstyle "home_manager_id"
+
+        ```
+        Type: char(8)
+
+        Home manager ID
+        ```
+    
+
+    ??? columnstyle "home_manager_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Home manager name
+        ```
+    
+
+    ??? columnstyle "win_pit_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Wining pitcher name
+        ```
+    
+
+    ??? columnstyle "lose_pit_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Losing pitcher name
+        ```
+    
+
+    ??? columnstyle "save_pit_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Saving pitcher name
+        ```
+    
+
+    ??? columnstyle "goahead_rbi_id"
+
+        ```
+        Type: char(8)
+
+        ID of batter with goahead RBI
+        ```
+    
+
+    ??? columnstyle "goahead_rbi_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of batter with goahead RBI
+        ```
+    
+
+    ??? columnstyle "away_lineup1_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of away team batter in lineup position 1
+        ```
+    
+
+    ??? columnstyle "away_lineup2_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of away team batter in lineup position 2
+        ```
+    
+
+    ??? columnstyle "away_lineup3_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of away team batter in lineup position 3
+        ```
+    
+
+    ??? columnstyle "away_lineup4_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of away team batter in lineup position 4
+        ```
+    
+
+    ??? columnstyle "away_lineup5_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of away team batter in lineup position 5
+        ```
+    
+
+    ??? columnstyle "away_lineup6_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of away team batter in lineup position 6
+        ```
+    
+
+    ??? columnstyle "away_lineup7_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of away team batter in lineup position 7
+        ```
+    
+
+    ??? columnstyle "away_lineup8_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of away team batter in lineup position 8
+        ```
+    
+
+    ??? columnstyle "away_lineup9_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of home team batter in lineup position 9
+        ```
+    
+
+    ??? columnstyle "home_lineup1_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of home team batter in lineup position 1
+        ```
+    
+
+    ??? columnstyle "home_lineup2_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of home team batter in lineup position 2
+        ```
+    
+
+    ??? columnstyle "home_lineup3_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of home team batter in lineup position 3
+        ```
+    
+
+    ??? columnstyle "home_lineup4_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of home team batter in lineup position 4
+        ```
+    
+
+    ??? columnstyle "home_lineup5_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of home team batter in lineup position 5
+        ```
+    
+
+    ??? columnstyle "home_lineup6_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of home team batter in lineup position 6
+        ```
+    
+
+    ??? columnstyle "home_lineup7_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of home team batter in lineup position 7
+        ```
+    
+
+    ??? columnstyle "home_lineup8_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of home team batter in lineup position 8
+        ```
+    
+
+    ??? columnstyle "home_lineup9_bat_name_tx"
+
+        ```
+        Type: varchar(26)
+
+        Name of home team batter in lineup position 9
+        ```
+    
+
+    ??? columnstyle "add_info_tx"
+
+        ```
+        Type: varchar(26)
+
+        Additional information
+        ```
+    
+
+    ??? columnstyle "acq_info_tx"
+
+        ```
+        Type: varchar(26)
+
+        Acquisition information
+        ```
+    
+
+
+
+??? tablestyle "gamelog"
+
+    ??? keycolumnstyle "date"
+
+        ```
+        Type: date
+
+        Game date
+        ```
+    
+
+    ??? keycolumnstyle "double_header"
+
+        ```
+        Type: char(1)
+
         Number of game:
-         "0" -- a single game
-         "1" -- the first game of a double (or triple) header
-                including separate admission doubleheaders
-         "2" -- the second game of a double (or triple) header
-                including separate admission doubleheaders
-         "3" -- the third game of a triple-header
-         "A" -- the first game of a double-header involving 3 teams
-         "B" -- the second game of a double-header involving 3 teams
-         ```
-            
+        "0" -- a single game
+        "1" -- the first game of a double (or triple) header
+               including separate admission doubleheaders
+        "2" -- the second game of a double (or triple) header
+               including separate admission doubleheaders
+        "3" -- the third game of a triple-header
+        "A" -- the first game of a double-header involving 3 teams
+        "B" -- the second game of a double-header involving 3 teams
+        
+        ```
+    
 
-            ??? keycolumnstyle "visiting_team"
+    ??? keycolumnstyle "visiting_team"
 
-                ```Visiting team ID```
-            
+        ```
+        Type: char(3)
 
-            ??? keycolumnstyle "home_team"
+        Visiting team ID
+        ```
+    
 
-                ```Home team ID```
-            
+    ??? keycolumnstyle "home_team"
 
-            ??? columnstyle "day_of_week"
+        ```
+        Type: char(3)
 
-                ```Day of week (3 char abbreviation)```
-            
+        Home team ID
+        ```
+    
 
-            ??? columnstyle "visiting_team_league"
+    ??? columnstyle "day_of_week"
 
-                ```Away team league ID```
-            
+        ```
+        Type: char(3)
 
-            ??? columnstyle "visiting_team_game_number"
+        Day of week (3 char abbreviation)
+        ```
+    
 
-                ```Away team game number```
-            
+    ??? columnstyle "visiting_team_league"
 
-            ??? columnstyle "home_team_league"
+        ```
+        Type: char(2)
 
-                ```Home team league ID```
-            
+        Away team league ID
+        ```
+    
 
-            ??? columnstyle "home_team_game_number"
+    ??? columnstyle "visiting_team_game_number"
 
-                ```Home team game number```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_runs_scored"
+        Away team game number
+        ```
+    
 
-                ```Away team runs scored```
-            
+    ??? columnstyle "home_team_league"
 
-            ??? columnstyle "home_runs_score"
+        ```
+        Type: char(2)
 
-                ```Home team runs scored```
-            
+        Home team league ID
+        ```
+    
 
-            ??? columnstyle "length_in_outs"
+    ??? columnstyle "home_team_game_number"
 
-                ```Game length in outs```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "day_night"
+        Home team game number
+        ```
+    
 
-                ```D - day game, N - night game```
-            
+    ??? columnstyle "visitor_runs_scored"
 
-            ??? columnstyle "completion_info"
+        ```
+        Type: smallint
 
-                ```
+        Away team runs scored
+        ```
+    
+
+    ??? columnstyle "home_runs_score"
+
+        ```
+        Type: smallint
+
+        Home team runs scored
+        ```
+    
+
+    ??? columnstyle "length_in_outs"
+
+        ```
+        Type: smallint
+
+        Game length in outs
+        ```
+    
+
+    ??? columnstyle "day_night"
+
+        ```
+        Type: char(1)
+
+        D - day game, N - night game
+        ```
+    
+
+    ??? columnstyle "completion_info"
+
+        ```
+        Type: varchar(23)
+
         Completion information.  If the game was completed at a
         later date (either due to a suspension or an upheld protest)
         this field will include:
@@ -2741,908 +4872,1606 @@
         len -- the length of the game in outs at time of interruption
         All the rest of the information in the record refers to the
         entire game.
+        
         ```
-            
+    
 
-            ??? columnstyle "forfeit_info"
+    ??? columnstyle "forfeit_info"
 
-                ```V - forfeited to away team, H - forfeited to home team, T - ruled a no-decision```
-            
+        ```
+        Type: varchar(3)
 
-            ??? columnstyle "protest_info"
+        V - forfeited to away team, H - forfeited to home team, T - ruled a no-decision
+        ```
+    
 
-                ```P - protested by unidentified team, V - disallowed protest by away team, H - disallowed protest by home team, X - upheld protest by away team, Y - upheld protest by home team```
-            
+    ??? columnstyle "protest_info"
 
-            ??? columnstyle "park_id"
+        ```
+        Type: varchar(3)
 
-                ```Park ID```
-            
+        P - protested by unidentified team, V - disallowed protest by away team, H - disallowed protest by home team, X - upheld protest by away team, Y - upheld protest by home team
+        ```
+    
 
-            ??? columnstyle "attendance"
+    ??? columnstyle "park_id"
 
-                ```Attendance```
-            
+        ```
+        Type: char(5)
 
-            ??? columnstyle "duration"
+        Park ID
+        ```
+    
 
-                ```Time of game in minutes```
-            
+    ??? columnstyle "attendance"
 
-            ??? columnstyle "vistor_line_score"
+        ```
+        Type: integer
 
-                ```Away team line score, e.g. 010000(10)0x```
-            
+        Attendance
+        ```
+    
 
-            ??? columnstyle "home_line_score"
+    ??? columnstyle "duration"
 
-                ```Home team line score, e.g. 010000(10)0x```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_ab"
+        Time of game in minutes
+        ```
+    
 
-                ```Away team at bats```
-            
+    ??? columnstyle "vistor_line_score"
 
-            ??? columnstyle "visitor_h"
+        ```
+        Type: varchar(26)
 
-                ```Away team hits```
-            
+        Away team line score, e.g. 010000(10)0x
+        ```
+    
 
-            ??? columnstyle "visitor_d"
+    ??? columnstyle "home_line_score"
 
-                ```Away team doubles```
-            
+        ```
+        Type: varchar(26)
 
-            ??? columnstyle "visitor_t"
+        Home team line score, e.g. 010000(10)0x
+        ```
+    
 
-                ```Away team triples```
-            
+    ??? columnstyle "visitor_ab"
 
-            ??? columnstyle "visitor_hr"
+        ```
+        Type: smallint
 
-                ```Away team home runs```
-            
+        Away team at bats
+        ```
+    
 
-            ??? columnstyle "visitor_rbi"
+    ??? columnstyle "visitor_h"
 
-                ```Away team runs batted in```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_sh"
+        Away team hits
+        ```
+    
 
-                ```Away team sacrifice hits (may include sac flies before 1954)```
-            
+    ??? columnstyle "visitor_d"
 
-            ??? columnstyle "visitor_sf"
+        ```
+        Type: smallint
 
-                ```Away team sacrifice flies (since 1954)```
-            
+        Away team doubles
+        ```
+    
 
-            ??? columnstyle "visitor_hbp"
+    ??? columnstyle "visitor_t"
 
-                ```Away team hit by pitches```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_bb"
+        Away team triples
+        ```
+    
 
-                ```Away team walks```
-            
+    ??? columnstyle "visitor_hr"
 
-            ??? columnstyle "visitor_ibb"
+        ```
+        Type: smallint
 
-                ```Away team intentional walks```
-            
+        Away team home runs
+        ```
+    
 
-            ??? columnstyle "visitor_k"
+    ??? columnstyle "visitor_rbi"
 
-                ```Away team strikeouts```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_sb"
+        Away team runs batted in
+        ```
+    
 
-                ```Away team stolen bases```
-            
+    ??? columnstyle "visitor_sh"
 
-            ??? columnstyle "visitor_cs"
+        ```
+        Type: smallint
 
-                ```Away team caught stealing```
-            
+        Away team sacrifice hits (may include sac flies before 1954)
+        ```
+    
 
-            ??? columnstyle "visitor_gdp"
+    ??? columnstyle "visitor_sf"
 
-                ```Away team grounded into double plays```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_ci"
+        Away team sacrifice flies (since 1954)
+        ```
+    
 
-                ```Away team reached on interference```
-            
+    ??? columnstyle "visitor_hbp"
 
-            ??? columnstyle "visitor_lob"
+        ```
+        Type: smallint
 
-                ```Away team left on base```
-            
+        Away team hit by pitches
+        ```
+    
 
-            ??? columnstyle "visitor_pitchers"
+    ??? columnstyle "visitor_bb"
 
-                ```Away team pitchers used```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_er"
+        Away team walks
+        ```
+    
 
-                ```Away team individual earned runs allowed```
-            
+    ??? columnstyle "visitor_ibb"
 
-            ??? columnstyle "visitor_ter"
+        ```
+        Type: smallint
 
-                ```Away team team earned runs allowed```
-            
+        Away team intentional walks
+        ```
+    
 
-            ??? columnstyle "visitor_wp"
+    ??? columnstyle "visitor_k"
 
-                ```Away team wild pitches allowed```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_balks"
+        Away team strikeouts
+        ```
+    
 
-                ```Away team balks allowed```
-            
+    ??? columnstyle "visitor_sb"
 
-            ??? columnstyle "visitor_po"
+        ```
+        Type: smallint
 
-                ```Away team putouts```
-            
+        Away team stolen bases
+        ```
+    
 
-            ??? columnstyle "visitor_a"
+    ??? columnstyle "visitor_cs"
 
-                ```Away team assists```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_e"
+        Away team caught stealing
+        ```
+    
 
-                ```Away team errors```
-            
+    ??? columnstyle "visitor_gdp"
 
-            ??? columnstyle "visitor_passed"
+        ```
+        Type: smallint
 
-                ```Away team passed balls```
-            
+        Away team grounded into double plays
+        ```
+    
 
-            ??? columnstyle "visitor_db"
+    ??? columnstyle "visitor_ci"
 
-                ```Away team double plays turned```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_tp"
+        Away team reached on interference
+        ```
+    
 
-                ```Away team triple plays turned```
-            
+    ??? columnstyle "visitor_lob"
 
-            ??? columnstyle "home_ab"
+        ```
+        Type: smallint
 
-                ```Home team at bats```
-            
+        Away team left on base
+        ```
+    
 
-            ??? columnstyle "home_h"
+    ??? columnstyle "visitor_pitchers"
 
-                ```Home team hits```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_d"
+        Away team pitchers used
+        ```
+    
 
-                ```Home team doubles```
-            
+    ??? columnstyle "visitor_er"
 
-            ??? columnstyle "home_t"
+        ```
+        Type: smallint
 
-                ```Home team triples```
-            
+        Away team individual earned runs allowed
+        ```
+    
 
-            ??? columnstyle "home_hr"
+    ??? columnstyle "visitor_ter"
 
-                ```Home team home runs```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_rbi"
+        Away team team earned runs allowed
+        ```
+    
 
-                ```Home team runs batted in```
-            
+    ??? columnstyle "visitor_wp"
 
-            ??? columnstyle "home_sh"
+        ```
+        Type: smallint
 
-                ```Home team sacrifice hits (may include sac flies before 1954)```
-            
+        Away team wild pitches allowed
+        ```
+    
 
-            ??? columnstyle "home_sf"
+    ??? columnstyle "visitor_balks"
 
-                ```Home team sacrifice flies (since 1954)```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_hbp"
+        Away team balks allowed
+        ```
+    
 
-                ```Home team hit by pitches```
-            
+    ??? columnstyle "visitor_po"
 
-            ??? columnstyle "home_bb"
+        ```
+        Type: smallint
 
-                ```Home team walks```
-            
+        Away team putouts
+        ```
+    
 
-            ??? columnstyle "home_ibb"
+    ??? columnstyle "visitor_a"
 
-                ```Home team intentional walks```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_k"
+        Away team assists
+        ```
+    
 
-                ```Home team strikeouts```
-            
+    ??? columnstyle "visitor_e"
 
-            ??? columnstyle "home_sb"
+        ```
+        Type: smallint
 
-                ```Home team stolen bases```
-            
+        Away team errors
+        ```
+    
 
-            ??? columnstyle "home_cs"
+    ??? columnstyle "visitor_passed"
 
-                ```Home team caught stealing```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_gdp"
+        Away team passed balls
+        ```
+    
 
-                ```Home team grounded into double plays```
-            
+    ??? columnstyle "visitor_db"
 
-            ??? columnstyle "home_ci"
+        ```
+        Type: smallint
 
-                ```Home team reached on interference```
-            
+        Away team double plays turned
+        ```
+    
 
-            ??? columnstyle "home_lob"
+    ??? columnstyle "visitor_tp"
 
-                ```Home team left on base```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_pitchers"
+        Away team triple plays turned
+        ```
+    
 
-                ```Home team pitchers used```
-            
+    ??? columnstyle "home_ab"
 
-            ??? columnstyle "home_er"
+        ```
+        Type: smallint
 
-                ```Home team individual earned runs allowed```
-            
+        Home team at bats
+        ```
+    
 
-            ??? columnstyle "home_ter"
+    ??? columnstyle "home_h"
 
-                ```Home team team earned runs allowed```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_wp"
+        Home team hits
+        ```
+    
 
-                ```Home team wild pitches allowed```
-            
+    ??? columnstyle "home_d"
 
-            ??? columnstyle "home_balks"
+        ```
+        Type: smallint
 
-                ```Home team balks allowed```
-            
+        Home team doubles
+        ```
+    
 
-            ??? columnstyle "home_po"
+    ??? columnstyle "home_t"
 
-                ```Home team putouts```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_a"
+        Home team triples
+        ```
+    
 
-                ```Home team assists```
-            
+    ??? columnstyle "home_hr"
 
-            ??? columnstyle "home_e"
+        ```
+        Type: smallint
 
-                ```Home team errors```
-            
+        Home team home runs
+        ```
+    
 
-            ??? columnstyle "home_passed"
+    ??? columnstyle "home_rbi"
 
-                ```Home team passed balls```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "home_db"
+        Home team runs batted in
+        ```
+    
 
-                ```Home team double plays turned```
-            
+    ??? columnstyle "home_sh"
 
-            ??? columnstyle "home_tp"
+        ```
+        Type: smallint
 
-                ```Home team triple plays turned```
-            
+        Home team sacrifice hits (may include sac flies before 1954)
+        ```
+    
 
-            ??? columnstyle "umpire_h_id"
+    ??? columnstyle "home_sf"
 
-                ```Home plate umpire ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "umpire_h_name"
+        Home team sacrifice flies (since 1954)
+        ```
+    
 
-                ```Home plate umpire name```
-            
+    ??? columnstyle "home_hbp"
 
-            ??? columnstyle "umpire_1b_id"
+        ```
+        Type: smallint
 
-                ```First base umpire ID```
-            
+        Home team hit by pitches
+        ```
+    
 
-            ??? columnstyle "umpire_1b_name"
+    ??? columnstyle "home_bb"
 
-                ```First base umpire name```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "umpire_2b_id"
+        Home team walks
+        ```
+    
 
-                ```Second base umpire ID```
-            
+    ??? columnstyle "home_ibb"
 
-            ??? columnstyle "umpire_2b_name"
+        ```
+        Type: smallint
 
-                ```Second base umpire name```
-            
+        Home team intentional walks
+        ```
+    
 
-            ??? columnstyle "umpire_3b_id"
+    ??? columnstyle "home_k"
 
-                ```Third base umpire ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "umpire_3b_name"
+        Home team strikeouts
+        ```
+    
 
-                ```Third base umpire name```
-            
+    ??? columnstyle "home_sb"
 
-            ??? columnstyle "umpire_lf_id"
+        ```
+        Type: smallint
 
-                ```Left field umpire ID```
-            
+        Home team stolen bases
+        ```
+    
 
-            ??? columnstyle "umpire_lf_name"
+    ??? columnstyle "home_cs"
 
-                ```Left field umpire name```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "umpire_rf_id"
+        Home team caught stealing
+        ```
+    
 
-                ```Right field umpire ID```
-            
+    ??? columnstyle "home_gdp"
 
-            ??? columnstyle "umpire_rf_name"
+        ```
+        Type: smallint
 
-                ```Right field umpire name```
-            
+        Home team grounded into double plays
+        ```
+    
 
-            ??? columnstyle "visitor_manager_id"
+    ??? columnstyle "home_ci"
 
-                ```Away team manager ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_manager_name"
+        Home team reached on interference
+        ```
+    
 
-                ```Away team manager name```
-            
+    ??? columnstyle "home_lob"
 
-            ??? columnstyle "home_manager_id"
+        ```
+        Type: smallint
 
-                ```Home team manager ID```
-            
+        Home team left on base
+        ```
+    
 
-            ??? columnstyle "home_manager_name"
+    ??? columnstyle "home_pitchers"
 
-                ```Home team manager name```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "winning_pitcher_id"
+        Home team pitchers used
+        ```
+    
 
-                ```Winning pitcher ID```
-            
+    ??? columnstyle "home_er"
 
-            ??? columnstyle "winning_pitcher_name"
+        ```
+        Type: smallint
 
-                ```Winning pitcher name```
-            
+        Home team individual earned runs allowed
+        ```
+    
 
-            ??? columnstyle "losing_pitcher_id"
+    ??? columnstyle "home_ter"
 
-                ```Losing pitcher ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "losing_pitcher_name"
+        Home team team earned runs allowed
+        ```
+    
 
-                ```Losing pitcher name```
-            
+    ??? columnstyle "home_wp"
 
-            ??? columnstyle "saving_pitcher_id"
+        ```
+        Type: smallint
 
-                ```Saving pitcher ID```
-            
+        Home team wild pitches allowed
+        ```
+    
 
-            ??? columnstyle "saving_pitcher_name"
+    ??? columnstyle "home_balks"
 
-                ```Saving pitcher name```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "game_winning_rbi_id"
+        Home team balks allowed
+        ```
+    
 
-                ```Game-winning RBI ID```
-            
+    ??? columnstyle "home_po"
 
-            ??? columnstyle "game_winning_rbi_name"
+        ```
+        Type: smallint
 
-                ```Game-winning RBI name```
-            
+        Home team putouts
+        ```
+    
 
-            ??? columnstyle "visitor_starting_pitcher_id"
+    ??? columnstyle "home_a"
 
-                ```Away team starting pitcher ID```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_starting_pitcher_name"
+        Home team assists
+        ```
+    
 
-                ```Away team starting pitcher name```
-            
+    ??? columnstyle "home_e"
 
-            ??? columnstyle "home_starting_pitcher_id"
+        ```
+        Type: smallint
 
-                ```Home team starting pitcher ID```
-            
+        Home team errors
+        ```
+    
 
-            ??? columnstyle "home_starting_pitcher_name"
+    ??? columnstyle "home_passed"
 
-                ```Home team starting pitcher name```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_batting_1_player_id"
+        Home team passed balls
+        ```
+    
 
-                ```Away team lineup slot 1 starting player ID```
-            
+    ??? columnstyle "home_db"
 
-            ??? columnstyle "visitor_batting_1_name"
+        ```
+        Type: smallint
 
-                ```Away team lineup slot 1 starting player name```
-            
+        Home team double plays turned
+        ```
+    
 
-            ??? columnstyle "visitor_batting_1_position"
+    ??? columnstyle "home_tp"
 
-                ```Away team lineup slot 1 starting player fielding position```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "visitor_batting_2_player_id"
+        Home team triple plays turned
+        ```
+    
 
-                ```Away team lineup slot 2 starting player ID```
-            
+    ??? columnstyle "umpire_h_id"
 
-            ??? columnstyle "visitor_batting_2_name"
+        ```
+        Type: char(8)
 
-                ```Away team lineup slot 2 starting player name```
-            
+        Home plate umpire ID
+        ```
+    
 
-            ??? columnstyle "visitor_batting_2_position"
+    ??? columnstyle "umpire_h_name"
 
-                ```Away team lineup slot 2 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "visitor_batting_3_player_id"
+        Home plate umpire name
+        ```
+    
 
-                ```Away team lineup slot 3 starting player ID```
-            
+    ??? columnstyle "umpire_1b_id"
 
-            ??? columnstyle "visitor_batting_3_name"
+        ```
+        Type: char(8)
 
-                ```Away team lineup slot 3 starting player name```
-            
+        First base umpire ID
+        ```
+    
 
-            ??? columnstyle "visitor_batting_3_position"
+    ??? columnstyle "umpire_1b_name"
 
-                ```Away team lineup slot 3 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "visitor_batting_4_player_id"
+        First base umpire name
+        ```
+    
 
-                ```Away team lineup slot 4 starting player ID```
-            
+    ??? columnstyle "umpire_2b_id"
 
-            ??? columnstyle "visitor_batting_4_name"
+        ```
+        Type: char(8)
 
-                ```Away team lineup slot 4 starting player name```
-            
+        Second base umpire ID
+        ```
+    
 
-            ??? columnstyle "visitor_batting_4_position"
+    ??? columnstyle "umpire_2b_name"
 
-                ```Away team lineup slot 4 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "visitor_batting_5_player_id"
+        Second base umpire name
+        ```
+    
 
-                ```Away team lineup slot 5 starting player ID```
-            
+    ??? columnstyle "umpire_3b_id"
 
-            ??? columnstyle "visitor_batting_5_name"
+        ```
+        Type: char(8)
 
-                ```Away team lineup slot 5 starting player name```
-            
+        Third base umpire ID
+        ```
+    
 
-            ??? columnstyle "visitor_batting_5_position"
+    ??? columnstyle "umpire_3b_name"
 
-                ```Away team lineup slot 5 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "visitor_batting_6_player_id"
+        Third base umpire name
+        ```
+    
 
-                ```Away team lineup slot 6 starting player ID```
-            
+    ??? columnstyle "umpire_lf_id"
 
-            ??? columnstyle "visitor_batting_6_name"
+        ```
+        Type: char(8)
 
-                ```Away team lineup slot 6 starting player name```
-            
+        Left field umpire ID
+        ```
+    
 
-            ??? columnstyle "visitor_batting_6_position"
+    ??? columnstyle "umpire_lf_name"
 
-                ```Away team lineup slot 6 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "visitor_batting_7_player_id"
+        Left field umpire name
+        ```
+    
 
-                ```Away team lineup slot 7 starting player ID```
-            
+    ??? columnstyle "umpire_rf_id"
 
-            ??? columnstyle "visitor_batting_7_name"
+        ```
+        Type: char(8)
 
-                ```Away team lineup slot 7 starting player name```
-            
+        Right field umpire ID
+        ```
+    
 
-            ??? columnstyle "visitor_batting_7_position"
+    ??? columnstyle "umpire_rf_name"
 
-                ```Away team lineup slot 7 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "visitor_batting_8_player_id"
+        Right field umpire name
+        ```
+    
 
-                ```Away team lineup slot 8 starting player ID```
-            
+    ??? columnstyle "visitor_manager_id"
 
-            ??? columnstyle "visitor_batting_8_name"
+        ```
+        Type: char(8)
 
-                ```Away team lineup slot 8 starting player name```
-            
+        Away team manager ID
+        ```
+    
 
-            ??? columnstyle "visitor_batting_8_position"
+    ??? columnstyle "visitor_manager_name"
 
-                ```Away team lineup slot 8 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "visitor_batting_9_player_id"
+        Away team manager name
+        ```
+    
 
-                ```Away team lineup slot 9 starting player ID```
-            
+    ??? columnstyle "home_manager_id"
 
-            ??? columnstyle "visitor_batting_9_name"
+        ```
+        Type: char(8)
 
-                ```Away team lineup slot 9 starting player name```
-            
+        Home team manager ID
+        ```
+    
 
-            ??? columnstyle "visitor_batting_9_position"
+    ??? columnstyle "home_manager_name"
 
-                ```Away team lineup slot 9 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "home_batting_1_player_id"
+        Home team manager name
+        ```
+    
 
-                ```Home team lineup slot 1 starting player ID```
-            
+    ??? columnstyle "winning_pitcher_id"
 
-            ??? columnstyle "home_batting_1_name"
+        ```
+        Type: char(8)
 
-                ```Home team lineup slot 1 starting player name```
-            
+        Winning pitcher ID
+        ```
+    
 
-            ??? columnstyle "home_batting_1_position"
+    ??? columnstyle "winning_pitcher_name"
 
-                ```Home team lineup slot 1 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "home_batting_2_player_id"
+        Winning pitcher name
+        ```
+    
 
-                ```Home team lineup slot 2 starting player ID```
-            
+    ??? columnstyle "losing_pitcher_id"
 
-            ??? columnstyle "home_batting_2_name"
+        ```
+        Type: char(8)
 
-                ```Home team lineup slot 2 starting player name```
-            
+        Losing pitcher ID
+        ```
+    
 
-            ??? columnstyle "home_batting_2_position"
+    ??? columnstyle "losing_pitcher_name"
 
-                ```Home team lineup slot 2 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "home_batting_3_player_id"
+        Losing pitcher name
+        ```
+    
 
-                ```Home team lineup slot 3 starting player ID```
-            
+    ??? columnstyle "saving_pitcher_id"
 
-            ??? columnstyle "home_batting_3_name"
+        ```
+        Type: char(8)
 
-                ```Home team lineup slot 3 starting player name```
-            
+        Saving pitcher ID
+        ```
+    
 
-            ??? columnstyle "home_batting_3_position"
+    ??? columnstyle "saving_pitcher_name"
 
-                ```Home team lineup slot 3 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "home_batting_4_player_id"
+        Saving pitcher name
+        ```
+    
 
-                ```Home team lineup slot 4 starting player ID```
-            
+    ??? columnstyle "game_winning_rbi_id"
 
-            ??? columnstyle "home_batting_4_name"
+        ```
+        Type: char(8)
 
-                ```Home team lineup slot 4 starting player name```
-            
+        Game-winning RBI ID
+        ```
+    
 
-            ??? columnstyle "home_batting_4_position"
+    ??? columnstyle "game_winning_rbi_name"
 
-                ```Home team lineup slot 4 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "home_batting_5_player_id"
+        Game-winning RBI name
+        ```
+    
 
-                ```Home team lineup slot 5 starting player ID```
-            
+    ??? columnstyle "visitor_starting_pitcher_id"
 
-            ??? columnstyle "home_batting_5_name"
+        ```
+        Type: char(8)
 
-                ```Home team lineup slot 5 starting player name```
-            
+        Away team starting pitcher ID
+        ```
+    
 
-            ??? columnstyle "home_batting_5_position"
+    ??? columnstyle "visitor_starting_pitcher_name"
 
-                ```Home team lineup slot 5 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "home_batting_6_player_id"
+        Away team starting pitcher name
+        ```
+    
 
-                ```Home team lineup slot 6 starting player ID```
-            
+    ??? columnstyle "home_starting_pitcher_id"
 
-            ??? columnstyle "home_batting_6_name"
+        ```
+        Type: char(8)
 
-                ```Home team lineup slot 6 starting player name```
-            
+        Home team starting pitcher ID
+        ```
+    
 
-            ??? columnstyle "home_batting_6_position"
+    ??? columnstyle "home_starting_pitcher_name"
 
-                ```Home team lineup slot 6 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "home_batting_7_player_id"
+        Home team starting pitcher name
+        ```
+    
 
-                ```Home team lineup slot 7 starting player ID```
-            
+    ??? columnstyle "visitor_batting_1_player_id"
 
-            ??? columnstyle "home_batting_7_name"
+        ```
+        Type: char(8)
 
-                ```Home team lineup slot 7 starting player name```
-            
+        Away team lineup slot 1 starting player ID
+        ```
+    
 
-            ??? columnstyle "home_batting_7_position"
+    ??? columnstyle "visitor_batting_1_name"
 
-                ```Home team lineup slot 7 starting player fielding position```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "home_batting_8_player_id"
+        Away team lineup slot 1 starting player name
+        ```
+    
 
-                ```Home team lineup slot 8 starting player ID```
-            
+    ??? columnstyle "visitor_batting_1_position"
 
-            ??? columnstyle "home_batting_8_name"
+        ```
+        Type: smallint
 
-                ```Home team lineup slot 8 starting player name```
-            
+        Away team lineup slot 1 starting player fielding position
+        ```
+    
 
-            ??? columnstyle "home_batting_8_position"
+    ??? columnstyle "visitor_batting_2_player_id"
 
-                ```Home team lineup slot 8 starting player fielding position```
-            
+        ```
+        Type: char(8)
 
-            ??? columnstyle "home_batting_9_player_id"
+        Away team lineup slot 2 starting player ID
+        ```
+    
 
-                ```Home team lineup slot 9 starting player ID```
-            
+    ??? columnstyle "visitor_batting_2_name"
 
-            ??? columnstyle "home_batting_9_name"
+        ```
+        Type: varchar(32)
 
-                ```Home team lineup slot 9 starting player name```
-            
+        Away team lineup slot 2 starting player name
+        ```
+    
 
-            ??? columnstyle "home_batting_9_position"
+    ??? columnstyle "visitor_batting_2_position"
 
-                ```Home team lineup slot 9 starting player fielding position```
-            
+        ```
+        Type: smallint
 
-            ??? columnstyle "additional_info"
+        Away team lineup slot 2 starting player fielding position
+        ```
+    
 
-                ```
+    ??? columnstyle "visitor_batting_3_player_id"
+
+        ```
+        Type: char(8)
+
+        Away team lineup slot 3 starting player ID
+        ```
+    
+
+    ??? columnstyle "visitor_batting_3_name"
+
+        ```
+        Type: varchar(32)
+
+        Away team lineup slot 3 starting player name
+        ```
+    
+
+    ??? columnstyle "visitor_batting_3_position"
+
+        ```
+        Type: smallint
+
+        Away team lineup slot 3 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "visitor_batting_4_player_id"
+
+        ```
+        Type: char(8)
+
+        Away team lineup slot 4 starting player ID
+        ```
+    
+
+    ??? columnstyle "visitor_batting_4_name"
+
+        ```
+        Type: varchar(32)
+
+        Away team lineup slot 4 starting player name
+        ```
+    
+
+    ??? columnstyle "visitor_batting_4_position"
+
+        ```
+        Type: smallint
+
+        Away team lineup slot 4 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "visitor_batting_5_player_id"
+
+        ```
+        Type: char(8)
+
+        Away team lineup slot 5 starting player ID
+        ```
+    
+
+    ??? columnstyle "visitor_batting_5_name"
+
+        ```
+        Type: varchar(32)
+
+        Away team lineup slot 5 starting player name
+        ```
+    
+
+    ??? columnstyle "visitor_batting_5_position"
+
+        ```
+        Type: smallint
+
+        Away team lineup slot 5 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "visitor_batting_6_player_id"
+
+        ```
+        Type: char(8)
+
+        Away team lineup slot 6 starting player ID
+        ```
+    
+
+    ??? columnstyle "visitor_batting_6_name"
+
+        ```
+        Type: varchar(32)
+
+        Away team lineup slot 6 starting player name
+        ```
+    
+
+    ??? columnstyle "visitor_batting_6_position"
+
+        ```
+        Type: smallint
+
+        Away team lineup slot 6 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "visitor_batting_7_player_id"
+
+        ```
+        Type: char(8)
+
+        Away team lineup slot 7 starting player ID
+        ```
+    
+
+    ??? columnstyle "visitor_batting_7_name"
+
+        ```
+        Type: varchar(32)
+
+        Away team lineup slot 7 starting player name
+        ```
+    
+
+    ??? columnstyle "visitor_batting_7_position"
+
+        ```
+        Type: smallint
+
+        Away team lineup slot 7 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "visitor_batting_8_player_id"
+
+        ```
+        Type: char(8)
+
+        Away team lineup slot 8 starting player ID
+        ```
+    
+
+    ??? columnstyle "visitor_batting_8_name"
+
+        ```
+        Type: varchar(32)
+
+        Away team lineup slot 8 starting player name
+        ```
+    
+
+    ??? columnstyle "visitor_batting_8_position"
+
+        ```
+        Type: smallint
+
+        Away team lineup slot 8 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "visitor_batting_9_player_id"
+
+        ```
+        Type: char(8)
+
+        Away team lineup slot 9 starting player ID
+        ```
+    
+
+    ??? columnstyle "visitor_batting_9_name"
+
+        ```
+        Type: varchar(32)
+
+        Away team lineup slot 9 starting player name
+        ```
+    
+
+    ??? columnstyle "visitor_batting_9_position"
+
+        ```
+        Type: smallint
+
+        Away team lineup slot 9 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "home_batting_1_player_id"
+
+        ```
+        Type: char(8)
+
+        Home team lineup slot 1 starting player ID
+        ```
+    
+
+    ??? columnstyle "home_batting_1_name"
+
+        ```
+        Type: varchar(32)
+
+        Home team lineup slot 1 starting player name
+        ```
+    
+
+    ??? columnstyle "home_batting_1_position"
+
+        ```
+        Type: smallint
+
+        Home team lineup slot 1 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "home_batting_2_player_id"
+
+        ```
+        Type: char(8)
+
+        Home team lineup slot 2 starting player ID
+        ```
+    
+
+    ??? columnstyle "home_batting_2_name"
+
+        ```
+        Type: varchar(32)
+
+        Home team lineup slot 2 starting player name
+        ```
+    
+
+    ??? columnstyle "home_batting_2_position"
+
+        ```
+        Type: smallint
+
+        Home team lineup slot 2 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "home_batting_3_player_id"
+
+        ```
+        Type: char(8)
+
+        Home team lineup slot 3 starting player ID
+        ```
+    
+
+    ??? columnstyle "home_batting_3_name"
+
+        ```
+        Type: varchar(32)
+
+        Home team lineup slot 3 starting player name
+        ```
+    
+
+    ??? columnstyle "home_batting_3_position"
+
+        ```
+        Type: smallint
+
+        Home team lineup slot 3 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "home_batting_4_player_id"
+
+        ```
+        Type: char(8)
+
+        Home team lineup slot 4 starting player ID
+        ```
+    
+
+    ??? columnstyle "home_batting_4_name"
+
+        ```
+        Type: varchar(32)
+
+        Home team lineup slot 4 starting player name
+        ```
+    
+
+    ??? columnstyle "home_batting_4_position"
+
+        ```
+        Type: smallint
+
+        Home team lineup slot 4 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "home_batting_5_player_id"
+
+        ```
+        Type: char(8)
+
+        Home team lineup slot 5 starting player ID
+        ```
+    
+
+    ??? columnstyle "home_batting_5_name"
+
+        ```
+        Type: varchar(32)
+
+        Home team lineup slot 5 starting player name
+        ```
+    
+
+    ??? columnstyle "home_batting_5_position"
+
+        ```
+        Type: smallint
+
+        Home team lineup slot 5 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "home_batting_6_player_id"
+
+        ```
+        Type: char(8)
+
+        Home team lineup slot 6 starting player ID
+        ```
+    
+
+    ??? columnstyle "home_batting_6_name"
+
+        ```
+        Type: varchar(32)
+
+        Home team lineup slot 6 starting player name
+        ```
+    
+
+    ??? columnstyle "home_batting_6_position"
+
+        ```
+        Type: smallint
+
+        Home team lineup slot 6 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "home_batting_7_player_id"
+
+        ```
+        Type: char(8)
+
+        Home team lineup slot 7 starting player ID
+        ```
+    
+
+    ??? columnstyle "home_batting_7_name"
+
+        ```
+        Type: varchar(32)
+
+        Home team lineup slot 7 starting player name
+        ```
+    
+
+    ??? columnstyle "home_batting_7_position"
+
+        ```
+        Type: smallint
+
+        Home team lineup slot 7 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "home_batting_8_player_id"
+
+        ```
+        Type: char(8)
+
+        Home team lineup slot 8 starting player ID
+        ```
+    
+
+    ??? columnstyle "home_batting_8_name"
+
+        ```
+        Type: varchar(32)
+
+        Home team lineup slot 8 starting player name
+        ```
+    
+
+    ??? columnstyle "home_batting_8_position"
+
+        ```
+        Type: smallint
+
+        Home team lineup slot 8 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "home_batting_9_player_id"
+
+        ```
+        Type: char(8)
+
+        Home team lineup slot 9 starting player ID
+        ```
+    
+
+    ??? columnstyle "home_batting_9_name"
+
+        ```
+        Type: varchar(32)
+
+        Home team lineup slot 9 starting player name
+        ```
+    
+
+    ??? columnstyle "home_batting_9_position"
+
+        ```
+        Type: smallint
+
+        Home team lineup slot 9 starting player fielding position
+        ```
+    
+
+    ??? columnstyle "additional_info"
+
+        ```
+        Type: varchar(128)
+
         Additional information.  This is a grab-bag of informational
-              items that might not warrant a field on their own.  The field
-              is alpha-numeric. Some items are represented by tokens such as:
-                 "HTBF" -- home team batted first.
-                 Note: if "HTBF" is specified it would be possible to see
-                 something like "01002000x" in the visitor's line score.
-              Changes in umpire positions during a game will also appear in
-              this field.  These will be in the form:
-                 umpchange,inning,umpPosition,umpid with the latter three
-                 repeated for each umpire.
-              These changes occur with umpire injuries, late arrival of
-              umpires or changes from completion of suspended games. Details
-              of suspended games are in field `completion_information`.
+        items that might not warrant a field on their own.  The field
+        is alpha-numeric. Some items are represented by tokens such as:
+           "HTBF" -- home team batted first.
+           Note: if "HTBF" is specified it would be possible to see
+           something like "01002000x" in the visitor's line score.
+        Changes in umpire positions during a game will also appear in
+        this field.  These will be in the form:
+           umpchange,inning,umpPosition,umpid with the latter three
+           repeated for each umpire.
+        These changes occur with umpire injuries, late arrival of
+        umpires or changes from completion of suspended games. Details
+        of suspended games are in field `completion_information`.
+        
         ```
-            
+    
 
-            ??? columnstyle "acquisition_info"
+    ??? columnstyle "acquisition_info"
 
-                ```Y - complete game information, N - no game information, D - game derived from box score and game story, P - portions of game information```
-            
+        ```
+        Type: char(1)
 
-        
+        Y - complete game information, N - no game information, D - game derived from box score and game story, P - portions of game information
+        ```
+    
 
-        ??? tablestyle "park"
 
-            ??? keycolumnstyle "park_id"
 
-                ```Park ID```
-            
+??? tablestyle "park"
 
-            ??? columnstyle "name"
+    ??? keycolumnstyle "park_id"
 
-                ```Park name```
-            
+        ```
+        Type: char(5)
 
-            ??? columnstyle "aka"
+        Park ID
+        ```
+    
 
-                ```Common park alias```
-            
+    ??? columnstyle "name"
 
-            ??? columnstyle "city"
+        ```
+        Type: varchar(41)
 
-                ```City```
-            
+        Park name
+        ```
+    
 
-            ??? columnstyle "state"
+    ??? columnstyle "aka"
 
-                ```State```
-            
+        ```
+        Type: varchar(55)
 
-            ??? columnstyle "start_date"
+        Common park alias
+        ```
+    
 
-                ```First game```
-            
+    ??? columnstyle "city"
 
-            ??? columnstyle "end_date"
+        ```
+        Type: varchar(17)
 
-                ```Last game```
-            
+        City
+        ```
+    
 
-            ??? columnstyle "league"
+    ??? columnstyle "state"
 
-                ```League ID```
-            
+        ```
+        Type: varchar(9)
 
-            ??? columnstyle "notes"
+        State
+        ```
+    
 
-                ```Misc. notes```
-            
+    ??? columnstyle "start_date"
 
-        
+        ```
+        Type: varchar(10)
 
-        ??? tablestyle "roster"
+        First game
+        ```
+    
 
-            ??? keycolumnstyle "year"
+    ??? columnstyle "end_date"
 
-                ```Year of roster```
-            
+        ```
+        Type: varchar(10)
 
-            ??? keycolumnstyle "player_id"
+        Last game
+        ```
+    
 
-                ```Player ID```
-            
+    ??? columnstyle "league"
 
-            ??? keycolumnstyle "team_id"
+        ```
+        Type: char(2)
 
-                ```Team ID```
-            
+        League ID
+        ```
+    
 
-            ??? keycolumnstyle "position"
+    ??? columnstyle "notes"
 
-                ```Primary fielding position```
-            
+        ```
+        Type: varchar(54)
 
-            ??? columnstyle "last_name"
+        Misc. notes
+        ```
+    
 
-                ```Player last name```
-            
 
-            ??? columnstyle "first_name"
 
-                ```Player first name```
-            
+??? tablestyle "roster"
 
-            ??? columnstyle "bats"
+    ??? keycolumnstyle "year"
 
-                ```Bat handedness```
-            
+        ```
+        Type: integer
 
-            ??? columnstyle "throws"
+        Year of roster
+        ```
+    
 
-                ```Throw handedness```
-            
+    ??? keycolumnstyle "player_id"
 
-        
+        ```
+        Type: char(8)
 
-        ??? tablestyle "schedule"
+        Player ID
+        ```
+    
 
-            ??? keycolumnstyle "date"
+    ??? keycolumnstyle "team_id"
 
-                ```Scheduled game date```
-            
+        ```
+        Type: char(3)
 
-            ??? keycolumnstyle "home_team"
+        Team ID
+        ```
+    
 
-                ```Home team ID```
-            
+    ??? keycolumnstyle "position"
 
-            ??? keycolumnstyle "home_team_game_number"
+        ```
+        Type: varchar(2)
 
-                ```Home team game number```
-            
+        Primary fielding position
+        ```
+    
 
-            ??? columnstyle "double_header"
+    ??? columnstyle "last_name"
 
-                ```Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader```
-            
+        ```
+        Type: varchar(32)
 
-            ??? columnstyle "day_of_week"
+        Player last name
+        ```
+    
 
-                ```Day of week (3 letter abbreviation```
-            
+    ??? columnstyle "first_name"
 
-            ??? columnstyle "visiting_team"
+        ```
+        Type: varchar(32)
 
-                ```Away team ID```
-            
+        Player first name
+        ```
+    
 
-            ??? columnstyle "visiting_team_league"
+    ??? columnstyle "bats"
 
-                ```Away team league ID```
-            
+        ```
+        Type: char(1)
 
-            ??? columnstyle "visiting_team_game_number"
+        Bat handedness
+        ```
+    
 
-                ```Away team game number```
-            
+    ??? columnstyle "throws"
 
-            ??? columnstyle "home_team_league"
+        ```
+        Type: char(1)
 
-                ```Home team league ID```
-            
+        Throw handedness
+        ```
+    
 
-            ??? columnstyle "day_night"
 
-                ```D - day, N - night```
-            
 
-            ??? columnstyle "postponement_indicator"
+??? tablestyle "schedule"
 
-                ```
+    ??? keycolumnstyle "date"
+
+        ```
+        Type: date
+
+        Scheduled game date
+        ```
+    
+
+    ??? keycolumnstyle "home_team"
+
+        ```
+        Type: char(3)
+
+        Home team ID
+        ```
+    
+
+    ??? keycolumnstyle "home_team_game_number"
+
+        ```
+        Type: integer
+
+        Home team game number
+        ```
+    
+
+    ??? columnstyle "double_header"
+
+        ```
+        Type: smallint
+
+        Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader
+        ```
+    
+
+    ??? columnstyle "day_of_week"
+
+        ```
+        Type: char(3)
+
+        Day of week (3 letter abbreviation
+        ```
+    
+
+    ??? columnstyle "visiting_team"
+
+        ```
+        Type: char(3)
+
+        Away team ID
+        ```
+    
+
+    ??? columnstyle "visiting_team_league"
+
+        ```
+        Type: char(2)
+
+        Away team league ID
+        ```
+    
+
+    ??? columnstyle "visiting_team_game_number"
+
+        ```
+        Type: smallint
+
+        Away team game number
+        ```
+    
+
+    ??? columnstyle "home_team_league"
+
+        ```
+        Type: char(2)
+
+        Home team league ID
+        ```
+    
+
+    ??? columnstyle "day_night"
+
+        ```
+        Type: char(1)
+
+        D - day, N - night
+        ```
+    
+
+    ??? columnstyle "postponement_indicator"
+
+        ```
+        Type: varchar(120)
+
         This field will contain one or more phrases related to the game if it was
         not played as scheduled. If there is more than one phrase, they are separated
         by a semi-colon (";"). There are three possible outcomes for games not played
@@ -3650,12 +6479,15 @@
         -- The game was played on another date
         -- The game was played on the original date but at another site
         -- The game was not played
+        
         ```
-            
+    
 
-            ??? columnstyle "makeup_dates"
+    ??? columnstyle "makeup_dates"
 
-                ```
+        ```
+        Type: varchar(120)
+
         This field will contain a makeup date if the postponed game was played at
         another time or place. If an attempt was known to have been made on a date but
         postponed again, that date will be listed. In that case, there will be a second
@@ -3663,2045 +6495,3581 @@
         20150528" For the note about a team folding, the team code is one of the
         standard Retrosheet team IDs. The same is true for the team played as note.
         Often, the two of these are combined in one field.
+        
         ```
-            
-
-        
-
-        ??? tablestyle "sub"
-
-            ??? keycolumnstyle "dummy_id"
-
-                ```None```
-            
-
-            ??? columnstyle "game_id"
-
-                ```Game ID (home team ID + YYYYMMDD + doubleheader flag```
-            
-
-            ??? columnstyle "inn_ct"
-
-                ```Inning of substitution```
-            
-
-            ??? columnstyle "bat_home_id"
-
-                ```Is home team batting (-1 for N/A)```
-            
-
-            ??? columnstyle "sub_id"
-
-                ```Player ID of substitute```
-            
-
-            ??? columnstyle "sub_home_id"
-
-                ```Is the home team making the substitution```
-            
-
-            ??? columnstyle "sub_lineup_id"
-
-                ```Lineup position of substitution```
-            
-
-            ??? columnstyle "sub_fld_cd"
-
-                ```Fielding position of substitution```
-            
-
-            ??? columnstyle "removed_id"
-
-                ```ID of removed player```
-            
-
-            ??? columnstyle "removed_fld_cd"
-
-                ```Fielding position of removed player```
-            
-
-            ??? columnstyle "event_id"
-
-                ```Event number in which substitution occurred```
-            
-
-        
-
     
 
-    ??? schemastyle  " baseballdatabank"
 
-        ??? tablestyle "allstar_full"
 
-            ??? keycolumnstyle "dummy_id"
+??? tablestyle "sub"
 
-                ```None```
-            
+    ??? keycolumnstyle "dummy_id"
 
-            ??? columnstyle "player_id"
+        ```
+        Type: integer
 
-                ```None```
-            
-
-            ??? columnstyle "year_id"
-
-                ```None```
-            
-
-            ??? columnstyle "game_num"
-
-                ```None```
-            
-
-            ??? columnstyle "game_id"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "gp"
-
-                ```None```
-            
-
-            ??? columnstyle "starting_pos"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "appearances"
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "team_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "g_all"
-
-                ```None```
-            
-
-            ??? columnstyle "gs"
-
-                ```None```
-            
-
-            ??? columnstyle "g_batting"
-
-                ```None```
-            
-
-            ??? columnstyle "g_defense"
-
-                ```None```
-            
-
-            ??? columnstyle "g_p"
-
-                ```None```
-            
-
-            ??? columnstyle "g_c"
-
-                ```None```
-            
-
-            ??? columnstyle "g_1b"
-
-                ```None```
-            
-
-            ??? columnstyle "g_2b"
-
-                ```None```
-            
-
-            ??? columnstyle "g_3b"
-
-                ```None```
-            
-
-            ??? columnstyle "g_ss"
-
-                ```None```
-            
-
-            ??? columnstyle "g_lf"
-
-                ```None```
-            
-
-            ??? columnstyle "g_cf"
-
-                ```None```
-            
-
-            ??? columnstyle "g_rf"
-
-                ```None```
-            
-
-            ??? columnstyle "g_of"
-
-                ```None```
-            
-
-            ??? columnstyle "g_dh"
-
-                ```None```
-            
-
-            ??? columnstyle "g_ph"
-
-                ```None```
-            
-
-            ??? columnstyle "g_pr"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "awards_managers"
-
-            ??? keycolumnstyle "dummy_id"
-
-                ```None```
-            
-
-            ??? columnstyle "player_id"
-
-                ```None```
-            
-
-            ??? columnstyle "award_id"
-
-                ```None```
-            
-
-            ??? columnstyle "year_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "tie"
-
-                ```None```
-            
-
-            ??? columnstyle "notes"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "awards_players"
-
-            ??? keycolumnstyle "dummy_id"
-
-                ```None```
-            
-
-            ??? columnstyle "player_id"
-
-                ```None```
-            
-
-            ??? columnstyle "award_id"
-
-                ```None```
-            
-
-            ??? columnstyle "year_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "tie"
-
-                ```None```
-            
-
-            ??? columnstyle "notes"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "awards_share_managers"
-
-            ??? keycolumnstyle "award_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "points_won"
-
-                ```None```
-            
-
-            ??? columnstyle "points_max"
-
-                ```None```
-            
-
-            ??? columnstyle "votes_first"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "awards_share_players"
-
-            ??? keycolumnstyle "award_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "points_won"
-
-                ```None```
-            
-
-            ??? columnstyle "points_max"
-
-                ```None```
-            
-
-            ??? columnstyle "votes_first"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "batting"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "stint"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "ab"
-
-                ```None```
-            
-
-            ??? columnstyle "r"
-
-                ```None```
-            
-
-            ??? columnstyle "h"
-
-                ```None```
-            
-
-            ??? columnstyle "_2b"
-
-                ```None```
-            
-
-            ??? columnstyle "_3b"
-
-                ```None```
-            
-
-            ??? columnstyle "hr"
-
-                ```None```
-            
-
-            ??? columnstyle "rbi"
-
-                ```None```
-            
-
-            ??? columnstyle "sb"
-
-                ```None```
-            
-
-            ??? columnstyle "cs"
-
-                ```None```
-            
-
-            ??? columnstyle "bb"
-
-                ```None```
-            
-
-            ??? columnstyle "so"
-
-                ```None```
-            
-
-            ??? columnstyle "ibb"
-
-                ```None```
-            
-
-            ??? columnstyle "hbp"
-
-                ```None```
-            
-
-            ??? columnstyle "sh"
-
-                ```None```
-            
-
-            ??? columnstyle "sf"
-
-                ```None```
-            
-
-            ??? columnstyle "gidp"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "batting_post"
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "round"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "ab"
-
-                ```None```
-            
-
-            ??? columnstyle "r"
-
-                ```None```
-            
-
-            ??? columnstyle "h"
-
-                ```None```
-            
-
-            ??? columnstyle "_2b"
-
-                ```None```
-            
-
-            ??? columnstyle "_3b"
-
-                ```None```
-            
-
-            ??? columnstyle "hr"
-
-                ```None```
-            
-
-            ??? columnstyle "rbi"
-
-                ```None```
-            
-
-            ??? columnstyle "sb"
-
-                ```None```
-            
-
-            ??? columnstyle "cs"
-
-                ```None```
-            
-
-            ??? columnstyle "bb"
-
-                ```None```
-            
-
-            ??? columnstyle "so"
-
-                ```None```
-            
-
-            ??? columnstyle "ibb"
-
-                ```None```
-            
-
-            ??? columnstyle "hbp"
-
-                ```None```
-            
-
-            ??? columnstyle "sh"
-
-                ```None```
-            
-
-            ??? columnstyle "sf"
-
-                ```None```
-            
-
-            ??? columnstyle "gidp"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "college_playing"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "school_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "fielding"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "stint"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "pos"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "gs"
-
-                ```None```
-            
-
-            ??? columnstyle "inn_outs"
-
-                ```None```
-            
-
-            ??? columnstyle "po"
-
-                ```None```
-            
-
-            ??? columnstyle "a"
-
-                ```None```
-            
-
-            ??? columnstyle "e"
-
-                ```None```
-            
-
-            ??? columnstyle "dp"
-
-                ```None```
-            
-
-            ??? columnstyle "pb"
-
-                ```None```
-            
-
-            ??? columnstyle "wp"
-
-                ```None```
-            
-
-            ??? columnstyle "sb"
-
-                ```None```
-            
-
-            ??? columnstyle "cs"
-
-                ```None```
-            
-
-            ??? columnstyle "zr"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "fielding_of"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "stint"
-
-                ```None```
-            
-
-            ??? columnstyle "g_lf"
-
-                ```None```
-            
-
-            ??? columnstyle "g_cf"
-
-                ```None```
-            
-
-            ??? columnstyle "g_rf"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "fielding_of_split"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "stint"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "pos"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "gs"
-
-                ```None```
-            
-
-            ??? columnstyle "inn_outs"
-
-                ```None```
-            
-
-            ??? columnstyle "po"
-
-                ```None```
-            
-
-            ??? columnstyle "a"
-
-                ```None```
-            
-
-            ??? columnstyle "e"
-
-                ```None```
-            
-
-            ??? columnstyle "dp"
-
-                ```None```
-            
-
-            ??? columnstyle "pb"
-
-                ```None```
-            
-
-            ??? columnstyle "wp"
-
-                ```None```
-            
-
-            ??? columnstyle "sb"
-
-                ```None```
-            
-
-            ??? columnstyle "cs"
-
-                ```None```
-            
-
-            ??? columnstyle "zr"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "fielding_post"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "round"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "pos"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "gs"
-
-                ```None```
-            
-
-            ??? columnstyle "inn_outs"
-
-                ```None```
-            
-
-            ??? columnstyle "po"
-
-                ```None```
-            
-
-            ??? columnstyle "a"
-
-                ```None```
-            
-
-            ??? columnstyle "e"
-
-                ```None```
-            
-
-            ??? columnstyle "dp"
-
-                ```None```
-            
-
-            ??? columnstyle "tp"
-
-                ```None```
-            
-
-            ??? columnstyle "pb"
-
-                ```None```
-            
-
-            ??? columnstyle "sb"
-
-                ```None```
-            
-
-            ??? columnstyle "cs"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "hall_of_fame"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "voted_by"
-
-                ```None```
-            
-
-            ??? columnstyle "ballots"
-
-                ```None```
-            
-
-            ??? columnstyle "needed"
-
-                ```None```
-            
-
-            ??? columnstyle "votes"
-
-                ```None```
-            
-
-            ??? columnstyle "inducted"
-
-                ```None```
-            
-
-            ??? columnstyle "category"
-
-                ```None```
-            
-
-            ??? columnstyle "needed_note"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "home_games"
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "team_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "park_id"
-
-                ```None```
-            
-
-            ??? columnstyle "first_game"
-
-                ```None```
-            
-
-            ??? columnstyle "last_game"
-
-                ```None```
-            
-
-            ??? columnstyle "games"
-
-                ```None```
-            
-
-            ??? columnstyle "openings"
-
-                ```None```
-            
-
-            ??? columnstyle "attendance"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "managers"
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "team_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "inseason"
-
-                ```None```
-            
-
-            ??? columnstyle "player_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "w"
-
-                ```None```
-            
-
-            ??? columnstyle "l"
-
-                ```None```
-            
-
-            ??? columnstyle "rank"
-
-                ```None```
-            
-
-            ??? columnstyle "plyr_mgr"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "managers_half"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "team_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "half"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "inseason"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "w"
-
-                ```None```
-            
-
-            ??? columnstyle "l"
-
-                ```None```
-            
-
-            ??? columnstyle "rank"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "parks"
-
-            ??? keycolumnstyle "park_id"
-
-                ```None```
-            
-
-            ??? columnstyle "park_name"
-
-                ```None```
-            
-
-            ??? columnstyle "park_alias"
-
-                ```None```
-            
-
-            ??? columnstyle "city"
-
-                ```None```
-            
-
-            ??? columnstyle "state"
-
-                ```None```
-            
-
-            ??? columnstyle "country"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "people"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? columnstyle "birth_year"
-
-                ```None```
-            
-
-            ??? columnstyle "birth_month"
-
-                ```None```
-            
-
-            ??? columnstyle "birth_day"
-
-                ```None```
-            
-
-            ??? columnstyle "birth_country"
-
-                ```None```
-            
-
-            ??? columnstyle "birth_state"
-
-                ```None```
-            
-
-            ??? columnstyle "birth_city"
-
-                ```None```
-            
-
-            ??? columnstyle "death_year"
-
-                ```None```
-            
-
-            ??? columnstyle "death_month"
-
-                ```None```
-            
-
-            ??? columnstyle "death_day"
-
-                ```None```
-            
-
-            ??? columnstyle "death_country"
-
-                ```None```
-            
-
-            ??? columnstyle "death_state"
-
-                ```None```
-            
-
-            ??? columnstyle "death_city"
-
-                ```None```
-            
-
-            ??? columnstyle "name_first"
-
-                ```None```
-            
-
-            ??? columnstyle "name_last"
-
-                ```None```
-            
-
-            ??? columnstyle "name_given"
-
-                ```None```
-            
-
-            ??? columnstyle "weight"
-
-                ```None```
-            
-
-            ??? columnstyle "height"
-
-                ```None```
-            
-
-            ??? columnstyle "bats"
-
-                ```None```
-            
-
-            ??? columnstyle "throws"
-
-                ```None```
-            
-
-            ??? columnstyle "debut"
-
-                ```None```
-            
-
-            ??? columnstyle "final_game"
-
-                ```None```
-            
-
-            ??? columnstyle "retro_id"
-
-                ```None```
-            
-
-            ??? columnstyle "bbref_id"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "pitching"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "stint"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "w"
-
-                ```None```
-            
-
-            ??? columnstyle "l"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "gs"
-
-                ```None```
-            
-
-            ??? columnstyle "cg"
-
-                ```None```
-            
-
-            ??? columnstyle "sho"
-
-                ```None```
-            
-
-            ??? columnstyle "sv"
-
-                ```None```
-            
-
-            ??? columnstyle "ip_outs"
-
-                ```None```
-            
-
-            ??? columnstyle "h"
-
-                ```None```
-            
-
-            ??? columnstyle "er"
-
-                ```None```
-            
-
-            ??? columnstyle "hr"
-
-                ```None```
-            
-
-            ??? columnstyle "bb"
-
-                ```None```
-            
-
-            ??? columnstyle "so"
-
-                ```None```
-            
-
-            ??? columnstyle "ba_opp"
-
-                ```None```
-            
-
-            ??? columnstyle "era"
-
-                ```None```
-            
-
-            ??? columnstyle "ibb"
-
-                ```None```
-            
-
-            ??? columnstyle "wp"
-
-                ```None```
-            
-
-            ??? columnstyle "hbp"
-
-                ```None```
-            
-
-            ??? columnstyle "bk"
-
-                ```None```
-            
-
-            ??? columnstyle "bfp"
-
-                ```None```
-            
-
-            ??? columnstyle "gf"
-
-                ```None```
-            
-
-            ??? columnstyle "r"
-
-                ```None```
-            
-
-            ??? columnstyle "sh"
-
-                ```None```
-            
-
-            ??? columnstyle "sf"
-
-                ```None```
-            
-
-            ??? columnstyle "gidp"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "pitching_post"
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "round"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? columnstyle "w"
-
-                ```None```
-            
-
-            ??? columnstyle "l"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "gs"
-
-                ```None```
-            
-
-            ??? columnstyle "cg"
-
-                ```None```
-            
-
-            ??? columnstyle "sho"
-
-                ```None```
-            
-
-            ??? columnstyle "sv"
-
-                ```None```
-            
-
-            ??? columnstyle "ip_outs"
-
-                ```None```
-            
-
-            ??? columnstyle "h"
-
-                ```None```
-            
-
-            ??? columnstyle "er"
-
-                ```None```
-            
-
-            ??? columnstyle "hr"
-
-                ```None```
-            
-
-            ??? columnstyle "bb"
-
-                ```None```
-            
-
-            ??? columnstyle "so"
-
-                ```None```
-            
-
-            ??? columnstyle "ba_opp"
-
-                ```None```
-            
-
-            ??? columnstyle "era"
-
-                ```None```
-            
-
-            ??? columnstyle "ibb"
-
-                ```None```
-            
-
-            ??? columnstyle "wp"
-
-                ```None```
-            
-
-            ??? columnstyle "hbp"
-
-                ```None```
-            
-
-            ??? columnstyle "bk"
-
-                ```None```
-            
-
-            ??? columnstyle "bfp"
-
-                ```None```
-            
-
-            ??? columnstyle "gf"
-
-                ```None```
-            
-
-            ??? columnstyle "r"
-
-                ```None```
-            
-
-            ??? columnstyle "sh"
-
-                ```None```
-            
-
-            ??? columnstyle "sf"
-
-                ```None```
-            
-
-            ??? columnstyle "gidp"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "salaries"
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "team_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "player_id"
-
-                ```None```
-            
-
-            ??? columnstyle "salary"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "schools"
-
-            ??? keycolumnstyle "school_id"
-
-                ```None```
-            
-
-            ??? columnstyle "name_full"
-
-                ```None```
-            
-
-            ??? columnstyle "city"
-
-                ```None```
-            
-
-            ??? columnstyle "state"
-
-                ```None```
-            
-
-            ??? columnstyle "country"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "series_post"
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "round"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id_winner"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id_winner"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id_loser"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_id_loser"
-
-                ```None```
-            
-
-            ??? columnstyle "wins"
-
-                ```None```
-            
-
-            ??? columnstyle "losses"
-
-                ```None```
-            
-
-            ??? columnstyle "ties"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "teams"
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "team_id"
-
-                ```None```
-            
-
-            ??? columnstyle "franch_id"
-
-                ```None```
-            
-
-            ??? columnstyle "div_id"
-
-                ```None```
-            
-
-            ??? columnstyle "rank"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "g_home"
-
-                ```None```
-            
-
-            ??? columnstyle "w"
-
-                ```None```
-            
-
-            ??? columnstyle "l"
-
-                ```None```
-            
-
-            ??? columnstyle "div_win"
-
-                ```None```
-            
-
-            ??? columnstyle "wc_win"
-
-                ```None```
-            
-
-            ??? columnstyle "lg_win"
-
-                ```None```
-            
-
-            ??? columnstyle "ws_win"
-
-                ```None```
-            
-
-            ??? columnstyle "r"
-
-                ```None```
-            
-
-            ??? columnstyle "ab"
-
-                ```None```
-            
-
-            ??? columnstyle "h"
-
-                ```None```
-            
-
-            ??? columnstyle "_2b"
-
-                ```None```
-            
-
-            ??? columnstyle "_3b"
-
-                ```None```
-            
-
-            ??? columnstyle "hr"
-
-                ```None```
-            
-
-            ??? columnstyle "bb"
-
-                ```None```
-            
-
-            ??? columnstyle "so"
-
-                ```None```
-            
-
-            ??? columnstyle "sb"
-
-                ```None```
-            
-
-            ??? columnstyle "cs"
-
-                ```None```
-            
-
-            ??? columnstyle "hbp"
-
-                ```None```
-            
-
-            ??? columnstyle "sf"
-
-                ```None```
-            
-
-            ??? columnstyle "ra"
-
-                ```None```
-            
-
-            ??? columnstyle "er"
-
-                ```None```
-            
-
-            ??? columnstyle "era"
-
-                ```None```
-            
-
-            ??? columnstyle "cg"
-
-                ```None```
-            
-
-            ??? columnstyle "sho"
-
-                ```None```
-            
-
-            ??? columnstyle "sv"
-
-                ```None```
-            
-
-            ??? columnstyle "ip_outs"
-
-                ```None```
-            
-
-            ??? columnstyle "h_a"
-
-                ```None```
-            
-
-            ??? columnstyle "hr_a"
-
-                ```None```
-            
-
-            ??? columnstyle "bb_a"
-
-                ```None```
-            
-
-            ??? columnstyle "so_a"
-
-                ```None```
-            
-
-            ??? columnstyle "e"
-
-                ```None```
-            
-
-            ??? columnstyle "dp"
-
-                ```None```
-            
-
-            ??? columnstyle "fp"
-
-                ```None```
-            
-
-            ??? columnstyle "name"
-
-                ```None```
-            
-
-            ??? columnstyle "park"
-
-                ```None```
-            
-
-            ??? columnstyle "attendance"
-
-                ```None```
-            
-
-            ??? columnstyle "bpf"
-
-                ```None```
-            
-
-            ??? columnstyle "ppf"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id_br"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id_lahman45"
-
-                ```None```
-            
-
-            ??? columnstyle "team_id_retro"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "teams_franchises"
-
-            ??? keycolumnstyle "franch_id"
-
-                ```None```
-            
-
-            ??? columnstyle "franch_name"
-
-                ```None```
-            
-
-            ??? columnstyle "active"
-
-                ```None```
-            
-
-            ??? columnstyle "na_assoc"
-
-                ```None```
-            
-
-        
-
-        ??? tablestyle "teams_half"
-
-            ??? keycolumnstyle "year_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "lg_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "team_id"
-
-                ```None```
-            
-
-            ??? keycolumnstyle "half"
-
-                ```None```
-            
-
-            ??? columnstyle "div_id"
-
-                ```None```
-            
-
-            ??? columnstyle "div_win"
-
-                ```None```
-            
-
-            ??? columnstyle "rank"
-
-                ```None```
-            
-
-            ??? columnstyle "g"
-
-                ```None```
-            
-
-            ??? columnstyle "w"
-
-                ```None```
-            
-
-            ??? columnstyle "l"
-
-                ```None```
-            
-
-        
-
+        No documentation provided.
+        ```
     
+
+    ??? columnstyle "game_id"
+
+        ```
+        Type: char(12)
+
+        Game ID (home team ID + YYYYMMDD + doubleheader flag
+        ```
+    
+
+    ??? columnstyle "inn_ct"
+
+        ```
+        Type: smallint
+
+        Inning of substitution
+        ```
+    
+
+    ??? columnstyle "bat_home_id"
+
+        ```
+        Type: smallint
+
+        Is home team batting (-1 for N/A)
+        ```
+    
+
+    ??? columnstyle "sub_id"
+
+        ```
+        Type: char(8)
+
+        Player ID of substitute
+        ```
+    
+
+    ??? columnstyle "sub_home_id"
+
+        ```
+        Type: boolean
+
+        Is the home team making the substitution
+        ```
+    
+
+    ??? columnstyle "sub_lineup_id"
+
+        ```
+        Type: smallint
+
+        Lineup position of substitution
+        ```
+    
+
+    ??? columnstyle "sub_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position of substitution
+        ```
+    
+
+    ??? columnstyle "removed_id"
+
+        ```
+        Type: char(8)
+
+        ID of removed player
+        ```
+    
+
+    ??? columnstyle "removed_fld_cd"
+
+        ```
+        Type: smallint
+
+        Fielding position of removed player
+        ```
+    
+
+    ??? columnstyle "event_id"
+
+        ```
+        Type: smallint
+
+        Event number in which substitution occurred
+        ```
+    
+
+
+
+
+
+## baseballdatabank
+??? tablestyle "allstar_full"
+
+    ??? keycolumnstyle "dummy_id"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "game_num"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "game_id"
+
+        ```
+        Type: varchar(12)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "starting_pos"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "appearances"
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_all"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_batting"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_defense"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_p"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_c"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_1b"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_2b"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_3b"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_ss"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_lf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_cf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_rf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_of"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_dh"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_ph"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_pr"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "awards_managers"
+
+    ??? keycolumnstyle "dummy_id"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "player_id"
+
+        ```
+        Type: varchar(10)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "award_id"
+
+        ```
+        Type: varchar(75)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "tie"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "notes"
+
+        ```
+        Type: varchar(100)
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "awards_players"
+
+    ??? keycolumnstyle "dummy_id"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "award_id"
+
+        ```
+        Type: varchar(255)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "tie"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "notes"
+
+        ```
+        Type: varchar(100)
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "awards_share_managers"
+
+    ??? keycolumnstyle "award_id"
+
+        ```
+        Type: varchar(25)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(10)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "points_won"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "points_max"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "votes_first"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "awards_share_players"
+
+    ??? keycolumnstyle "award_id"
+
+        ```
+        Type: varchar(25)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "points_won"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "points_max"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "votes_first"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "batting"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "stint"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ab"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "r"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "h"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "_2b"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "_3b"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hr"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "rbi"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "cs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "so"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ibb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hbp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sh"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gidp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "batting_post"
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "round"
+
+        ```
+        Type: varchar(10)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ab"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "r"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "h"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "_2b"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "_3b"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hr"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "rbi"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "cs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "so"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ibb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hbp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sh"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gidp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "college_playing"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "school_id"
+
+        ```
+        Type: varchar(15)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "fielding"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "stint"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "pos"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "inn_outs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "po"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "a"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "e"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "dp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "pb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "wp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "cs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "zr"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "fielding_of"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "stint"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_lf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_cf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_rf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "fielding_of_split"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "stint"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "pos"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "inn_outs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "po"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "a"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "e"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "dp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "pb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "wp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "cs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "zr"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "fielding_post"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "round"
+
+        ```
+        Type: varchar(10)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "pos"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "inn_outs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "po"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "a"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "e"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "dp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "tp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "pb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "cs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "hall_of_fame"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(10)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "voted_by"
+
+        ```
+        Type: varchar(64)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ballots"
+
+        ```
+        Type: varchar(64)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "needed"
+
+        ```
+        Type: varchar(64)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "votes"
+
+        ```
+        Type: varchar(64)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "inducted"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "category"
+
+        ```
+        Type: varchar(20)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "needed_note"
+
+        ```
+        Type: varchar(25)
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "home_games"
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "park_id"
+
+        ```
+        Type: varchar(5)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "first_game"
+
+        ```
+        Type: date
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "last_game"
+
+        ```
+        Type: date
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "games"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "openings"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "attendance"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "managers"
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "inseason"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "player_id"
+
+        ```
+        Type: varchar(10)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "w"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "l"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "rank"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "plyr_mgr"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "managers_half"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(10)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "half"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "inseason"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "w"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "l"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "rank"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "parks"
+
+    ??? keycolumnstyle "park_id"
+
+        ```
+        Type: varchar(5)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "park_name"
+
+        ```
+        Type: varchar(40)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "park_alias"
+
+        ```
+        Type: varchar(55)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "city"
+
+        ```
+        Type: varchar(25)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "state"
+
+        ```
+        Type: varchar(16)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "country"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "people"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(10)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "birth_year"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "birth_month"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "birth_day"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "birth_country"
+
+        ```
+        Type: varchar(50)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "birth_state"
+
+        ```
+        Type: varchar(50)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "birth_city"
+
+        ```
+        Type: varchar(50)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "death_year"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "death_month"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "death_day"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "death_country"
+
+        ```
+        Type: varchar(50)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "death_state"
+
+        ```
+        Type: varchar(50)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "death_city"
+
+        ```
+        Type: varchar(50)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "name_first"
+
+        ```
+        Type: varchar(50)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "name_last"
+
+        ```
+        Type: varchar(50)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "name_given"
+
+        ```
+        Type: varchar(255)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "weight"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "height"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bats"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "throws"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "debut"
+
+        ```
+        Type: date
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "final_game"
+
+        ```
+        Type: date
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "retro_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bbref_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "pitching"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "stint"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "w"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "l"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "cg"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sho"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sv"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ip_outs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "h"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "er"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hr"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "so"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ba_opp"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "era"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ibb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "wp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hbp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bk"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bfp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "r"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sh"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gidp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "pitching_post"
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "round"
+
+        ```
+        Type: varchar(10)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "w"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "l"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "cg"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sho"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sv"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ip_outs"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "h"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "er"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hr"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "so"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ba_opp"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "era"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ibb"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "wp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hbp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bk"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bfp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "r"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sh"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sf"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "gidp"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "salaries"
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "player_id"
+
+        ```
+        Type: varchar(9)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "salary"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "schools"
+
+    ??? keycolumnstyle "school_id"
+
+        ```
+        Type: varchar(15)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "name_full"
+
+        ```
+        Type: varchar(255)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "city"
+
+        ```
+        Type: varchar(55)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "state"
+
+        ```
+        Type: varchar(55)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "country"
+
+        ```
+        Type: varchar(55)
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "series_post"
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "round"
+
+        ```
+        Type: varchar(5)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id_winner"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id_winner"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id_loser"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_id_loser"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "wins"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "losses"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ties"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "teams"
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: smallint
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "franch_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "div_id"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "rank"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g_home"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "w"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "l"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "div_win"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "wc_win"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "lg_win"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ws_win"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "r"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ab"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "h"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "_2b"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "_3b"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hr"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bb"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "so"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sb"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "cs"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hbp"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sf"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ra"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "er"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "era"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "cg"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sho"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "sv"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ip_outs"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "h_a"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "hr_a"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bb_a"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "so_a"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "e"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "dp"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "fp"
+
+        ```
+        Type: float
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "name"
+
+        ```
+        Type: varchar(50)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "park"
+
+        ```
+        Type: varchar(255)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "attendance"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "bpf"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "ppf"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id_br"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id_lahman45"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "team_id_retro"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "teams_franchises"
+
+    ??? keycolumnstyle "franch_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "franch_name"
+
+        ```
+        Type: varchar(50)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "active"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "na_assoc"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+
+
+??? tablestyle "teams_half"
+
+    ??? keycolumnstyle "year_id"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "lg_id"
+
+        ```
+        Type: varchar(2)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "team_id"
+
+        ```
+        Type: varchar(3)
+
+        No documentation provided.
+        ```
+    
+
+    ??? keycolumnstyle "half"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "div_id"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "div_win"
+
+        ```
+        Type: varchar(1)
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "rank"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "g"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "w"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+    ??? columnstyle "l"
+
+        ```
+        Type: integer
+
+        No documentation provided.
+        ```
+    
+
+
+
+

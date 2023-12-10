@@ -3197,7 +3197,7 @@
                             "name": "double_header",
                             "type": "char(1)",
                             "primary_key": true,
-                            "doc": "\n        Number of game:\n         \"0\" -- a single game\n         \"1\" -- the first game of a double (or triple) header\n                including separate admission doubleheaders\n         \"2\" -- the second game of a double (or triple) header\n                including separate admission doubleheaders\n         \"3\" -- the third game of a triple-header\n         \"A\" -- the first game of a double-header involving 3 teams\n         \"B\" -- the second game of a double-header involving 3 teams\n         "
+                            "doc": "Number of game:\n\"0\" -- a single game\n\"1\" -- the first game of a double (or triple) header\n       including separate admission doubleheaders\n\"2\" -- the second game of a double (or triple) header\n       including separate admission doubleheaders\n\"3\" -- the third game of a triple-header\n\"A\" -- the first game of a double-header involving 3 teams\n\"B\" -- the second game of a double-header involving 3 teams\n"
                         },
                         {
                             "name": "visiting_team",
@@ -3269,7 +3269,7 @@
                             "name": "completion_info",
                             "type": "varchar(23)",
                             "primary_key": false,
-                            "doc": "\n        Completion information.  If the game was completed at a\n        later date (either due to a suspension or an upheld protest)\n        this field will include:\n            \"yyyymmdd,park,vs,hs,len\" Where\n        yyyymmdd -- the date the game was completed\n        park -- the park ID where the game was completed\n        vs -- the visitor score at the time of interruption\n        hs -- the home score at the time of interruption\n        len -- the length of the game in outs at time of interruption\n        All the rest of the information in the record refers to the\n        entire game.\n        "
+                            "doc": "Completion information.  If the game was completed at a\nlater date (either due to a suspension or an upheld protest)\nthis field will include:\n    \"yyyymmdd,park,vs,hs,len\" Where\nyyyymmdd -- the date the game was completed\npark -- the park ID where the game was completed\nvs -- the visitor score at the time of interruption\nhs -- the home score at the time of interruption\nlen -- the length of the game in outs at time of interruption\nAll the rest of the information in the record refers to the\nentire game.\n"
                         },
                         {
                             "name": "forfeit_info",
@@ -4145,7 +4145,7 @@
                             "name": "additional_info",
                             "type": "varchar(128)",
                             "primary_key": false,
-                            "doc": "\n        Additional information.  This is a grab-bag of informational\n              items that might not warrant a field on their own.  The field\n              is alpha-numeric. Some items are represented by tokens such as:\n                 \"HTBF\" -- home team batted first.\n                 Note: if \"HTBF\" is specified it would be possible to see\n                 something like \"01002000x\" in the visitor's line score.\n              Changes in umpire positions during a game will also appear in\n              this field.  These will be in the form:\n                 umpchange,inning,umpPosition,umpid with the latter three\n                 repeated for each umpire.\n              These changes occur with umpire injuries, late arrival of\n              umpires or changes from completion of suspended games. Details\n              of suspended games are in field `completion_information`.\n        "
+                            "doc": "Additional information.  This is a grab-bag of informational\nitems that might not warrant a field on their own.  The field\nis alpha-numeric. Some items are represented by tokens such as:\n   \"HTBF\" -- home team batted first.\n   Note: if \"HTBF\" is specified it would be possible to see\n   something like \"01002000x\" in the visitor's line score.\nChanges in umpire positions during a game will also appear in\nthis field.  These will be in the form:\n   umpchange,inning,umpPosition,umpid with the latter three\n   repeated for each umpire.\nThese changes occur with umpire injuries, late arrival of\numpires or changes from completion of suspended games. Details\nof suspended games are in field `completion_information`.\n"
                         },
                         {
                             "name": "acquisition_info",
@@ -4334,13 +4334,13 @@
                             "name": "postponement_indicator",
                             "type": "varchar(120)",
                             "primary_key": false,
-                            "doc": "\n        This field will contain one or more phrases related to the game if it was\n        not played as scheduled. If there is more than one phrase, they are separated\n        by a semi-colon (\";\"). There are three possible outcomes for games not played\n        on the originally scheduled date:\n        -- The game was played on another date\n        -- The game was played on the original date but at another site\n        -- The game was not played\n        "
+                            "doc": "This field will contain one or more phrases related to the game if it was\nnot played as scheduled. If there is more than one phrase, they are separated\nby a semi-colon (\";\"). There are three possible outcomes for games not played\non the originally scheduled date:\n-- The game was played on another date\n-- The game was played on the original date but at another site\n-- The game was not played\n"
                         },
                         {
                             "name": "makeup_dates",
                             "type": "varchar(120)",
                             "primary_key": false,
-                            "doc": "\n        This field will contain a makeup date if the postponed game was played at\n        another time or place. If an attempt was known to have been made on a date but\n        postponed again, that date will be listed. In that case, there will be a second\n        date for the date when the game was actually played, in this form: \"20150428;\n        20150528\" For the note about a team folding, the team code is one of the\n        standard Retrosheet team IDs. The same is true for the team played as note.\n        Often, the two of these are combined in one field.\n        "
+                            "doc": "This field will contain a makeup date if the postponed game was played at\nanother time or place. If an attempt was known to have been made on a date but\npostponed again, that date will be listed. In that case, there will be a second\ndate for the date when the game was actually played, in this form: \"20150428;\n20150528\" For the note about a team folding, the team code is one of the\nstandard Retrosheet team IDs. The same is true for the team played as note.\nOften, the two of these are combined in one field.\n"
                         }
                     ]
                 },

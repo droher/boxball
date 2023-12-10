@@ -2621,17 +2621,16 @@
                     <detail>
                       <summary>&#128273; **double_header** : (char(1))</summary>
 
-                      
-        Number of game:
-         "0" -- a single game
-         "1" -- the first game of a double (or triple) header
-                including separate admission doubleheaders
-         "2" -- the second game of a double (or triple) header
-                including separate admission doubleheaders
-         "3" -- the third game of a triple-header
-         "A" -- the first game of a double-header involving 3 teams
-         "B" -- the second game of a double-header involving 3 teams
-         
+                      Number of game:
+"0" -- a single game
+"1" -- the first game of a double (or triple) header
+       including separate admission doubleheaders
+"2" -- the second game of a double (or triple) header
+       including separate admission doubleheaders
+"3" -- the third game of a triple-header
+"A" -- the first game of a double-header involving 3 teams
+"B" -- the second game of a double-header involving 3 teams
+
                     </detail>
                     <detail>
                       <summary>&#128273; **visiting_team** : (char(3))</summary>
@@ -2691,19 +2690,18 @@
                     <detail>
                       <summary>**completion_info** : (varchar(23))</summary>
 
-                      
-        Completion information.  If the game was completed at a
-        later date (either due to a suspension or an upheld protest)
-        this field will include:
-            "yyyymmdd,park,vs,hs,len" Where
-        yyyymmdd -- the date the game was completed
-        park -- the park ID where the game was completed
-        vs -- the visitor score at the time of interruption
-        hs -- the home score at the time of interruption
-        len -- the length of the game in outs at time of interruption
-        All the rest of the information in the record refers to the
-        entire game.
-        
+                      Completion information.  If the game was completed at a
+later date (either due to a suspension or an upheld protest)
+this field will include:
+    "yyyymmdd,park,vs,hs,len" Where
+yyyymmdd -- the date the game was completed
+park -- the park ID where the game was completed
+vs -- the visitor score at the time of interruption
+hs -- the home score at the time of interruption
+len -- the length of the game in outs at time of interruption
+All the rest of the information in the record refers to the
+entire game.
+
                     </detail>
                     <detail>
                       <summary>**forfeit_info** : (varchar(3))</summary>
@@ -3433,21 +3431,20 @@
                     <detail>
                       <summary>**additional_info** : (varchar(128))</summary>
 
-                      
-        Additional information.  This is a grab-bag of informational
-              items that might not warrant a field on their own.  The field
-              is alpha-numeric. Some items are represented by tokens such as:
-                 "HTBF" -- home team batted first.
-                 Note: if "HTBF" is specified it would be possible to see
-                 something like "01002000x" in the visitor's line score.
-              Changes in umpire positions during a game will also appear in
-              this field.  These will be in the form:
-                 umpchange,inning,umpPosition,umpid with the latter three
-                 repeated for each umpire.
-              These changes occur with umpire injuries, late arrival of
-              umpires or changes from completion of suspended games. Details
-              of suspended games are in field `completion_information`.
-        
+                      Additional information.  This is a grab-bag of informational
+items that might not warrant a field on their own.  The field
+is alpha-numeric. Some items are represented by tokens such as:
+   "HTBF" -- home team batted first.
+   Note: if "HTBF" is specified it would be possible to see
+   something like "01002000x" in the visitor's line score.
+Changes in umpire positions during a game will also appear in
+this field.  These will be in the form:
+   umpchange,inning,umpPosition,umpid with the latter three
+   repeated for each umpire.
+These changes occur with umpire injuries, late arrival of
+umpires or changes from completion of suspended games. Details
+of suspended games are in field `completion_information`.
+
                     </detail>
                     <detail>
                       <summary>**acquisition_info** : (char(1))</summary>
@@ -3595,28 +3592,26 @@
                     <detail>
                       <summary>**postponement_indicator** : (varchar(120))</summary>
 
-                      
-        This field will contain one or more phrases related to the game if it was
-        not played as scheduled. If there is more than one phrase, they are separated
-        by a semi-colon (";"). There are three possible outcomes for games not played
-        on the originally scheduled date:
-        -- The game was played on another date
-        -- The game was played on the original date but at another site
-        -- The game was not played
-        
+                      This field will contain one or more phrases related to the game if it was
+not played as scheduled. If there is more than one phrase, they are separated
+by a semi-colon (";"). There are three possible outcomes for games not played
+on the originally scheduled date:
+-- The game was played on another date
+-- The game was played on the original date but at another site
+-- The game was not played
+
                     </detail>
                     <detail>
                       <summary>**makeup_dates** : (varchar(120))</summary>
 
-                      
-        This field will contain a makeup date if the postponed game was played at
-        another time or place. If an attempt was known to have been made on a date but
-        postponed again, that date will be listed. In that case, there will be a second
-        date for the date when the game was actually played, in this form: "20150428;
-        20150528" For the note about a team folding, the team code is one of the
-        standard Retrosheet team IDs. The same is true for the team played as note.
-        Often, the two of these are combined in one field.
-        
+                      This field will contain a makeup date if the postponed game was played at
+another time or place. If an attempt was known to have been made on a date but
+postponed again, that date will be listed. In that case, there will be a second
+date for the date when the game was actually played, in this form: "20150428;
+20150528" For the note about a team folding, the team code is one of the
+standard Retrosheet team IDs. The same is true for the team played as note.
+Often, the two of these are combined in one field.
+
                     </detail>
             ### sub
                     <detail>

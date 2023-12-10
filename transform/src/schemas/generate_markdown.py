@@ -74,11 +74,31 @@ class PyMDGenerator(MarkdownGenerator):
     def __init__(self, database: JsObject):
         super().__init__(database)
 
+    def _generate_docstring(self, indent: int, docstring: str):
+        """Generate markdown for a single column."""
+        if (docstring is None):
+            self.add_line(indent, "No documentation provided.")
+            return
+
+        split_doc_string = docstring.split("\n")
+        if len(split_doc_string) == 1:
+            self.add_line(indent, f'{docstring}')
+            return
+        
+        for line in split_doc_string:
+            self.add_line(indent, f'{line}')
+
+        
+
     def generate_column_markdown(self, indent: int, column: JsObject):
         """Generate markdown for a single column."""       
         style = "columnstyle" if not column["primary_key"] else "keycolumnstyle"
         self.add_line(indent, f'??? {style} \"{column["name"]}\"\n')
-        self.add_line(indent+1, f'```{column["doc"]}```')
+        self.add_line(indent+1, "```")
+        self.add_line(indent+1, f'Type: {column["type"]}\n')
+        self._generate_docstring(indent+1,column["doc"])
+        #self.add_line(indent+1, "")
+        self.add_line(indent+1, "```")
         self.add_line(indent, f'\n')
     
     
@@ -91,14 +111,15 @@ class PyMDGenerator(MarkdownGenerator):
 
     def generate_schema_markdown(self, indent: int, schema: JsObject):
         """Generate markdown for all tables in the given schema."""
-        self.add_line(indent, f'??? schemastyle  \" {schema["schema_name"]}\"\n')
+        self.add_line(indent, f'## {schema["schema_name"]}')
         for table in schema["tables"]:
-            self.generate_table_markdown(indent+1, table)
+            self.generate_table_markdown(indent, table)
         self.add_line(indent, f'\n')
 
     def generate_database_markdown(self, database: JsObject):
         """Generate markdown for all schemas in the given database."""
-        self.add_line(0, f'??? databasestyle  \"{database["database_name"]}\"\n')
+        self.add_line(0, f'# {database["database_name"]}')
+
         for schema in database["schemas"].values():
-            self.generate_schema_markdown(1, schema)
+            self.generate_schema_markdown(0, schema)
 
