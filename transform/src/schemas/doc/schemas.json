@@ -19,7 +19,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": "Descriptions for codes in `event.event_cd`"
                 },
                 {
                     "table_name": "code_field_park",
@@ -36,7 +37,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": "Descriptions for codes in `game.field_park_cd`"
                 },
                 {
                     "table_name": "code_method_record",
@@ -53,7 +55,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": "Descriptions for codes in `game.method_record_cd`"
                 },
                 {
                     "table_name": "code_pitches_record",
@@ -70,7 +73,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": "Descriptions for codes in `game.pitches_record_cd`"
                 },
                 {
                     "table_name": "code_precip_park",
@@ -87,7 +91,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": "Descriptions for codes in `game.precip_park_cd`"
                 },
                 {
                     "table_name": "code_sky_park",
@@ -104,7 +109,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": "Descriptions for codes in `game.sky_park_cd`"
                 },
                 {
                     "table_name": "code_wind_direction_park",
@@ -121,7 +127,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": "Descriptions for codes in `game.wind_direction_park_cd`"
                 },
                 {
                     "table_name": "comment",
@@ -192,7 +199,8 @@
                             "primary_key": false,
                             "doc": "ID of new umpire"
                         }
-                    ]
+                    ],
+                    "table_doc": "A complement to `event` that sources detailed text comments from play-by-play files. When present,\nthese comments can be helpful in figuring out what happened on unusual plays."
                 },
                 {
                     "table_name": "daily",
@@ -1127,7 +1135,8 @@
                             "primary_key": false,
                             "doc": "Triple pays turned as right fielder"
                         }
-                    ]
+                    ],
+                    "table_doc": "Contains one row per player per game. In addition to providing more convenient summaries of player data than the\n`event` table, the `daily` table also includes information from box score event files, giving it complete coverage\nfor all games dating back to 1906 (as well as the 1871 and 1872 seasons).\n\nIf you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage\noption like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for\ntraditional row-oriented stores.\n\nThe same caveats around data quality from `event` apply here as well. Additionally, there appear to be some minor\nreferential integrity issues in a couple rows: in at least one case, a player truly appeared in a single game more\nthan once (in the 1934 All-Star Game), while a parsing error caused this to appear in at least one other case."
                 },
                 {
                     "table_name": "deduced_game",
@@ -1138,7 +1147,8 @@
                             "primary_key": true,
                             "doc": "Game ID (home team ID + YYYYMMDD + doubleheader flag"
                         }
-                    ]
+                    ],
+                    "table_doc": "One-column table that contains a list of all game IDs for which the PBP account was\ndeduced from newspaper accounts of the game. The table can be used to filter out those games\nfrom the event file if desired, or to create a flag variable when performing analysis."
                 },
                 {
                     "table_name": "event",
@@ -2103,7 +2113,8 @@
                             "primary_key": false,
                             "doc": "Uncertain play flag"
                         }
-                    ]
+                    ],
+                    "table_doc": "The event table is the most granular data available, containing one row for every play of every game\nfor which Retrosheet has data. This includes all postseason games in history, all All-Star games in history,\nall regular season games dating back to 1937, and a majority of regular season games dating back to 1921.\n\nEach row in the table does not necessarily constitute a new or complete plate appearance, as events like\nstolen bases and balks have their own rows.\n\nIf you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage\noption like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for\ntraditional row-oriented stores.\n\nWhile all games present in the table have the bare minimum of information about every play in the game,\nthere are significant differences in data quality from game to game. These differences in data quality often\ncomplicate historical analyses.\n-- A significant number of games from 1937-1973 do not have complete play-by-play accounts available. For these\n    missing games, Retrosheet has derived play-by-play data using a combination of box scores and game stories.\n    These derived games are likely to have less granular data around fielding plays.\n-- The overwhelming majority of games prior to 1988 do not have pitch-by-pitch data available (the most notable\n    exceptions to this are the 1950s Dodgers home games). From 1988-1999, nearly all games have pitch sequences,\n    but a significant number of games are missing pitch sequences from at least one plate appearance, making\n    pitch count analysis a bit more difficult. Games from 2000 on have complete pitch data.\n-- A similar situation exists for hit location data, although location data is more frequently populated for\n    older games than pitch data is."
                 },
                 {
                     "table_name": "game",
@@ -3182,7 +3193,8 @@
                             "primary_key": false,
                             "doc": "Acquisition information"
                         }
-                    ]
+                    ],
+                    "table_doc": "Contains one row for every unique game in the `event` table, and provides useful summary and metadata information\nabout those games.\n\nNote that this table will suffer from the same data quality/completeness issues as `event`. This table only\nincludes games for which play-by-play accounts exist, which means that some games from 1921-1936 and all games\nprior to 1921 will be missing from this table. The `gamelog` table provides one row for each game in major league\nhistory, making it a better choice for complete historical analyses."
                 },
                 {
                     "table_name": "gamelog",
@@ -4153,7 +4165,8 @@
                             "primary_key": false,
                             "doc": "Y - complete game information, N - no game information, D - game derived from box score and game story, P - portions of game information"
                         }
-                    ]
+                    ],
+                    "table_doc": "Contains one row for every game in major league history. While a bare minimum of result information exists\nfor all rows, the data becomes significantly more sparse for years prior to box score event files (< 1906)."
                 },
                 {
                     "table_name": "park",
@@ -4212,7 +4225,8 @@
                             "primary_key": false,
                             "doc": "Misc. notes"
                         }
-                    ]
+                    ],
+                    "table_doc": "Basic information about ballparks."
                 },
                 {
                     "table_name": "roster",
@@ -4265,7 +4279,8 @@
                             "primary_key": false,
                             "doc": "Throw handedness"
                         }
-                    ]
+                    ],
+                    "table_doc": "Contains one row for each unique combination of player, team, and year. For more detailed/convenient player\nbiographical data, use the `people` table from the Baseball Databank schema, joining on `retro_id`."
                 },
                 {
                     "table_name": "schedule",
@@ -4342,7 +4357,8 @@
                             "primary_key": false,
                             "doc": "This field will contain a makeup date if the postponed game was played at\nanother time or place. If an attempt was known to have been made on a date but\npostponed again, that date will be listed. In that case, there will be a second\ndate for the date when the game was actually played, in this form: \"20150428;\n20150528\" For the note about a team folding, the team code is one of the\nstandard Retrosheet team IDs. The same is true for the team played as note.\nOften, the two of these are combined in one field.\n"
                         }
-                    ]
+                    ],
+                    "table_doc": "Contains the original regular season schedules for all seasons dating back to 1877."
                 },
                 {
                     "table_name": "sub",
@@ -4413,7 +4429,8 @@
                             "primary_key": false,
                             "doc": "Event number in which substitution occurred"
                         }
-                    ]
+                    ],
+                    "table_doc": "A complement to `event` that provides convenient information about substitutions."
                 }
             ]
         },
@@ -4477,7 +4494,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "appearances",
@@ -4608,7 +4626,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "awards_managers",
@@ -4655,7 +4674,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "awards_players",
@@ -4702,7 +4722,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "awards_share_managers",
@@ -4749,7 +4770,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "awards_share_players",
@@ -4796,7 +4818,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "batting",
@@ -4933,7 +4956,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "batting_post",
@@ -5070,7 +5094,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "college_playing",
@@ -5093,7 +5118,8 @@
                             "primary_key": true,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "fielding",
@@ -5206,7 +5232,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "fielding_of",
@@ -5247,7 +5274,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "fielding_of_split",
@@ -5360,7 +5388,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": "Disaggregates outfield statistics from `Fielding` into LF, CF, and RF"
                 },
                 {
                     "table_name": "fielding_post",
@@ -5467,7 +5496,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "hall_of_fame",
@@ -5526,7 +5556,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "home_games",
@@ -5585,7 +5616,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "managers",
@@ -5650,7 +5682,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "managers_half",
@@ -5715,7 +5748,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "parks",
@@ -5756,7 +5790,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "people",
@@ -5905,7 +5940,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "pitching",
@@ -6090,7 +6126,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "pitching_post",
@@ -6275,7 +6312,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "salaries",
@@ -6310,7 +6348,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "schools",
@@ -6345,7 +6384,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "series_post",
@@ -6404,7 +6444,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "teams",
@@ -6697,7 +6738,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "teams_franchises",
@@ -6726,7 +6768,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": ""
                 },
                 {
                     "table_name": "teams_half",
@@ -6791,7 +6834,8 @@
                             "primary_key": false,
                             "doc": null
                         }
-                    ]
+                    ],
+                    "table_doc": "Table for years in MLB history that the season was divided into halves (e.g. 1981)"
                 }
             ]
         }

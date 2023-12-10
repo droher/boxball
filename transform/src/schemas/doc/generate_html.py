@@ -7,11 +7,19 @@ class HtmlGenerator:
         self._markdown_string = markdown_string
         self._css_classes = css_classes
 
+    def load_styles(path):
+        """Load the styles from the styles.css file."""
+        styles = None
+        with open(path, 'r') as f:
+            styles = f.read()
+        return styles
+
     extensions = ['pymdownx.details','extra','pymdownx.superfences','toc']
     
     superfences_configs = {
         'custom_fences': [
             {
+                'preserve_tabs': True,
                 'name': 'codeblock',
                 'class': 'codeblock',
                 'format': superfences.fence_code_format

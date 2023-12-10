@@ -3,6 +3,11 @@
 ## retrosheet
 ### code_event
 
+```{.codeblock}
+Descriptions for codes in `event.event_cd`
+```
+
+
 ??? keycolumnstyle "code    (smallint)"
     ```{.codeblock}
     No documentation provided.
@@ -18,6 +23,11 @@
 
 
 ### code_field_park
+
+```{.codeblock}
+Descriptions for codes in `game.field_park_cd`
+```
+
 
 ??? keycolumnstyle "code    (smallint)"
     ```{.codeblock}
@@ -35,6 +45,11 @@
 
 ### code_method_record
 
+```{.codeblock}
+Descriptions for codes in `game.method_record_cd`
+```
+
+
 ??? keycolumnstyle "code    (smallint)"
     ```{.codeblock}
     No documentation provided.
@@ -50,6 +65,11 @@
 
 
 ### code_pitches_record
+
+```{.codeblock}
+Descriptions for codes in `game.pitches_record_cd`
+```
+
 
 ??? keycolumnstyle "code    (smallint)"
     ```{.codeblock}
@@ -67,6 +87,11 @@
 
 ### code_precip_park
 
+```{.codeblock}
+Descriptions for codes in `game.precip_park_cd`
+```
+
+
 ??? keycolumnstyle "code    (smallint)"
     ```{.codeblock}
     No documentation provided.
@@ -82,6 +107,11 @@
 
 
 ### code_sky_park
+
+```{.codeblock}
+Descriptions for codes in `game.sky_park_cd`
+```
+
 
 ??? keycolumnstyle "code    (smallint)"
     ```{.codeblock}
@@ -99,6 +129,11 @@
 
 ### code_wind_direction_park
 
+```{.codeblock}
+Descriptions for codes in `game.wind_direction_park_cd`
+```
+
+
 ??? keycolumnstyle "code    (smallint)"
     ```{.codeblock}
     No documentation provided.
@@ -114,6 +149,12 @@
 
 
 ### comment
+
+```{.codeblock}
+A complement to `event` that sources detailed text comments from play-by-play files. When present,
+these comments can be helpful in figuring out what happened on unusual plays.
+```
+
 
 ??? keycolumnstyle "dummy_id    (integer)"
     ```{.codeblock}
@@ -184,6 +225,21 @@
 
 
 ### daily
+
+```{.codeblock}
+Contains one row per player per game. In addition to providing more convenient summaries of player data than the
+`event` table, the `daily` table also includes information from box score event files, giving it complete coverage
+for all games dating back to 1906 (as well as the 1871 and 1872 seasons).
+
+If you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage
+option like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for
+traditional row-oriented stores.
+
+The same caveats around data quality from `event` apply here as well. Additionally, there appear to be some minor
+referential integrity issues in a couple rows: in at least one case, a player truly appeared in a single game more
+than once (in the 1934 All-Star Game), while a parsing error caused this to appear in at least one other case.
+```
+
 
 ??? keycolumnstyle "dummy_id    (integer)"
     ```{.codeblock}
@@ -1119,6 +1175,13 @@
 
 ### deduced_game
 
+```{.codeblock}
+One-column table that contains a list of all game IDs for which the PBP account was
+deduced from newspaper accounts of the game. The table can be used to filter out those games
+from the event file if desired, or to create a flag variable when performing analysis.
+```
+
+
 ??? keycolumnstyle "game_id    (char(12))"
     ```{.codeblock}
     Game ID (home team ID + YYYYMMDD + doubleheader flag
@@ -1128,6 +1191,33 @@
 
 
 ### event
+
+```{.codeblock}
+The event table is the most granular data available, containing one row for every play of every game
+for which Retrosheet has data. This includes all postseason games in history, all All-Star games in history,
+all regular season games dating back to 1937, and a majority of regular season games dating back to 1921.
+
+Each row in the table does not necessarily constitute a new or complete plate appearance, as events like
+stolen bases and balks have their own rows.
+
+If you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage
+option like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for
+traditional row-oriented stores.
+
+While all games present in the table have the bare minimum of information about every play in the game,
+there are significant differences in data quality from game to game. These differences in data quality often
+complicate historical analyses.
+-- A significant number of games from 1937-1973 do not have complete play-by-play accounts available. For these
+    missing games, Retrosheet has derived play-by-play data using a combination of box scores and game stories.
+    These derived games are likely to have less granular data around fielding plays.
+-- The overwhelming majority of games prior to 1988 do not have pitch-by-pitch data available (the most notable
+    exceptions to this are the 1950s Dodgers home games). From 1988-1999, nearly all games have pitch sequences,
+    but a significant number of games are missing pitch sequences from at least one plate appearance, making
+    pitch count analysis a bit more difficult. Games from 2000 on have complete pitch data.
+-- A similar situation exists for hit location data, although location data is more frequently populated for
+    older games than pitch data is.
+```
+
 
 ??? keycolumnstyle "game_id    (char(12))"
     ```{.codeblock}
@@ -2092,6 +2182,17 @@
 
 
 ### game
+
+```{.codeblock}
+Contains one row for every unique game in the `event` table, and provides useful summary and metadata information
+about those games.
+
+Note that this table will suffer from the same data quality/completeness issues as `event`. This table only
+includes games for which play-by-play accounts exist, which means that some games from 1921-1936 and all games
+prior to 1921 will be missing from this table. The `gamelog` table provides one row for each game in major league
+history, making it a better choice for complete historical analyses.
+```
+
 
 ??? keycolumnstyle "game_id    (char(12))"
     ```{.codeblock}
@@ -3171,6 +3272,12 @@
 
 ### gamelog
 
+```{.codeblock}
+Contains one row for every game in major league history. While a bare minimum of result information exists
+for all rows, the data becomes significantly more sparse for years prior to box score event files (< 1906).
+```
+
+
 ??? keycolumnstyle "date    (date)"
     ```{.codeblock}
     Game date
@@ -4174,6 +4281,11 @@
 
 ### park
 
+```{.codeblock}
+Basic information about ballparks.
+```
+
+
 ??? keycolumnstyle "park_id    (char(5))"
     ```{.codeblock}
     Park ID
@@ -4232,6 +4344,12 @@
 
 ### roster
 
+```{.codeblock}
+Contains one row for each unique combination of player, team, and year. For more detailed/convenient player
+biographical data, use the `people` table from the Baseball Databank schema, joining on `retro_id`.
+```
+
+
 ??? keycolumnstyle "year    (integer)"
     ```{.codeblock}
     Year of roster
@@ -4283,6 +4401,11 @@
 
 
 ### schedule
+
+```{.codeblock}
+Contains the original regular season schedules for all seasons dating back to 1877.
+```
+
 
 ??? keycolumnstyle "date    (date)"
     ```{.codeblock}
@@ -4374,6 +4497,11 @@
 
 ### sub
 
+```{.codeblock}
+A complement to `event` that provides convenient information about substitutions.
+```
+
+
 ??? keycolumnstyle "dummy_id    (integer)"
     ```{.codeblock}
     No documentation provided.
@@ -4447,6 +4575,11 @@
 ## baseballdatabank
 ### allstar_full
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "dummy_id    (integer)"
     ```{.codeblock}
     No documentation provided.
@@ -4504,6 +4637,11 @@
 
 
 ### appearances
+
+```{.codeblock}
+No documentation provided.
+```
+
 
 ??? keycolumnstyle "year_id    (smallint)"
     ```{.codeblock}
@@ -4635,6 +4773,11 @@
 
 ### awards_managers
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "dummy_id    (integer)"
     ```{.codeblock}
     No documentation provided.
@@ -4680,6 +4823,11 @@
 
 
 ### awards_players
+
+```{.codeblock}
+No documentation provided.
+```
+
 
 ??? keycolumnstyle "dummy_id    (integer)"
     ```{.codeblock}
@@ -4727,6 +4875,11 @@
 
 ### awards_share_managers
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "award_id    (varchar(25))"
     ```{.codeblock}
     No documentation provided.
@@ -4773,6 +4926,11 @@
 
 ### awards_share_players
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "award_id    (varchar(25))"
     ```{.codeblock}
     No documentation provided.
@@ -4818,6 +4976,11 @@
 
 
 ### batting
+
+```{.codeblock}
+No documentation provided.
+```
+
 
 ??? keycolumnstyle "player_id    (varchar(9))"
     ```{.codeblock}
@@ -4955,6 +5118,11 @@
 
 ### batting_post
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "year_id    (smallint)"
     ```{.codeblock}
     No documentation provided.
@@ -5091,6 +5259,11 @@
 
 ### college_playing
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "player_id    (varchar(9))"
     ```{.codeblock}
     No documentation provided.
@@ -5112,6 +5285,11 @@
 
 
 ### fielding
+
+```{.codeblock}
+No documentation provided.
+```
+
 
 ??? keycolumnstyle "player_id    (varchar(9))"
     ```{.codeblock}
@@ -5225,6 +5403,11 @@
 
 ### fielding_of
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "player_id    (varchar(9))"
     ```{.codeblock}
     No documentation provided.
@@ -5264,6 +5447,11 @@
 
 
 ### fielding_of_split
+
+```{.codeblock}
+Disaggregates outfield statistics from `Fielding` into LF, CF, and RF
+```
+
 
 ??? keycolumnstyle "player_id    (varchar(9))"
     ```{.codeblock}
@@ -5377,6 +5565,11 @@
 
 ### fielding_post
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "player_id    (varchar(9))"
     ```{.codeblock}
     No documentation provided.
@@ -5483,6 +5676,11 @@
 
 ### hall_of_fame
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "player_id    (varchar(10))"
     ```{.codeblock}
     No documentation provided.
@@ -5541,6 +5739,11 @@
 
 ### home_games
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "year_id    (smallint)"
     ```{.codeblock}
     No documentation provided.
@@ -5598,6 +5801,11 @@
 
 
 ### managers
+
+```{.codeblock}
+No documentation provided.
+```
+
 
 ??? keycolumnstyle "year_id    (smallint)"
     ```{.codeblock}
@@ -5663,6 +5871,11 @@
 
 ### managers_half
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "player_id    (varchar(10))"
     ```{.codeblock}
     No documentation provided.
@@ -5727,6 +5940,11 @@
 
 ### parks
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "park_id    (varchar(5))"
     ```{.codeblock}
     No documentation provided.
@@ -5766,6 +5984,11 @@
 
 
 ### people
+
+```{.codeblock}
+No documentation provided.
+```
+
 
 ??? keycolumnstyle "player_id    (varchar(10))"
     ```{.codeblock}
@@ -5914,6 +6137,11 @@
 
 
 ### pitching
+
+```{.codeblock}
+No documentation provided.
+```
+
 
 ??? keycolumnstyle "player_id    (varchar(9))"
     ```{.codeblock}
@@ -6099,6 +6327,11 @@
 
 ### pitching_post
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "player_id    (varchar(9))"
     ```{.codeblock}
     No documentation provided.
@@ -6283,6 +6516,11 @@
 
 ### salaries
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "year_id    (smallint)"
     ```{.codeblock}
     No documentation provided.
@@ -6317,6 +6555,11 @@
 
 ### schools
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "school_id    (varchar(15))"
     ```{.codeblock}
     No documentation provided.
@@ -6350,6 +6593,11 @@
 
 
 ### series_post
+
+```{.codeblock}
+No documentation provided.
+```
+
 
 ??? keycolumnstyle "year_id    (smallint)"
     ```{.codeblock}
@@ -6408,6 +6656,11 @@
 
 
 ### teams
+
+```{.codeblock}
+No documentation provided.
+```
+
 
 ??? keycolumnstyle "year_id    (smallint)"
     ```{.codeblock}
@@ -6701,6 +6954,11 @@
 
 ### teams_franchises
 
+```{.codeblock}
+No documentation provided.
+```
+
+
 ??? keycolumnstyle "franch_id    (varchar(3))"
     ```{.codeblock}
     No documentation provided.
@@ -6728,6 +6986,11 @@
 
 
 ### teams_half
+
+```{.codeblock}
+Table for years in MLB history that the season was divided into halves (e.g. 1981)
+```
+
 
 ??? keycolumnstyle "year_id    (integer)"
     ```{.codeblock}
