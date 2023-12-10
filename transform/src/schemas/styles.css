@@ -1,44 +1,109 @@
-.tablestyle {
-    font-size: 36px;
-    font-weight: bold;
-    padding-left: 20px;
-}
-
 .columnstyle {
-    font-size: 24px;
-    font-weight: bold;
-    padding-left: 30px;
+    color: rgb(31, 35, 40);
+    margin-left: 20px;
 }
-
 .keycolumnstyle {
-    font-size: 24px;
-    font-weight: bold;
     color: rgb(151, 0, 0);
-    padding-left: 30px;
+    margin-left: 20px;
 }
 
-h1 {
-    font-size: 48px;
-    font-weight: bold;
-    padding-left: 20px;
+summary {
+    color-scheme: light;
+    cursor: pointer;
+    display: inline;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    height: auto;
+    line-height: 24px;
+    list-style-image: none;
+    list-style-position: inside;
+    list-style-type: disclosure-closed;
+    overflow-wrap: break-word;
+    text-align: start;
+    text-align-last: start;
+    text-indent: 20px;
+    text-transform: none;
+    unicode-bidi: isolate;
+    width: auto;
 }
+
+
+
+
 
 h2 {
-    font-size: 36px;
-    font-weight: bold;
-    padding-left: 40px;
+    border-bottom-color: rgb(216, 222, 228);
+    border-bottom-style: solid;
+    border-bottom-width: 0.8px;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 24px;
+    font-weight: 600;
+    height: 38px;
+    line-height: 30px;
+    margin-block-end: 16px;
+    margin-block-start: 24px;
+    margin-bottom: 16px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-top: 24px;
+    overflow-wrap: break-word;
+    padding-bottom: 7.2px;
+    unicode-bidi: isolate;
+    width: auto;
 }
 
 h3 {
-    font-size: 24px;
-    font-weight: bold;
-    padding-left: 60px;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 20px;
+    font-weight: 600;
+    height: 25px;
+    line-height: 25px;
+    margin-block-end: 16px;
+    margin-block-start: 24px;
+    margin-bottom: 0px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-left: 20px;
+    margin-top: 8px;
+    overflow-wrap: break-word;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    width: auto;
 }
 
-h4 {
-    font-size: 18px;
-    font-weight: bold;
-    padding-left: 80px;
+h1 {
+    border-bottom-color: rgb(216, 222, 228);
+    border-bottom-style: solid;
+    border-bottom-width: 0.8px;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 32px;
+    font-weight: 600;
+    height: 50.4px;
+    line-height: 40px;
+    margin-block-end: 16px;
+    margin-block-start: 0px;
+    margin-bottom: 16px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-bottom: 9.6px;
+    unicode-bidi: isolate;
+    width: auto;
 }
 
 .codeblock {
@@ -73,17 +138,11 @@ h4 {
     line-height: 19.72px;
     margin-bottom: 16px;
     margin-top: 8px;
-    margin-left: 80px;
+    margin-left: 40px;
     overflow-x: hidden;
     overflow-y: auto;
     padding-bottom: 16px;
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 16px;
-}
-
-summary {
-    font-size: 24px;
-    font-weight: bold;
-    margin-left: 60px;
 }
