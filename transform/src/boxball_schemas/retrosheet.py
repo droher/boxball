@@ -66,7 +66,8 @@ class Park(Base):
 class Roster(Base):
     """
     Contains one row for each unique combination of player, team, and year. For more detailed/convenient player
-    biographical data, use the `people` table from the Baseball Databank schema, joining on `retro_id`.
+    biographical data, use the `people` table from the Baseball Databank schema, joining on `retro_id`, or the bio
+    table below.
     """
     __tablename__ = 'roster'
     # We inserted the year in preprocessing
@@ -79,6 +80,47 @@ class Roster(Base):
     team_id = Column(CHAR(3), primary_key=True, doc="Team ID")
     # TODO: Remove duplicate roster entry(s)
     position = Column(String(2), primary_key=True, doc="Primary fielding position")
+
+
+class Bio(Base):
+    """
+    Contains one row for each player
+    """
+    __tablename__ = 'bio'
+    # We inserted the year in preprocessing
+    player_id = Column(CHAR(8), primary_key=True, doc="Player ID")
+    last = Column(String(32), doc="Player last name")
+    first = Column(String(32), doc="Player first name")
+    nickname = Column(String(256), doc="Player nickname")
+    birthdate = Column(String(16), doc="Player birth date")
+    birth_city = Column(String(32), doc="Player birth city")
+    birth_state = Column(String(32), doc="Player birth state")
+    birth_country = Column(String(32), doc="Player birth country")
+    play_debut = Column(String(16), doc="Player debut date")
+    play_lastgame = Column(String(16), doc="Player last game date")
+    mgr_debut = Column(String(16), doc="Manager debut date")
+    mgr_lastgame = Column(String(16), doc="Manager last game date")
+    coach_debut = Column(String(16), doc="Coach debut date")
+    coach_lastgame = Column(String(16), doc="Coach last game date")
+    ump_debut = Column(String(16), doc="Umpire debut date")
+    ump_lastgame = Column(String(16), doc="Umpire last game date")
+    deathdate = Column(String(16), doc="Player death date")
+    death_city = Column(String(32), doc="Player death city")
+    death_state = Column(String(32), doc="Player death state")
+    death_country = Column(String(32), doc="Player death country")
+    bats = Column(CHAR(1), doc="Bat handedness")
+    throws = Column(CHAR(1), doc="Throw handedness")
+    height = Column(String(8), doc="Player height in inches")
+    weight = Column(String(8), doc="Player weight in pounds")
+    cemetary = Column(String(256), doc="Player burial site")
+    ceme_city = Column(String(32), doc="Player burial city")
+    ceme_state = Column(String(32), doc="Player burial state")
+    ceme_country = Column(String(32), doc="Player burial country")
+    ceme_note = Column(String(256), doc="Player burial notes")
+    birth_name = Column(String(256), doc="Player birth name")
+    name_chg = Column(String(256), doc="Player name change notes")
+    bat_chg = Column(String(256), doc="Player batting change notes")
+    hof = Column(String(16), doc="String indicating Hall of Fame status")
 
 
 class Schedule(Base):

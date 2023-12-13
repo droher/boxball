@@ -8,7 +8,7 @@ from sqlalchemy import MetaData as AlchemyMetadata, Table as AlchemyTable
 from sqlalchemy import Integer, SmallInteger, Float, String, CHAR, Text, Boolean, Date, DateTime
 from sqlalchemy.sql.type_api import TypeEngine
 
-from src.schemas import all_metadata
+from src.boxball_schemas import all_metadata
 from src import EXTRACT_PATH_PREFIX, TRANSFORM_PATH_PREFIX
 
 PARQUET_PREFIX = TRANSFORM_PATH_PREFIX.joinpath("parquet")
