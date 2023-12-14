@@ -100,7 +100,7 @@ Similar configuration to the cstore_fdw extended version above, but stored in th
 `docker run --name postgres -d -p 5432:5432 -e POSTGRES_PASSWORD="postgres" -v ~/boxball/postgres:/var/lib/postgresql/data doublewick/boxball:postgres-latest`
 
 Roughly 90 minutes after the image is downloaded, the data will be fully loaded into the database,
-and you can connect to it as the user `postgres` with password `postgres` on port `5433`
+and you can connect to it as the user `postgres` with password `postgres` on port `5432`
 (either using the `psql` command line tool or a database client of your choice). The data will be persisted on your machine in
 `~/boxball/postgres` (~12GB), which means you can stop/remove the container without having to reload the data
 when you turn it back on.
