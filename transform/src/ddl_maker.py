@@ -1,6 +1,6 @@
 from src import OUTPUT_PATH
 from src.ddl_factories import all_factories
-from src.schemas import all_metadata
+from src.boxball_schemas import all_metadata
 
 
 if __name__ == "__main__":

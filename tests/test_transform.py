@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 from src import OUTPUT_PATH
-from src.schemas import retrosheet_metadata, baseballdatabank_metadata, all_metadata
+from src.boxball_schemas import retrosheet_metadata, baseballdatabank_metadata, all_metadata
 from src.ddl_factories import all_factories
 from src.parquet import write_files, PARQUET_PREFIX
 

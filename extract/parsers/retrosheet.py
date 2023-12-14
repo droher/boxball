@@ -3,6 +3,7 @@ import subprocess
 import sys
 from functools import lru_cache
 from pathlib import Path
+import shutil
 
 import fileinput
 from typing import Callable, Set
@@ -15,8 +16,8 @@ DOS_EOF = chr(26)
 RETROSHEET_PATH = Path("retrosheet")
 CODE_TABLES_PATH = Path("code_tables")
 
-RETROSHEET_SUBDIRS = "gamelog", "schedule", "misc", "rosters", "event"
-EVENT_FOLDERS = "asg", "post", "regular"
+RETROSHEET_SUBDIRS = "gamelogs", "schedules", "rosters"
+EVENT_FOLDERS = "allstar", "postseason", "events"
 
 PARSE_FUNCS = {
     "daily": "cwdaily -q -y {year} {year}*",
@@ -112,26 +113,36 @@ class RetrosheetParser:
                          prepend_filename: bool = False,
                          strip_header: bool = False,
                          check_dupes: bool = True):
-            files = (f for f in input_path.glob(glob) if f.is_file())
+            files = [f for f in input_path.glob(glob) if f.is_file()]
+            if not files:
+                raise ValueError(f"No files found under {input_path} with glob {glob}")
             with open(output_file, 'wt') as fout, fileinput.input(files) as fin:
                 lines = set()
                 for line in fin:
+                    year = Path(fin.filename()).stem[-4:]
                     # Remove DOS EOF character (CRTL+Z)
                     new_line = line.strip(DOS_EOF)
+                    original_line = new_line
                     if not new_line or new_line.isspace():
                         continue
                     if fin.isfirstline() and strip_header:
                         continue
                     if prepend_filename:
-                        year = Path(fin.filename()).stem[-4:]
-                        new_line = "{},{}".format(year, new_line)
+                        new_line = f"{year},{new_line}"
                     if new_line in lines:
-                        print("Duplicate row in {}: {}".format(fin.filename(), new_line), file=sys.stderr)
+                        print(f"Duplicate row in {fin.filename()}: {original_line.strip()}")
+                        continue
+                    # TODO: Fix NLB roster file shape in raw data
+                    if "roster" in output_file.name and len(new_line.split(",")) == 7:
+                        print(f"Fixing row in file {fin.filename()} with missing data: " + original_line.strip())
+                        new_line = new_line.strip() + ","
+                    elif "roster" in output_file.name and len(new_line.split(",")) < 7:
+                        print(f"Skipping row in file {fin.filename()} with missing data: " + original_line.strip())
                         continue
                     if check_dupes:
                         lines.add(new_line)
-                    fout.write(new_line)
-            return compress(output_file, OUTPUT_PATH)
+                    fout.write(new_line.strip() + "\n")
+                return compress(output_file, OUTPUT_PATH)
 
         retrosheet_base = Path(RETROSHEET_PATH)
         output_base = Path(OUTPUT_PATH)
@@ -139,20 +150,24 @@ class RetrosheetParser:
         subdirs = {subdir: retrosheet_base / subdir for subdir in RETROSHEET_SUBDIRS}
 
         print("Writing simple files...")
-        concat_files(subdirs["gamelog"], output_base / "gamelog.csv", glob="*.TXT", check_dupes=False)
-        concat_files(subdirs["schedule"], output_base / "schedule.csv", glob="*.TXT")
-        concat_files(subdirs["misc"], output_base / "park.csv", glob="parkcode.txt", strip_header=True)
+        concat_files(subdirs["gamelogs"], output_base / "gamelog.csv", glob="gl*.txt", check_dupes=False)
+        # TODO: Figure out how to integrate 2020-orig (leave out for now)
+        concat_files(subdirs["schedules"], output_base / "schedule.csv", glob="*schedule.csv", strip_header=True)
+        concat_files(retrosheet_base, output_base / "park.csv", glob="ballparks.csv", strip_header=True)
+        concat_files(retrosheet_base, output_base / "bio.csv", glob="biofile.csv", strip_header=True)
         concat_files(subdirs["rosters"], output_base / "roster.csv", glob="*.ROS", prepend_filename=True)
 
     @staticmethod
     def parse_event_types(use_parallel=True) -> None:
         def parse_events(output_type: str, clean_func: Callable = None):
-            event_base = RETROSHEET_PATH / "event"
+            event_base = RETROSHEET_PATH
             output_file = OUTPUT_PATH.joinpath(output_type).with_suffix(".csv")
             command_template = PARSE_FUNCS[output_type]
             f_out_inflated = open(output_file, 'w')
             for folder in EVENT_FOLDERS:
-                print(output_type, folder)
+                # Copy (not move) all teamfiles to each subdir
+                for teamfile in event_base.glob("teams/TEAM*"):
+                    shutil.copy(teamfile, event_base.joinpath(folder))
                 data_path = event_base.joinpath(folder)
                 years = {re.match("[0-9]{4}", f.stem)[0] for f in data_path.iterdir()
                          if re.match("[0-9]{4}", f.stem)}

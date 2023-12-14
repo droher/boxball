@@ -8,7 +8,7 @@ from sqlalchemy import MetaData as AlchemyMetadata, Table as AlchemyTable
 from sqlalchemy import Integer, SmallInteger, Float, String, CHAR, Text, Boolean, Date, DateTime
 from sqlalchemy.sql.type_api import TypeEngine
 
-from src.schemas import all_metadata
+from src.boxball_schemas import all_metadata
 from src import EXTRACT_PATH_PREFIX, TRANSFORM_PATH_PREFIX
 
 PARQUET_PREFIX = TRANSFORM_PATH_PREFIX.joinpath("parquet")
@@ -30,6 +30,10 @@ sql_type_lookup: Dict[Type[TypeEngine], str] = {
     Date: 'timestamp[ms]',
     DateTime: 'timestamp[ms]'
 }
+
+def invalid_row_handler(row) -> str:
+    print("Error: :", row)
+    return "skip"
 
 
 def get_fields(table: AlchemyTable) -> List[Tuple[str, str]]:
@@ -58,7 +62,7 @@ def write_files(metadata: AlchemyMetadata) -> None:
         column_names = [name for name, dtype in get_fields(table)]
 
         read_options = pcsv.ReadOptions(column_names=column_names, block_size=BUFFER_SIZE_BYTES)
-        parse_options = pcsv.ParseOptions(newlines_in_values=True)
+        parse_options = pcsv.ParseOptions(newlines_in_values=True, invalid_row_handler=invalid_row_handler)
         convert_options = pcsv.ConvertOptions(column_types=arrow_schema, timestamp_parsers=["%Y%m%d", "%Y-%m-%d"],
                                               true_values=["1", "T"], false_values=["0", "F"], strings_can_be_null=True)
 

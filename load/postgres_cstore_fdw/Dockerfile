@@ -2,7 +2,7 @@ ARG VERSION
 FROM doublewick/boxball:ddl-${VERSION} as ddl
 FROM doublewick/boxball:csv-${VERSION} as csv
 
-FROM postgres:13.2 as build
+FROM postgres:13.13-bookworm as build
 RUN apt-get update && apt-get install -y --no-install-recommends postgresql-server-dev-13 build-essential zstd libprotobuf-c-dev protobuf-c-compiler wget ca-certificates unzip make gcc libpq-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
