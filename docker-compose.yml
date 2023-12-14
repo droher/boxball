@@ -126,8 +126,7 @@ x-mysql:
 x-sqlite:
   &sqlite
   build:
-    context: load/sqlite
-    dockerfile: ../Dockerfile
+    context: load
     target: sqlite
     platforms:
       - "linux/amd64"

@@ -31,6 +31,10 @@ sql_type_lookup: Dict[Type[TypeEngine], str] = {
     DateTime: 'timestamp[ms]'
 }
 
+def invalid_row_handler(row) -> str:
+    print("Error: :", row)
+    return "skip"
+
 
 def get_fields(table: AlchemyTable) -> List[Tuple[str, str]]:
     cols = [(c.name, c.type) for c in table.columns.values() if c.autoincrement is not True]
@@ -58,7 +62,7 @@ def write_files(metadata: AlchemyMetadata) -> None:
         column_names = [name for name, dtype in get_fields(table)]
 
         read_options = pcsv.ReadOptions(column_names=column_names, block_size=BUFFER_SIZE_BYTES)
-        parse_options = pcsv.ParseOptions(newlines_in_values=True)
+        parse_options = pcsv.ParseOptions(newlines_in_values=True, invalid_row_handler=invalid_row_handler)
         convert_options = pcsv.ConvertOptions(column_types=arrow_schema, timestamp_parsers=["%Y%m%d", "%Y-%m-%d"],
                                               true_values=["1", "T"], false_values=["0", "F"], strings_can_be_null=True)
 

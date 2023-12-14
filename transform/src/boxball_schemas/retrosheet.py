@@ -34,14 +34,14 @@ class Comment(Base):
 
     game_id = Column(CHAR(12), doc="Game ID (home team ID + YYYYMMDD + doubleheader flag")
     event_id = Column(SmallInteger, doc="Commented event number")
-    comment = Column(String(1638), doc="Comment text")
-    ejected_person_id = Column(String(256), doc="ID of ejected person")
-    ejected_person_role_cd = Column(String(256))
-    eject_umpire_id = Column(String(256), doc="ID of umpire who ejected person")
-    eject_reason = Column(String(1639))
-    umpchange_inning = Column(String(256))
-    umpchange_position = Column(String(256))
-    umpchange_person_id = Column(String(256), doc="ID of new umpire")
+    comment = Column(String(2048), doc="Comment text")
+    ejected_person_id = Column(String(1024), doc="ID of ejected person")
+    ejected_person_role_cd = Column(String(1024))
+    eject_umpire_id = Column(String(1024), doc="ID of umpire who ejected person")
+    eject_reason = Column(String(1024))
+    umpchange_inning = Column(String(1024))
+    umpchange_position = Column(String(1024))
+    umpchange_person_id = Column(String(1024), doc="ID of new umpire")
     dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
@@ -52,34 +52,36 @@ class Park(Base):
     __tablename__ = 'park'
 
     park_id = Column(CHAR(5), primary_key=True, doc="Park ID")
-    name = Column(String(41), doc="Park name")
-    aka = Column(String(55), doc="Common park alias")
-    city = Column(String(17), doc="City")
-    state = Column(String(9), doc="State")
+    name = Column(String(1024), doc="Park name")
+    aka = Column(String(1024), doc="Common park alias")
+    city = Column(String(1024), doc="City")
+    state = Column(String(1024), doc="State")
     # TODO: Handle this MySQL edge case so these can be dates again
-    start_date = Column(String(10), doc="First game")
-    end_date = Column(String(10), doc="Last game")
-    league = Column(CHAR(2), doc="League ID")
-    notes = Column(String(54), doc="Misc. notes")
+    start_date = Column(String(1024), doc="First game")
+    end_date = Column(String(1024), doc="Last game")
+    league = Column(CHAR(10), doc="League ID")
+    notes = Column(String(1024), doc="Misc. notes")
 
 
 class Roster(Base):
     """
-    Contains one row for each unique combination of player, team, and year. For more detailed/convenient player
+    Contains one row for each unique combination of player, team, and year. There may be duplicates here.
+    For more detailed/convenient player
     biographical data, use the `people` table from the Baseball Databank schema, joining on `retro_id`, or the bio
     table below.
     """
     __tablename__ = 'roster'
     # We inserted the year in preprocessing
-    year = Column(Integer, primary_key=True, doc="Year of roster")
-    player_id = Column(CHAR(8), primary_key=True, doc="Player ID")
-    last_name = Column(String(32), doc="Player last name")
-    first_name = Column(String(32), doc="Player first name")
+    year = Column(Integer, doc="Year of roster")
+    player_id = Column(CHAR(8), doc="Player ID")
+    last_name = Column(String(1024), doc="Player last name")
+    first_name = Column(String(1024), doc="Player first name")
     bats = Column(CHAR(1), doc="Bat handedness")
     throws = Column(CHAR(1), doc="Throw handedness")
-    team_id = Column(CHAR(3), primary_key=True, doc="Team ID")
+    team_id = Column(CHAR(3), doc="Team ID")
     # TODO: Remove duplicate roster entry(s)
-    position = Column(String(2), primary_key=True, doc="Primary fielding position")
+    position = Column(String(1024), doc="Primary fielding position")
+    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
 class Bio(Base):
@@ -89,38 +91,38 @@ class Bio(Base):
     __tablename__ = 'bio'
     # We inserted the year in preprocessing
     player_id = Column(CHAR(8), primary_key=True, doc="Player ID")
-    last = Column(String(32), doc="Player last name")
-    first = Column(String(32), doc="Player first name")
-    nickname = Column(String(256), doc="Player nickname")
-    birthdate = Column(String(16), doc="Player birth date")
-    birth_city = Column(String(32), doc="Player birth city")
-    birth_state = Column(String(32), doc="Player birth state")
-    birth_country = Column(String(32), doc="Player birth country")
-    play_debut = Column(String(16), doc="Player debut date")
-    play_lastgame = Column(String(16), doc="Player last game date")
-    mgr_debut = Column(String(16), doc="Manager debut date")
-    mgr_lastgame = Column(String(16), doc="Manager last game date")
-    coach_debut = Column(String(16), doc="Coach debut date")
-    coach_lastgame = Column(String(16), doc="Coach last game date")
-    ump_debut = Column(String(16), doc="Umpire debut date")
-    ump_lastgame = Column(String(16), doc="Umpire last game date")
-    deathdate = Column(String(16), doc="Player death date")
-    death_city = Column(String(32), doc="Player death city")
-    death_state = Column(String(32), doc="Player death state")
-    death_country = Column(String(32), doc="Player death country")
+    last = Column(String(1024), doc="Player last name")
+    first = Column(String(1024), doc="Player first name")
+    nickname = Column(String(1024), doc="Player nickname")
+    birthdate = Column(String(1024), doc="Player birth date")
+    birth_city = Column(String(1024), doc="Player birth city")
+    birth_state = Column(String(1024), doc="Player birth state")
+    birth_country = Column(String(1024), doc="Player birth country")
+    play_debut = Column(String(1024), doc="Player debut date")
+    play_lastgame = Column(String(1024), doc="Player last game date")
+    mgr_debut = Column(String(1024), doc="Manager debut date")
+    mgr_lastgame = Column(String(1024), doc="Manager last game date")
+    coach_debut = Column(String(1024), doc="Coach debut date")
+    coach_lastgame = Column(String(1024), doc="Coach last game date")
+    ump_debut = Column(String(1024), doc="Umpire debut date")
+    ump_lastgame = Column(String(1024), doc="Umpire last game date")
+    deathdate = Column(String(1024), doc="Player death date")
+    death_city = Column(String(1024), doc="Player death city")
+    death_state = Column(String(1024), doc="Player death state")
+    death_country = Column(String(1024), doc="Player death country")
     bats = Column(CHAR(1), doc="Bat handedness")
     throws = Column(CHAR(1), doc="Throw handedness")
-    height = Column(String(8), doc="Player height in inches")
-    weight = Column(String(8), doc="Player weight in pounds")
-    cemetary = Column(String(256), doc="Player burial site")
-    ceme_city = Column(String(32), doc="Player burial city")
-    ceme_state = Column(String(32), doc="Player burial state")
-    ceme_country = Column(String(32), doc="Player burial country")
-    ceme_note = Column(String(256), doc="Player burial notes")
-    birth_name = Column(String(256), doc="Player birth name")
-    name_chg = Column(String(256), doc="Player name change notes")
-    bat_chg = Column(String(256), doc="Player batting change notes")
-    hof = Column(String(16), doc="String indicating Hall of Fame status")
+    height = Column(String(1024), doc="Player height in inches")
+    weight = Column(String(1024), doc="Player weight in pounds")
+    cemetary = Column(String(1024), doc="Player burial site")
+    ceme_city = Column(String(1024), doc="Player burial city")
+    ceme_state = Column(String(1024), doc="Player burial state")
+    ceme_country = Column(String(1024), doc="Player burial country")
+    ceme_note = Column(String(1024), doc="Player burial notes")
+    birth_name = Column(String(1024), doc="Player birth name")
+    name_chg = Column(String(1024), doc="Player name change notes")
+    bat_chg = Column(String(1024), doc="Player batting change notes")
+    hof = Column(String(1024), doc="String indicating Hall of Fame status")
 
 
 class Schedule(Base):
@@ -140,7 +142,7 @@ class Schedule(Base):
     home_team_league = Column(CHAR(2), doc="Home team league ID")
     home_team_game_number = Column(Integer, primary_key=True, doc="Home team game number")
     day_night = Column(CHAR(1), doc="D - day, N - night")
-    postponement_indicator = Column(String(120), doc="""
+    postponement_indicator = Column(String(1024), doc="""
         This field will contain one or more phrases related to the game if it was
         not played as scheduled. If there is more than one phrase, they are separated
         by a semi-colon (";"). There are three possible outcomes for games not played
@@ -149,7 +151,7 @@ class Schedule(Base):
         -- The game was played on the original date but at another site
         -- The game was not played
         """)
-    makeup_dates = Column(String(120), doc="""
+    makeup_dates = Column(String(1024), doc="""
         This field will contain a makeup date if the postponed game was played at
         another time or place. If an attempt was known to have been made on a date but
         postponed again, that date will be listed. In that case, there will be a second
@@ -167,7 +169,7 @@ class CodeEvent(Base):
     __tablename__ = 'code_event'
 
     code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
+    description = Column(String(1024))
 
 
 class CodeFieldPark(Base):
@@ -177,7 +179,7 @@ class CodeFieldPark(Base):
     __tablename__ = 'code_field_park'
 
     code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
+    description = Column(String(1024))
 
 
 class CodeMethodRecord(Base):
@@ -187,7 +189,7 @@ class CodeMethodRecord(Base):
     __tablename__ = 'code_method_record'
 
     code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
+    description = Column(String(1024))
 
 
 class CodePitchesRecord(Base):
@@ -197,7 +199,7 @@ class CodePitchesRecord(Base):
     __tablename__ = 'code_pitches_record'
 
     code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
+    description = Column(String(1024))
 
 
 class CodePrecipPark(Base):
@@ -207,7 +209,7 @@ class CodePrecipPark(Base):
     __tablename__ = 'code_precip_park'
 
     code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
+    description = Column(String(1024))
 
 
 class CodeSkyPark(Base):
@@ -217,7 +219,7 @@ class CodeSkyPark(Base):
     __tablename__ = 'code_sky_park'
 
     code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
+    description = Column(String(1024))
 
 
 class CodeWindDirectionPark(Base):
@@ -227,7 +229,7 @@ class CodeWindDirectionPark(Base):
     __tablename__ = 'code_wind_direction_park'
 
     code = Column(SmallInteger, primary_key=True, autoincrement=False)
-    description = Column(String(30))
+    description = Column(String(1024))
 
 
 class DeducedGame(Base):
@@ -257,31 +259,31 @@ class Game(Base):
     game_dt = Column(Date, doc="Game date")
     game_ct = Column(SmallInteger, doc="Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, "
                                        "2 - second game of doubleheader")
-    game_dy = Column(String(9), doc="Day of week")
+    game_dy = Column(String(1024), doc="Day of week")
     start_game_tm = Column(SmallInteger, doc="Game start time (12HMM coded as integer, eg 1015 for 10:15 PM)")
-    dh_fl = Column(String(1), doc="DH used")
-    daynight_park_cd = Column(String(1), doc="D - day game, N - night game")
+    dh_fl = Column(String(1024), doc="DH used")
+    daynight_park_cd = Column(String(1024), doc="D - day game, N - night game")
     away_team_id = Column(CHAR(3), doc="Away team ID")
     home_team_id = Column(CHAR(3), doc="Home team ID")
-    park_id = Column(String(5), doc="Park ID")
+    park_id = Column(String(1024), doc="Park ID")
     away_start_pit_id = Column(CHAR(8), doc="Away team starting pitcher ID")
     home_start_pit_id = Column(CHAR(8), doc="Home team starting pitcher ID")
     # 32 rather than 8 to protect against "(unknown)" and names where there should be IDs
-    base4_ump_id = Column(String(32), doc="Home plate umpire ID")
-    base1_ump_id = Column(String(32), doc="First base umpire ID")
-    base2_ump_id = Column(String(32), doc="Second base umpire ID")
-    base3_ump_id = Column(String(32), doc="Third base umpire ID")
+    base4_ump_id = Column(String(1024), doc="Home plate umpire ID")
+    base1_ump_id = Column(String(1024), doc="First base umpire ID")
+    base2_ump_id = Column(String(1024), doc="Second base umpire ID")
+    base3_ump_id = Column(String(1024), doc="Third base umpire ID")
     lf_ump_id = Column(CHAR(8), doc="Left field umpire ID")
     rf_ump_id = Column(CHAR(8), doc="Right field umpire ID")
     attend_park_ct = Column(Integer, doc="Attendance")
-    scorer_record_id = Column(String(50), doc="Scorekeeper")
-    translator_record_id = Column(String(50), doc="Translator")
-    inputter_record_id = Column(String(50), doc="Inputter")
+    scorer_record_id = Column(String(1024), doc="Scorekeeper")
+    translator_record_id = Column(String(1024), doc="Translator")
+    inputter_record_id = Column(String(1024), doc="Inputter")
     # TODO: Figure out how to parse in parquet
-    input_record_ts = Column(String(20), doc="Date and time of record input")
-    edit_record_ts = Column(String(20), doc="Date and time of Most recent record edit")
-    method_record_cd = Column(String(1), doc="How the game was scored (join `code_method_record` for details")
-    pitches_record_cd = Column(String(1), doc="Highest detail of pitches recorded "
+    input_record_ts = Column(String(1024), doc="Date and time of record input")
+    edit_record_ts = Column(String(1024), doc="Date and time of Most recent record edit")
+    method_record_cd = Column(String(1024), doc="How the game was scored (join `code_method_record` for details")
+    pitches_record_cd = Column(String(1024), doc="Highest detail of pitches recorded "
                                               "(join `code_pitches_record` for details). Note that many games with "
                                               "pitch detail do not have that info for all events, so pitch totals "
                                               "may not be accurate.")
@@ -363,16 +365,16 @@ class Game(Base):
                                                    "")
     away_finish_pit_id = Column(CHAR(8), doc="Away team finishing pitcher")
     home_finish_pit_id = Column(CHAR(8), doc="Home team finishing pitcher")
-    away_team_league_id = Column(CHAR(1), doc="Away team league (1 char ID)")
-    home_team_league_id = Column(CHAR(1), doc="Home team league (1 char ID)")
+    away_team_league_id = Column(CHAR(3), doc="Away team league (1 char ID)")
+    home_team_league_id = Column(CHAR(3), doc="Home team league (1 char ID)")
     away_team_game_ct = Column(SmallInteger, doc="Away team game number")
     home_team_game_ct = Column(SmallInteger, doc="Home team game number")
     outs_ct = Column(SmallInteger, doc="Length of game in outs")
-    completion_tx = Column(String(26), doc="Information on completion of game")
-    forfeit_tx = Column(String(26), doc="Information on forfeit of game")
-    protest_tx = Column(String(26), doc="Information on protest of game")
-    away_line_tx = Column(String(26), doc="Away team linescore")
-    home_line_tx = Column(String(26), doc="Home team linescore")
+    completion_tx = Column(String(1024), doc="Information on completion of game")
+    forfeit_tx = Column(String(1024), doc="Information on forfeit of game")
+    protest_tx = Column(String(1024), doc="Information on protest of game")
+    away_line_tx = Column(String(1024), doc="Away team linescore")
+    home_line_tx = Column(String(1024), doc="Home team linescore")
     away_ab_ct = Column(SmallInteger, doc="Away team at bats")
     away_2b_ct = Column(SmallInteger, doc="Away team doubles")
     away_3b_ct = Column(SmallInteger, doc="Away team triples")
@@ -423,41 +425,41 @@ class Game(Base):
     home_pb_ct = Column(SmallInteger, doc="Home team passed balls")
     home_dp_ct = Column(SmallInteger, doc="Home team double plays turned")
     home_tp_ct = Column(SmallInteger, doc="Home team triple plays turned")
-    ump_home_name_tx = Column(String(26), doc="Home plate umpire name")
-    ump_1b_name_tx = Column(String(26), doc="First base umpire name")
-    ump_2b_name_tx = Column(String(26), doc="Second base umpire name")
-    ump_3b_name_tx = Column(String(26), doc="Third base umpire name")
-    ump_lf_name_tx = Column(String(26), doc="Left field umpire name")
-    ump_rf_name_tx = Column(String(26), doc="Right field umpire name")
+    ump_home_name_tx = Column(String(1024), doc="Home plate umpire name")
+    ump_1b_name_tx = Column(String(1024), doc="First base umpire name")
+    ump_2b_name_tx = Column(String(1024), doc="Second base umpire name")
+    ump_3b_name_tx = Column(String(1024), doc="Third base umpire name")
+    ump_lf_name_tx = Column(String(1024), doc="Left field umpire name")
+    ump_rf_name_tx = Column(String(1024), doc="Right field umpire name")
     away_manager_id = Column(CHAR(8), doc="Away manager ID")
-    away_manager_name_tx = Column(String(26), doc="Away manager name")
+    away_manager_name_tx = Column(String(1024), doc="Away manager name")
     home_manager_id = Column(CHAR(8), doc="Home manager ID")
-    home_manager_name_tx = Column(String(26), doc="Home manager name")
-    win_pit_name_tx = Column(String(26), doc="Wining pitcher name")
-    lose_pit_name_tx = Column(String(26), doc="Losing pitcher name")
-    save_pit_name_tx = Column(String(26), doc="Saving pitcher name")
+    home_manager_name_tx = Column(String(1024), doc="Home manager name")
+    win_pit_name_tx = Column(String(1024), doc="Wining pitcher name")
+    lose_pit_name_tx = Column(String(1024), doc="Losing pitcher name")
+    save_pit_name_tx = Column(String(1024), doc="Saving pitcher name")
     goahead_rbi_id = Column(CHAR(8), doc="ID of batter with goahead RBI")
-    goahead_rbi_name_tx = Column(String(26), doc="Name of batter with goahead RBI")
-    away_lineup1_bat_name_tx = Column(String(26), doc="Name of away team batter in lineup position 1")
-    away_lineup2_bat_name_tx = Column(String(26), doc="Name of away team batter in lineup position 2")
-    away_lineup3_bat_name_tx = Column(String(26), doc="Name of away team batter in lineup position 3")
-    away_lineup4_bat_name_tx = Column(String(26), doc="Name of away team batter in lineup position 4")
-    away_lineup5_bat_name_tx = Column(String(26), doc="Name of away team batter in lineup position 5")
-    away_lineup6_bat_name_tx = Column(String(26), doc="Name of away team batter in lineup position 6")
-    away_lineup7_bat_name_tx = Column(String(26), doc="Name of away team batter in lineup position 7")
-    away_lineup8_bat_name_tx = Column(String(26), doc="Name of away team batter in lineup position 8")
-    away_lineup9_bat_name_tx = Column(String(26), doc="Name of home team batter in lineup position 9")
-    home_lineup1_bat_name_tx = Column(String(26), doc="Name of home team batter in lineup position 1")
-    home_lineup2_bat_name_tx = Column(String(26), doc="Name of home team batter in lineup position 2")
-    home_lineup3_bat_name_tx = Column(String(26), doc="Name of home team batter in lineup position 3")
-    home_lineup4_bat_name_tx = Column(String(26), doc="Name of home team batter in lineup position 4")
-    home_lineup5_bat_name_tx = Column(String(26), doc="Name of home team batter in lineup position 5")
-    home_lineup6_bat_name_tx = Column(String(26), doc="Name of home team batter in lineup position 6")
-    home_lineup7_bat_name_tx = Column(String(26), doc="Name of home team batter in lineup position 7")
-    home_lineup8_bat_name_tx = Column(String(26), doc="Name of home team batter in lineup position 8")
-    home_lineup9_bat_name_tx = Column(String(26), doc="Name of home team batter in lineup position 9")
-    add_info_tx = Column(String(26), doc="Additional information")
-    acq_info_tx = Column(String(26), doc="Acquisition information")
+    goahead_rbi_name_tx = Column(String(1024), doc="Name of batter with goahead RBI")
+    away_lineup1_bat_name_tx = Column(String(1024), doc="Name of away team batter in lineup position 1")
+    away_lineup2_bat_name_tx = Column(String(1024), doc="Name of away team batter in lineup position 2")
+    away_lineup3_bat_name_tx = Column(String(1024), doc="Name of away team batter in lineup position 3")
+    away_lineup4_bat_name_tx = Column(String(1024), doc="Name of away team batter in lineup position 4")
+    away_lineup5_bat_name_tx = Column(String(1024), doc="Name of away team batter in lineup position 5")
+    away_lineup6_bat_name_tx = Column(String(1024), doc="Name of away team batter in lineup position 6")
+    away_lineup7_bat_name_tx = Column(String(1024), doc="Name of away team batter in lineup position 7")
+    away_lineup8_bat_name_tx = Column(String(1024), doc="Name of away team batter in lineup position 8")
+    away_lineup9_bat_name_tx = Column(String(1024), doc="Name of home team batter in lineup position 9")
+    home_lineup1_bat_name_tx = Column(String(1024), doc="Name of home team batter in lineup position 1")
+    home_lineup2_bat_name_tx = Column(String(1024), doc="Name of home team batter in lineup position 2")
+    home_lineup3_bat_name_tx = Column(String(1024), doc="Name of home team batter in lineup position 3")
+    home_lineup4_bat_name_tx = Column(String(1024), doc="Name of home team batter in lineup position 4")
+    home_lineup5_bat_name_tx = Column(String(1024), doc="Name of home team batter in lineup position 5")
+    home_lineup6_bat_name_tx = Column(String(1024), doc="Name of home team batter in lineup position 6")
+    home_lineup7_bat_name_tx = Column(String(1024), doc="Name of home team batter in lineup position 7")
+    home_lineup8_bat_name_tx = Column(String(1024), doc="Name of home team batter in lineup position 8")
+    home_lineup9_bat_name_tx = Column(String(1024), doc="Name of home team batter in lineup position 9")
+    add_info_tx = Column(String(1024), doc="Additional information")
+    acq_info_tx = Column(String(1024), doc="Acquisition information")
 
 
 class Gamelog(Base):
@@ -493,7 +495,7 @@ class Gamelog(Base):
     home_runs_score = Column(SmallInteger, doc="Home team runs scored")
     length_in_outs = Column(SmallInteger, doc="Game length in outs")
     day_night = Column(CHAR(1), doc="D - day game, N - night game")
-    completion_info = Column(String(23), doc="""
+    completion_info = Column(String(1024), doc="""
         Completion information.  If the game was completed at a
         later date (either due to a suspension or an upheld protest)
         this field will include:
@@ -506,16 +508,16 @@ class Gamelog(Base):
         All the rest of the information in the record refers to the
         entire game.
         """)
-    forfeit_info = Column(String(3), doc="V - forfeited to away team, H - forfeited to home team, "
+    forfeit_info = Column(String(1024), doc="V - forfeited to away team, H - forfeited to home team, "
                                          "T - ruled a no-decision")
-    protest_info = Column(String(3), doc="P - protested by unidentified team, V - disallowed protest by away team, "
+    protest_info = Column(String(1024), doc="P - protested by unidentified team, V - disallowed protest by away team, "
                                          "H - disallowed protest by home team, X - upheld protest by away team, "
                                          "Y - upheld protest by home team")
     park_id = Column(CHAR(5), doc="Park ID")
     attendance = Column(Integer, doc="Attendance")
     duration = Column(SmallInteger, doc="Time of game in minutes")
-    vistor_line_score = Column(String(26), doc="Away team line score, e.g. 010000(10)0x")
-    home_line_score = Column(String(26), doc="Home team line score, e.g. 010000(10)0x")
+    vistor_line_score = Column(String(1024), doc="Away team line score, e.g. 010000(10)0x")
+    home_line_score = Column(String(1024), doc="Home team line score, e.g. 010000(10)0x")
     visitor_ab = Column(SmallInteger, doc="Away team at bats")
     visitor_h = Column(SmallInteger, doc="Away team hits")
     visitor_d = Column(SmallInteger, doc="Away team doubles")
@@ -573,88 +575,88 @@ class Gamelog(Base):
     home_db = Column(SmallInteger, doc="Home team double plays turned")
     home_tp = Column(SmallInteger, doc="Home team triple plays turned")
     umpire_h_id = Column(CHAR(8), doc="Home plate umpire ID")
-    umpire_h_name = Column(String(32), doc="Home plate umpire name")
+    umpire_h_name = Column(String(1024), doc="Home plate umpire name")
     umpire_1b_id = Column(CHAR(8), doc="First base umpire ID")
-    umpire_1b_name = Column(String(32), doc="First base umpire name")
+    umpire_1b_name = Column(String(1024), doc="First base umpire name")
     umpire_2b_id = Column(CHAR(8), doc="Second base umpire ID")
-    umpire_2b_name = Column(String(32), doc="Second base umpire name")
+    umpire_2b_name = Column(String(1024), doc="Second base umpire name")
     umpire_3b_id = Column(CHAR(8), doc="Third base umpire ID")
-    umpire_3b_name = Column(String(32), doc="Third base umpire name")
+    umpire_3b_name = Column(String(1024), doc="Third base umpire name")
     umpire_lf_id = Column(CHAR(8), doc="Left field umpire ID")
-    umpire_lf_name = Column(String(32), doc="Left field umpire name")
+    umpire_lf_name = Column(String(1024), doc="Left field umpire name")
     umpire_rf_id = Column(CHAR(8), doc="Right field umpire ID")
-    umpire_rf_name = Column(String(32), doc="Right field umpire name")
+    umpire_rf_name = Column(String(1024), doc="Right field umpire name")
     visitor_manager_id = Column(CHAR(8), doc="Away team manager ID")
-    visitor_manager_name = Column(String(32), doc="Away team manager name")
+    visitor_manager_name = Column(String(1024), doc="Away team manager name")
     home_manager_id = Column(CHAR(8), doc="Home team manager ID")
-    home_manager_name = Column(String(32), doc="Home team manager name")
+    home_manager_name = Column(String(1024), doc="Home team manager name")
     winning_pitcher_id = Column(CHAR(8), doc="Winning pitcher ID")
-    winning_pitcher_name = Column(String(32), doc="Winning pitcher name")
+    winning_pitcher_name = Column(String(1024), doc="Winning pitcher name")
     losing_pitcher_id = Column(CHAR(8), doc="Losing pitcher ID")
-    losing_pitcher_name = Column(String(32), doc="Losing pitcher name")
+    losing_pitcher_name = Column(String(1024), doc="Losing pitcher name")
     saving_pitcher_id = Column(CHAR(8), doc="Saving pitcher ID")
-    saving_pitcher_name = Column(String(32), doc="Saving pitcher name")
+    saving_pitcher_name = Column(String(1024), doc="Saving pitcher name")
     game_winning_rbi_id = Column(CHAR(8), doc="Game-winning RBI ID")
-    game_winning_rbi_name = Column(String(32), doc="Game-winning RBI name")
+    game_winning_rbi_name = Column(String(1024), doc="Game-winning RBI name")
     visitor_starting_pitcher_id = Column(CHAR(8), doc="Away team starting pitcher ID")
-    visitor_starting_pitcher_name = Column(String(32), doc="Away team starting pitcher name")
+    visitor_starting_pitcher_name = Column(String(1024), doc="Away team starting pitcher name")
     home_starting_pitcher_id = Column(CHAR(8), doc="Home team starting pitcher ID")
-    home_starting_pitcher_name = Column(String(32), doc="Home team starting pitcher name")
+    home_starting_pitcher_name = Column(String(1024), doc="Home team starting pitcher name")
     visitor_batting_1_player_id = Column(CHAR(8), doc="Away team lineup slot 1 starting player ID")
-    visitor_batting_1_name = Column(String(32), doc="Away team lineup slot 1 starting player name")
+    visitor_batting_1_name = Column(String(1024), doc="Away team lineup slot 1 starting player name")
     visitor_batting_1_position = Column(SmallInteger, doc="Away team lineup slot 1 starting player fielding position")
     visitor_batting_2_player_id = Column(CHAR(8), doc="Away team lineup slot 2 starting player ID")
-    visitor_batting_2_name = Column(String(32), doc="Away team lineup slot 2 starting player name")
+    visitor_batting_2_name = Column(String(1024), doc="Away team lineup slot 2 starting player name")
     visitor_batting_2_position = Column(SmallInteger, doc="Away team lineup slot 2 starting player fielding position")
     visitor_batting_3_player_id = Column(CHAR(8), doc="Away team lineup slot 3 starting player ID")
-    visitor_batting_3_name = Column(String(32), doc="Away team lineup slot 3 starting player name")
+    visitor_batting_3_name = Column(String(1024), doc="Away team lineup slot 3 starting player name")
     visitor_batting_3_position = Column(SmallInteger, doc="Away team lineup slot 3 starting player fielding position")
     visitor_batting_4_player_id = Column(CHAR(8), doc="Away team lineup slot 4 starting player ID")
-    visitor_batting_4_name = Column(String(32), doc="Away team lineup slot 4 starting player name")
+    visitor_batting_4_name = Column(String(1024), doc="Away team lineup slot 4 starting player name")
     visitor_batting_4_position = Column(SmallInteger, doc="Away team lineup slot 4 starting player fielding position")
     visitor_batting_5_player_id = Column(CHAR(8), doc="Away team lineup slot 5 starting player ID")
-    visitor_batting_5_name = Column(String(32), doc="Away team lineup slot 5 starting player name")
+    visitor_batting_5_name = Column(String(1024), doc="Away team lineup slot 5 starting player name")
     visitor_batting_5_position = Column(SmallInteger, doc="Away team lineup slot 5 starting player fielding position")
     visitor_batting_6_player_id = Column(CHAR(8), doc="Away team lineup slot 6 starting player ID")
-    visitor_batting_6_name = Column(String(32), doc="Away team lineup slot 6 starting player name")
+    visitor_batting_6_name = Column(String(1024), doc="Away team lineup slot 6 starting player name")
     visitor_batting_6_position = Column(SmallInteger, doc="Away team lineup slot 6 starting player fielding position")
     visitor_batting_7_player_id = Column(CHAR(8), doc="Away team lineup slot 7 starting player ID")
-    visitor_batting_7_name = Column(String(32), doc="Away team lineup slot 7 starting player name")
+    visitor_batting_7_name = Column(String(1024), doc="Away team lineup slot 7 starting player name")
     visitor_batting_7_position = Column(SmallInteger, doc="Away team lineup slot 7 starting player fielding position")
     visitor_batting_8_player_id = Column(CHAR(8), doc="Away team lineup slot 8 starting player ID")
-    visitor_batting_8_name = Column(String(32), doc="Away team lineup slot 8 starting player name")
+    visitor_batting_8_name = Column(String(1024), doc="Away team lineup slot 8 starting player name")
     visitor_batting_8_position = Column(SmallInteger, doc="Away team lineup slot 8 starting player fielding position")
     visitor_batting_9_player_id = Column(CHAR(8), doc="Away team lineup slot 9 starting player ID")
-    visitor_batting_9_name = Column(String(32), doc="Away team lineup slot 9 starting player name")
+    visitor_batting_9_name = Column(String(1024), doc="Away team lineup slot 9 starting player name")
     visitor_batting_9_position = Column(SmallInteger, doc="Away team lineup slot 9 starting player fielding position")
     home_batting_1_player_id = Column(CHAR(8), doc="Home team lineup slot 1 starting player ID")
-    home_batting_1_name = Column(String(32), doc="Home team lineup slot 1 starting player name")
+    home_batting_1_name = Column(String(1024), doc="Home team lineup slot 1 starting player name")
     home_batting_1_position = Column(SmallInteger, doc="Home team lineup slot 1 starting player fielding position")
     home_batting_2_player_id = Column(CHAR(8), doc="Home team lineup slot 2 starting player ID")
-    home_batting_2_name = Column(String(32), doc="Home team lineup slot 2 starting player name")
+    home_batting_2_name = Column(String(1024), doc="Home team lineup slot 2 starting player name")
     home_batting_2_position = Column(SmallInteger, doc="Home team lineup slot 2 starting player fielding position")
     home_batting_3_player_id = Column(CHAR(8), doc="Home team lineup slot 3 starting player ID")
-    home_batting_3_name = Column(String(32), doc="Home team lineup slot 3 starting player name")
+    home_batting_3_name = Column(String(1024), doc="Home team lineup slot 3 starting player name")
     home_batting_3_position = Column(SmallInteger, doc="Home team lineup slot 3 starting player fielding position")
     home_batting_4_player_id = Column(CHAR(8), doc="Home team lineup slot 4 starting player ID")
-    home_batting_4_name = Column(String(32), doc="Home team lineup slot 4 starting player name")
+    home_batting_4_name = Column(String(1024), doc="Home team lineup slot 4 starting player name")
     home_batting_4_position = Column(SmallInteger, doc="Home team lineup slot 4 starting player fielding position")
     home_batting_5_player_id = Column(CHAR(8), doc="Home team lineup slot 5 starting player ID")
-    home_batting_5_name = Column(String(32), doc="Home team lineup slot 5 starting player name")
+    home_batting_5_name = Column(String(1024), doc="Home team lineup slot 5 starting player name")
     home_batting_5_position = Column(SmallInteger, doc="Home team lineup slot 5 starting player fielding position")
     home_batting_6_player_id = Column(CHAR(8), doc="Home team lineup slot 6 starting player ID")
-    home_batting_6_name = Column(String(32), doc="Home team lineup slot 6 starting player name")
+    home_batting_6_name = Column(String(1024), doc="Home team lineup slot 6 starting player name")
     home_batting_6_position = Column(SmallInteger, doc="Home team lineup slot 6 starting player fielding position")
     home_batting_7_player_id = Column(CHAR(8), doc="Home team lineup slot 7 starting player ID")
-    home_batting_7_name = Column(String(32), doc="Home team lineup slot 7 starting player name")
+    home_batting_7_name = Column(String(1024), doc="Home team lineup slot 7 starting player name")
     home_batting_7_position = Column(SmallInteger, doc="Home team lineup slot 7 starting player fielding position")
     home_batting_8_player_id = Column(CHAR(8), doc="Home team lineup slot 8 starting player ID")
-    home_batting_8_name = Column(String(32), doc="Home team lineup slot 8 starting player name")
+    home_batting_8_name = Column(String(1024), doc="Home team lineup slot 8 starting player name")
     home_batting_8_position = Column(SmallInteger, doc="Home team lineup slot 8 starting player fielding position")
     home_batting_9_player_id = Column(CHAR(8), doc="Home team lineup slot 9 starting player ID")
-    home_batting_9_name = Column(String(32), doc="Home team lineup slot 9 starting player name")
+    home_batting_9_name = Column(String(1024), doc="Home team lineup slot 9 starting player name")
     home_batting_9_position = Column(SmallInteger, doc="Home team lineup slot 9 starting player fielding position")
-    additional_info = Column(String(128), doc="""
+    additional_info = Column(String(1024), doc="""
         Additional information.  This is a grab-bag of informational
               items that might not warrant a field on their own.  The field
               is alpha-numeric. Some items are represented by tokens such as:
@@ -884,7 +886,7 @@ class Event(Base):
     outs_ct = Column(SmallInteger, doc="Outs (0-2)")
     balls_ct = Column(SmallInteger, doc="Balls (0-3)")
     strikes_ct = Column(SmallInteger, doc="Strikes (0-2")
-    pitch_seq_tx = Column(String(30), doc="Pitch sequence")
+    pitch_seq_tx = Column(String(1024), doc="Pitch sequence")
     away_score_ct = Column(SmallInteger, doc="Away score")
     home_score_ct = Column(SmallInteger, doc="Home score")
     bat_id = Column(CHAR(8), doc="Batter ID")
@@ -906,7 +908,7 @@ class Event(Base):
     base1_run_id = Column(CHAR(8), doc="ID of runner on first")
     base2_run_id = Column(CHAR(8), doc="ID of runner on second")
     base3_run_id = Column(CHAR(8), doc="ID of runner on third")
-    event_tx = Column(String(128), doc="Event text (in scoring shorthand")
+    event_tx = Column(String(1024), doc="Event text (in scoring shorthand")
     leadoff_fl = Column(Boolean, doc="Batter is leading off the inning")
     ph_fl = Column(Boolean, doc="Batter is pinch-hitting")
     bat_fld_cd = Column(SmallInteger, doc="Defensive position of batter (10 for DH, 11 for PH, 12 for PR")
@@ -927,7 +929,7 @@ class Event(Base):
     battedball_cd = Column(CHAR(1), doc="Batted ball code (P - pop-up, G - ground ball, F - fly ball, L - line drive")
     bunt_fl = Column(Boolean, doc="Event is a bunt")
     foul_fl = Column(Boolean, doc="Event is a foul ball")
-    battedball_loc_tx = Column(String(5), doc="Hit location code (see https://www.retrosheet.org/location.htm)")
+    battedball_loc_tx = Column(String(1024), doc="Hit location code (see https://www.retrosheet.org/location.htm)")
     err_ct = Column(SmallInteger, doc="Number of errors recorded during event")
     err1_fld_cd = Column(SmallInteger, doc="Position code of fielder committing first error during event")
     err1_cd = Column(CHAR(1), doc="First error type (T - throwing, F - fielding)")
@@ -947,10 +949,10 @@ class Event(Base):
     run3_dest_id = Column(SmallInteger, doc="Destination of runner on third after event (0 - putout, 1-3 - bases, "
                                             "4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned "
                                             "to team earned to pitcher)")
-    bat_play_tx = Column(String(15), doc="Fielding play on batter")
-    run1_play_tx = Column(String(15), doc="Fielding play on runner on first")
-    run2_play_tx = Column(String(15), doc="Fielding play on runner on second")
-    run3_play_tx = Column(String(15), doc="Fielding play on runner on third")
+    bat_play_tx = Column(String(1024), doc="Fielding play on batter")
+    run1_play_tx = Column(String(1024), doc="Fielding play on runner on first")
+    run2_play_tx = Column(String(1024), doc="Fielding play on runner on second")
+    run3_play_tx = Column(String(1024), doc="Fielding play on runner on third")
     run1_sb_fl = Column(Boolean, doc="Runner on first steals base")
     run2_sb_fl = Column(Boolean, doc="Runner on second steals base")
     run3_sb_fl = Column(Boolean, doc="Runner on third steals base")

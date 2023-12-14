@@ -3,5 +3,5 @@
 ARG VERSION
 FROM doublewick/boxball:extract-${VERSION} as extract
 
-FROM alpine:3.9.3
+FROM alpine:3.19.0
 COPY --from=extract /extract /transform/csv
