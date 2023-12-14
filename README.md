@@ -18,6 +18,12 @@
 <br>
 </p>
 
+**Update**: I have released a new project, [baseball.computer](https://baseball.computer), which is designed
+as the successor to boxball. It is much easier to use (no Docker required, runs entirely in your browser/program)
+and includes many more tables, features, and quality controls. The event schema is different, which will be the main migration pain point in
+migration. _I aim to continue Boxball maintenence and updates as long as people are still using it,_ and I may try to rebase
+boxball on top of the new project to make maintaining both easier. Please let me know if there are things you can do in Boxball that you can't do yet in baseball.computer by filing an issue on the [repo](https://github.com/droher/baseball.computer) or reaching me at david.roher@baseball.computer. 
+
 ## Introduction
 **Boxball** creates prepopulated databases of the two most significant open source baseball datasets:
 [Retrosheet](http://retrosheet.org) and the [Baseball Databank](https://github.com/chadwickbureau/baseballdatabank).
