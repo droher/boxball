@@ -1,0 +1,148 @@
+.columnstyle {
+    color: rgb(31, 35, 40);
+    margin-left: 20px;
+}
+.keycolumnstyle {
+    color: rgb(151, 0, 0);
+    margin-left: 20px;
+}
+
+summary {
+    color-scheme: light;
+    cursor: pointer;
+    display: inline;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    height: auto;
+    line-height: 24px;
+    list-style-image: none;
+    list-style-position: inside;
+    list-style-type: disclosure-closed;
+    overflow-wrap: break-word;
+    text-align: start;
+    text-align-last: start;
+    text-indent: 20px;
+    text-transform: none;
+    unicode-bidi: isolate;
+    width: auto;
+}
+
+
+
+
+
+h2 {
+    border-bottom-color: rgb(216, 222, 228);
+    border-bottom-style: solid;
+    border-bottom-width: 0.8px;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 24px;
+    font-weight: 600;
+    height: 38px;
+    line-height: 30px;
+    margin-block-end: 16px;
+    margin-block-start: 24px;
+    margin-bottom: 16px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-top: 24px;
+    overflow-wrap: break-word;
+    padding-bottom: 7.2px;
+    unicode-bidi: isolate;
+    width: auto;
+}
+
+h3 {
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 20px;
+    font-weight: 600;
+    height: 25px;
+    line-height: 25px;
+    margin-block-end: 16px;
+    margin-block-start: 24px;
+    margin-bottom: 0px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-left: 20px;
+    margin-top: 8px;
+    overflow-wrap: break-word;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    width: auto;
+}
+
+h1 {
+    border-bottom-color: rgb(216, 222, 228);
+    border-bottom-style: solid;
+    border-bottom-width: 0.8px;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 32px;
+    font-weight: 600;
+    height: 50.4px;
+    line-height: 40px;
+    margin-block-end: 16px;
+    margin-block-start: 0px;
+    margin-bottom: 16px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-bottom: 9.6px;
+    unicode-bidi: isolate;
+    width: auto;
+}
+
+.codeblock {
+    background-color: rgb(246, 248, 250);
+    border-bottom-color: rgb(208, 215, 222);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-style: solid;
+    border-bottom-width: 0.8px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(208, 215, 222);
+    border-left-style: solid;
+    border-left-width: 0.8px;
+    border-right-color: rgb(208, 215, 222);
+    border-right-style: solid;
+    border-right-width: 0.8px;
+    border-top-color: rgb(208, 215, 222);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-top-style: solid;
+    border-top-width: 0.8px;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 13.6px;
+    line-height: 19.72px;
+    margin-bottom: 16px;
+    margin-top: 8px;
+    margin-left: 40px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+}
