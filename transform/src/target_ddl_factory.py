@@ -48,7 +48,7 @@ class TargetDdlFactory:
     def metadata_transform(metadata: MetaData) -> MetaData:
         """
         Overridable function to transform the metadata into a suitable format, e.g.
-        for postgres_cstore_fdw, which requires table-level transformations
+        for sqlite, which flattens schemas into <schema>_<table> table names
         """
         return metadata
 

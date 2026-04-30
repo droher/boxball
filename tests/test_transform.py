@@ -1,13 +1,8 @@
-import os
-from pathlib import Path
-
 from src import OUTPUT_PATH
 from src.boxball_schemas import retrosheet_metadata, baseballdatabank_metadata, all_metadata
 from src.ddl_factories import all_factories
+from src.ddl_factories.postgres_columnar import PostgresColumnarDdlFactory
 from src.parquet import write_files, PARQUET_PREFIX
-
-
-os.chdir(Path("/tmp/boxball"))
 
 
 class TestSchemas:
@@ -31,6 +26,23 @@ class TestDdlFactory:
         for factory in all_factories:
             factory.build_ddl(*all_metadata)
             assert OUTPUT_PATH.joinpath("{}.{}".format(factory.target_name, factory.file_format)).exists()
+
+    def test_columnar_ddl_uses_citus_columnar(self):
+        factory = PostgresColumnarDdlFactory()
+        assert any(isinstance(f, PostgresColumnarDdlFactory) for f in all_factories), \
+            "PostgresColumnarDdlFactory must be registered in all_factories"
+        for metadata in all_metadata:
+            transformed = factory.metadata_transform(metadata)
+            create_ddl = factory.make_create_ddl(transformed)
+            assert create_ddl.count("CREATE EXTENSION IF NOT EXISTS citus") == 1, \
+                "Each emitted columnar metadata block must declare the citus extension exactly once"
+            n_tables = len(transformed.tables)
+            assert create_ddl.count(" USING columnar") == n_tables, \
+                f"Expected {n_tables} USING columnar clauses, got {create_ddl.count(' USING columnar')}"
+            ext_idx = create_ddl.index("CREATE EXTENSION IF NOT EXISTS citus")
+            first_table_idx = create_ddl.index("CREATE TABLE")
+            assert ext_idx < first_table_idx, \
+                "CREATE EXTENSION citus must precede the first CREATE TABLE"
 
 
 class TestParquet:

@@ -1,6 +1,6 @@
 # ADR 0001: Columnar Postgres Replacement for `cstore_fdw`
 
-- **Status:** Accepted
+- **Status:** Accepted — implemented on `feature/ple-337-338-351-wave3-cleanup`
 - **Date:** 2026-04-30
 - **Linear ticket:** PLE-331 (spike); implementers: PLE-338 / PLE-339 / PLE-340 / PLE-341 / PLE-342
 - **Authors:** Boxball 2026 Refresh

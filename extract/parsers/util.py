@@ -1,10 +1,23 @@
 import logging
+import os
 from pathlib import Path
 
 import zstandard as zstd
 
 
-OUTPUT_PATH = Path("parsed")
+def resolve_path(env_key: str, default_subdir: str) -> Path:
+    """
+    Returns Path from env var if set; otherwise repo-anchored default.
+    Default is computed lazily so containers (which set the env var) never
+    rely on resolving a repo root that may not exist at /.
+    """
+    val = os.environ.get(env_key)
+    if val:
+        return Path(val)
+    return Path(__file__).resolve().parents[2] / default_subdir
+
+
+OUTPUT_PATH = resolve_path("BOXBALL_PARSED_PATH", "parsed")
 
 
 def compress(file: Path, output_dir: Path, remove_original=True) -> None:

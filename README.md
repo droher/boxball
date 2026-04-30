@@ -53,22 +53,28 @@ Feel free to [contact me](mailto:david@boxball.io) with questions or comments!
 
 ## Distributions
 ### Column-Oriented Databases
-#### Postgres cstore_fdw (Recommended)
-This distribution uses the [cstore_fdw](https://github.com/citusdata/cstore_fdw) extension to turn PostgreSQL
-into a column-oriented database. This means that you get the rich featureset of Postgres,
-but with a huge improvement in speed and disk usage. To install and run the database server:
+#### Postgres columnar (Recommended)
+This distribution uses [Citus](https://github.com/citusdata/citus)' native `USING columnar`
+table access method to turn PostgreSQL into a column-oriented database. This means that you get
+the rich featureset of Postgres, but with a large improvement in query speed and disk usage on
+the wide play-by-play tables. Citus columnar replaces the older `cstore_fdw` extension that this
+project used to ship; see [ADR 0001](docs/adr/0001-columnar-pg.md) for the rationale. To install
+and run the database server:
 
-`docker run --name postgres-cstore-fdw -d -p 5433:5432 -e POSTGRES_PASSWORD="postgres" -v ~/boxball/postgres-cstore-fdw:/var/lib/postgresql/data doublewick/boxball:postgres-cstore-fdw-latest`
+`docker run --name postgres-columnar -d -p 5433:5432 -e POSTGRES_PASSWORD="postgres" -v ~/boxball/postgres-columnar:/var/lib/postgresql/data doublewick/boxball:postgres-columnar-latest`
 
 Roughly an hour after the image is downloaded, the data will be fully loaded into the database, and you can connect to it as the user `postgres`
 with password `postgres` on port `5433`
 (either using the `psql` command line tool or a database client of your choice). The data will be persisted on your machine in
-`~/boxball/postgres-cstore-fdw` (~1.5GB), which means you can stop/remove the container without having to reload the data
+`~/boxball/postgres-columnar` (~1.5GB), which means you can stop/remove the container without having to reload the data
 when you turn it back on.
+
+> **Note:** Citus columnar tables are append-only — `UPDATE`, `DELETE`, and foreign keys are
+> not supported on them. Use the plain `postgres` target if you need a mutable copy of the data.
 
 #### Clickhouse
 [Clickhouse](https://clickhouse.yandex/) is a database developed by Yandex with some very impressive performance benchmarks. It uses less
-disk space than Postgres cstore_fdw, but significantly more RAM (~5GB). I've yet to run any query performance comparisons.
+disk space than Postgres columnar, but significantly more RAM (~5GB). I've yet to run any query performance comparisons.
 To install and run the database server:
 
 `docker run --name clickhouse -d -p 8123:8123 -v ~/boxball/clickhouse:/var/lib/clickhouse doublewick/boxball:clickhouse-latest`
@@ -79,22 +85,11 @@ The data will be persisted on your machine in
 `~/boxball/clickhouse` (~700MB), which means you can stop/remove the container without having to reload the data
 when you turn it back on.
 
-#### Drill
-[Drill](https://drill.apache.org/) is a framework that allows for SQL queries directly on files, without having to declare any schema.
-It is usually used on a computing cluster with massive datasets, but we use a single-node setup. To install and run:
-
-`docker run --name drill -id -p 8047:8047 -p 31010:31010 -v ~/boxball/drill:/data doublewick/boxball:drill-latest`
- 
-Data will be immediately available to query after the image is downloaded. Use port `8047` to access the Web UI 
-(which includes a SQL runner) and port `31010` to connect via a database client.
-You may also attach the container and query from the command line.
-The data will be persisted on your machine in `~/boxball/drill` (~700MB).
-
 ### Traditional (Row-oriented) Databases
 Note: these frameworks are likely to be prohibitively slow when querying play-by-play data, and they take up significantly
 more disk space than their columnar counterparts.
 #### Postgres
-Similar configuration to the cstore_fdw extended version above, but stored in the conventional way.
+Similar configuration to the columnar version above, but stored in the conventional row-oriented way (and supports `UPDATE`/`DELETE`/foreign keys).
 
 `docker run --name postgres -d -p 5432:5432 -e POSTGRES_PASSWORD="postgres" -v ~/boxball/postgres:/var/lib/postgresql/data doublewick/boxball:postgres-latest`
 

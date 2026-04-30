@@ -17,6 +17,11 @@ RUN apk add --no-cache \
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 ENV PYTHONPATH="/"
+ENV BOXBALL_PARSED_PATH=/parsed \
+    BOXBALL_RETROSHEET_PATH=/retrosheet \
+    BOXBALL_CODE_TABLES_PATH=/code_tables \
+    BOXBALL_BASEBALLDATABANK_CORE_PATH=/baseballdatabank/core \
+    BOXBALL_BASEBALLDATABANK_CONTRIB_PATH=/baseballdatabank/contrib
 
 
 # `prod` gets the full datasets, while `test` provides fixtures with small sample data for each file

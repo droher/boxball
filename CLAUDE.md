@@ -30,7 +30,7 @@ make ci-list           # list jobs without running
 
 Requires `act` (`brew install act`) + a running Docker daemon. `.actrc` pins `linux/amd64` for reproducibility on M-series and forwards the host Docker socket so the e2e job's `docker compose build` works against the host daemon.
 
-Schemas are SQLAlchemy-defined and authoritative. DDL for every target dialect (Postgres, Postgres+cstore_fdw, MySQL, SQLite, Clickhouse) is generated from the same metadata.
+Schemas are SQLAlchemy-defined and authoritative. DDL for every target dialect (Postgres, Postgres+Citus columnar, MySQL, SQLite, Clickhouse) is generated from the same metadata.
 
 ## Pipeline architecture
 
@@ -49,7 +49,7 @@ The `docker-compose.yml` wires this up — every service uses YAML anchors (`x-e
 
 `transform/src/target_ddl_factory.TargetDdlFactory` is the abstract base. Each target subclass provides:
 - `target_name` (output filename stem) and `dialect` (SQLAlchemy `Dialect`, or `None` if hand-rolled).
-- `metadata_transform(metadata)` — overridable rewrite of the SQLAlchemy `MetaData` before DDL emit. Used to e.g. flatten schemas into table-name prefixes for SQLite/cstore_fdw, swap engines for Clickhouse, drop `dummy_id` autoincrement PKs that don't translate.
+- `metadata_transform(metadata)` — overridable rewrite of the SQLAlchemy `MetaData` before DDL emit. Used to e.g. flatten schemas into table-name prefixes for SQLite, swap engines for Clickhouse, drop `dummy_id` autoincrement PKs that don't translate.
 - `make_copy_ddl(metadata)` — emits the loader statements (`COPY FROM PROGRAM`, `LOAD DATA INFILE`, `.import`, etc.) tailored per dialect's NULL/bool/CSV quirks.
 
 When adding a new target, subclass `TargetDdlFactory`, register it in `transform/src/ddl_factories/__init__.py::all_factories`, and add a stage in `load/Dockerfile` + service entry in `docker-compose.yml`.
@@ -63,7 +63,7 @@ When changing a schema column, edit `transform/src/boxball_schemas/{retrosheet,b
 ```
 docker compose build extract                      # extract stage only
 docker compose build parquet ddl                  # transform outputs
-docker compose build postgres-cstore-fdw          # full chain to one DB target
+docker compose build postgres-columnar            # full chain to one DB target
 docker compose build                              # all targets
 
 BUILD_ENV=test docker compose build               # CI smoke build with fixtures
@@ -83,15 +83,15 @@ pytest tests/test_extract.py -k parse_simples     # one test
 flake8                                            # style (config in .flake8, ignores E741/E731, max-line=120)
 ```
 
-`tests/conftest.py` unpacks `extract/fixtures/raw/*.zip` into `/tmp/boxball/` and `chdir`s there; tests run against fixture data only. The fixture path mirrors the in-container layout, so the same parser/transform code works in both.
+`tests/conftest.py` unpacks `extract/fixtures/raw/*.zip` into `/tmp/boxball/` and sets `BOXBALL_*_PATH` env vars to point there before any module imports resolve their default paths. No `chdir` — tests are isolated from CWD.
 
 CI (`.github/workflows/ci.yml`) runs `style` (ruff) → `int-test` (pytest+coverage) → `e2e-test` (`BUILD_ENV=test docker compose build`). `make ci` runs the same workflow locally via `act`.
 
 ## Gotchas
 
-- `transform/src/__init__.py` defines `OUTPUT_PATH = Path("ddl")` etc. as **relative** paths. `ddl_maker.py` and `parquet.py` are run with the working directory set by their Dockerfiles; running them from the host requires matching CWD or these paths break.
+- Path resolution in `transform/src/__init__.py` and `extract/parsers/util.py` (incl. `RETROSHEET_PATH`, `CODE_TABLES_PATH`, `BASEBALLDATABANK_PATHS`) uses `BOXBALL_*_PATH` env vars with repo-anchored absolute defaults computed from `__file__`. Containers set the env vars in their Dockerfiles (`/ddl`, `/extract`, `/parsed`, `/retrosheet`, etc.); host runs/tests get the right path without `os.chdir`.
 - `transform/src/boxball_schemas/` is also packaged standalone as the `boxball-schemas` PyPI package (see `transform/src/setup.py`) — keep it import-clean of the rest of `transform/src/`.
 - Retrosheet is fetched from `droher/retrosheet-mirror` (a fork) rather than upstream, pinned by SHA in `.env`. Baseball Databank similarly pinned to a fork (`tom-719/baseballdatabank`) per a comment in `extract/Dockerfile` waiting on upstream 2023 data.
-- The `postgres-cstore-fdw` target is pinned to Postgres 13 because cstore_fdw isn't packaged for newer versions; plain `postgres` runs on 16.
+- The `postgres-columnar` target uses Citus 13.x (`postgresql-16-citus-13.0`) on `postgres:16-bookworm`, emitting `CREATE TABLE ... USING columnar` via `PostgresColumnarDdlFactory`. Citus columnar tables are append-only — no `UPDATE`/`DELETE`/FK. Use the plain `postgres` target if you need mutability. See `docs/adr/0001-columnar-pg.md`.
 - `load/<target>/` shell scripts rely on alphabetical execution order in `/docker-entrypoint-initdb.d/` — the `A_` / `z_` prefixes are load-bearing, not cosmetic.
 - MySQL CSV loader needs explicit per-column `IF(@col = '', NULL, @col)` because MySQL won't treat blank fields as NULL; floats also need an `inf` guard. See `transform/src/ddl_factories/mysql.py`.

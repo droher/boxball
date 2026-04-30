@@ -8,13 +8,13 @@ import shutil
 import fileinput
 from typing import Callable, Set
 
-from parsers.util import compress, OUTPUT_PATH
+from parsers.util import compress, OUTPUT_PATH, resolve_path
 
 # MS-DOS eof character that needs to be specially handled in some files
 DOS_EOF = chr(26)
 
-RETROSHEET_PATH = Path("retrosheet")
-CODE_TABLES_PATH = Path("code_tables")
+RETROSHEET_PATH = resolve_path("BOXBALL_RETROSHEET_PATH", "retrosheet")
+CODE_TABLES_PATH = resolve_path("BOXBALL_CODE_TABLES_PATH", "code_tables")
 
 RETROSHEET_SUBDIRS = "gamelogs", "schedules", "rosters"
 EVENT_FOLDERS = "allstar", "postseason", "events"

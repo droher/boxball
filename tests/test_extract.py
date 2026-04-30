@@ -1,4 +1,3 @@
-import os
 from unittest.mock import patch
 from pathlib import Path
 
@@ -8,7 +7,7 @@ from parsers.retrosheet import RetrosheetParser, PARSE_FUNCS
 from parsers.baseballdatabank import get_baseballdatabank_files
 from parsers.util import compress
 
-os.chdir(Path("/tmp/boxball"))
+TMP = Path("/tmp/boxball")
 MOCK_FUNCS = {k: "cat *{year}*" for k in PARSE_FUNCS}
 
 # Fixture layout (extract/fixtures/raw/retrosheet.zip, last touched 2020) predates the
@@ -53,6 +52,6 @@ class TestBaseballDatabank:
 
 class TestExtractUtil:
     def test_compress(self):
-        compress(Path("retrosheet/gamelog/GL1871.TXT"), Path("retrosheet/gamelog"),
+        compress(TMP / "retrosheet/gamelog/GL1871.TXT", TMP / "retrosheet/gamelog",
                  remove_original=False)
         assert True

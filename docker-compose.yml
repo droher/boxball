@@ -55,22 +55,6 @@ x-clickhouse:
     - parquet
     - ddl
 
-x-drill:
-  &drill
-  build:
-    context: load
-    target: drill
-    platforms:
-      - "linux/amd64"
-    args:
-      - VERSION
-  image: ${REPO}:drill-${VERSION}
-  volumes:
-    - ~/boxball/drill:/data
-  depends_on:
-    - parquet
-    - ddl
-
 x-postgres:
   &postgres
   build:
@@ -88,19 +72,19 @@ x-postgres:
     - csv
     - ddl
 
-x-postgres-cstore-fdw:
-  &postgres-cstore-fdw
+x-postgres-columnar:
+  &postgres-columnar
   build:
-    context: load/postgres_cstore_fdw
+    context: load/postgres-columnar
     dockerfile: ../Dockerfile
-    target: postgres-cstore-fdw
+    target: postgres-columnar
     platforms:
       - "linux/amd64"
     args:
       - VERSION
-  image: ${REPO}:postgres-cstore-fdw-${VERSION}
+  image: ${REPO}:postgres-columnar-${VERSION}
   volumes:
-    - ~/boxball/postgres-cstore-fdw:/var/lib/postgresql/data
+    - ~/boxball/postgres-columnar:/var/lib/postgresql/data
   depends_on:
     - csv
     - ddl
@@ -170,23 +154,17 @@ services:
     << : *clickhouse
     image: ${REPO}:clickhouse-latest
 
-  drill:
-    << : *drill
-  drill-latest:
-    << : *drill
-    image: ${REPO}:drill-latest
-
   postgres:
     << : *postgres
   postgres-latest:
     << : *postgres
     image: ${REPO}:postgres-latest
 
-  postgres-cstore-fdw:
-    << : *postgres-cstore-fdw
-  postgres-cstore-fdw-latest:
-    << : *postgres-cstore-fdw
-    image: ${REPO}:postgres-cstore-fdw-latest
+  postgres-columnar:
+    << : *postgres-columnar
+  postgres-columnar-latest:
+    << : *postgres-columnar
+    image: ${REPO}:postgres-columnar-latest
 
   mysql:
     << : *mysql
