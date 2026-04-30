@@ -145,45 +145,60 @@ uv run basedpyright          # type check (advisory; baseline-only)
 make ci                      # full CI pipeline locally via act
 ```
 
-### Multi-arch builds
+### Local builds
 
-Compose declares `linux/amd64` + `linux/arm64` as the build platforms for every
-target except `postgres-columnar`, which is amd64-only because Citus does not
-ship arm64 packages on packagecloud (the install script aborts with "the Citus
-repository does not contain packages for non-x86_64 architectures"). Use the
-plain `postgres` target if you need an arm64 image.
-
-Multi-platform builds need a buildx builder backed by the `docker-container`
-driver — the default `docker` driver errors with "Multi-platform build is not
-supported for the docker driver". One-time setup:
+Full chain (`extract` → `transform` → every `load/<target>`) is single-platform
+amd64. amd64 matches CI (ubuntu-latest GH runners) and the published artifact
+for `postgres-columnar` (Citus has no arm64 packages); pinning amd64 across
+the whole chain keeps the local image store coherent so each downstream
+`FROM doublewick/boxball:<stage>-${VERSION}` resolves locally instead of
+falling back to the registry's previous-release tag. arm64 hosts (Apple
+Silicon, Graviton) emulate amd64 via QEMU — slow but coherent.
 
 ```
-make buildx-bootstrap     # creates a docker-container builder named "boxball"
-make compose-build SVC=extract BUILD_ENV=test     # multi-arch via the wrapper
+BUILD_ENV=test make build-local      # full chain, fixture data (~CI smoke)
+make build-local                     # full chain, real data (long)
+docker compose build postgres        # single target, host-arch (native arm64 OK)
 ```
 
-The `compose-build` target sets `BUILDX_BUILDER=boxball` for the invocation.
-That env var is required because `docker buildx use` is not honoured by
-`docker compose build` in compose v2. If you prefer to invoke compose
-directly, set the env var yourself:
+`make build-local` exports `DOCKER_DEFAULT_PLATFORM=linux/amd64` and runs
+three serialized waves:
 
 ```
-BUILDX_BUILDER=boxball BUILD_ENV=test docker compose build extract
+docker compose build extract
+docker compose build ddl parquet csv
+docker compose build clickhouse postgres postgres-columnar mysql sqlite
 ```
 
-CI uses the same env-var mechanism: `docker/setup-buildx-action@v3` provisions
-a builder and the build step exports its id as `BUILDX_BUILDER` (see
-`.github/workflows/ci.yml`).
+Serialization matters: `docker compose build` (no args) builds services in
+parallel, which races — downstream `FROM <tag>` lookups beat the upstream
+tag landing in the local image store, so buildx falls back to the registry.
 
-Caveat: multi-platform compose builds run inside the buildx daemon and do not
-`--load` the resulting manifest list back into the local Docker image store
-(only single-platform builds can `--load`). Downstream stages that reference a
-parent by tag (`FROM doublewick/boxball:extract-${VERSION}`) therefore resolve
-against the registry, not against the just-built local cache. Until the
-release pipeline pushes fresh multi-arch tags (PLE-358), end-to-end multi-arch
-chains pulling intermediate images from the registry will pull whatever's
-published there (currently amd64-only). For host-arch single-platform builds,
-drop `BUILDX_BUILDER` and the default driver does the right thing.
+### Multi-arch (release)
+
+Multi-arch images ship from `docker-bake.hcl`, layered on top of
+`docker-compose.yml`. `bake` overrides `platforms` per target (most are
+`linux/amd64` + `linux/arm64`; `postgres-columnar` stays amd64-only). Compose
+itself stays single-platform because buildx cannot `--load` a manifest list:
+multi-arch must `--push` to a registry.
+
+Local dry-run (validates the bake graph; no build):
+
+```
+make bake-print
+```
+
+Multi-arch push (release pipeline; needs `docker login` against `$REPO`):
+
+```
+make buildx-bootstrap    # one-time: create docker-container builder "boxball"
+make bake-push           # builds + pushes manifest lists for every target
+```
+
+Until PLE-358 wires `bake-push` into a release workflow, multi-arch
+validation is via `docker manifest inspect` on bases + `make bake-print`.
+CI's `e2e-test` job validates the host-arch (amd64) chain end-to-end via
+`make build-local`.
 
 ### Build-time logging
 

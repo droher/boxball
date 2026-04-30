@@ -1,4 +1,4 @@
-.PHONY: ci ci-style ci-int-test ci-e2e-test ci-list buildx-bootstrap compose-build
+.PHONY: ci ci-style ci-int-test ci-e2e-test ci-list buildx-bootstrap bake-print bake-push build-local
 
 # Local GitHub Actions runner via `act`.
 # All targets exec `.github/workflows/ci.yml` against the same runner image
@@ -23,14 +23,14 @@ ci-e2e-test:
 ci-list:
 	act $(EVENT) -W $(WORKFLOW) -l
 
-# One-time local bootstrap for multi-platform builds. The default `docker`
-# buildx driver cannot build for multiple platforms in a single invocation;
-# `docker compose build` against a multi-platform service errors with
-# "Multi-platform build is not supported for the docker driver". This target
-# creates a `docker-container` builder named `boxball` (idempotent). It does
-# *not* `--use` the builder as the global default, since `docker buildx use`
-# is not honoured by `docker compose build` in compose v2 — pair it with
-# `make compose-build SVC=...` (or set `BUILDX_BUILDER=boxball` manually).
+# Multi-arch builds live in `docker-bake.hcl` and run via `docker buildx bake`.
+# Compose itself stays host-arch / single-platform so `docker compose build`
+# loads intermediates into the local image store, letting downstream
+# `FROM doublewick/boxball:<stage>-${VERSION}` resolve locally.
+#
+# The default `docker` buildx driver cannot build for multiple platforms; bake
+# needs the `docker-container` driver. This target creates an idempotent
+# builder named `boxball`. Bake selects it via `BUILDX_BUILDER`.
 buildx-bootstrap:
 	@if ! docker buildx inspect boxball >/dev/null 2>&1; then \
 		echo "Creating docker-container buildx builder 'boxball'..."; \
@@ -39,12 +39,46 @@ buildx-bootstrap:
 	else \
 		echo "Builder 'boxball' already exists."; \
 	fi
-	@echo "Run multi-arch builds via: make compose-build SVC=<service>"
-	@echo "Or manually:               BUILDX_BUILDER=boxball docker compose build [<service>]"
+	@echo "Multi-arch dry-run: make bake-print"
+	@echo "Multi-arch push:    make bake-push  (needs DH creds — PLE-357/358)"
 
-# Wrapper around `docker compose build` that selects the docker-container
-# builder explicitly via env var (compose v2 ignores `docker buildx use`).
-# Pass SVC=<service> to build a single target, or omit to build everything.
-# Pass BUILD_ENV=test for fixture-driven smoke builds.
-compose-build:
-	BUILDX_BUILDER=boxball docker compose build $(SVC)
+# Single-platform amd64 build of the full chain. Two reasons to pin amd64:
+#  1) `postgres-columnar` is amd64-only (Citus has no arm64 packages). If the
+#     rest of the chain is built host-arch (e.g. arm64 on Apple Silicon),
+#     postgres-columnar's `FROM doublewick/boxball:ddl-${VERSION}` looks for
+#     an amd64 image, doesn't find one locally, and falls back to the
+#     registry — pulling the previous release's tag, which predates the
+#     PLE-338 schema rename and breaks `COPY --from=ddl /ddl/postgres_columnar.sql`.
+#     Building everything amd64 keeps the local image store coherent.
+#  2) Multi-arch needs `--push` (buildx can't `--load` manifest lists), which
+#     is the release workflow's job. For local validation, single-platform
+#     amd64 matches CI (ubuntu-latest GH runners) and the published artifact.
+#
+# The serialized boundaries (extract → transform → load) avoid compose v2's
+# parallel-build race where downstream `FROM <tag>` lookups beat upstream
+# tags landing in the local store.
+#
+# On arm64 hosts this emulates amd64 via QEMU (slow but coherent). For native
+# arm64 dev images, build a single non-columnar target host-arch:
+# `docker compose build postgres`.
+build-local: export DOCKER_DEFAULT_PLATFORM=linux/amd64
+build-local:
+	docker compose build extract
+	docker compose build ddl parquet csv
+	docker compose build clickhouse postgres postgres-columnar mysql sqlite
+
+BAKE_FILES := --file docker-compose.yml --file docker-bake.hcl
+BAKE_TARGET ?= multiarch
+
+# Print the resolved bake graph (multi-arch platforms, tags, contexts) without
+# building. Validates the bake file parses + targets resolve.
+bake-print:
+	docker buildx bake $(BAKE_FILES) --print $(BAKE_TARGET)
+
+# Build + push multi-arch manifest lists. Requires:
+#   1) `make buildx-bootstrap` (docker-container builder)
+#   2) `docker login` against $$REPO's registry (DH for prod)
+# `--push` is mandatory: buildx cannot `--load` multi-platform output to the
+# local image store.
+bake-push:
+	BUILDX_BUILDER=boxball docker buildx bake $(BAKE_FILES) --push $(BAKE_TARGET)

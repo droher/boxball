@@ -56,22 +56,16 @@ jobs:
       BUILD_ENV: test
     steps:
       - uses: actions/checkout@v4
-      # QEMU registers binfmt_misc handlers for cross-arch emulation. Required
-      # so the docker-container buildx driver can build linux/arm64 stages on
-      # GitHub's amd64 runners.
-      - uses: docker/setup-qemu-action@v3
-        with:
-          platforms: arm64
-      # setup-buildx-action provisions a docker-container builder. We pin the
-      # builder by id (output) and select it explicitly via BUILDX_BUILDER on
-      # the build step rather than relying on the action's `use: true` default
-      # — that selection path is not honoured by `docker compose build` in
-      # compose v2 (and the action's own `install:` deprecation message points
-      # toward env-var selection). Local `make compose-build` uses the same
-      # mechanism for parity.
-      - uses: docker/setup-buildx-action@v3
-        id: buildx
-      - name: docker compose build
-        env:
-          BUILDX_BUILDER: ${{ steps.buildx.outputs.name }}
-        run: docker compose build
+      # Single-platform host-arch build via the default docker driver. The
+      # default driver loads each built image into the local docker image
+      # store, so downstream stages' `FROM doublewick/boxball:<stage>-${VERSION}`
+      # resolves locally instead of pulling the previous release's tag from
+      # the registry. `make build-local` serializes the extract → transform →
+      # load wave boundaries; a single `docker compose build` would race
+      # since compose v2 builds services in parallel and downstream `FROM`
+      # lookups beat the upstream tag landing in the local store.
+      # Multi-arch validation requires `--push` (buildx cannot `--load` a
+      # manifest list) and lives in the release workflow via
+      # `docker buildx bake --push multiarch` against docker-bake.hcl.
+      - name: build full chain
+        run: make build-local

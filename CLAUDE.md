@@ -63,12 +63,18 @@ When changing a schema column, edit `transform/src/boxball_schemas/{retrosheet,b
 ```
 docker compose build extract                      # extract stage only
 docker compose build parquet ddl                  # transform outputs
-docker compose build postgres-columnar            # full chain to one DB target
-docker compose build                              # all targets
-
-BUILD_ENV=test docker compose build               # CI smoke build with fixtures
+make build-local                                  # full chain (amd64-pinned, serialized)
+BUILD_ENV=test make build-local                   # full chain, fixture data (CI smoke)
 BOXBALL_LOG_LEVEL=DEBUG docker compose build extract   # raise pipeline log verbosity
 ```
+
+Use `make build-local` for the full chain rather than bare `docker compose build`:
+compose v2 builds in parallel and `postgres-columnar` is amd64-only, so a host-arch
+parallel build leaves downstream `FROM doublewick/boxball:<stage>-${VERSION}` lookups
+falling back to the registry (stale tag from previous release). `make build-local`
+pins `DOCKER_DEFAULT_PLATFORM=linux/amd64` and serializes extract → transform → load
+waves so each upstream tag exists in the local image store before downstream
+lookups happen. Multi-arch lives in `docker-bake.hcl` (release-only; needs `--push`).
 
 `BOXBALL_LOG_LEVEL` is forwarded as a build arg to `extract`, `parquet`, and `ddl`; defaults to `INFO`. Each stage tags log lines with `BOXBALL_STAGE`. See `extract/parsers/_logging.py` and `transform/src/_logging.py` (kept duplicated because Docker contexts can't share files).
 
@@ -88,7 +94,7 @@ flake8                                            # style (config in .flake8, ig
 
 `tests/conftest.py` unpacks `extract/fixtures/raw/*.zip` into `/tmp/boxball/` and sets `BOXBALL_*_PATH` env vars to point there before any module imports resolve their default paths. No `chdir` — tests are isolated from CWD.
 
-CI (`.github/workflows/ci.yml`) runs `style` (ruff) → `int-test` (pytest+coverage) → `e2e-test` (`BUILD_ENV=test docker compose build`). `make ci` runs the same workflow locally via `act`.
+CI (`.github/workflows/ci.yml`) runs `style` (ruff) → `int-test` (pytest+coverage) → `e2e-test` (`BUILD_ENV=test make build-local`). `make ci` runs the same workflow locally via `act`.
 
 ## Gotchas
 
