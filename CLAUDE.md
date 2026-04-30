@@ -73,7 +73,7 @@ To run a built image, see the `docker run` recipes in `README.md` — they mount
 
 ## Tests
 
-Top-level `requirements.txt` is for the host test runner (not used inside Docker stages — those have their own per-stage requirements). Tests assume Python 3.7-ish (per `.circleci/config.yml`); mostly compatibility checks rather than deep correctness.
+Top-level `requirements.txt` is for the host test runner (not used inside Docker stages — those have their own per-stage requirements). Tests assume Python 3.13 (per `.github/workflows/ci.yml`); mostly compatibility checks rather than deep correctness.
 
 ```
 pip install -r requirements.txt
@@ -85,7 +85,7 @@ flake8                                            # style (config in .flake8, ig
 
 `tests/conftest.py` unpacks `extract/fixtures/raw/*.zip` into `/tmp/boxball/` and `chdir`s there; tests run against fixture data only. The fixture path mirrors the in-container layout, so the same parser/transform code works in both.
 
-CI (`.circleci/config.yml`) runs `style` (flake8) → `int-test` (pytest+coverage) → `e2e-test` (`BUILD_ENV=test docker compose build`).
+CI (`.github/workflows/ci.yml`) runs `style` (ruff) → `int-test` (pytest+coverage) → `e2e-test` (`BUILD_ENV=test docker compose build`). `make ci` runs the same workflow locally via `act`.
 
 ## Gotchas
 

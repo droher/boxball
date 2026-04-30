@@ -62,7 +62,7 @@ RUN echo "Decompressing fies..." && \
     zstd --rm boxball.db
 
 
-FROM python:3.11-alpine3.19 AS sqlite
+FROM python:3.13-alpine3.19 AS sqlite
 RUN apk add --no-cache \
     zstd \
     sqlite

@@ -3,8 +3,8 @@
 </p>
 <p align="center">
 <img alt="GitHub release" src="https://img.shields.io/github/release/droher/boxball.svg">
-<a href="https://circleci.com/gh/droher/boxball">
-    <img src="https://circleci.com/gh/droher/boxball.svg?style=shield&circle-token=2b78bfd4c600c640c479f2f2d9eaa38823ad8b96"/>
+<a href="https://github.com/droher/boxball/actions/workflows/ci.yml">
+    <img src="https://github.com/droher/boxball/actions/workflows/ci.yml/badge.svg" alt="CI"/>
 </a>
 <a href="https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=droher/boxball&amp;utm_campaign=Badge_Grade">
     <img src="https://api.codacy.com/project/badge/Grade/9a163160d3db4621b941b3297bfb9edf"/>
@@ -136,7 +136,7 @@ The original CSVs from the extract step (each CSV file is compressed in the ZSTD
 ## Acknowledgements
 Ted Turocy's [Chadwick Bureau](http://chadwick-bureau.com/) developed the tools and repos that made this project possible. I am also grateful to [Sean
 Lahman](http://www.seanlahman.com/) for creating his database, which I have been using for over 15 years. I was able
-to develop and host this project for free thanks to the generous open-source plans of [Jetbrains](https://www.jetbrains.com/?from=boxball), CircleCI, Github, and Docker Hub.
+to develop and host this project for free thanks to the generous open-source plans of [Jetbrains](https://www.jetbrains.com/?from=boxball), Github, and Docker Hub.
 
 Retrosheet represents the collective effort of thousands of baseball fans over 150 years of scorekeeping and data entry.
 I hope Boxball facilitates more historical research to continue this tradition.
