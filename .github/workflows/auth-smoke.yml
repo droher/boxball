@@ -1,0 +1,59 @@
+name: auth-smoke
+
+# Manual-only: verifies Docker Hub PAT and PyPI trusted-publisher OIDC are
+# wired correctly without performing a real publish. See CONTRIBUTING.md for
+# the credential provisioning steps that this workflow validates.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write  # required for PyPI OIDC token exchange
+
+jobs:
+  dockerhub-login:
+    runs-on: ubuntu-latest
+    steps:
+      # docker/login-action prints "Login Succeeded" on success, which is the
+      # AC line for PLE-357. The action handles secret masking internally.
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  pypi-oidc-mint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mint short-lived PyPI token via OIDC
+        # Exchange the GitHub OIDC token for a temporary PyPI upload token.
+        # 200 from mint-token means the trusted publisher is correctly
+        # configured for this workflow file. The token is discarded; no
+        # package upload happens. ACTIONS_ID_TOKEN_REQUEST_TOKEN/URL are
+        # injected into the runner environment by the `id-token: write`
+        # permission above; they are not part of the workflow `env` context.
+        run: |
+          set -euo pipefail
+          OIDC_TOKEN=$(curl -fsSL \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=pypi" \
+            | jq -r .value)
+          if [ -z "$OIDC_TOKEN" ] || [ "$OIDC_TOKEN" = "null" ]; then
+            echo "Failed to mint GitHub OIDC token"; exit 1
+          fi
+          HTTP_CODE=$(curl -fsS -o /tmp/pypi.json -w "%{http_code}" \
+            -X POST 'https://pypi.org/_/oidc/mint-token' \
+            -H 'Content-Type: application/json' \
+            --data @<(jq -nc --arg t "$OIDC_TOKEN" '{token: $t}'))
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "PyPI mint-token returned HTTP $HTTP_CODE"
+            cat /tmp/pypi.json
+            exit 1
+          fi
+          if ! jq -e '.token' /tmp/pypi.json > /dev/null; then
+            echo "PyPI response missing .token field"
+            cat /tmp/pypi.json
+            exit 1
+          fi
+          echo "PyPI OIDC mint OK (token discarded; no upload performed)."
