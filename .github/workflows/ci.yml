@@ -69,3 +69,10 @@ jobs:
       # `docker buildx bake --push multiarch` against docker-bake.hcl.
       - name: build full chain
         run: make build-local
+      # Boot each load-target container against the locally-built images,
+      # wait for the database to come up, run a known query against the
+      # loaded data, tear it down. A non-zero exit here fails the job: the
+      # release workflow gates on this same script so a CI failure means the
+      # tagged build is not publishable.
+      - name: runtime validate (load targets)
+        run: bash scripts/validate-targets.sh

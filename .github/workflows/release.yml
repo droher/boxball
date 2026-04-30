@@ -143,11 +143,58 @@ jobs:
             docker buildx bake --file docker-compose.yml --file docker-bake.hcl --push clickhouse postgres postgres-columnar mysql sqlite
           fi
 
+      # NB: `<stage>-latest` retag intentionally runs in a downstream job
+      # (`promote-latest`) gated on `validate-runtime`. We publish the
+      # version-specific tags here so the validate job can pull them, but
+      # the `latest` pointer only moves once the runtime e2e proves the
+      # images actually start and serve queries.
+
+  validate-runtime:
+    name: Runtime e2e validation (load targets)
+    needs: [resolve, build-push]
+    if: needs.resolve.outputs.dry_run == 'false'
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.resolve.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # The just-pushed `:VERSION` manifest lists are multi-arch; pulling
+      # them on the linux/amd64 runner picks the matching variant. The
+      # validation script boots each container, polls until ready, queries
+      # baseballdatabank.teams, and tears down. Any failure here aborts the
+      # release before `latest` is repointed and before bundles publish.
+      - name: Pull tagged load images
+        run: |
+          set -euo pipefail
+          for stage in clickhouse postgres postgres-columnar mysql sqlite; do
+            docker pull "${REPO}:${stage}-${VERSION}"
+          done
+      - name: Boot + query each target
+        run: bash scripts/validate-targets.sh
+
+  promote-latest:
+    name: Promote ${VERSION} -> latest
+    needs: [resolve, build-push, validate-runtime]
+    if: needs.resolve.outputs.dry_run == 'false'
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.resolve.outputs.version }}
+    steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       # PLAN.md M2 requires both `${TAG}` and `latest` for every kept target.
-      # `imagetools create` copies the just-pushed manifest list to a new tag
-      # without rebuilding (cheap, byte-identical).
-      - name: Retag <stage>-${VERSION} → <stage>-latest
-        if: env.DRY_RUN == 'false'
+      # `imagetools create` copies the validated manifest list to a new tag
+      # without rebuilding (cheap, byte-identical) — so `latest` always
+      # points at a build that passed the runtime e2e gate.
+      - name: Retag <stage>-${VERSION} -> <stage>-latest
         run: |
           set -euo pipefail
           for stage in extract ddl parquet csv clickhouse postgres postgres-columnar mysql sqlite; do
@@ -158,7 +205,7 @@ jobs:
 
   bundles:
     name: Build flat-file bundles
-    needs: [resolve, build-push]
+    needs: [resolve, build-push, validate-runtime]
     if: needs.resolve.outputs.dry_run == 'false'
     runs-on: ubuntu-latest
     env:

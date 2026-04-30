@@ -1,9 +1,28 @@
 from typing import List
-from sqlalchemy import MetaData, Float, Boolean, Column
+from sqlalchemy import MetaData, Float, Boolean, Column, Table, String, Text
 from sqlalchemy.dialects import mysql
 from sqlalchemy.engine.interfaces import Dialect
 
 from src.target_ddl_factory import DdlString, TargetDdlFactory
+
+
+# InnoDB row-size hard limit is 65535 bytes (excluding BLOB/TEXT). With the
+# default utf8mb4 charset (4 bytes/char) that caps a single row's worth of
+# in-row VARCHAR data at ~16K chars. Several retrosheet tables (bio, comment,
+# park, roster, event) blow past that with 20+ String(1024) columns. Promote
+# any String(N) where N >= this threshold to TEXT, which spills off-page and
+# does not count against the row-size cap.
+MYSQL_VARCHAR_TO_TEXT_THRESHOLD = 256
+
+
+def _promoted_type(col: Column):
+    if (isinstance(col.type, String)
+            and not isinstance(col.type, Text)
+            and col.type.length is not None
+            and col.type.length >= MYSQL_VARCHAR_TO_TEXT_THRESHOLD
+            and not col.primary_key):
+        return Text()
+    return col.type
 
 
 class MySqlDdlFactory(TargetDdlFactory):
@@ -15,6 +34,25 @@ class MySqlDdlFactory(TargetDdlFactory):
     @property
     def dialect(self) -> Dialect:
         return mysql.dialect()
+
+    @staticmethod
+    def metadata_transform(metadata: MetaData) -> MetaData:
+        # Build a fresh MetaData rather than mutating shared state — the
+        # factory list iterates `all_metadata` once and downstream factories
+        # (clickhouse, etc.) must see the original SQLAlchemy types.
+        new_metadata = MetaData(schema=metadata.schema)
+        for table in metadata.tables.values():
+            new_cols = []
+            for col in table.columns.values():
+                new_cols.append(Column(
+                    col.name,
+                    _promoted_type(col),
+                    primary_key=col.primary_key,
+                    nullable=col.nullable,
+                    autoincrement=col.autoincrement,
+                ))
+            Table(table.name, new_metadata, *new_cols)
+        return new_metadata
 
     def make_copy_ddl(self, metadata: MetaData) -> DdlString:
         copy_ddl_template = """

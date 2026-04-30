@@ -44,7 +44,12 @@ ROW_FIXUPS: dict[str, RowFixup] = {
 
 def _copy_with_fixup(f_in: IO[str], f_out: IO[str], fixup: RowFixup) -> None:
     reader = csv.reader(f_in)
-    writer = csv.writer(f_out)
+    # csv.writer defaults to '\r\n' line terminator (RFC 4180). Postgres COPY
+    # accepts CRLF transparently; MySQL LOAD DATA with LINES TERMINATED BY
+    # '\n' leaves a stray \r in the trailing field, breaking the integer
+    # NULL guard for empty trailing columns. Force LF to match the
+    # passthrough path (text-mode write of a universally-newlined string).
+    writer = csv.writer(f_out, lineterminator="\n")
     for row in reader:
         writer.writerow(fixup(row))
 

@@ -14,7 +14,7 @@ class AllstarFull(Base):
     game_num = Column(SmallInteger)
     game_id = Column(String(12))
     team_id = Column(String(3))
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     gp = Column(SmallInteger)
     starting_pos = Column(SmallInteger)
     # Note -- Billy Herman's 1934 record prevents us from using the true PK, player-year-gamenum
@@ -26,7 +26,7 @@ class Appearance(Base):
 
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     team_id = Column(String(3), primary_key=True, nullable=False)
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     player_id = Column(String(9), primary_key=True, nullable=False)
     g_all = Column(SmallInteger)
     gs = Column(SmallInteger)
@@ -53,7 +53,7 @@ class AwardsManager(Base):
     player_id = Column(String(10), nullable=False)
     award_id = Column(String(75), nullable=False)
     year_id = Column(SmallInteger, nullable=False)
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     tie = Column(String(1))
     notes = Column(String(100))
     # PK should be player/award/year/lg, see https://github.com/chadwickbureau/baseballdatabank/issues/105
@@ -66,7 +66,7 @@ class AwardsPlayer(Base):
     player_id = Column(String(9))
     award_id = Column(String(255))
     year_id = Column(SmallInteger)
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     tie = Column(String(1))
     notes = Column(String(100))
     dummy_id = Column(Integer, autoincrement=True, primary_key=True)
@@ -77,7 +77,7 @@ class AwardsShareManager(Base):
 
     award_id = Column(String(25), primary_key=True, nullable=False)
     year_id = Column(Integer, primary_key=True, nullable=False)
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     player_id = Column(String(10), primary_key=True, nullable=False)
     points_won = Column(Integer)
     points_max = Column(Integer)
@@ -89,7 +89,7 @@ class AwardsSharePlayer(Base):
 
     award_id = Column(String(25), primary_key=True, nullable=False)
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     player_id = Column(String(9), primary_key=True, nullable=False)
     points_won = Column(Float(53))
     points_max = Column(Integer)
@@ -103,7 +103,7 @@ class Batting(Base):
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     stint = Column(SmallInteger, primary_key=True, nullable=False)
     team_id = Column(String(3))
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     g = Column(SmallInteger)
     ab = Column(SmallInteger)
     r = Column(SmallInteger)
@@ -130,7 +130,7 @@ class BattingPost(Base):
     round = Column(String(10), primary_key=True, nullable=False)
     player_id = Column(String(9), primary_key=True, nullable=False)
     team_id = Column(String(3))
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     g = Column(SmallInteger)
     ab = Column(SmallInteger)
     r = Column(SmallInteger)
@@ -165,7 +165,7 @@ class Fielding(Base):
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     stint = Column(SmallInteger, primary_key=True, nullable=False)
     team_id = Column(String(3))
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     pos = Column(String(2), primary_key=True, nullable=False)
     g = Column(SmallInteger)
     gs = Column(SmallInteger)
@@ -202,7 +202,7 @@ class FieldingOFSplit(Base):
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     stint = Column(SmallInteger, primary_key=True, nullable=False)
     team_id = Column(String(3))
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     pos = Column(String(2), primary_key=True, nullable=False)
     g = Column(SmallInteger)
     gs = Column(SmallInteger)
@@ -224,7 +224,7 @@ class FieldingPost(Base):
     player_id = Column(String(9), primary_key=True, nullable=False)
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     team_id = Column(String(3))
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     round = Column(String(10), primary_key=True, nullable=False)
     pos = Column(String(2), primary_key=True, nullable=False)
     g = Column(SmallInteger)
@@ -252,14 +252,14 @@ class HallOfFame(Base):
     votes = Column(String(64))
     inducted = Column(String(1))
     category = Column(String(20))
-    needed_note = Column(String(25))
+    needed_note = Column(String(255))
 
 
 class HomeGames(Base):
     __tablename__ = "home_games"
 
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
-    lg_id = Column(String(2), primary_key=True, nullable=False)
+    lg_id = Column(String(3), primary_key=True, nullable=False)
     team_id = Column(String(3), primary_key=True, nullable=False)
     park_id = Column(String(5), primary_key=True, nullable=False)
     first_game = Column(Date)
@@ -275,7 +275,7 @@ class Manager(Base):
     player_id = Column(String(10))
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     team_id = Column(String(3), primary_key=True, nullable=False)
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     inseason = Column(SmallInteger, primary_key=True, nullable=False)
     g = Column(SmallInteger)
     w = Column(SmallInteger)
@@ -290,7 +290,7 @@ class ManagersHalf(Base):
     player_id = Column(String(10), primary_key=True, nullable=False)
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     team_id = Column(String(3), primary_key=True, nullable=False)
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     inseason = Column(SmallInteger)
     half = Column(SmallInteger, primary_key=True, nullable=False)
     g = Column(SmallInteger)
@@ -307,12 +307,14 @@ class Parks(Base):
     # query compatibility — park_id stays the 5-char retrosheet-style id
     # (Lahman calls it `parkkey`), park_name + park_alias keep their semantics.
     id = Column(Integer)
-    park_alias = Column(String(55))
+    # Lahman v2025 stores semicolon-joined alias lists (one row hits 128 chars
+    # for Hard Rock Stadium's history); widen with buffer.
+    park_alias = Column(String(255))
     park_id = Column(String(5), primary_key=True, nullable=False)
-    park_name = Column(String(40))
+    park_name = Column(String(80))
     city = Column(String(25))
     state = Column(String(16))
-    country = Column(String(2))
+    country = Column(String(20))
 
 
 class People(Base):
@@ -359,7 +361,7 @@ class Pitching(Base):
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     stint = Column(SmallInteger, primary_key=True, nullable=False)
     team_id = Column(String(3))
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     w = Column(SmallInteger)
     l = Column(SmallInteger)
     g = Column(SmallInteger)
@@ -394,7 +396,7 @@ class PitchingPost(Base):
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     round = Column(String(10), primary_key=True, nullable=False)
     team_id = Column(String(3))
-    lg_id = Column(String(2))
+    lg_id = Column(String(3))
     w = Column(SmallInteger)
     l = Column(SmallInteger)
     g = Column(SmallInteger)
@@ -427,7 +429,7 @@ class Salary(Base):
 
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     team_id = Column(String(3), primary_key=True, nullable=False)
-    lg_id = Column(String(2), primary_key=True, nullable=False)
+    lg_id = Column(String(3), primary_key=True, nullable=False)
     player_id = Column(String(9), primary_key=True, nullable=False)
     salary = Column(Float(53))
 
@@ -448,9 +450,9 @@ class SeriesPost(Base):
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
     round = Column(String(5), primary_key=True, nullable=False)
     team_id_winner = Column(String(3))
-    lg_id_winner = Column(String(2))
+    lg_id_winner = Column(String(3))
     team_id_loser = Column(String(3))
-    lg_id_loser = Column(String(2))
+    lg_id_loser = Column(String(3))
     wins = Column(SmallInteger)
     losses = Column(SmallInteger)
     ties = Column(SmallInteger)
@@ -460,7 +462,7 @@ class Team(Base):
     __tablename__ = 'teams'
 
     year_id = Column(SmallInteger, primary_key=True, nullable=False)
-    lg_id = Column(String(2), primary_key=True, nullable=False)
+    lg_id = Column(String(3), primary_key=True, nullable=False)
     team_id = Column(String(3), primary_key=True, nullable=False)
     franch_id = Column(String(3))
     div_id = Column(String(1))
@@ -524,7 +526,7 @@ class TeamsHalf(Base):
     __tablename__ = 'teams_half'
 
     year_id = Column(Integer, primary_key=True, nullable=False)
-    lg_id = Column(String(2), primary_key=True, nullable=False)
+    lg_id = Column(String(3), primary_key=True, nullable=False)
     team_id = Column(String(3), primary_key=True, nullable=False)
     half = Column(String(1), primary_key=True, nullable=False)
     div_id = Column(String(1))
