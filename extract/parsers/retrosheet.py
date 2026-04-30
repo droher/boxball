@@ -157,8 +157,10 @@ class RetrosheetParser:
         concat_files(subdirs["gamelogs"], output_base / "gamelog.csv", glob="gl*.txt", check_dupes=False)
         # TODO: Figure out how to integrate 2020-orig (leave out for now)
         concat_files(subdirs["schedules"], output_base / "schedule.csv", glob="*schedule.csv", strip_header=True)
-        concat_files(retrosheet_base, output_base / "park.csv", glob="ballparks.csv", strip_header=True)
-        concat_files(retrosheet_base, output_base / "bio.csv", glob="biofile.csv", strip_header=True)
+        # Canonical alldata.zip nests biofile.csv + ballparks.csv under biodata/;
+        # use a recursive glob so the parser doesn't care about that detail.
+        concat_files(retrosheet_base, output_base / "park.csv", glob="**/ballparks.csv", strip_header=True)
+        concat_files(retrosheet_base, output_base / "bio.csv", glob="**/biofile.csv", strip_header=True)
         concat_files(subdirs["rosters"], output_base / "roster.csv", glob="*.ROS", prepend_filename=True)
 
     @staticmethod

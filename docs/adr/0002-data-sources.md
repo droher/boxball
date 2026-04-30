@@ -1,13 +1,15 @@
 # ADR 0002: Upstream Retrosheet and Baseball Databank Data Sources
 
-- **Status:** Accepted (revised 2026-04-30 — see _Revision_ below)
+- **Status:** Accepted (revised 2026-04-30 — see _Revisions_ below)
 - **Date:** 2026-04-30
-- **Linear ticket:** PLE-352 (spike); implementers: PLE-353 (`.env` repoint), PLE-354 (VERSION + SHA bump)
+- **Linear ticket:** PLE-352 (spike); implementers: PLE-353 (`.env` repoint), PLE-354 (VERSION + SHA bump), PLE-355 (validate + schema reno)
 - **Authors:** Boxball 2026 Refresh
 
-## Revision (2026-04-30)
+## Revisions (2026-04-30)
 
-User course-correction after initial decision: **switch Retrosheet to retrosheet.org direct (Option A)**, not `droher/retrosheet-mirror` (Option C). Lahman decision via `cdalzell/Lahman` is unchanged.
+### R1 — Retrosheet → retrosheet.org direct (override Option C)
+
+User course-correction after initial decision: **switch Retrosheet to retrosheet.org direct (Option A)**, not `droher/retrosheet-mirror` (Option C).
 
 Rationale for the override: the user owns `droher/retrosheet-mirror`. Their preference is to eliminate the personal-fork dependency from Boxball's build path rather than to keep maintaining the rebase. Hand-applied patches (NLB dedup, 6 historical-file corrections) and the folder-flatten convenience are explicitly accepted as losses; if any patch is later judged load-bearing, it can be re-applied as a Boxball-side processing step in `parsers/retrosheet.py` (the original ADR's Option D, deferred to a post-refresh ticket).
 
@@ -17,7 +19,27 @@ Tradeoffs accepted with Option A:
 - **Loss of NLB dedup + 6 historical-file corrections.** Note in release notes; data consumers who relied on those should pin to the last fork-based release tag.
 - **Occasional 403 on non-browser User-Agents.** Mitigation: send a `User-Agent: Mozilla/5.0 (compatible; boxball-build)` header in the `wget` call. Verified during this spike that the file does serve to that UA (>10 MB body returned).
 
-Sections below are preserved as authored. The **Decision** + **Consequences** sections at the end have been edited to reflect the revised Retrosheet path.
+### R2 — Baseball Databank: `cdalzell/Lahman` was stale (2019). Switching to `corbtastik/lahman-baseball-db`.
+
+The original Decision below picked `cdalzell/Lahman@<HEAD>`, betting that its `source-data/baseballdatabank-master.zip` would track the R package's release cadence. **It does not.** Empirically verified during PLE-353: both `master` and `2025-update` branches on `cdalzell/Lahman` ship a `source-data/baseballdatabank-master.zip` whose `core/Teams.csv` and `core/Batting.csv` cap at `yearID=2019`. The R package version metadata is ahead of the bundled source-data zip by years.
+
+Switching to **`corbtastik/lahman-baseball-db`** (`b5e7327707fff91ff3bdcbe1f6892c8c5015cf1d` at PLE-353 execution time):
+
+- Maintained as a flat tree of CSVs at the repo root (no nested `core/` dir; the Dockerfile rehomes them under `/baseballdatabank/core/` to keep the parser path stable).
+- Release date: Dec 10, 2025, covering the SABR Lahman v2025 dataset through the 2025 season.
+- Schema-compatible with the retired `chadwickbureau/baseballdatabank` modulo the Lahman v2025 reorg (see R3 below).
+
+### R3 — Lahman v2025 schema reno absorbed in PLE-355 (column adds + reorders + multi-position fixup)
+
+The "Out of scope" footnote in the original Decision warned that Lahman v2025's reorg might force schema changes; PLE-355 chose to absorb them in this refresh with a strict "preserve existing column names + PK identity for query compatibility" constraint:
+
+- **`baseballdatabank.people`** — added a leading `id` column (Lahman v2025's sequential integer); reordered birth section to `birth_city, birth_country, birth_state` and the tail to `bbref_id, final_game, retro_id` to track the upstream CSV column order. All column NAMES preserved — `WHERE player_id = …`, `WHERE birth_country = …`, etc. keep working unchanged. Only positional read order shifts.
+- **`baseballdatabank.parks`** — added a leading `id` column; reordered to `park_alias, park_id, park_name` after the new `id`. `park_id` retains its role as the 5-char retrosheet-style PK (Lahman v2025 calls this column `parkkey` upstream); the schema mapping preserves the Boxball name.
+- **`baseballdatabank.allstar_full.starting_pos`** — kept as `SmallInteger`. The new Negro Leagues records use `9;9` to signal multi-position starts; `parsers/baseballdatabank.py::_strip_multi_position_starting_pos` collapses to the first integer and logs the dropped second position. Affects ~65 / 6425 rows. Follow-up ticket should add a proper multi-position table or reify the second position as a sibling column when the schema can carry it without breaking back-compat queries.
+
+### Sections below are preserved as authored
+
+The **Decision** + **Consequences** sections at the end retain their original wording; the implementation actually used `corbtastik/lahman-baseball-db` per R2 and absorbed the schema reno per R3.
 
 ## Context
 

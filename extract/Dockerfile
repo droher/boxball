@@ -27,21 +27,50 @@ ENV BOXBALL_PARSED_PATH=/parsed \
     BOXBALL_STAGE=extract
 
 
-# `prod` gets the full datasets, while `test` provides fixtures with small sample data for each file
+# `prod` pulls real upstream data; `test` swaps in tiny fixtures under
+# extract/fixtures/raw/. Each branch lands the unpacked tree at /retrosheet/
+# (or /baseballdatabank/core/) so the downstream extract-* stages don't care
+# which one ran.
+
 FROM build-common as get-retrosheet-prod
-ARG RETROSHEET_VERSION
-RUN wget https://github.com/droher/retrosheet-mirror/archive/${RETROSHEET_VERSION}.zip -O retrosheet.zip
+ARG RETROSHEET_RELEASE_DATE
+ARG RETROSHEET_SHA256
+# Canonical Retrosheet archive. URL is mutable in place on each Retrosheet
+# release, so reproducibility comes from RETROSHEET_SHA256 rather than a git
+# SHA. UA header avoids retrosheet.org's occasional 403s on default wget UAs.
+# alldata.zip extracts top-level dirs (gamelogs/, events/, biodata/, ...)
+# directly with no wrapper.
+RUN wget --user-agent='Mozilla/5.0 (compatible; boxball-build)' \
+        https://retrosheet.org/downloads/alldata.zip -O retrosheet.zip && \
+    echo "${RETROSHEET_SHA256}  retrosheet.zip" | sha256sum -c - && \
+    mkdir /retrosheet && \
+    unzip -q retrosheet.zip -d /retrosheet && \
+    rm retrosheet.zip
 
 FROM build-common as get-retrosheet-test
-COPY fixtures/raw/retrosheet.zip .
+COPY fixtures/raw/retrosheet.zip /tmp/retrosheet.zip
+RUN mkdir /retrosheet && \
+    unzip -q /tmp/retrosheet.zip -d /retrosheet && \
+    rm /tmp/retrosheet.zip
 
 FROM build-common as get-baseballdatabank-prod
 ARG BASEBALLDATABANK_VERSION
-# Temporarily grab from old fork until 2023 data appears
-RUN wget https://github.com/tom-719/baseballdatabank/archive/${BASEBALLDATABANK_VERSION}.zip -O baseballdatabank.zip
+# chadwickbureau/baseballdatabank was retired in 2024. corbtastik/lahman-baseball-db
+# hosts the canonical SABR Lahman v2025 release (Dec 10, 2025) as a flat tree
+# of CSVs at the repo root; rehome under baseballdatabank/core/ to match the
+# BOXBALL_BASEBALLDATABANK_CORE_PATH the parser reads.
+RUN wget https://github.com/corbtastik/lahman-baseball-db/archive/${BASEBALLDATABANK_VERSION}.zip \
+        -O baseballdatabank.zip && \
+    unzip -q baseballdatabank.zip && \
+    mkdir -p /baseballdatabank/core && \
+    mv lahman-baseball-db-*/*.csv /baseballdatabank/core/ && \
+    rm -rf lahman-baseball-db-* baseballdatabank.zip
 
 FROM build-common as get-baseballdatabank-test
-COPY fixtures/raw/baseballdatabank.zip .
+COPY fixtures/raw/baseballdatabank.zip /tmp/baseballdatabank.zip
+RUN mkdir -p /baseballdatabank/core && \
+    unzip -q /tmp/baseballdatabank.zip -d /baseballdatabank/core && \
+    rm /tmp/baseballdatabank.zip
 
 # Now alias to abstract the build_env difference away downstream
 FROM ${RETROSHEET_IMAGE} as get-retrosheet
@@ -61,19 +90,14 @@ RUN autoreconf --install && \
     make && \
     make install
 WORKDIR /
-COPY --from=get-retrosheet retrosheet.zip .
-RUN unzip retrosheet.zip && \
-    mv retrosheet-* retrosheet
+COPY --from=get-retrosheet /retrosheet /retrosheet
 # Assemble parsed Retrosheet files
 COPY code_tables/ /code_tables
 COPY parsers/ /parsers
 RUN python -u /parsers/retrosheet.py
 
 FROM build-common as extract-baseballdatabank
-ARG BASEBALLDATABANK_VERSION
-COPY --from=get-baseballdatabank baseballdatabank.zip .
-RUN unzip baseballdatabank.zip && \
-    mv baseballdatabank-* baseballdatabank
+COPY --from=get-baseballdatabank /baseballdatabank /baseballdatabank
 COPY parsers/ /parsers
 # Assemble parsed Baseball Databank files
 RUN python -u /parsers/baseballdatabank.py

@@ -27,12 +27,26 @@ from extract.parsers.util import OUTPUT_PATH  # noqa: E402
 
 
 def pytest_sessionstart(session):
+    # rmtree first so a crashed prior run can't leave /tmp/boxball behind and
+    # block startup with FileExistsError.
+    rmtree(TMP, ignore_errors=True)
     TMP.mkdir()
     TMP.joinpath("extract").mkdir()
-    raw = "unzip {repo}/extract/fixtures/raw/{name}.zip -d /tmp/ && mv /tmp/{name}-master /tmp/boxball/{name}"
+    # Fixture inner layouts mirror the matching extract/Dockerfile test stages:
+    # retrosheet → canonical alldata.zip top-level tree at zip root; landed under
+    # /tmp/boxball/retrosheet/. baseballdatabank → CSVs at zip root, landed under
+    # /tmp/boxball/baseballdatabank/core/ to match BOXBALL_BASEBALLDATABANK_CORE_PATH.
     csv = "cp -r {repo}/extract/fixtures/extract/{name} /tmp/boxball/extract/{name}"
+    subprocess.run(
+        f"unzip -q {REPO_ROOT}/extract/fixtures/raw/retrosheet.zip -d /tmp/boxball/retrosheet",
+        shell=True, check=True,
+    )
+    subprocess.run(
+        f"mkdir -p /tmp/boxball/baseballdatabank/core && "
+        f"unzip -q {REPO_ROOT}/extract/fixtures/raw/baseballdatabank.zip -d /tmp/boxball/baseballdatabank/core",
+        shell=True, check=True,
+    )
     for archive in ("retrosheet", "baseballdatabank"):
-        subprocess.run(raw.format(repo=REPO_ROOT, name=archive), shell=True, check=True)
         subprocess.run(csv.format(repo=REPO_ROOT, name=archive), shell=True, check=True)
     subprocess.run("cp -r {repo}/extract/code_tables /tmp/boxball".format(repo=REPO_ROOT), shell=True, check=True)
 

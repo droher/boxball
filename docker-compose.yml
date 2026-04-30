@@ -9,7 +9,8 @@ x-extract:
     context: extract
     args:
       - CHADWICK_VERSION
-      - RETROSHEET_VERSION
+      - RETROSHEET_RELEASE_DATE
+      - RETROSHEET_SHA256
       - BASEBALLDATABANK_VERSION
       - BUILD_ENV
       - BOXBALL_LOG_LEVEL

@@ -1,3 +1,5 @@
+import pyarrow.parquet as pq
+
 from src import OUTPUT_PATH
 from src.boxball_schemas import retrosheet_metadata, baseballdatabank_metadata, all_metadata
 from src.ddl_factories import all_factories
@@ -51,4 +53,12 @@ class TestParquet:
             write_files(m)
             for table in m.tables.values():
                 table_name = table.name
-                assert PARQUET_PREFIX.joinpath(m.schema, table_name).with_suffix(".parquet").exists()
+                parquet_path = PARQUET_PREFIX.joinpath(m.schema, table_name).with_suffix(".parquet")
+                assert parquet_path.exists()
+                # Guard against silent column-count drift between the committed
+                # pre-parsed CSV fixtures and the schema: PyArrow's
+                # invalid_row_handler skips rows whose column count doesn't
+                # match the schema, which would otherwise let a stale fixture
+                # produce an empty parquet while the test still passed.
+                assert pq.read_table(parquet_path).num_rows > 0, \
+                    f"{table_name} parquet has 0 rows — likely fixture/schema column-count drift"

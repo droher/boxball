@@ -10,7 +10,11 @@ from parsers.retrosheet import (
     event_game_ids,
     remove_redundant_box_score_files,
 )
-from parsers.baseballdatabank import get_baseballdatabank_files
+from parsers.baseballdatabank import (
+    ROW_FIXUPS,
+    _strip_multi_position_starting_pos,
+    get_baseballdatabank_files,
+)
 from parsers.util import OUTPUT_PATH, compress
 
 TMP = Path("/tmp/boxball")
@@ -93,6 +97,31 @@ class TestBaseballDatabank:
     def test_get_baseballdatabank_files(self):
         get_baseballdatabank_files()
         assert True
+
+    def test_starting_pos_index_matches_schema(self):
+        # The fixup writes to a hardcoded index — guard it against schema drift
+        # by deriving the expected position from the SQLAlchemy schema.
+        from src.boxball_schemas.baseballdatabank import AllstarFull
+        non_autoinc = [c.name for c in AllstarFull.__table__.columns if c.autoincrement is not True]
+        assert non_autoinc.index("starting_pos") == 7, \
+            "starting_pos position drifted; update _strip_multi_position_starting_pos"
+
+    def test_strip_multi_position_collapses_to_first_int(self):
+        row = ["wrighwi01", "1942", "0", "", "BEG", "EAS", "2", "9;9"]
+        out = _strip_multi_position_starting_pos(list(row))
+        assert out == ["wrighwi01", "1942", "0", "", "BEG", "EAS", "2", "9"]
+
+    def test_strip_multi_position_passes_through_clean_values(self):
+        row = ["aaronha01", "1955", "0", "ALS195507120", "ML1", "NL", "1", "8"]
+        assert _strip_multi_position_starting_pos(list(row)) == row
+
+    def test_strip_multi_position_passes_through_blank_starting_pos(self):
+        row = ["banksern01", "1956", "0", "", "CHN", "NL", "1", ""]
+        assert _strip_multi_position_starting_pos(list(row)) == row
+
+    def test_row_fixups_registers_allstar_full(self):
+        assert "allstar_full" in ROW_FIXUPS
+        assert ROW_FIXUPS["allstar_full"] is _strip_multi_position_starting_pos
 
 
 class TestExtractUtil:

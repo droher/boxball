@@ -302,9 +302,14 @@ class ManagersHalf(Base):
 class Parks(Base):
     __tablename__ = "parks"
 
+    # Column order tracks Lahman v2025's Parks.csv: ID, parkalias, parkkey,
+    # parkname, city, state, country. Schema column NAMES are preserved for
+    # query compatibility — park_id stays the 5-char retrosheet-style id
+    # (Lahman calls it `parkkey`), park_name + park_alias keep their semantics.
+    id = Column(Integer)
+    park_alias = Column(String(55))
     park_id = Column(String(5), primary_key=True, nullable=False)
     park_name = Column(String(40))
-    park_alias = Column(String(55))
     city = Column(String(25))
     state = Column(String(16))
     country = Column(String(2))
@@ -313,13 +318,21 @@ class Parks(Base):
 class People(Base):
     __tablename__ = 'people'
 
+    # Column order tracks Lahman v2025's People.csv: ID, playerID, birthYear,
+    # birthMonth, birthDay, birthCity, birthCountry, birthState, deathYear,
+    # deathMonth, deathDay, deathCountry, deathState, deathCity, nameFirst,
+    # nameLast, nameGiven, weight, height, bats, throws, debut, bbrefID,
+    # finalGame, retroID. Schema column NAMES are preserved so existing queries
+    # (player_id PK, birth_*, death_*, *_id) keep working — only positional
+    # order changed.
+    id = Column(Integer)
     player_id = Column(String(10), primary_key=True)
     birth_year = Column(SmallInteger)
     birth_month = Column(SmallInteger)
     birth_day = Column(SmallInteger)
+    birth_city = Column(String(50))
     birth_country = Column(String(50))
     birth_state = Column(String(50))
-    birth_city = Column(String(50))
     death_year = Column(SmallInteger)
     death_month = Column(SmallInteger)
     death_day = Column(SmallInteger)
@@ -334,9 +347,9 @@ class People(Base):
     bats = Column(String(1))
     throws = Column(String(1))
     debut = Column(Date)
+    bbref_id = Column(String(9))
     final_game = Column(Date)
     retro_id = Column(String(9))
-    bbref_id = Column(String(9))
 
 
 class Pitching(Base):
