@@ -114,7 +114,7 @@ Both research, no code conflict. Run concurrent.
 
 PLE-332 done — squash-merged into local `next` (commit `be77685`). PLE-333 collapsed into PLE-332.
 
-PLE-334 + PLE-335 done — squash-merged into local `next`. Bumped every Python pin (Dockerfiles, GHA, `transform/src/setup.py`) to 3.13; deleted `.circleci/` and swapped README CircleCI badge for GH Actions. PLE-335 collapsed into PLE-334 because PLE-334's `grep 'python.*3\.7'` AC could not be satisfied while CircleCI config remained. `requirements.txt`: `pyarrow==14.0.1` → `pyarrow>=18` (no 3.13 wheel for 14.x); rest left for PLE-336.
+PLE-334 + PLE-335 done — squash-merged into local `next` (commit `2356b62`). Bumped every Python pin (Dockerfiles, GHA, `transform/src/setup.py`) to 3.13; deleted `.circleci/` and swapped README CircleCI badge for GH Actions. PLE-335 collapsed into PLE-334 because PLE-334's `grep 'python.*3\.7'` AC could not be satisfied while CircleCI config remained. `requirements.txt`: `pyarrow==14.0.1` → `pyarrow>=18` (no 3.13 wheel for 14.x); rest left for PLE-336.
 
 **Known breakage carried over** (both reproduce identically on `master` — not caused by 3.13 bump):
 
