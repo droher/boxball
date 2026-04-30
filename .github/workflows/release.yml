@@ -1,0 +1,256 @@
+name: release
+
+# PLE-358 / 359 / 360 / 361. Tag-triggered release of every kept-target
+# image to Docker Hub and flat-file bundles to a GitHub Release. The pipeline
+# pushes in three waves matching the build DAG (extract → ddl/parquet/csv →
+# load stages); each wave's `${TAG}` images become the registry source for
+# the next wave's `FROM doublewick/boxball:<stage>-${VERSION}` lookups.
+#
+# Triggers:
+#   - `v*.*.*` tag push: full release.
+#   - workflow_dispatch with explicit version + dry_run flag.
+#       dry_run=true: build + bundle, skip --push and skip GH Release creation.
+#       dry_run=false: full release; the tag `v${version}` must already exist
+#                      and match the input.
+#
+# Provisioning of `DOCKERHUB_USERNAME` / `DOCKERHUB_TOKEN` and the PyPI trusted
+# publisher live in the maintainer's local creds doc (out of repo by design).
+# The auth-smoke workflow (`auth-smoke.yml`) validates the wiring without
+# publishing.
+
+on:
+  push:
+    tags: ['v*.*.*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (without v prefix), e.g. 2026.0.1'
+        required: true
+        type: string
+      dry_run:
+        description: 'Build + bundle only; skip --push and skip GH Release'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # gh release create
+
+env:
+  REPO: doublewick/boxball
+
+jobs:
+  resolve:
+    name: Resolve version + validate
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.set.outputs.version }}
+      tag: ${{ steps.set.outputs.tag }}
+      dry_run: ${{ steps.set.outputs.dry_run }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Determine version
+        id: set
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_VERSION: ${{ inputs.version }}
+          INPUT_DRY: ${{ inputs.dry_run }}
+          GITHUB_REF_VAR: ${{ github.ref }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "push" ]; then
+            TAG="${GITHUB_REF_VAR#refs/tags/}"
+            VERSION="${TAG#v}"
+            DRY=false
+          else
+            VERSION="$INPUT_VERSION"
+            TAG="v${VERSION}"
+            DRY="${INPUT_DRY:-false}"
+          fi
+          ENV_VERSION=$(grep -E '^VERSION=' .env | cut -d= -f2)
+          if [ "$VERSION" != "$ENV_VERSION" ]; then
+            echo "Tag/input version ($VERSION) does not match .env VERSION ($ENV_VERSION)" >&2
+            exit 1
+          fi
+          if ! grep -qE "^## \[$VERSION\]" CHANGELOG.md; then
+            echo "CHANGELOG.md missing entry for [$VERSION]" >&2
+            exit 1
+          fi
+          {
+            echo "version=$VERSION"
+            echo "tag=$TAG"
+            echo "dry_run=$DRY"
+          } >> "$GITHUB_OUTPUT"
+
+  build-push:
+    name: Build + push multi-arch images
+    needs: resolve
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.resolve.outputs.version }}
+      DRY_RUN: ${{ needs.resolve.outputs.dry_run }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # QEMU registers binfmt_misc handlers so amd64 runners can build arm64
+      # layers via emulation. Slow but the only path on GH-hosted runners.
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      # docker-container driver is mandatory for multi-arch builds. The action
+      # creates and selects a builder; subsequent buildx commands use it
+      # without an explicit BUILDX_BUILDER env var.
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        if: env.DRY_RUN == 'false'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Three waves: each prior wave's pushed `${VERSION}` tags become the
+      # registry source for the next wave's `FROM doublewick/boxball:<stage>-${VERSION}`
+      # references. Local-store loading is not an option for multi-arch
+      # (buildx cannot --load a manifest list), so we serialize via the
+      # registry instead. dry_run uses --print to validate the bake graph
+      # without pushing.
+      - name: Bake wave 1 (extract)
+        run: |
+          set -euo pipefail
+          if [ "$DRY_RUN" = "true" ]; then
+            docker buildx bake --file docker-compose.yml --file docker-bake.hcl --print extract
+          else
+            docker buildx bake --file docker-compose.yml --file docker-bake.hcl --push extract
+          fi
+
+      - name: Bake wave 2 (ddl, parquet, csv)
+        run: |
+          set -euo pipefail
+          if [ "$DRY_RUN" = "true" ]; then
+            docker buildx bake --file docker-compose.yml --file docker-bake.hcl --print ddl parquet csv
+          else
+            docker buildx bake --file docker-compose.yml --file docker-bake.hcl --push ddl parquet csv
+          fi
+
+      - name: Bake wave 3 (load stages)
+        run: |
+          set -euo pipefail
+          if [ "$DRY_RUN" = "true" ]; then
+            docker buildx bake --file docker-compose.yml --file docker-bake.hcl --print clickhouse postgres postgres-columnar mysql sqlite
+          else
+            docker buildx bake --file docker-compose.yml --file docker-bake.hcl --push clickhouse postgres postgres-columnar mysql sqlite
+          fi
+
+      # PLAN.md M2 requires both `${TAG}` and `latest` for every kept target.
+      # `imagetools create` copies the just-pushed manifest list to a new tag
+      # without rebuilding (cheap, byte-identical).
+      - name: Retag <stage>-${VERSION} → <stage>-latest
+        if: env.DRY_RUN == 'false'
+        run: |
+          set -euo pipefail
+          for stage in extract ddl parquet csv clickhouse postgres postgres-columnar mysql sqlite; do
+            docker buildx imagetools create \
+              -t "${REPO}:${stage}-latest" \
+              "${REPO}:${stage}-${VERSION}"
+          done
+
+  bundles:
+    name: Build flat-file bundles
+    needs: [resolve, build-push]
+    if: needs.resolve.outputs.dry_run == 'false'
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.resolve.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Pull the just-pushed parquet + csv images and tar+zstd their output
+      # trees. parquet.Dockerfile's final alpine stage exposes /transform/;
+      # csv.Dockerfile exposes /transform/csv. amd64 image variant is fine
+      # for bundle extraction — the contents are arch-independent flat files.
+      - name: Extract Parquet bundle
+        run: |
+          set -euo pipefail
+          mkdir -p bundles
+          docker pull --platform linux/amd64 "${REPO}:parquet-${VERSION}"
+          cid=$(docker create "${REPO}:parquet-${VERSION}")
+          docker cp "$cid:/transform" ./parquet-out
+          docker rm "$cid" >/dev/null
+          tar --use-compress-program='zstd -19 -T0' \
+            -cf "bundles/boxball-parquet-${VERSION}.tar.zst" -C parquet-out .
+          rm -rf parquet-out
+
+      - name: Extract CSV bundle
+        run: |
+          set -euo pipefail
+          docker pull --platform linux/amd64 "${REPO}:csv-${VERSION}"
+          cid=$(docker create "${REPO}:csv-${VERSION}")
+          docker cp "$cid:/transform/csv" ./csv-out
+          docker rm "$cid" >/dev/null
+          tar --use-compress-program='zstd -19 -T0' \
+            -cf "bundles/boxball-csv-${VERSION}.tar.zst" -C csv-out .
+          rm -rf csv-out
+
+      - name: Upload bundle artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundles
+          path: bundles/
+          retention-days: 7
+
+  release:
+    name: GH Release
+    needs: [resolve, build-push, bundles]
+    if: needs.resolve.outputs.dry_run == 'false'
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.resolve.outputs.version }}
+      TAG: ${{ needs.resolve.outputs.tag }}
+      REPOSITORY: ${{ github.repository }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download bundle artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: bundles
+          path: bundles
+      - name: Extract CHANGELOG section for ${VERSION}
+        run: |
+          set -euo pipefail
+          awk -v v="$VERSION" '
+            $0 ~ "^## \\[" v "\\]" { p=1; next }
+            p && /^## \[/ { exit }
+            p { print }
+          ' CHANGELOG.md > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            echo "Empty CHANGELOG section for $VERSION" >&2
+            exit 1
+          fi
+
+      # workflow_dispatch path requires the tag to already exist (we do not
+      # create tags from CI). Tag-triggered runs already have it. Validate
+      # before calling `gh release create` so the failure message is clear.
+      - name: Verify tag exists
+        run: |
+          set -euo pipefail
+          if ! gh api "repos/${REPOSITORY}/git/refs/tags/${TAG}" >/dev/null 2>&1; then
+            echo "Tag ${TAG} does not exist on origin. Push the tag before running this workflow." >&2
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        run: |
+          set -euo pipefail
+          gh release create "$TAG" \
+            --title "Boxball $VERSION" \
+            --notes-file release-notes.md \
+            "bundles/boxball-parquet-${VERSION}.tar.zst" \
+            "bundles/boxball-csv-${VERSION}.tar.zst"

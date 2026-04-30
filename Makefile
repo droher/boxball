@@ -40,7 +40,7 @@ buildx-bootstrap:
 		echo "Builder 'boxball' already exists."; \
 	fi
 	@echo "Multi-arch dry-run: make bake-print"
-	@echo "Multi-arch push:    make bake-push  (needs DH creds — PLE-357/358)"
+	@echo "Multi-arch push:    make bake-push  (needs DH login; release workflow drives this in CI)"
 
 # Single-platform amd64 build of the full chain. Two reasons to pin amd64:
 #  1) `postgres-columnar` is amd64-only (Citus has no arm64 packages). If the

@@ -43,11 +43,10 @@ group "multiarch" {
   ]
 }
 
-# TODO(PLE-358): the compose `<stage>-latest` twins (extract-latest, ddl-latest,
-# …) are *not* in the `multiarch` group. PLAN.md M2 requires both `<stage>-${VERSION}`
-# and `<stage>-latest` on Docker Hub. The release workflow should retag rather
-# than rebuild — after `bake-push` lands the versioned manifest lists, run:
-#   docker buildx imagetools create -t doublewick/boxball:<stage>-latest \
-#                                    doublewick/boxball:<stage>-${VERSION}
-# per stage (cheap, byte-identical). Don't add the `-latest` services to this
-# group — that would rebuild from scratch and waste time + bandwidth.
+# The compose `<stage>-latest` twins (extract-latest, ddl-latest, …) are
+# intentionally absent from the `multiarch` group. PLAN.md M2 requires both
+# `<stage>-${VERSION}` and `<stage>-latest` on Docker Hub, but rebuilding the
+# full chain twice is wasteful. `.github/workflows/release.yml` retags via
+# `docker buildx imagetools create` after `bake-push` lands the versioned
+# manifest lists — cheap, byte-identical, and preserves the manifest list's
+# multi-arch shape.
