@@ -72,7 +72,7 @@ def remove_redundant_box_score_files() -> None:
         with open(boxfile, "r") as f_in, open(temp_path, "w") as f_out:
             for line in f_in:
                 if line.startswith("id,"):
-                    game_id = line.split(",")[1]
+                    game_id = line.split(",")[1].strip()
                     if game_id in pbp_ids:
                         removed += 1
                         keep = False
