@@ -113,4 +113,6 @@ Both research, no code conflict. Run concurrent.
 
 ## Status
 
-Active: PLE-332 (workflow file authored on `feature/ple-332-migrate-ci-from-circleci-to-github-actions`; PR pending). PLE-333 collapses into this PR.
+PLE-332 done — squash-merged into local `next` (commit `be77685`). PLE-333 collapsed into PLE-332.
+
+Active: none. Next up: PLE-334 (Python 3.7→3.12 in Dockerfiles + host).
