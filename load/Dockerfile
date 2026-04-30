@@ -59,7 +59,9 @@ FROM python:3.13-alpine3.19 AS sqlite
 RUN apk add --no-cache \
     zstd \
     sqlite
-RUN pip install sqlite-web==0.4.1
+# sqlite-web 0.4.1 imports `escape` from `flask`, which Flask 3.x removed.
+# 0.6.4 supports Flask 3 and works on Python 3.13.
+RUN pip install sqlite-web==0.6.4
 RUN mkdir /db
 COPY --from=sqlite-build boxball.db.zst /tmp/
 ENTRYPOINT zstd --rm -d /tmp/boxball.db.zst -fo /db/boxball.db && sqlite_web -H 0.0.0.0 -x /db/boxball.db

@@ -1,3 +1,5 @@
+import csv
+import io
 import re
 import subprocess
 from functools import lru_cache
@@ -24,9 +26,12 @@ EVENT_FOLDERS = "allstar", "postseason", "events"
 PARSE_FUNCS = {
     "daily": "cwdaily -q -y {year} {year}*",
     "comment": "cwcomment -q -y {year} {year}*",
-    "game": "cwgame -q -y {year} -f 0-83 -x 0-94 {year}*",
+    # cwgame -f 0-84 picks up GAME_TYPE_TX (chadwick c685ab51 added field 84).
+    "game": "cwgame -q -y {year} -f 0-84 -x 0-94 {year}*",
     "sub": "cwsub -q -y {year} {year}*",
-    "event": "cwevent -q -y {year} -f 0-96 -x 0-62 {year}*"
+    # cwevent -x 0-66 picks up COUNT_TX + RUN{1,2,3}_AUTO_FL (extended fields
+    # 63-66) added in chadwick c685ab51.
+    "event": "cwevent -q -y {year} -f 0-96 -x 0-66 {year}*"
 }
 
 
@@ -143,6 +148,20 @@ class RetrosheetParser:
                         logger.warning("Skipping row in %s with missing data: %s",
                                        fin.filename(), original_line.strip())
                         continue
+                    # Retrosheet schedule files added a park column at
+                    # position 11 (zero-indexed 10) starting in 2024. Older
+                    # files keep the 12-column shape (some legacy rows quote
+                    # fields and embed commas, so use csv parsing rather than
+                    # a naive split). Pad legacy rows with an empty park field
+                    # at the new position and re-emit unquoted so the unified
+                    # output is always 13 columns.
+                    if "schedule" in output_file.name:
+                        fields = next(csv.reader(io.StringIO(new_line)))
+                        if len(fields) == 12:
+                            fields.insert(10, "")
+                            buf = io.StringIO()
+                            csv.writer(buf, lineterminator="\n").writerow(fields)
+                            new_line = buf.getvalue()
                     if check_dupes:
                         lines.add(new_line)
                     fout.write(new_line.strip() + "\n")

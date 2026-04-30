@@ -22,6 +22,23 @@ class Sub(Base):
     removed_id = Column(CHAR(8), doc="ID of removed player")
     removed_fld_cd = Column(SmallInteger, doc="Fielding position of removed player")
     event_id = Column(SmallInteger, doc="Event number in which substitution occurred")
+    # Pitch-detail fields added by chadwick c685ab51 (cwsub fields 10-24).
+    # Mirror the same fields on `event` (PA_*) for cross-table consistency.
+    balls_ct = Column(SmallInteger, doc="Balls before sub")
+    strikes_ct = Column(SmallInteger, doc="Strikes before sub")
+    pitch_seq_tx = Column(String(64), doc="Pitch sequence up to substitution")
+    pa_ball_ct = Column(SmallInteger, doc="Number of balls thrown in PA up to sub")
+    pa_called_ball_ct = Column(SmallInteger, doc="Called balls in PA up to sub")
+    pa_intent_ball_ct = Column(SmallInteger, doc="Intentional balls in PA up to sub")
+    pa_pitchout_ball_ct = Column(SmallInteger, doc="Pitchouts in PA up to sub")
+    pa_hitbatter_ball_ct = Column(SmallInteger, doc="HBP balls in PA up to sub")
+    pa_other_ball_ct = Column(SmallInteger, doc="Other balls in PA up to sub")
+    pa_strike_ct = Column(SmallInteger, doc="Strikes thrown in PA up to sub")
+    pa_called_strike_ct = Column(SmallInteger, doc="Called strikes in PA up to sub")
+    pa_swingmiss_strike_ct = Column(SmallInteger, doc="Swinging strikes in PA up to sub")
+    pa_foul_strike_ct = Column(SmallInteger, doc="Foul balls in PA up to sub")
+    pa_inplay_strike_ct = Column(SmallInteger, doc="In-play strikes in PA up to sub")
+    pa_other_strike_ct = Column(SmallInteger, doc="Other strikes in PA up to sub")
     dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
@@ -134,7 +151,9 @@ class Schedule(Base):
     date = Column(Date, primary_key=True, doc="Scheduled game date")
     double_header = Column(SmallInteger, doc="Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, "
                                              "2 - second game of doubleheader")
-    day_of_week = Column(CHAR(3), doc="Day of week (3 letter abbreviation")
+    # Pre-2024 retrosheet schedules used 3-letter abbreviations ("Sat");
+    # 2024+ files emit full names ("Wednesday", up to 9 chars).
+    day_of_week = Column(String(16), doc="Day of week (mixed abbreviated/full forms across vintages)")
     visiting_team = Column(CHAR(3), doc="Away team ID")
     visiting_team_league = Column(CHAR(2), doc="Away team league ID")
     visiting_team_game_number = Column(SmallInteger, doc="Away team game number")
@@ -142,6 +161,10 @@ class Schedule(Base):
     home_team_league = Column(CHAR(2), doc="Home team league ID")
     home_team_game_number = Column(Integer, primary_key=True, doc="Home team game number")
     day_night = Column(CHAR(1), doc="D - day, N - night")
+    # Park column added to retrosheet schedule files starting in 2024
+    # (e.g. SEO01 for the 2024 Seoul series). Legacy rows are padded blank
+    # by the parser so the unified output is always 13 columns.
+    park_id = Column(String(8), doc="Park ID where game was scheduled")
     postponement_indicator = Column(String(1024), doc="""
         This field will contain one or more phrases related to the game if it was
         not played as scheduled. If there is more than one phrase, they are separated
@@ -365,6 +388,11 @@ class Game(Base):
                                                    "")
     away_finish_pit_id = Column(CHAR(8), doc="Away team finishing pitcher")
     home_finish_pit_id = Column(CHAR(8), doc="Home team finishing pitcher")
+    # Standard field 84 GAME_TYPE_TX added by chadwick c685ab51, emitted
+    # immediately after the prior last std field (home_finish_pit_id) and
+    # before the extended block. Values: 'regular', 'allstar', etc. (max
+    # 12 chars).
+    game_type_tx = Column(String(16), doc="Game type (regular, allstar, etc.)")
     away_team_league_id = Column(CHAR(3), doc="Away team league (1 char ID)")
     home_team_league_id = Column(CHAR(3), doc="Home team league (1 char ID)")
     away_team_game_ct = Column(SmallInteger, doc="Away team game number")
@@ -1049,3 +1077,8 @@ class Event(Base):
     ass10_fld_cd = Column(SmallInteger, doc="Position code of fielder with tenth assist")
     unknown_out_exc_fl = Column(Boolean, doc="Unknown fielding credit flag")
     uncertain_play_exc_fl = Column(Boolean, doc="Uncertain play flag")
+    # Extended fields 63-66 added by chadwick c685ab51 (cwevent -x 0-66).
+    count_tx = Column(String(8), doc="Pitch count text (e.g. '32' for 3-2)")
+    run1_auto_fl = Column(Boolean, doc="Whether runner on first is automatic")
+    run2_auto_fl = Column(Boolean, doc="Whether runner on second is automatic")
+    run3_auto_fl = Column(Boolean, doc="Whether runner on third is automatic")

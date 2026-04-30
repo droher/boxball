@@ -153,9 +153,14 @@ class BattingPost(Base):
 class CollegePlaying(Base):
     __tablename__ = 'college_playing'
 
-    player_id = Column(String(9), primary_key=True)
-    school_id = Column(String(15), primary_key=True)
-    year_id = Column(SmallInteger, primary_key=True)
+    # Lahman v2025 college_playing.csv ships ~310 Negro-Leagues-era rows with
+    # blank year_id, so year_id can no longer be NOT NULL. (player, school)
+    # alone isn't unique either (5k+ multi-year players), so fall back to the
+    # dummy_id pattern this repo already uses for natural-PK-less tables.
+    player_id = Column(String(9))
+    school_id = Column(String(15))
+    year_id = Column(SmallInteger)
+    dummy_id = Column(Integer, autoincrement=True, primary_key=True)
 
 
 class Fielding(Base):
