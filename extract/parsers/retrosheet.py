@@ -1,6 +1,5 @@
 import re
 import subprocess
-import sys
 from functools import lru_cache
 from pathlib import Path
 import shutil
@@ -8,7 +7,10 @@ import shutil
 import fileinput
 from typing import Callable, Set
 
+from parsers._logging import get_logger
 from parsers.util import compress, OUTPUT_PATH, resolve_path
+
+logger = get_logger(__name__)
 
 # MS-DOS eof character that needs to be specially handled in some files
 DOS_EOF = chr(26)
@@ -29,14 +31,14 @@ PARSE_FUNCS = {
 
 
 def _pbp_game_ids(pattern) -> Set[str]:
-    print(f"Searching for game ids under pattern {pattern}...")
+    logger.info("Searching for game ids under pattern %s", pattern)
     ids = set()
     files = RETROSHEET_PATH.glob(pattern)
     with fileinput.input(files) as fin:
         for line in fin:
             if line.startswith("id,"):
                 ids.add(line.split(",")[1].strip())
-    print(f"Found {len(ids)} games under pattern {pattern}")
+    logger.info("Found %d games under pattern %s", len(ids), pattern)
     return ids
 
 
@@ -68,7 +70,7 @@ def remove_redundant_box_score_files() -> None:
         keep = True
         removed_all = True
         removed = 0
-        print(f"Searching {boxfile} for box scores already existing in PBP accounts...")
+        logger.info("Searching %s for box scores already existing in PBP accounts", boxfile)
         with open(boxfile, "r") as f_in, open(temp_path, "w") as f_out:
             for line in f_in:
                 if line.startswith("id,"):
@@ -81,10 +83,10 @@ def remove_redundant_box_score_files() -> None:
                 if keep:
                     removed_all = False
                     f_out.write(line)
-        print(f"Removing {removed} accounts from {boxfile}")
+        logger.info("Removing %d accounts from %s", removed, boxfile)
         boxfile.unlink()
         if removed_all:
-            print(f"Removed all accounts, not rewriting {boxfile}")
+            logger.info("Removed all accounts, not rewriting %s", boxfile)
             temp_path.unlink()
         else:
             temp_path.rename(boxfile)
@@ -99,7 +101,7 @@ class RetrosheetParser:
     def write_deduced_gamelist():
         tmpfile = OUTPUT_PATH / "deduced_game.csv"
         tmpfile.write_text("\n".join(sorted(deduced_game_ids())) + "\n")
-        print("Writing list of deduced PBP game IDs...")
+        logger.info("Writing list of deduced PBP game IDs")
         compress(tmpfile, OUTPUT_PATH)
 
     @staticmethod
@@ -130,14 +132,16 @@ class RetrosheetParser:
                     if prepend_filename:
                         new_line = f"{year},{new_line}"
                     if new_line in lines:
-                        print(f"Duplicate row in {fin.filename()}: {original_line.strip()}")
+                        logger.warning("Duplicate row in %s: %s", fin.filename(), original_line.strip())
                         continue
                     # TODO: Fix NLB roster file shape in raw data
                     if "roster" in output_file.name and len(new_line.split(",")) == 7:
-                        print(f"Fixing row in file {fin.filename()} with missing data: " + original_line.strip())
+                        logger.warning("Fixing row in %s with missing data: %s",
+                                       fin.filename(), original_line.strip())
                         new_line = new_line.strip() + ","
                     elif "roster" in output_file.name and len(new_line.split(",")) < 7:
-                        print(f"Skipping row in file {fin.filename()} with missing data: " + original_line.strip())
+                        logger.warning("Skipping row in %s with missing data: %s",
+                                       fin.filename(), original_line.strip())
                         continue
                     if check_dupes:
                         lines.add(new_line)
@@ -149,7 +153,7 @@ class RetrosheetParser:
         output_base.mkdir(exist_ok=True)
         subdirs = {subdir: retrosheet_base / subdir for subdir in RETROSHEET_SUBDIRS}
 
-        print("Writing simple files...")
+        logger.info("Writing simple files")
         concat_files(subdirs["gamelogs"], output_base / "gamelog.csv", glob="gl*.txt", check_dupes=False)
         # TODO: Figure out how to integrate 2020-orig (leave out for now)
         concat_files(subdirs["schedules"], output_base / "schedule.csv", glob="*schedule.csv", strip_header=True)
@@ -197,7 +201,7 @@ class RetrosheetParser:
             with open(file, 'r') as ifh, open(new_output_file, 'w') as ofh:
                 for line in ifh:
                     if line.count('"') % 2 != 0:
-                        print("Bad comment line: {}".format(line), file=sys.stderr)
+                        logger.error("Bad comment line in %s: %s", file, line.rstrip("\n"))
                     else:
                         existing_comments.add(line)
                         ofh.write(line)

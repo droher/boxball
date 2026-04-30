@@ -8,6 +8,7 @@ x-extract:
       - RETROSHEET_VERSION
       - BASEBALLDATABANK_VERSION
       - BUILD_ENV
+      - BOXBALL_LOG_LEVEL
   image: ${REPO}:extract-${VERSION}
 x-ddl:
   &ddl
@@ -16,6 +17,7 @@ x-ddl:
     dockerfile: ddl.Dockerfile
     args:
       - VERSION
+      - BOXBALL_LOG_LEVEL
   image: ${REPO}:ddl-${VERSION}
 x-parquet:
   &parquet
@@ -24,6 +26,7 @@ x-parquet:
     dockerfile: parquet.Dockerfile
     args:
       - VERSION
+      - BOXBALL_LOG_LEVEL
   image: ${REPO}:parquet-${VERSION}
   depends_on:
     - extract

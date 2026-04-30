@@ -10,6 +10,9 @@ from sqlalchemy.sql.type_api import TypeEngine
 
 from src.boxball_schemas import all_metadata
 from src import EXTRACT_PATH_PREFIX, TRANSFORM_PATH_PREFIX
+from src._logging import get_logger
+
+logger = get_logger(__name__)
 
 PARQUET_PREFIX = TRANSFORM_PATH_PREFIX.joinpath("parquet")
 CSV_PREFIX = TRANSFORM_PATH_PREFIX.joinpath("csv")
@@ -32,7 +35,7 @@ sql_type_lookup: Dict[Type[TypeEngine], str] = {
 }
 
 def invalid_row_handler(row) -> str:
-    print("Error: :", row)
+    logger.error("Skipping invalid CSV row: %s", row)
     return "skip"
 
 
@@ -48,7 +51,7 @@ def write_files(metadata: AlchemyMetadata) -> None:
     tables: Iterator[AlchemyTable] = metadata.tables.values()
     for table in tables:
         name = table.name
-        print(name)
+        logger.info("Writing parquet for %s.%s", metadata.schema, name)
 
         def get_path(prefix: Path, suffix: str):
             parent_dir = prefix.joinpath(metadata.schema)
@@ -68,12 +71,17 @@ def write_files(metadata: AlchemyMetadata) -> None:
 
         parquet_writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='zstd',
                                           version="2.6", use_dictionary=True)
-        stream_reader = pcsv.open_csv(extract_file, read_options=read_options, parse_options=parse_options,
-                                      convert_options=convert_options)
-        for batch in stream_reader:
-            table = pa.Table.from_batches([batch])
-            parquet_writer.write_table(table)
-        parquet_writer.close()
+        try:
+            stream_reader = pcsv.open_csv(extract_file, read_options=read_options, parse_options=parse_options,
+                                          convert_options=convert_options)
+            for batch in stream_reader:
+                table = pa.Table.from_batches([batch])
+                parquet_writer.write_table(table)
+        except Exception:
+            logger.exception("Failed to write parquet for %s (source: %s)", name, extract_file)
+            raise
+        finally:
+            parquet_writer.close()
 
 
 if __name__ == "__main__":

@@ -67,7 +67,10 @@ docker compose build postgres-columnar            # full chain to one DB target
 docker compose build                              # all targets
 
 BUILD_ENV=test docker compose build               # CI smoke build with fixtures
+BOXBALL_LOG_LEVEL=DEBUG docker compose build extract   # raise pipeline log verbosity
 ```
+
+`BOXBALL_LOG_LEVEL` is forwarded as a build arg to `extract`, `parquet`, and `ddl`; defaults to `INFO`. Each stage tags log lines with `BOXBALL_STAGE`. See `extract/parsers/_logging.py` and `transform/src/_logging.py` (kept duplicated because Docker contexts can't share files).
 
 To run a built image, see the `docker run` recipes in `README.md` — they mount `~/boxball/<target>/` for persistence and expose the DB's standard port.
 

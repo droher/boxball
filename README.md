@@ -140,6 +140,19 @@ uv run basedpyright          # type check (advisory; baseline-only)
 make ci                      # full CI pipeline locally via act
 ```
 
+### Build-time logging
+
+Pipeline scripts log via stdlib `logging` (configured by `extract/parsers/_logging.py`
+and `transform/src/_logging.py`). The `extract`, `parquet`, and `ddl` Dockerfiles default
+to `BOXBALL_LOG_LEVEL=INFO` and tag every log line with a stage label
+(`BOXBALL_STAGE`). Override the level from the host shell — Compose forwards it as a
+build arg:
+
+```
+BOXBALL_LOG_LEVEL=DEBUG docker compose build extract
+BOXBALL_LOG_LEVEL=WARNING docker compose build parquet ddl
+```
+
 ## Acknowledgements
 Ted Turocy's [Chadwick Bureau](http://chadwick-bureau.com/) developed the tools and repos that made this project possible. I am also grateful to [Sean
 Lahman](http://www.seanlahman.com/) for creating his database, which I have been using for over 15 years. I was able

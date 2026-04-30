@@ -1,8 +1,11 @@
-import logging
 import os
 from pathlib import Path
 
 import zstandard as zstd
+
+from parsers._logging import get_logger
+
+logger = get_logger(__name__)
 
 
 def resolve_path(env_key: str, default_subdir: str) -> Path:
@@ -22,11 +25,11 @@ OUTPUT_PATH = resolve_path("BOXBALL_PARSED_PATH", "parsed")
 
 def compress(file: Path, output_dir: Path, remove_original=True) -> None:
     """Replaces the original file with a compressed version"""
-    logging.info("Compressing {}".format(file))
+    logger.info("Compressing %s", file)
     compressed_file = output_dir.joinpath(file.stem).with_suffix(file.suffix + ".zst")
     cctx = zstd.ZstdCompressor()
     with open(file, 'rb') as ifh, open(compressed_file, 'wb') as ofh:
         compression_result = cctx.copy_stream(ifh, ofh)
-        print("{} size (uncompressed,compressed): {}".format(file, compression_result))
+        logger.info("%s size (uncompressed,compressed): %s", file, compression_result)
     if remove_original:
         return file.unlink()

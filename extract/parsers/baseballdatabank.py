@@ -1,6 +1,9 @@
 import humps
 
+from parsers._logging import get_logger
 from parsers.util import compress, OUTPUT_PATH, resolve_path
+
+logger = get_logger(__name__)
 
 DOS_EOF = chr(26)
 BASEBALLDATABANK_PATHS = (
@@ -12,15 +15,20 @@ BASEBALLDATABANK_PATHS = (
 def get_baseballdatabank_files():
     files = [f for path in BASEBALLDATABANK_PATHS
              for f in path.glob("*.csv")]
-    print("Processing Baseball Databank files:", files)
+    logger.info("Processing %d Baseball Databank files", len(files))
+    logger.debug("Baseball Databank files: %s", files)
     for file in files:
         # Just need to change from PascalCase to snake_case to match table names
         # Editing OF fielding files to get PascalCasev conformity for all databank filenames
         file_name = file.name.replace("OFs", "OfS").replace("OF", "Of")
         depascalized_file = OUTPUT_PATH.with_name(humps.depascalize(file_name))
-        with open(file, 'r') as f_in, open(depascalized_file, 'w') as f_out:
-            f_in.readline()
-            f_out.write(f_in.read())
+        try:
+            with open(file, 'r') as f_in, open(depascalized_file, 'w') as f_out:
+                f_in.readline()
+                f_out.write(f_in.read())
+        except OSError:
+            logger.exception("Failed to depascalize %s", file)
+            raise
         file.unlink()
         compress(depascalized_file, OUTPUT_PATH)
 
