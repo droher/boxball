@@ -71,6 +71,11 @@ when you turn it back on.
 
 > **Note:** Citus columnar tables are append-only — `UPDATE`, `DELETE`, and foreign keys are
 > not supported on them. Use the plain `postgres` target if you need a mutable copy of the data.
+>
+> **arm64 note:** This image is **amd64-only**. Citus does not publish arm64
+> packages, so on arm64 hosts (Apple Silicon, AWS Graviton) the image runs
+> under emulation (slow) — or use the plain `postgres` target for native
+> arm64.
 
 #### Clickhouse
 [Clickhouse](https://clickhouse.yandex/) is a database developed by Yandex with some very impressive performance benchmarks. It uses less
@@ -139,6 +144,46 @@ uv run ruff check .          # lint
 uv run basedpyright          # type check (advisory; baseline-only)
 make ci                      # full CI pipeline locally via act
 ```
+
+### Multi-arch builds
+
+Compose declares `linux/amd64` + `linux/arm64` as the build platforms for every
+target except `postgres-columnar`, which is amd64-only because Citus does not
+ship arm64 packages on packagecloud (the install script aborts with "the Citus
+repository does not contain packages for non-x86_64 architectures"). Use the
+plain `postgres` target if you need an arm64 image.
+
+Multi-platform builds need a buildx builder backed by the `docker-container`
+driver — the default `docker` driver errors with "Multi-platform build is not
+supported for the docker driver". One-time setup:
+
+```
+make buildx-bootstrap     # creates a docker-container builder named "boxball"
+make compose-build SVC=extract BUILD_ENV=test     # multi-arch via the wrapper
+```
+
+The `compose-build` target sets `BUILDX_BUILDER=boxball` for the invocation.
+That env var is required because `docker buildx use` is not honoured by
+`docker compose build` in compose v2. If you prefer to invoke compose
+directly, set the env var yourself:
+
+```
+BUILDX_BUILDER=boxball BUILD_ENV=test docker compose build extract
+```
+
+CI uses the same env-var mechanism: `docker/setup-buildx-action@v3` provisions
+a builder and the build step exports its id as `BUILDX_BUILDER` (see
+`.github/workflows/ci.yml`).
+
+Caveat: multi-platform compose builds run inside the buildx daemon and do not
+`--load` the resulting manifest list back into the local Docker image store
+(only single-platform builds can `--load`). Downstream stages that reference a
+parent by tag (`FROM doublewick/boxball:extract-${VERSION}`) therefore resolve
+against the registry, not against the just-built local cache. Until the
+release pipeline pushes fresh multi-arch tags (PLE-358), end-to-end multi-arch
+chains pulling intermediate images from the registry will pull whatever's
+published there (currently amd64-only). For host-arch single-platform builds,
+drop `BUILDX_BUILDER` and the default driver does the right thing.
 
 ### Build-time logging
 

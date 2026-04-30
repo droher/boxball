@@ -1,8 +1,10 @@
-version: '3.7'
 x-extract:
   &extract
   build:
     context: extract
+    platforms:
+      - "linux/amd64"
+      - "linux/arm64"
     args:
       - CHADWICK_VERSION
       - RETROSHEET_VERSION
@@ -15,6 +17,9 @@ x-ddl:
   build:
     context: transform
     dockerfile: ddl.Dockerfile
+    platforms:
+      - "linux/amd64"
+      - "linux/arm64"
     args:
       - VERSION
       - BOXBALL_LOG_LEVEL
@@ -24,6 +29,9 @@ x-parquet:
   build:
     context: transform
     dockerfile: parquet.Dockerfile
+    platforms:
+      - "linux/amd64"
+      - "linux/arm64"
     args:
       - VERSION
       - BOXBALL_LOG_LEVEL
@@ -35,6 +43,9 @@ x-csv:
   build:
     context: transform
     dockerfile: csv.Dockerfile
+    platforms:
+      - "linux/amd64"
+      - "linux/arm64"
     args:
       - VERSION
   image: ${REPO}:csv-${VERSION}
@@ -49,6 +60,7 @@ x-clickhouse:
     target: clickhouse
     platforms:
       - "linux/amd64"
+      - "linux/arm64"
     args:
       - VERSION
   image: ${REPO}:clickhouse-${VERSION}
@@ -66,6 +78,7 @@ x-postgres:
     target: postgres
     platforms:
       - "linux/amd64"
+      - "linux/arm64"
     args:
       - VERSION
   image: ${REPO}:postgres-${VERSION}
@@ -81,6 +94,9 @@ x-postgres-columnar:
     context: load/postgres-columnar
     dockerfile: ../Dockerfile
     target: postgres-columnar
+    # amd64-only: Citus packagecloud does not ship arm64 .debs (the install
+    # script aborts with "the Citus repository does not contain packages for
+    # non-x86_64 architectures"). Other targets are multi-arch.
     platforms:
       - "linux/amd64"
     args:
@@ -100,6 +116,7 @@ x-mysql:
     target: mysql
     platforms:
       - "linux/amd64"
+      - "linux/arm64"
     args:
       - VERSION
   image: ${REPO}:mysql-${VERSION}
@@ -116,6 +133,7 @@ x-sqlite:
     target: sqlite
     platforms:
       - "linux/amd64"
+      - "linux/arm64"
     args:
       - VERSION
   image: ${REPO}:sqlite-${VERSION}

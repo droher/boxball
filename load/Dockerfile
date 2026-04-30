@@ -8,13 +8,16 @@ COPY z_load.sh /docker-entrypoint-initdb.d/
 COPY --chown=clickhouse:clickhouse --from=ddl /ddl/clickhouse.sql /docker-entrypoint-initdb.d/
 COPY --chown=clickhouse:clickhouse --from=parquet /transform/parquet /data
 
-FROM mysql:8.0.35-debian as mysql
+# Oracle Linux variant (default `mysql:<ver>` tag) instead of -debian: Oracle
+# stopped publishing arm64 builds for the -debian flavor, and the -debian image
+# also ships an expired apt signing key (B7B3B788A8D3785C) that breaks
+# `apt-get update` at build time. Oracle Linux 9 image is multi-arch.
+# zstd ships in the OL9 base (used by A_unzip_csvs.sh), so no package install
+# is needed. If pinning to a future mysql tag, re-verify zstd availability.
+FROM mysql:8.0.40 as mysql
 ENV MYSQL_ALLOW_EMPTY_PASSWORD=yes
 COPY my.cnf /etc/mysql/conf.d/
 COPY A_unzip_csvs.sh z_remove_csvs.sh /docker-entrypoint-initdb.d/
-RUN apt-get update && apt-get install -y --no-install-recommends zstd zip && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
 COPY --chown=mysql:mysql --from=ddl /ddl/mysql.sql /docker-entrypoint-initdb.d/
 COPY --chown=mysql:mysql --from=csv /transform/csv /data
 

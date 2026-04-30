@@ -1,7 +1,7 @@
 ARG VERSION
 FROM doublewick/boxball:extract-${VERSION} as extract
 
-FROM python:3.13-slim-bullseye AS build-common
+FROM python:3.13-slim-bookworm AS build-common
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 ARG BOXBALL_LOG_LEVEL=INFO
@@ -17,5 +17,5 @@ COPY src/ src/
 COPY --from=extract /extract /extract
 RUN python -u src/parquet.py
 
-FROM alpine:3.9.3
+FROM alpine:3.19.0
 COPY --from=build-transform /transform /transform

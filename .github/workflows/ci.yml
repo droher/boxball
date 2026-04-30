@@ -56,6 +56,22 @@ jobs:
       BUILD_ENV: test
     steps:
       - uses: actions/checkout@v4
+      # QEMU registers binfmt_misc handlers for cross-arch emulation. Required
+      # so the docker-container buildx driver can build linux/arm64 stages on
+      # GitHub's amd64 runners.
+      - uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
+      # setup-buildx-action provisions a docker-container builder. We pin the
+      # builder by id (output) and select it explicitly via BUILDX_BUILDER on
+      # the build step rather than relying on the action's `use: true` default
+      # — that selection path is not honoured by `docker compose build` in
+      # compose v2 (and the action's own `install:` deprecation message points
+      # toward env-var selection). Local `make compose-build` uses the same
+      # mechanism for parity.
       - uses: docker/setup-buildx-action@v3
+        id: buildx
       - name: docker compose build
+        env:
+          BUILDX_BUILDER: ${{ steps.buildx.outputs.name }}
         run: docker compose build
