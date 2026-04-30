@@ -67,7 +67,7 @@ def write_files(metadata: AlchemyMetadata) -> None:
                                               true_values=["1", "T"], false_values=["0", "F"], strings_can_be_null=True)
 
         parquet_writer = pq.ParquetWriter(parquet_file, schema=arrow_schema, compression='zstd',
-                                          version="2.0", use_dictionary=True)
+                                          version="2.6", use_dictionary=True)
         stream_reader = pcsv.open_csv(extract_file, read_options=read_options, parse_options=parse_options,
                                       convert_options=convert_options)
         for batch in stream_reader:

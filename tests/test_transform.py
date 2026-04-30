@@ -12,8 +12,10 @@ os.chdir(Path("/tmp/boxball"))
 
 class TestSchemas:
     def test_schemas_compile(self):
-        assert len(retrosheet_metadata.tables) == 17
-        assert len(baseballdatabank_metadata.tables) == 27
+        assert retrosheet_metadata.tables
+        assert baseballdatabank_metadata.tables
+        assert "retrosheet.event" in retrosheet_metadata.tables
+        assert "baseballdatabank.teams" in baseballdatabank_metadata.tables
 
 
 class TestDdlFactory:

@@ -1,2 +1,2 @@
-pyhumps==1.6.1
-zstandard==0.22.0
+pyhumps>=3.8
+zstandard>=0.22

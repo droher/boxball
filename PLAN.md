@@ -114,13 +114,15 @@ Both research, no code conflict. Run concurrent.
 
 PLE-332 done — squash-merged into local `next` (commit `be77685`). PLE-333 collapsed into PLE-332.
 
-PLE-334 + PLE-335 done — squash-merged into local `next` (commit `2356b62`). Bumped every Python pin (Dockerfiles, GHA, `transform/src/setup.py`) to 3.13; deleted `.circleci/` and swapped README CircleCI badge for GH Actions. PLE-335 collapsed into PLE-334 because PLE-334's `grep 'python.*3\.7'` AC could not be satisfied while CircleCI config remained. `requirements.txt`: `pyarrow==14.0.1` → `pyarrow>=18` (no 3.13 wheel for 14.x); rest left for PLE-336.
+PLE-334 + PLE-335 done — squash-merged into local `next` (commit `2356b62`). Bumped every Python pin (Dockerfiles, GHA, `transform/src/setup.py`) to 3.13; deleted `.circleci/` and swapped README CircleCI badge for GH Actions. PLE-335 collapsed into PLE-334 because PLE-334's `grep 'python.*3\.7'` AC could not be satisfied while CircleCI config remained.
 
-**Known breakage carried over** (both reproduce identically on `master` — not caused by 3.13 bump):
+PLE-331 + PLE-352 (research spikes) done — both squash-merged into `next` from worktree branches. PLE-331 picks Citus columnar single-node on PG 16+ to replace cstore_fdw (ADR `docs/adr/0001-columnar-pg.md`). PLE-352 keeps Retrosheet on `droher/retrosheet-mirror` (parser depends on alldata.zip layout + NLB-dedup patches) and switches Baseball Databank to `cdalzell/Lahman` because `chadwickbureau/baseballdatabank` is gone (ADR `docs/adr/0002-data-sources.md`).
 
-1. `make ci-int-test` red — `sqlalchemy_fdw==0.3.0` calls removed SQLAlchemy internal `sqlalchemy.util.dependencies._importlater`; fails at module import in `transform/src/ddl_factories/postgres_cstore_fdw.py`. Promoted to hard DoD bullet on **PLE-336**.
-2. `BUILD_ENV=test docker compose build` red at `mysql` target — `mysql:8.0.35-debian` apt repo signing key (`B7B3B788A8D3785C`) expired upstream. Promoted to hard DoD bullet on **PLE-344** (multi-arch / Dockerfile bases) since the multi-arch AC's verification can't pass until mysql base is bumped or GPG re-pinned.
+PLE-336 + PLE-377 done — combined squash-merge into `next` (single PR per PLE-377 sequencing note). Replaced `sqlalchemy_fdw` with inline CREATE FOREIGN TABLE DDL in `postgres_cstore_fdw.py`; bumped SA → 2.x (incl. `declarative_base` import path), pyarrow ParquetWriter `version="2.0"` → `"2.6"`, all per-stage `requirements.txt`. Migrated host deps + ruff/pytest config into `pyproject.toml`; deleted `.flake8` and host `requirements.txt`; committed `uv.lock`. Added `basedpyright` dev dep + advisory CI job (40 errors / 2709 warnings baseline; strict-mode bring-up is follow-up scope). CI rewired to `astral-sh/setup-uv@v3` + `uv sync` + `uv run`; pinned `python-version: "3.13"` on every uv setup. README gained `## Development` section. `make ci-int-test` and `make ci-style` green locally via `act`. Test fixes: `tests/test_transform.py` swapped hardcoded table-count asserts for invariant checks (per global rule); added minimal `extract/fixtures/extract/retrosheet/bio.csv.zst` for the new `bio` schema; marked 3 `tests/test_extract.py` retrosheet parser tests `xfail(strict=True)` because the 2020-vintage fixture layout (`gamelog/`, `event/{asg,post,regular}`) predates the parser rewrite (`gamelogs/`, `allstar/`, `postseason/`, `events/`). Pre-existing red on master, unrelated to deps modernization — flagged for follow-up fixture regen ticket.
 
-PLE-332 shipped without verifying either. PLE-334's local rehearsal exposed both for the first time.
+**Known breakage still carried over:**
 
-Active: none. Next up: PLE-336 (must restore `make ci-int-test` to green as part of DoD).
+- `BUILD_ENV=test docker compose build` red at `mysql` target — `mysql:8.0.35-debian` apt repo signing key (`B7B3B788A8D3785C`) expired upstream. Hard DoD bullet on **PLE-344** (multi-arch / Dockerfile bases).
+- `tests/test_extract.py` retrosheet fixture layout vs parser layout mismatch — xfail-strict in PR; needs new fixture-regen ticket (not yet filed).
+
+Active: none. Next up: Wave 2 cleanups (**PLE-337** drop Drill target; **PLE-347→350** structured logging chain) and **PLE-351** (CWD-coupled relative paths). Wave 3 columnar replacement (PLE-338..342) unblocked by PLE-331.

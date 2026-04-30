@@ -1,5 +1,5 @@
 from sqlalchemy import MetaData, Column, Date, Float, Integer, String, SmallInteger
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 
 Base = declarative_base(metadata=MetaData(schema="baseballdatabank"))
 metadata = Base.metadata

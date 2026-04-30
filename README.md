@@ -133,6 +133,18 @@ and many other frameworks.
 The original CSVs from the extract step (each CSV file is compressed in the ZSTD format).
 [OneDrive](https://1drv.ms/u/s!AtpEocFNRNBWhDLuZqcmXYOIieKQ?e=xP4Azs)
 
+## Development
+
+Host-side dev workflow uses [uv](https://docs.astral.sh/uv/) for environment management:
+
+```
+uv sync                      # provision dev env from pyproject.toml + uv.lock
+uv run pytest --cov          # tests
+uv run ruff check .          # lint
+uv run basedpyright          # type check (advisory; baseline-only)
+make ci                      # full CI pipeline locally via act
+```
+
 ## Acknowledgements
 Ted Turocy's [Chadwick Bureau](http://chadwick-bureau.com/) developed the tools and repos that made this project possible. I am also grateful to [Sean
 Lahman](http://www.seanlahman.com/) for creating his database, which I have been using for over 15 years. I was able

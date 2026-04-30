@@ -1,18 +1,20 @@
-from sqlalchemy.schema import MetaData
+from sqlalchemy import Column, MetaData, Table
+from sqlalchemy.dialects import postgresql
 from sqlalchemy.engine.interfaces import Dialect
-from sqlalchemy_fdw import ForeignTable
-from sqlalchemy_fdw.dialect import PGDialectFdw
 
 from src.ddl_factories.postgres import PostgresDdlFactory
 from src.target_ddl_factory import DdlString
 
 CSTORE_SERVER = "cstore_server"
+CSTORE_OPTIONS = {"compression": "pglz"}
 
 
 class PostgresCstoreFdwDdlFactory(PostgresDdlFactory):
     """
-    Almost exactly the same create/copy syntax as Postgres proper, except the create table syntax is different
-    and we need to create the server.
+    Same load semantics as Postgres, but tables become CREATE FOREIGN TABLE backed by
+    cstore_fdw. Schemas flatten into table-name prefixes because foreign tables
+    don't carry one through the FDW. Replaces the abandoned sqlalchemy_fdw shim
+    by emitting CREATE FOREIGN TABLE DDL directly off SQLAlchemy column metadata.
     """
 
     @property
@@ -21,26 +23,40 @@ class PostgresCstoreFdwDdlFactory(PostgresDdlFactory):
 
     @property
     def dialect(self) -> Dialect:
-        return PGDialectFdw()
+        return postgresql.dialect()
 
     @staticmethod
     def metadata_transform(metadata: MetaData) -> MetaData:
         new_metadata = MetaData()
-        opts = {"pgfdw_server": CSTORE_SERVER, "pgfdw_options": {"compression": "pglz"}}
         for table in metadata.tables.values():
-            # Need to namespace in the tablename because no schemas in fdw
             table_name = "{}_{}".format(metadata.schema, table.name)
-            # Remove dummy cols as no need for PKs (and we can't autoincrement anyway)
-            cols = [c.copy() for c in table.columns.values() if c.autoincrement is not True]
-
-            ForeignTable(table_name, new_metadata, *cols, **opts)
+            new_cols = [
+                Column(c.name, c.type, nullable=c.nullable)
+                for c in table.columns.values()
+                if c.autoincrement is not True
+            ]
+            Table(table_name, new_metadata, *new_cols)
         return new_metadata
 
-    def make_create_ddl(self, metadata: MetaData) -> DdlString:
-        server_ddl = """
-        CREATE EXTENSION IF NOT EXISTS cstore_fdw;
-        CREATE SERVER IF NOT EXISTS {} FOREIGN DATA WRAPPER cstore_fdw;
-        """.format(CSTORE_SERVER)
+    def _foreign_table_ddl(self, table: Table) -> str:
+        type_compiler = self.dialect.type_compiler_instance
+        prep = self.dialect.identifier_preparer
+        col_lines = []
+        for col in table.columns.values():
+            col_type = type_compiler.process(col.type)
+            null_part = "" if col.nullable else " NOT NULL"
+            col_lines.append(f"\t{prep.quote(col.name)} {col_type}{null_part}")
+        opts_sql = ", ".join(f"{k} '{v}'" for k, v in CSTORE_OPTIONS.items())
+        return (
+            f"\nCREATE FOREIGN TABLE {prep.quote(table.name)} (\n"
+            + ",\n".join(col_lines)
+            + f"\n) SERVER {CSTORE_SERVER} OPTIONS ({opts_sql})"
+        )
 
-        existing_ddl = super().make_create_ddl(metadata)
-        return "{}\n{}".format(server_ddl, existing_ddl)
+    def make_create_ddl(self, metadata: MetaData) -> DdlString:
+        server_ddl = (
+            "\nCREATE EXTENSION IF NOT EXISTS cstore_fdw;\n"
+            f"CREATE SERVER IF NOT EXISTS {CSTORE_SERVER} FOREIGN DATA WRAPPER cstore_fdw"
+        )
+        ddl = [server_ddl] + [self._foreign_table_ddl(t) for t in metadata.tables.values()]
+        return ";\n".join(ddl) + ";\n"

@@ -1,5 +1,5 @@
 from sqlalchemy import MetaData, Boolean, CHAR, Column, Date, Integer, SmallInteger, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 
 Base = declarative_base(metadata=MetaData(schema="retrosheet"))
 metadata: MetaData = Base.metadata

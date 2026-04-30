@@ -1,0 +1,43 @@
+[project]
+name = "boxball"
+version = "0"
+description = "Boxball build pipeline — host-side test + lint deps"
+requires-python = ">=3.13"
+dependencies = [
+    "pyhumps>=3.8",
+    "zstandard>=0.22",
+    "sqlalchemy>=2.0",
+    "clickhouse-sqlalchemy>=0.3",
+    "pyarrow>=18",
+    "pytest>=8",
+    "pytest-cov>=5",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.6.9",
+    "basedpyright>=1.18",
+]
+
+[tool.ruff]
+line-length = 120
+exclude = [
+    ".git",
+    "__pycache__",
+    "extract/fixtures",
+    "load",
+    "venv",
+    ".venv",
+    "tests",
+    "transform/src/build",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+# E741/E731 mirror prior flake8 ignores.
+# E714 is a ruff-vs-flake8 divergence (ruff flags `not (x is y)` patterns
+# that pycodestyle missed) — keep ignored for parity until codebase audited.
+ignore = ["E741", "E731", "E714"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

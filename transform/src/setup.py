@@ -8,5 +8,5 @@ setuptools.setup(
     url="https://github.com/droher/boxball",
     packages=["boxball_schemas"],
     python_requires='>=3.13',
-    install_requires=["sqlalchemy>=1.3.3"]
+    install_requires=["sqlalchemy>=2.0"]
 )
