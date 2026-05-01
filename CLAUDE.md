@@ -6,15 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Boxball builds prepopulated databases of two open-source baseball datasets (Retrosheet play-by-play + Baseball Databank/Lahman seasonal stats). Output is a family of Docker images (`doublewick/boxball:<target>-<version>`) plus flat-file Parquet/CSV downloads. The repo is the build pipeline, not a runtime app — there is no server to start; "running" the project means building images via `docker compose`.
 
-## Workflow — Boxball 2026 Refresh
+## Workflow
 
-Refresh tickets (PLE-33x/35x/36x/37x) ship **locally only** — no GitHub PRs during the refresh phase.
+Boxball 2026.0.0 cut over to `master` and Docker Hub on 2026-05-01 (PLAN.md PLE-356 cutover entry). Standard GitHub workflow now applies: feature branch → PR → squash-merge to `master`. CI runs on GitHub Actions per push/PR. Local rehearsal still available via `make ci` (act).
 
-- Per-ticket branch: `feature/ple-XXX-<slug>` (matches Linear `gitBranchName`).
-- Squash-merge each ticket branch into the long-lived local `next` branch.
-- Do **not** push refresh branches (or `next`) to `origin`. Feature branches may be pushed for backup, but never opened as PRs. `next` stays local until release-time cutover.
-- `master` and Docker Hub tags / README badges / release notes flip in a single batch when the refresh is shippable. Until then, master stays untouched.
-- CI runs locally via `make ci` (see below). No `gh pr create`, no GitHub Actions runs against this work.
+Self-hosted Mac runner (`droher/boxball`, labels `self-hosted, macOS, ARM64`) handles the `build-push` job in `release.yml` — see PLAN.md cutover entry for the macOS keychain workaround.
 
 ## Local CI — `act`
 
