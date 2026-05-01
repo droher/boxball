@@ -95,6 +95,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Isolate DOCKER_CONFIG
+        run: |
+          mkdir -p "$RUNNER_TEMP/docker-config"
+          echo "DOCKER_CONFIG=$RUNNER_TEMP/docker-config" >> "$GITHUB_ENV"
+
       # QEMU registers binfmt_misc handlers so amd64 runners can build arm64
       # layers via emulation. Slow but the only path on GH-hosted runners.
       - name: Set up QEMU
