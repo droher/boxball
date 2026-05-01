@@ -97,8 +97,51 @@ jobs:
 
       - name: Isolate DOCKER_CONFIG
         run: |
-          mkdir -p "$RUNNER_TEMP/docker-config"
-          echo "DOCKER_CONFIG=$RUNNER_TEMP/docker-config" >> "$GITHUB_ENV"
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/docker-config/bin" "$RUNNER_TEMP/docker-config/creds"
+          cat > "$RUNNER_TEMP/docker-config/bin/docker-credential-runnerstore" <<'EOS'
+          #!/bin/bash
+          set -e
+          DIR="$RUNNER_TEMP/docker-config/creds"
+          slug() { printf '%s' "$1" | tr '/:' '__'; }
+          case "$1" in
+            store)
+              payload=$(cat)
+              url=$(printf '%s' "$payload" | jq -r .ServerURL)
+              [ -n "$url" ] && [ "$url" != "null" ] && printf '%s' "$payload" > "$DIR/$(slug "$url").json"
+              ;;
+            get)
+              url=$(cat)
+              f="$DIR/$(slug "$url").json"
+              if [ -f "$f" ]; then
+                jq '{Username, Secret}' "$f"
+              else
+                printf '%s\n' '{"Username":"","Secret":""}'
+              fi
+              ;;
+            erase)
+              url=$(cat)
+              rm -f "$DIR/$(slug "$url").json"
+              ;;
+            list)
+              jq -s 'map({(.ServerURL): .Username}) | add // {}' "$DIR"/*.json 2>/dev/null || printf '%s\n' '{}'
+              ;;
+          esac
+          EOS
+          chmod +x "$RUNNER_TEMP/docker-config/bin/docker-credential-runnerstore"
+          printf '{"auths":{},"credsStore":"runnerstore"}' > "$RUNNER_TEMP/docker-config/config.json"
+          export PATH="$RUNNER_TEMP/docker-config/bin:$PATH"
+          # Self-test: store then get must round-trip; unknown URL must yield empty.
+          printf '{"ServerURL":"https://test.example/","Username":"u","Secret":"s"}' | docker-credential-runnerstore store
+          got=$(printf 'https://test.example/' | docker-credential-runnerstore get)
+          echo "$got" | jq -e '.Username == "u" and .Secret == "s"' >/dev/null
+          empty=$(printf 'https://nonexistent.example/' | docker-credential-runnerstore get)
+          echo "$empty" | jq -e '.Username == "" and .Secret == ""' >/dev/null
+          rm -f "$RUNNER_TEMP/docker-config/creds/"*.json
+          {
+            echo "DOCKER_CONFIG=$RUNNER_TEMP/docker-config"
+            echo "PATH=$RUNNER_TEMP/docker-config/bin:$PATH"
+          } >> "$GITHUB_ENV"
 
       # QEMU registers binfmt_misc handlers so amd64 runners can build arm64
       # layers via emulation. Slow but the only path on GH-hosted runners.
