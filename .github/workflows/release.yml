@@ -85,7 +85,10 @@ jobs:
   build-push:
     name: Build + push multi-arch images
     needs: resolve
-    runs-on: ubuntu-latest
+    # Self-hosted Mac (arm64). arm64 layers build native; amd64 layers go
+    # through QEMU emulation (still set up below). Saves GH-hosted minutes
+    # and runs arm64 half of the matrix at native speed.
+    runs-on: [self-hosted, macOS, ARM64]
     env:
       VERSION: ${{ needs.resolve.outputs.version }}
       DRY_RUN: ${{ needs.resolve.outputs.dry_run }}
