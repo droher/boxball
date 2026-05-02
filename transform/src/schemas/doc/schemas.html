@@ -1,0 +1,4758 @@
+<body><style>.columnstyle {
+    color: rgb(31, 35, 40);
+    margin-left: 20px;
+}
+.keycolumnstyle {
+    color: rgb(151, 0, 0);
+    margin-left: 20px;
+}
+
+summary {
+    color-scheme: light;
+    cursor: pointer;
+    display: inline;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    height: auto;
+    line-height: 24px;
+    list-style-image: none;
+    list-style-position: inside;
+    list-style-type: disclosure-closed;
+    overflow-wrap: break-word;
+    text-align: start;
+    text-align-last: start;
+    text-indent: 20px;
+    text-transform: none;
+    unicode-bidi: isolate;
+    width: auto;
+}
+
+
+
+
+
+h2 {
+    border-bottom-color: rgb(216, 222, 228);
+    border-bottom-style: solid;
+    border-bottom-width: 0.8px;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 24px;
+    font-weight: 600;
+    height: 38px;
+    line-height: 30px;
+    margin-block-end: 16px;
+    margin-block-start: 24px;
+    margin-bottom: 16px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-top: 24px;
+    overflow-wrap: break-word;
+    padding-bottom: 7.2px;
+    unicode-bidi: isolate;
+    width: auto;
+}
+
+h3 {
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 20px;
+    font-weight: 600;
+    height: 25px;
+    line-height: 25px;
+    margin-block-end: 16px;
+    margin-block-start: 24px;
+    margin-bottom: 0px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-left: 20px;
+    margin-top: 8px;
+    overflow-wrap: break-word;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    width: auto;
+}
+
+h1 {
+    border-bottom-color: rgb(216, 222, 228);
+    border-bottom-style: solid;
+    border-bottom-width: 0.8px;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 32px;
+    font-weight: 600;
+    height: 50.4px;
+    line-height: 40px;
+    margin-block-end: 16px;
+    margin-block-start: 0px;
+    margin-bottom: 16px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-bottom: 9.6px;
+    unicode-bidi: isolate;
+    width: auto;
+}
+
+.codeblock {
+    background-color: rgb(246, 248, 250);
+    border-bottom-color: rgb(208, 215, 222);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-style: solid;
+    border-bottom-width: 0.8px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(208, 215, 222);
+    border-left-style: solid;
+    border-left-width: 0.8px;
+    border-right-color: rgb(208, 215, 222);
+    border-right-style: solid;
+    border-right-width: 0.8px;
+    border-top-color: rgb(208, 215, 222);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-top-style: solid;
+    border-top-width: 0.8px;
+    box-sizing: border-box;
+    color: rgb(31, 35, 40);
+    color-scheme: light;
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 13.6px;
+    line-height: 19.72px;
+    margin-bottom: 16px;
+    margin-top: 8px;
+    margin-left: 40px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+}</style>
+<h1 id="boxball-schemas">Boxball Schemas</h1>
+<div class="toc">
+<ul>
+<li><a href="#boxball-schemas">Boxball Schemas</a><ul>
+<li><a href="#retrosheet">retrosheet</a><ul>
+<li><a href="#code_event">code_event</a></li>
+<li><a href="#code_field_park">code_field_park</a></li>
+<li><a href="#code_method_record">code_method_record</a></li>
+<li><a href="#code_pitches_record">code_pitches_record</a></li>
+<li><a href="#code_precip_park">code_precip_park</a></li>
+<li><a href="#code_sky_park">code_sky_park</a></li>
+<li><a href="#code_wind_direction_park">code_wind_direction_park</a></li>
+<li><a href="#comment">comment</a></li>
+<li><a href="#daily">daily</a></li>
+<li><a href="#deduced_game">deduced_game</a></li>
+<li><a href="#event">event</a></li>
+<li><a href="#game">game</a></li>
+<li><a href="#gamelog">gamelog</a></li>
+<li><a href="#park">park</a></li>
+<li><a href="#roster">roster</a></li>
+<li><a href="#schedule">schedule</a></li>
+<li><a href="#sub">sub</a></li>
+</ul>
+</li>
+<li><a href="#baseballdatabank">baseballdatabank</a><ul>
+<li><a href="#allstar_full">allstar_full</a></li>
+<li><a href="#appearances">appearances</a></li>
+<li><a href="#awards_managers">awards_managers</a></li>
+<li><a href="#awards_players">awards_players</a></li>
+<li><a href="#awards_share_managers">awards_share_managers</a></li>
+<li><a href="#awards_share_players">awards_share_players</a></li>
+<li><a href="#batting">batting</a></li>
+<li><a href="#batting_post">batting_post</a></li>
+<li><a href="#college_playing">college_playing</a></li>
+<li><a href="#fielding">fielding</a></li>
+<li><a href="#fielding_of">fielding_of</a></li>
+<li><a href="#fielding_of_split">fielding_of_split</a></li>
+<li><a href="#fielding_post">fielding_post</a></li>
+<li><a href="#hall_of_fame">hall_of_fame</a></li>
+<li><a href="#home_games">home_games</a></li>
+<li><a href="#managers">managers</a></li>
+<li><a href="#managers_half">managers_half</a></li>
+<li><a href="#parks">parks</a></li>
+<li><a href="#people">people</a></li>
+<li><a href="#pitching">pitching</a></li>
+<li><a href="#pitching_post">pitching_post</a></li>
+<li><a href="#salaries">salaries</a></li>
+<li><a href="#schools">schools</a></li>
+<li><a href="#series_post">series_post</a></li>
+<li><a href="#teams">teams</a></li>
+<li><a href="#teams_franchises">teams_franchises</a></li>
+<li><a href="#teams_half">teams_half</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="retrosheet">retrosheet</h2>
+<h3 id="code_event">code_event</h3>
+<pre class="codeblock"><code>Descriptions for codes in `event.event_cd`</code></pre>
+<details class="keycolumnstyle">
+<summary>code    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>description    (varchar(30)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="code_field_park">code_field_park</h3>
+<pre class="codeblock"><code>Descriptions for codes in `game.field_park_cd`</code></pre>
+<details class="keycolumnstyle">
+<summary>code    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>description    (varchar(30)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="code_method_record">code_method_record</h3>
+<pre class="codeblock"><code>Descriptions for codes in `game.method_record_cd`</code></pre>
+<details class="keycolumnstyle">
+<summary>code    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>description    (varchar(30)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="code_pitches_record">code_pitches_record</h3>
+<pre class="codeblock"><code>Descriptions for codes in `game.pitches_record_cd`</code></pre>
+<details class="keycolumnstyle">
+<summary>code    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>description    (varchar(30)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="code_precip_park">code_precip_park</h3>
+<pre class="codeblock"><code>Descriptions for codes in `game.precip_park_cd`</code></pre>
+<details class="keycolumnstyle">
+<summary>code    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>description    (varchar(30)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="code_sky_park">code_sky_park</h3>
+<pre class="codeblock"><code>Descriptions for codes in `game.sky_park_cd`</code></pre>
+<details class="keycolumnstyle">
+<summary>code    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>description    (varchar(30)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="code_wind_direction_park">code_wind_direction_park</h3>
+<pre class="codeblock"><code>Descriptions for codes in `game.wind_direction_park_cd`</code></pre>
+<details class="keycolumnstyle">
+<summary>code    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>description    (varchar(30)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="comment">comment</h3>
+<pre class="codeblock"><code>A complement to `event` that sources detailed text comments from play-by-play files. When present,
+these comments can be helpful in figuring out what happened on unusual plays.</code></pre>
+<details class="keycolumnstyle">
+<summary>dummy_id    (integer) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_id    (char(12)) </summary>
+<pre class="codeblock"><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></pre>
+</details>
+<details class="columnstyle">
+<summary>event_id    (smallint) </summary>
+<pre class="codeblock"><code>Commented event number</code></pre>
+</details>
+<details class="columnstyle">
+<summary>comment    (varchar(1638)) </summary>
+<pre class="codeblock"><code>Comment text</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ejected_person_id    (varchar(256)) </summary>
+<pre class="codeblock"><code>ID of ejected person</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ejected_person_role_cd    (varchar(256)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>eject_umpire_id    (varchar(256)) </summary>
+<pre class="codeblock"><code>ID of umpire who ejected person</code></pre>
+</details>
+<details class="columnstyle">
+<summary>eject_reason    (varchar(1639)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpchange_inning    (varchar(256)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpchange_position    (varchar(256)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpchange_person_id    (varchar(256)) </summary>
+<pre class="codeblock"><code>ID of new umpire</code></pre>
+</details>
+<h3 id="daily">daily</h3>
+<pre class="codeblock"><code>Contains one row per player per game. In addition to providing more convenient summaries of player data than the
+`event` table, the `daily` table also includes information from box score event files, giving it complete coverage
+for all games dating back to 1906 (as well as the 1871 and 1872 seasons).
+
+If you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage
+option like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for
+traditional row-oriented stores.
+
+The same caveats around data quality from `event` apply here as well. Additionally, there appear to be some minor
+referential integrity issues in a couple rows: in at least one case, a player truly appeared in a single game more
+than once (in the 1934 All-Star Game), while a parsing error caused this to appear in at least one other case.</code></pre>
+<details class="keycolumnstyle">
+<summary>dummy_id    (integer) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_id    (char(12)) </summary>
+<pre class="codeblock"><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_dt    (date) </summary>
+<pre class="codeblock"><code>Game date</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_ct    (smallint) </summary>
+<pre class="codeblock"><code>Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader</code></pre>
+</details>
+<details class="columnstyle">
+<summary>appearance_dt    (date) </summary>
+<pre class="codeblock"><code>Player appearance date. Can be different from game date if the game was suspended and the player entered the game at the later date</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id    (char(3)) </summary>
+<pre class="codeblock"><code>Team ID of player</code></pre>
+</details>
+<details class="columnstyle">
+<summary>player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>slot_ct    (smallint) </summary>
+<pre class="codeblock"><code>Player lineup position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>seq_ct    (smallint) </summary>
+<pre class="codeblock"><code>Player is nth person of game to play in that lineup slot</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_fl    (boolean) </summary>
+<pre class="codeblock"><code>Player is playing at home</code></pre>
+</details>
+<details class="columnstyle">
+<summary>opponent_id    (char(3)) </summary>
+<pre class="codeblock"><code>Team opponent ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>park_id    (char(5)) </summary>
+<pre class="codeblock"><code>Park ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_g    (smallint) </summary>
+<pre class="codeblock"><code>Games played</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_pa    (smallint) </summary>
+<pre class="codeblock"><code>Plate appearances</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_ab    (smallint) </summary>
+<pre class="codeblock"><code>At bats</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_r    (smallint) </summary>
+<pre class="codeblock"><code>Runs scored</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_h    (smallint) </summary>
+<pre class="codeblock"><code>Hits</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_tb    (smallint) </summary>
+<pre class="codeblock"><code>Total bases</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_2b    (smallint) </summary>
+<pre class="codeblock"><code>Doubles</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_3b    (smallint) </summary>
+<pre class="codeblock"><code>Triples</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_hr    (smallint) </summary>
+<pre class="codeblock"><code>Home runs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_hr4    (smallint) </summary>
+<pre class="codeblock"><code>Grand slams</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_rbi    (smallint) </summary>
+<pre class="codeblock"><code>Runs batted in</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_gw    (smallint) </summary>
+<pre class="codeblock"><code>Game winning RBI</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_bb    (smallint) </summary>
+<pre class="codeblock"><code>Walks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_ibb    (smallint) </summary>
+<pre class="codeblock"><code>Intentional walks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_so    (smallint) </summary>
+<pre class="codeblock"><code>Strikeouts</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_gdp    (smallint) </summary>
+<pre class="codeblock"><code>Grounded into double plays</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_hp    (smallint) </summary>
+<pre class="codeblock"><code>Hit by pitches</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_sh    (smallint) </summary>
+<pre class="codeblock"><code>Sacrifice hits</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_sf    (smallint) </summary>
+<pre class="codeblock"><code>Sacrifice files</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_sb    (smallint) </summary>
+<pre class="codeblock"><code>Stolen bases</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_cs    (smallint) </summary>
+<pre class="codeblock"><code>Caught stealing</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_xi    (smallint) </summary>
+<pre class="codeblock"><code>Reached on interference</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_g_dh    (smallint) </summary>
+<pre class="codeblock"><code>Games as DH</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_g_ph    (smallint) </summary>
+<pre class="codeblock"><code>Games as pinch hitter</code></pre>
+</details>
+<details class="columnstyle">
+<summary>b_g_pr    (smallint) </summary>
+<pre class="codeblock"><code>Games as pinch runner</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_g    (smallint) </summary>
+<pre class="codeblock"><code>Games pitched</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_gs    (smallint) </summary>
+<pre class="codeblock"><code>Games as starting pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_cg    (smallint) </summary>
+<pre class="codeblock"><code>Complete games</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_sho    (smallint) </summary>
+<pre class="codeblock"><code>Shutouts</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_gf    (smallint) </summary>
+<pre class="codeblock"><code>Games finished</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_w    (smallint) </summary>
+<pre class="codeblock"><code>Wins</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_l    (smallint) </summary>
+<pre class="codeblock"><code>Losses</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_sv    (smallint) </summary>
+<pre class="codeblock"><code>Saves</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_out    (smallint) </summary>
+<pre class="codeblock"><code>Outs recorded</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_tbf    (smallint) </summary>
+<pre class="codeblock"><code>Total batters faced</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_ab    (smallint) </summary>
+<pre class="codeblock"><code>At bats against</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_r    (smallint) </summary>
+<pre class="codeblock"><code>Runs allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_er    (smallint) </summary>
+<pre class="codeblock"><code>Earned runs allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_h    (smallint) </summary>
+<pre class="codeblock"><code>Hits allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_tb    (smallint) </summary>
+<pre class="codeblock"><code>Total bases allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_2b    (smallint) </summary>
+<pre class="codeblock"><code>Doubles allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_3b    (smallint) </summary>
+<pre class="codeblock"><code>Triples allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_hr    (smallint) </summary>
+<pre class="codeblock"><code>Home runs allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_hr4    (smallint) </summary>
+<pre class="codeblock"><code>Grand slams allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_bb    (smallint) </summary>
+<pre class="codeblock"><code>Walks allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_ibb    (smallint) </summary>
+<pre class="codeblock"><code>Intentional walks allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_so    (smallint) </summary>
+<pre class="codeblock"><code>Strikeouts against</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_gdp    (smallint) </summary>
+<pre class="codeblock"><code>Grounded into double plays against</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_hp    (smallint) </summary>
+<pre class="codeblock"><code>Hit by pitches allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_sh    (smallint) </summary>
+<pre class="codeblock"><code>Sacrifice hits allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_sf    (smallint) </summary>
+<pre class="codeblock"><code>Sacrifice flies allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_xi    (smallint) </summary>
+<pre class="codeblock"><code>Reached on interference allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_wp    (smallint) </summary>
+<pre class="codeblock"><code>Wild pitches allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_bk    (smallint) </summary>
+<pre class="codeblock"><code>Balks allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_ir    (smallint) </summary>
+<pre class="codeblock"><code>Inherited runners</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_irs    (smallint) </summary>
+<pre class="codeblock"><code>Inherited runners scored</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_go    (smallint) </summary>
+<pre class="codeblock"><code>Groundouts recorded</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_ao    (smallint) </summary>
+<pre class="codeblock"><code>Fly ball outs recorded</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_pitch    (smallint) </summary>
+<pre class="codeblock"><code>Pitches thrown</code></pre>
+</details>
+<details class="columnstyle">
+<summary>p_strike    (smallint) </summary>
+<pre class="codeblock"><code>Strikes thrown</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_p_g    (smallint) </summary>
+<pre class="codeblock"><code>Appearances at pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_p_gs    (smallint) </summary>
+<pre class="codeblock"><code>Starts at pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_p_out    (smallint) </summary>
+<pre class="codeblock"><code>Outs played as pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_p_tc    (smallint) </summary>
+<pre class="codeblock"><code>Total chances as pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_p_po    (smallint) </summary>
+<pre class="codeblock"><code>Putouts as pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_p_a    (smallint) </summary>
+<pre class="codeblock"><code>Assists as pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_p_e    (smallint) </summary>
+<pre class="codeblock"><code>Errors as pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_p_dp    (smallint) </summary>
+<pre class="codeblock"><code>Double plays turned as pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_p_tp    (smallint) </summary>
+<pre class="codeblock"><code>Triple pays turned as pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_g    (smallint) </summary>
+<pre class="codeblock"><code>Appearances at catcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_gs    (smallint) </summary>
+<pre class="codeblock"><code>Starts at catcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_out    (smallint) </summary>
+<pre class="codeblock"><code>Outs played as catcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_tc    (smallint) </summary>
+<pre class="codeblock"><code>Total chances as catcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_po    (smallint) </summary>
+<pre class="codeblock"><code>Putouts as catcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_a    (smallint) </summary>
+<pre class="codeblock"><code>Assists as catcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_e    (smallint) </summary>
+<pre class="codeblock"><code>Errors as catcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_dp    (smallint) </summary>
+<pre class="codeblock"><code>Double plays turned as catcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_tp    (smallint) </summary>
+<pre class="codeblock"><code>Triple pays turned as catcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_pb    (smallint) </summary>
+<pre class="codeblock"><code>Passed balls</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_c_xi    (smallint) </summary>
+<pre class="codeblock"><code>Catcher's interference</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_1b_g    (smallint) </summary>
+<pre class="codeblock"><code>Appearances at first baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_1b_gs    (smallint) </summary>
+<pre class="codeblock"><code>Starts at first baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_1b_out    (smallint) </summary>
+<pre class="codeblock"><code>Outs played as first baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_1b_tc    (smallint) </summary>
+<pre class="codeblock"><code>Total chances as first baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_1b_po    (smallint) </summary>
+<pre class="codeblock"><code>Putouts as first baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_1b_a    (smallint) </summary>
+<pre class="codeblock"><code>Assists as first baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_1b_e    (smallint) </summary>
+<pre class="codeblock"><code>Errors as first baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_1b_dp    (smallint) </summary>
+<pre class="codeblock"><code>Double plays turned as first baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_1b_tp    (smallint) </summary>
+<pre class="codeblock"><code>Triple pays turned as first baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_2b_g    (smallint) </summary>
+<pre class="codeblock"><code>Appearances at second baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_2b_gs    (smallint) </summary>
+<pre class="codeblock"><code>Starts at second baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_2b_out    (smallint) </summary>
+<pre class="codeblock"><code>Outs played as second baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_2b_tc    (smallint) </summary>
+<pre class="codeblock"><code>Total chances as second baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_2b_po    (smallint) </summary>
+<pre class="codeblock"><code>Putouts as second baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_2b_a    (smallint) </summary>
+<pre class="codeblock"><code>Assists as second baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_2b_e    (smallint) </summary>
+<pre class="codeblock"><code>Errors as second baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_2b_dp    (smallint) </summary>
+<pre class="codeblock"><code>Double plays turned as second baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_2b_tp    (smallint) </summary>
+<pre class="codeblock"><code>Triple pays turned as second baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_3b_g    (smallint) </summary>
+<pre class="codeblock"><code>Appearances at third baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_3b_gs    (smallint) </summary>
+<pre class="codeblock"><code>Starts at third baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_3b_out    (smallint) </summary>
+<pre class="codeblock"><code>Outs played as third baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_3b_tc    (smallint) </summary>
+<pre class="codeblock"><code>Total chances as third baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_3b_po    (smallint) </summary>
+<pre class="codeblock"><code>Putouts as third baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_3b_a    (smallint) </summary>
+<pre class="codeblock"><code>Assists as third baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_3b_e    (smallint) </summary>
+<pre class="codeblock"><code>Errors as third baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_3b_dp    (smallint) </summary>
+<pre class="codeblock"><code>Double plays turned as third baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_3b_tp    (smallint) </summary>
+<pre class="codeblock"><code>Triple pays turned as third baseman</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_ss_g    (smallint) </summary>
+<pre class="codeblock"><code>Appearances at shortstop</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_ss_gs    (smallint) </summary>
+<pre class="codeblock"><code>Starts at shortstop</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_ss_out    (smallint) </summary>
+<pre class="codeblock"><code>Outs played as shortstop</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_ss_tc    (smallint) </summary>
+<pre class="codeblock"><code>Total chances as shortstop</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_ss_po    (smallint) </summary>
+<pre class="codeblock"><code>Putouts as shortstop</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_ss_a    (smallint) </summary>
+<pre class="codeblock"><code>Assists as shortstop</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_ss_e    (smallint) </summary>
+<pre class="codeblock"><code>Errors as shortstop</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_ss_dp    (smallint) </summary>
+<pre class="codeblock"><code>Double plays turned as shortstop</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_ss_tp    (smallint) </summary>
+<pre class="codeblock"><code>Triple pays turned as shortstop</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_lf_g    (smallint) </summary>
+<pre class="codeblock"><code>Appearances at left fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_lf_gs    (smallint) </summary>
+<pre class="codeblock"><code>Starts at left fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_lf_out    (smallint) </summary>
+<pre class="codeblock"><code>Outs played as left fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_lf_tc    (smallint) </summary>
+<pre class="codeblock"><code>Total chances as left fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_lf_po    (smallint) </summary>
+<pre class="codeblock"><code>Putouts as left fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_lf_a    (smallint) </summary>
+<pre class="codeblock"><code>Assists as left fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_lf_e    (smallint) </summary>
+<pre class="codeblock"><code>Errors as left fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_lf_dp    (smallint) </summary>
+<pre class="codeblock"><code>Double plays turned as left fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_lf_tp    (smallint) </summary>
+<pre class="codeblock"><code>Triple pays turned as left fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_cf_g    (smallint) </summary>
+<pre class="codeblock"><code>Appearances at center fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_cf_gs    (smallint) </summary>
+<pre class="codeblock"><code>Starts at center fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_cf_out    (smallint) </summary>
+<pre class="codeblock"><code>Outs played as center fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_cf_tc    (smallint) </summary>
+<pre class="codeblock"><code>Total chances as center fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_cf_po    (smallint) </summary>
+<pre class="codeblock"><code>Putouts as center fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_cf_a    (smallint) </summary>
+<pre class="codeblock"><code>Assists as center fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_cf_e    (smallint) </summary>
+<pre class="codeblock"><code>Errors as center fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_cf_dp    (smallint) </summary>
+<pre class="codeblock"><code>Double plays turned as center fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_cf_tp    (smallint) </summary>
+<pre class="codeblock"><code>Triple pays turned as center fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_rf_g    (smallint) </summary>
+<pre class="codeblock"><code>Appearances at right fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_rf_gs    (smallint) </summary>
+<pre class="codeblock"><code>Starts at right fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_rf_out    (smallint) </summary>
+<pre class="codeblock"><code>Outs played as right fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_rf_tc    (smallint) </summary>
+<pre class="codeblock"><code>Total chances as right fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_rf_po    (smallint) </summary>
+<pre class="codeblock"><code>Putouts as right fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_rf_a    (smallint) </summary>
+<pre class="codeblock"><code>Assists as right fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_rf_e    (smallint) </summary>
+<pre class="codeblock"><code>Errors as right fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_rf_dp    (smallint) </summary>
+<pre class="codeblock"><code>Double plays turned as right fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>f_rf_tp    (smallint) </summary>
+<pre class="codeblock"><code>Triple pays turned as right fielder</code></pre>
+</details>
+<h3 id="deduced_game">deduced_game</h3>
+<pre class="codeblock"><code>One-column table that contains a list of all game IDs for which the PBP account was
+deduced from newspaper accounts of the game. The table can be used to filter out those games
+from the event file if desired, or to create a flag variable when performing analysis.</code></pre>
+<details class="keycolumnstyle">
+<summary>game_id    (char(12)) &#128273;</summary>
+<pre class="codeblock"><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></pre>
+</details>
+<h3 id="event">event</h3>
+<pre class="codeblock"><code>The event table is the most granular data available, containing one row for every play of every game
+for which Retrosheet has data. This includes all postseason games in history, all All-Star games in history,
+all regular season games dating back to 1937, and a majority of regular season games dating back to 1921.
+
+Each row in the table does not necessarily constitute a new or complete plate appearance, as events like
+stolen bases and balks have their own rows.
+
+If you are going to use this table regularly, it is highly recommended that you choose a column-oriented storage
+option like postgres_cstore_fdw or Clickhouse, as the large row size and row count will create bottlenecks for
+traditional row-oriented stores.
+
+While all games present in the table have the bare minimum of information about every play in the game,
+there are significant differences in data quality from game to game. These differences in data quality often
+complicate historical analyses.
+-- A significant number of games from 1937-1973 do not have complete play-by-play accounts available. For these
+    missing games, Retrosheet has derived play-by-play data using a combination of box scores and game stories.
+    These derived games are likely to have less granular data around fielding plays.
+-- The overwhelming majority of games prior to 1988 do not have pitch-by-pitch data available (the most notable
+    exceptions to this are the 1950s Dodgers home games). From 1988-1999, nearly all games have pitch sequences,
+    but a significant number of games are missing pitch sequences from at least one plate appearance, making
+    pitch count analysis a bit more difficult. Games from 2000 on have complete pitch data.
+-- A similar situation exists for hit location data, although location data is more frequently populated for
+    older games than pitch data is.</code></pre>
+<details class="keycolumnstyle">
+<summary>game_id    (char(12)) &#128273;</summary>
+<pre class="codeblock"><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>event_id    (integer) &#128273;</summary>
+<pre class="codeblock"><code>Event number of game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_team_id    (char(3)) </summary>
+<pre class="codeblock"><code>Visiting Team</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inn_ct    (smallint) </summary>
+<pre class="codeblock"><code>Inning</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_home_id    (boolean) </summary>
+<pre class="codeblock"><code>Home team is batting</code></pre>
+</details>
+<details class="columnstyle">
+<summary>outs_ct    (smallint) </summary>
+<pre class="codeblock"><code>Outs (0-2)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>balls_ct    (smallint) </summary>
+<pre class="codeblock"><code>Balls (0-3)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>strikes_ct    (smallint) </summary>
+<pre class="codeblock"><code>Strikes (0-2</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pitch_seq_tx    (varchar(30)) </summary>
+<pre class="codeblock"><code>Pitch sequence</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_score_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away score</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_score_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home score</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>Batter ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_hand_cd    (char(1)) </summary>
+<pre class="codeblock"><code>Batter handedness</code></pre>
+</details>
+<details class="columnstyle">
+<summary>resp_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of batter charged with event</code></pre>
+</details>
+<details class="columnstyle">
+<summary>resp_bat_hand_cd    (char(1)) </summary>
+<pre class="codeblock"><code>Handedness of batter charged with event</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>Pitcher ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pit_hand_cd    (char(1)) </summary>
+<pre class="codeblock"><code>Pitcher handedness</code></pre>
+</details>
+<details class="columnstyle">
+<summary>resp_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of pitcher charged with event</code></pre>
+</details>
+<details class="columnstyle">
+<summary>resp_pit_hand_cd    (char(1)) </summary>
+<pre class="codeblock"><code>Handedness of pitcher charged with event</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pos2_fld_id    (char(8)) </summary>
+<pre class="codeblock"><code>Catcher ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pos3_fld_id    (char(8)) </summary>
+<pre class="codeblock"><code>First baseman ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pos4_fld_id    (char(8)) </summary>
+<pre class="codeblock"><code>Second baseman ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pos5_fld_id    (char(8)) </summary>
+<pre class="codeblock"><code>Third baseman ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pos6_fld_id    (char(8)) </summary>
+<pre class="codeblock"><code>Shortstop ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pos7_fld_id    (char(8)) </summary>
+<pre class="codeblock"><code>Left fielder ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pos8_fld_id    (char(8)) </summary>
+<pre class="codeblock"><code>Center fielder ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pos9_fld_id    (char(8)) </summary>
+<pre class="codeblock"><code>Right fielder ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>base1_run_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of runner on first</code></pre>
+</details>
+<details class="columnstyle">
+<summary>base2_run_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of runner on second</code></pre>
+</details>
+<details class="columnstyle">
+<summary>base3_run_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of runner on third</code></pre>
+</details>
+<details class="columnstyle">
+<summary>event_tx    (varchar(128)) </summary>
+<pre class="codeblock"><code>Event text (in scoring shorthand</code></pre>
+</details>
+<details class="columnstyle">
+<summary>leadoff_fl    (boolean) </summary>
+<pre class="codeblock"><code>Batter is leading off the inning</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ph_fl    (boolean) </summary>
+<pre class="codeblock"><code>Batter is pinch-hitting</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Defensive position of batter (10 for DH, 11 for PH, 12 for PR</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_lineup_id    (smallint) </summary>
+<pre class="codeblock"><code>Lineup position (1-9)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>event_cd    (smallint) </summary>
+<pre class="codeblock"><code>Event code (join table `code_event` for descriptions</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_event_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is related to the batter</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ab_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is an at-bat</code></pre>
+</details>
+<details class="columnstyle">
+<summary>h_fl    (smallint) </summary>
+<pre class="codeblock"><code>Event is a hit</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sh_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is a sacrifice hit</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sf_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is a sacrifice fly</code></pre>
+</details>
+<details class="columnstyle">
+<summary>event_outs_ct    (smallint) </summary>
+<pre class="codeblock"><code>Outs recorded on event (0-3)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>dp_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is a double play</code></pre>
+</details>
+<details class="columnstyle">
+<summary>tp_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is a triple play</code></pre>
+</details>
+<details class="columnstyle">
+<summary>rbi_ct    (smallint) </summary>
+<pre class="codeblock"><code>Runs batted in on event</code></pre>
+</details>
+<details class="columnstyle">
+<summary>wp_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is a wild pitch</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pb_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is a passed ball</code></pre>
+</details>
+<details class="columnstyle">
+<summary>fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position id of event fielder</code></pre>
+</details>
+<details class="columnstyle">
+<summary>battedball_cd    (char(1)) </summary>
+<pre class="codeblock"><code>Batted ball code (P - pop-up, G - ground ball, F - fly ball, L - line drive</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bunt_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is a bunt</code></pre>
+</details>
+<details class="columnstyle">
+<summary>foul_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is a foul ball</code></pre>
+</details>
+<details class="columnstyle">
+<summary>battedball_loc_tx    (varchar(5)) </summary>
+<pre class="codeblock"><code>Hit location code (see https://www.retrosheet.org/location.htm)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>err_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of errors recorded during event</code></pre>
+</details>
+<details class="columnstyle">
+<summary>err1_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder committing first error during event</code></pre>
+</details>
+<details class="columnstyle">
+<summary>err1_cd    (char(1)) </summary>
+<pre class="codeblock"><code>First error type (T - throwing, F - fielding)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>err2_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder committing second error during event</code></pre>
+</details>
+<details class="columnstyle">
+<summary>err2_cd    (char(1)) </summary>
+<pre class="codeblock"><code>Second error type (T - throwing, F - fielding)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>err3_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder committing third error during event</code></pre>
+</details>
+<details class="columnstyle">
+<summary>err3_cd    (char(1)) </summary>
+<pre class="codeblock"><code>Third error type (T - throwing, F - fielding)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_dest_id    (smallint) </summary>
+<pre class="codeblock"><code>Destination of batter after event (0 - putout, 1-3 - bases, 4 - scored asearned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_dest_id    (smallint) </summary>
+<pre class="codeblock"><code>Destination of runner on first after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_dest_id    (smallint) </summary>
+<pre class="codeblock"><code>Destination of runner on second after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_dest_id    (smallint) </summary>
+<pre class="codeblock"><code>Destination of runner on third after event (0 - putout, 1-3 - bases, 4 - scored as earned run, 5 - scored as unearned, 6 - scored as unearned to team earned to pitcher)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_play_tx    (varchar(15)) </summary>
+<pre class="codeblock"><code>Fielding play on batter</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_play_tx    (varchar(15)) </summary>
+<pre class="codeblock"><code>Fielding play on runner on first</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_play_tx    (varchar(15)) </summary>
+<pre class="codeblock"><code>Fielding play on runner on second</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_play_tx    (varchar(15)) </summary>
+<pre class="codeblock"><code>Fielding play on runner on third</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_sb_fl    (boolean) </summary>
+<pre class="codeblock"><code>Runner on first steals base</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_sb_fl    (boolean) </summary>
+<pre class="codeblock"><code>Runner on second steals base</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_sb_fl    (boolean) </summary>
+<pre class="codeblock"><code>Runner on third steals base</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_cs_fl    (boolean) </summary>
+<pre class="codeblock"><code>Runner on first caught stealing</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_cs_fl    (boolean) </summary>
+<pre class="codeblock"><code>Runner on second caught stealing</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_cs_fl    (boolean) </summary>
+<pre class="codeblock"><code>Runner on third caught stealing</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_pk_fl    (boolean) </summary>
+<pre class="codeblock"><code>Runner on first picked off</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_pk_fl    (boolean) </summary>
+<pre class="codeblock"><code>Runner on second picked off</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_pk_fl    (boolean) </summary>
+<pre class="codeblock"><code>Runner on third picked off</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_resp_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of pitcher charged with runner on first</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_resp_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of pitcher charged with runner on second</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_resp_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of pitcher charged with runner on third</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_new_fl    (boolean) </summary>
+<pre class="codeblock"><code>Start of game flag</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_end_fl    (boolean) </summary>
+<pre class="codeblock"><code>End of game flag</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pr_run1_fl    (boolean) </summary>
+<pre class="codeblock"><code>Pinch-runner on first</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pr_run2_fl    (boolean) </summary>
+<pre class="codeblock"><code>Pinch-runner on second</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pr_run3_fl    (boolean) </summary>
+<pre class="codeblock"><code>Runner on third</code></pre>
+</details>
+<details class="columnstyle">
+<summary>removed_for_pr_run1_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of former runner on first removed for pinch-runner</code></pre>
+</details>
+<details class="columnstyle">
+<summary>removed_for_pr_run2_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of former runner on second removed for pinch-runner</code></pre>
+</details>
+<details class="columnstyle">
+<summary>removed_for_pr_run3_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of former runner on third removed for pinch-runner</code></pre>
+</details>
+<details class="columnstyle">
+<summary>removed_for_ph_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of former batter removed for pinch-hitter</code></pre>
+</details>
+<details class="columnstyle">
+<summary>removed_for_ph_bat_fld_cd    (integer) </summary>
+<pre class="codeblock"><code>Position code of batter removed for pinch-hitter</code></pre>
+</details>
+<details class="columnstyle">
+<summary>po1_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with first putout</code></pre>
+</details>
+<details class="columnstyle">
+<summary>po2_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with second putout</code></pre>
+</details>
+<details class="columnstyle">
+<summary>po3_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with third putout</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ass1_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with first assist</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ass2_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with second assist</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ass3_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with third assist</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ass4_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with fourth assist</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ass5_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with fifth assist</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_team_id    (char(3)) </summary>
+<pre class="codeblock"><code>Home team ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_team_id    (char(3)) </summary>
+<pre class="codeblock"><code>Batting team ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>fld_team_id    (char(3)) </summary>
+<pre class="codeblock"><code>Fielding team ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_last_id    (smallint) </summary>
+<pre class="codeblock"><code>Half inning (differs from batting team if home team bats first)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inn_new_fl    (boolean) </summary>
+<pre class="codeblock"><code>Start of half-inning flag</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inn_end_fl    (boolean) </summary>
+<pre class="codeblock"><code>End of half-inning flag</code></pre>
+</details>
+<details class="columnstyle">
+<summary>start_bat_score_ct    (smallint) </summary>
+<pre class="codeblock"><code>Runs scored by batting team (prior to this event)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>start_fld_score_ct    (smallint) </summary>
+<pre class="codeblock"><code>Runs scored by fielding team</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inn_runs_ct    (smallint) </summary>
+<pre class="codeblock"><code>Runs scored in this half-inning (prior to this event)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_pa_ct    (smallint) </summary>
+<pre class="codeblock"><code>Batting team PA total (prior to this event)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inn_pa_ct    (smallint) </summary>
+<pre class="codeblock"><code>Half-inning PA total (prior to this event)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_new_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is the start of a plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_trunc_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event is a truncated plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>start_bases_cd    (smallint) </summary>
+<pre class="codeblock"><code>Base state at start of event (0-7, binary value is flags for runners on third, second, and first left-to-right)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>end_bases_cd    (smallint) </summary>
+<pre class="codeblock"><code>Base state end of event (0-7, binary value is flags for runners on third, second, and first left-to-right)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_start_fl    (boolean) </summary>
+<pre class="codeblock"><code>Batter started game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>resp_bat_start_fl    (boolean) </summary>
+<pre class="codeblock"><code>Result-charged batter is a starter</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_on_deck_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of batter on deck</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_in_hold_id    (char(8)) </summary>
+<pre class="codeblock"><code>Id of batter in the hole</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pit_start_fl    (boolean) </summary>
+<pre class="codeblock"><code>Pitcher started game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>resp_pit_start_fl    (boolean) </summary>
+<pre class="codeblock"><code>Result-charged pitcher started game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Defensive position code of runner on first</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_lineup_cd    (smallint) </summary>
+<pre class="codeblock"><code>Lineup position of runner on first</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_origin_event_id    (smallint) </summary>
+<pre class="codeblock"><code>Event number on which runner on first reached base</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Defensive position code of runner on second</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_lineup_cd    (smallint) </summary>
+<pre class="codeblock"><code>Lineup position of runner on second</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_origin_event_id    (smallint) </summary>
+<pre class="codeblock"><code>Event number on which runner on second reached base</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Defensive position code of runner on third</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_lineup_cd    (smallint) </summary>
+<pre class="codeblock"><code>Lineup position of runner on third</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_origin_event_id    (smallint) </summary>
+<pre class="codeblock"><code>Event number on which runner on third reached base</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_resp_cat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of responsible catcher for runner on first</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_resp_cat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of responsible catcher for runner on second</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_resp_cat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of responsible catcher for runner on third</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_ball_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of balls in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_called_ball_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of called balls in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_intent_ball_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of intentional balls in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_pitchout_ball_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of pitchouts in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_hitbatter_ball_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of pitches hitting batter in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_other_ball_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of other balls in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_strike_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of strikes in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_called_strike_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of called strikes in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_swingmiss_strike_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of swing-and-miss strikes in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_foul_strike_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of foul balls in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_inplay_strike_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of balls in play in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pa_other_strike_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of other strikes in plate appearance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>event_runs_ct    (smallint) </summary>
+<pre class="codeblock"><code>Number of runs on play</code></pre>
+</details>
+<details class="columnstyle">
+<summary>fld_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of player fielding batted ball</code></pre>
+</details>
+<details class="columnstyle">
+<summary>base2_force_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event has force play at second</code></pre>
+</details>
+<details class="columnstyle">
+<summary>base3_force_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event has force play at third</code></pre>
+</details>
+<details class="columnstyle">
+<summary>base4_force_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event has force play at home</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_safe_err_fl    (boolean) </summary>
+<pre class="codeblock"><code>Event has batter safe on an error</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_fate_id    (smallint) </summary>
+<pre class="codeblock"><code>Ultimate fate of batter (see `dest_id` cols for code meaning</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run1_fate_id    (smallint) </summary>
+<pre class="codeblock"><code>Ultimate fate of runner on first (see `dest_id` cols for code meaning</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run2_fate_id    (smallint) </summary>
+<pre class="codeblock"><code>Ultimate fate of runner on second (see `dest_id` cols for code meaning</code></pre>
+</details>
+<details class="columnstyle">
+<summary>run3_fate_id    (smallint) </summary>
+<pre class="codeblock"><code>Ultimate fate of runner on third (see `dest_id` cols for code meaning</code></pre>
+</details>
+<details class="columnstyle">
+<summary>fate_runs_ct    (smallint) </summary>
+<pre class="codeblock"><code>Additional runs scored in half inning after this event</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ass6_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with sixth assist</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ass7_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with seventh assist</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ass8_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with eighth assist</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ass9_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with ninth assist</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ass10_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Position code of fielder with tenth assist</code></pre>
+</details>
+<details class="columnstyle">
+<summary>unknown_out_exc_fl    (boolean) </summary>
+<pre class="codeblock"><code>Unknown fielding credit flag</code></pre>
+</details>
+<details class="columnstyle">
+<summary>uncertain_play_exc_fl    (boolean) </summary>
+<pre class="codeblock"><code>Uncertain play flag</code></pre>
+</details>
+<h3 id="game">game</h3>
+<pre class="codeblock"><code>Contains one row for every unique game in the `event` table, and provides useful summary and metadata information
+about those games.
+
+Note that this table will suffer from the same data quality/completeness issues as `event`. This table only
+includes games for which play-by-play accounts exist, which means that some games from 1921-1936 and all games
+prior to 1921 will be missing from this table. The `gamelog` table provides one row for each game in major league
+history, making it a better choice for complete historical analyses.</code></pre>
+<details class="keycolumnstyle">
+<summary>game_id    (char(12)) &#128273;</summary>
+<pre class="codeblock"><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_dt    (date) </summary>
+<pre class="codeblock"><code>Game date</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_ct    (smallint) </summary>
+<pre class="codeblock"><code>Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_dy    (varchar(9)) </summary>
+<pre class="codeblock"><code>Day of week</code></pre>
+</details>
+<details class="columnstyle">
+<summary>start_game_tm    (smallint) </summary>
+<pre class="codeblock"><code>Game start time (12HMM coded as integer, eg 1015 for 10:15 PM)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>dh_fl    (varchar(1)) </summary>
+<pre class="codeblock"><code>DH used</code></pre>
+</details>
+<details class="columnstyle">
+<summary>daynight_park_cd    (varchar(1)) </summary>
+<pre class="codeblock"><code>D - day game, N - night game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_team_id    (char(3)) </summary>
+<pre class="codeblock"><code>Away team ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_team_id    (char(3)) </summary>
+<pre class="codeblock"><code>Home team ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>park_id    (varchar(5)) </summary>
+<pre class="codeblock"><code>Park ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_start_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team starting pitcher ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_start_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team starting pitcher ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>base4_ump_id    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home plate umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>base1_ump_id    (varchar(32)) </summary>
+<pre class="codeblock"><code>First base umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>base2_ump_id    (varchar(32)) </summary>
+<pre class="codeblock"><code>Second base umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>base3_ump_id    (varchar(32)) </summary>
+<pre class="codeblock"><code>Third base umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lf_ump_id    (char(8)) </summary>
+<pre class="codeblock"><code>Left field umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>rf_ump_id    (char(8)) </summary>
+<pre class="codeblock"><code>Right field umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>attend_park_ct    (integer) </summary>
+<pre class="codeblock"><code>Attendance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>scorer_record_id    (varchar(50)) </summary>
+<pre class="codeblock"><code>Scorekeeper</code></pre>
+</details>
+<details class="columnstyle">
+<summary>translator_record_id    (varchar(50)) </summary>
+<pre class="codeblock"><code>Translator</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inputter_record_id    (varchar(50)) </summary>
+<pre class="codeblock"><code>Inputter</code></pre>
+</details>
+<details class="columnstyle">
+<summary>input_record_ts    (varchar(20)) </summary>
+<pre class="codeblock"><code>Date and time of record input</code></pre>
+</details>
+<details class="columnstyle">
+<summary>edit_record_ts    (varchar(20)) </summary>
+<pre class="codeblock"><code>Date and time of Most recent record edit</code></pre>
+</details>
+<details class="columnstyle">
+<summary>method_record_cd    (varchar(1)) </summary>
+<pre class="codeblock"><code>How the game was scored (join `code_method_record` for details</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pitches_record_cd    (varchar(1)) </summary>
+<pre class="codeblock"><code>Highest detail of pitches recorded (join `code_pitches_record` for details). Note that many games with pitch detail do not have that info for all events, so pitch totals may not be accurate.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>temp_park_ct    (smallint) </summary>
+<pre class="codeblock"><code>Park temperature in degrees F (0 if unknown)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>wind_direction_park_cd    (smallint) </summary>
+<pre class="codeblock"><code>Wind direction park code (join `code_wind_direction_park` for details)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>wind_speed_park_ct    (smallint) </summary>
+<pre class="codeblock"><code>Wind speed in miles per hour (-1 if unknown)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>field_park_cd    (smallint) </summary>
+<pre class="codeblock"><code>Park field condition code (join `code_field_park` for details)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>precip_park_cd    (smallint) </summary>
+<pre class="codeblock"><code>Park precipitation code (join `code_precip_park` for details</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sky_park_cd    (smallint) </summary>
+<pre class="codeblock"><code>Park sky condition code (join `code_sky_park` for details</code></pre>
+</details>
+<details class="columnstyle">
+<summary>minutes_game_ct    (smallint) </summary>
+<pre class="codeblock"><code>Length of game in minutes</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inn_ct    (smallint) </summary>
+<pre class="codeblock"><code>Length of game in innings</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_score_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team final score</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_score_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team final score</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_hits_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team hits</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_hits_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team hits</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_err_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team errors</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_err_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team errors</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lob_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team left on base</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lob_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team left on base</code></pre>
+</details>
+<details class="columnstyle">
+<summary>win_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of winning pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lose_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of losing pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>save_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of saving pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gwrbi_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of batter wit game-winning RBI</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup1_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of away team starting batter in lineup position 1</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup1_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of away team starting batter in lineup position 1</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup2_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of away team starting batter in lineup position 2</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup2_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of away team starting batter in lineup position 2</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup3_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of away team starting batter in lineup position 3</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup3_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of away team starting batter in lineup position 3</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup4_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of away team starting batter in lineup position 4</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup4_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of away team starting batter in lineup position 4</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup5_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of away team starting batter in lineup position 5</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup5_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of away team starting batter in lineup position 5</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup6_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of away team starting batter in lineup position 6</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup6_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of away team starting batter in lineup position 6</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup7_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of away team starting batter in lineup position 7</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup7_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of away team starting batter in lineup position 7</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup8_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of away team starting batter in lineup position 8</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup8_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of away team starting batter in lineup position 8</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup9_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of away team starting batter in lineup position 9</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup9_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of away team starting batter in lineup position 9</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup1_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of home team starting batter in lineup position 1</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup1_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of home team starting batter in lineup position 1</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup2_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of home team starting batter in lineup position 2</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup2_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of home team starting batter in lineup position 2</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup3_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of home team starting batter in lineup position 3</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup3_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of home team starting batter in lineup position 3</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup4_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of home team starting batter in lineup position 4</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup4_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of home team starting batter in lineup position 4</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup5_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of home team starting batter in lineup position 5</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup5_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of home team starting batter in lineup position 5</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup6_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of home team starting batter in lineup position 6</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup6_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of home team starting batter in lineup position 6</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup7_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of home team starting batter in lineup position 7</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup7_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of home team starting batter in lineup position 7</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup8_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of home team starting batter in lineup position 8</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup8_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of home team starting batter in lineup position 8</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup9_bat_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of home team starting batter in lineup position 9</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup9_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position code of home team starting batter in lineup position 9</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_finish_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team finishing pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_finish_pit_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team finishing pitcher</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_team_league_id    (char(1)) </summary>
+<pre class="codeblock"><code>Away team league (1 char ID)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_team_league_id    (char(1)) </summary>
+<pre class="codeblock"><code>Home team league (1 char ID)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_team_game_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team game number</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_team_game_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team game number</code></pre>
+</details>
+<details class="columnstyle">
+<summary>outs_ct    (smallint) </summary>
+<pre class="codeblock"><code>Length of game in outs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>completion_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Information on completion of game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>forfeit_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Information on forfeit of game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>protest_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Information on protest of game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_line_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Away team linescore</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_line_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Home team linescore</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_ab_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team at bats</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_2b_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team doubles</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_3b_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team triples</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_hr_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team home runs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_bi_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team runs batted in</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_sh_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team sacrifice hits</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_sf_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team sacrifice flies</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_hp_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team hit by pitches</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_bb_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team walks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_ibb_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team intentional walks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_so_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team strikeouts</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_sb_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team stolen bases</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_cs_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team caught stealing</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_gdp_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team grounded into double plays</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_xi_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team reached on interference</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_pitcher_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team number of pitchers used</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_er_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team individual earned runs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_ter_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team team earned runs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_wp_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team wild pitches</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_bk_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team balks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_po_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team putouts</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_a_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team assists</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_pb_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team passed balls</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_dp_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team double plays turned</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_tp_ct    (smallint) </summary>
+<pre class="codeblock"><code>Away team triple plays turned</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_ab_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team at bats</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_2b_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team doubles</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_3b_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team triples</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_hr_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team home runs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_bi_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team runs batted in</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_sh_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team sacrifice hits</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_sf_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team sacrifice flies</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_hp_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team hit by pitches</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_bb_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team walks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_ibb_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team intentional walks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_so_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team strikeouts</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_sb_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team stolen bases</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_cs_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team caught stealing</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_gdp_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team grounded into double plays</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_xi_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team reached on interference</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_pitcher_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team number of pitchers used</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_er_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team individual earned runs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_ter_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team team earned runs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_wp_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team wild pitches</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_bk_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team balks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_po_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team putouts</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_a_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team assists</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_pb_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team passed balls</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_dp_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team double plays turned</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_tp_ct    (smallint) </summary>
+<pre class="codeblock"><code>Home team triple plays turned</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ump_home_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Home plate umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ump_1b_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>First base umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ump_2b_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Second base umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ump_3b_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Third base umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ump_lf_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Left field umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ump_rf_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Right field umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_manager_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away manager ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_manager_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Away manager name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_manager_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home manager ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_manager_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Home manager name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>win_pit_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Wining pitcher name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lose_pit_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Losing pitcher name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>save_pit_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Saving pitcher name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>goahead_rbi_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of batter with goahead RBI</code></pre>
+</details>
+<details class="columnstyle">
+<summary>goahead_rbi_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of batter with goahead RBI</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup1_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of away team batter in lineup position 1</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup2_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of away team batter in lineup position 2</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup3_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of away team batter in lineup position 3</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup4_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of away team batter in lineup position 4</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup5_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of away team batter in lineup position 5</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup6_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of away team batter in lineup position 6</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup7_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of away team batter in lineup position 7</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup8_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of away team batter in lineup position 8</code></pre>
+</details>
+<details class="columnstyle">
+<summary>away_lineup9_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of home team batter in lineup position 9</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup1_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of home team batter in lineup position 1</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup2_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of home team batter in lineup position 2</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup3_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of home team batter in lineup position 3</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup4_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of home team batter in lineup position 4</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup5_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of home team batter in lineup position 5</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup6_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of home team batter in lineup position 6</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup7_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of home team batter in lineup position 7</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup8_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of home team batter in lineup position 8</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lineup9_bat_name_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Name of home team batter in lineup position 9</code></pre>
+</details>
+<details class="columnstyle">
+<summary>add_info_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Additional information</code></pre>
+</details>
+<details class="columnstyle">
+<summary>acq_info_tx    (varchar(26)) </summary>
+<pre class="codeblock"><code>Acquisition information</code></pre>
+</details>
+<h3 id="gamelog">gamelog</h3>
+<pre class="codeblock"><code>Contains one row for every game in major league history. While a bare minimum of result information exists
+for all rows, the data becomes significantly more sparse for years prior to box score event files (&lt; 1906).</code></pre>
+<details class="keycolumnstyle">
+<summary>date    (date) &#128273;</summary>
+<pre class="codeblock"><code>Game date</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>double_header    (char(1)) &#128273;</summary>
+<pre class="codeblock"><code>Number of game:
+ "0" -- a single game
+ "1" -- the first game of a double (or triple) header
+        including separate admission doubleheaders
+ "2" -- the second game of a double (or triple) header
+        including separate admission doubleheaders
+ "3" -- the third game of a triple-header
+ "A" -- the first game of a double-header involving 3 teams
+ "B" -- the second game of a double-header involving 3 teams
+</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>visiting_team    (char(3)) &#128273;</summary>
+<pre class="codeblock"><code>Visiting team ID</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>home_team    (char(3)) &#128273;</summary>
+<pre class="codeblock"><code>Home team ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>day_of_week    (char(3)) </summary>
+<pre class="codeblock"><code>Day of week (3 char abbreviation)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visiting_team_league    (char(2)) </summary>
+<pre class="codeblock"><code>Away team league ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visiting_team_game_number    (smallint) </summary>
+<pre class="codeblock"><code>Away team game number</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_team_league    (char(2)) </summary>
+<pre class="codeblock"><code>Home team league ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_team_game_number    (smallint) </summary>
+<pre class="codeblock"><code>Home team game number</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_runs_scored    (smallint) </summary>
+<pre class="codeblock"><code>Away team runs scored</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_runs_score    (smallint) </summary>
+<pre class="codeblock"><code>Home team runs scored</code></pre>
+</details>
+<details class="columnstyle">
+<summary>length_in_outs    (smallint) </summary>
+<pre class="codeblock"><code>Game length in outs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>day_night    (char(1)) </summary>
+<pre class="codeblock"><code>D - day game, N - night game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>completion_info    (varchar(23)) </summary>
+<pre class="codeblock"><code>Completion information.  If the game was completed at a
+later date (either due to a suspension or an upheld protest)
+this field will include:
+    "yyyymmdd,park,vs,hs,len" Where
+yyyymmdd -- the date the game was completed
+park -- the park ID where the game was completed
+vs -- the visitor score at the time of interruption
+hs -- the home score at the time of interruption
+len -- the length of the game in outs at time of interruption
+All the rest of the information in the record refers to the
+entire game.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>forfeit_info    (varchar(3)) </summary>
+<pre class="codeblock"><code>V - forfeited to away team, H - forfeited to home team, T - ruled a no-decision</code></pre>
+</details>
+<details class="columnstyle">
+<summary>protest_info    (varchar(3)) </summary>
+<pre class="codeblock"><code>P - protested by unidentified team, V - disallowed protest by away team, H - disallowed protest by home team, X - upheld protest by away team, Y - upheld protest by home team</code></pre>
+</details>
+<details class="columnstyle">
+<summary>park_id    (char(5)) </summary>
+<pre class="codeblock"><code>Park ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>attendance    (integer) </summary>
+<pre class="codeblock"><code>Attendance</code></pre>
+</details>
+<details class="columnstyle">
+<summary>duration    (smallint) </summary>
+<pre class="codeblock"><code>Time of game in minutes</code></pre>
+</details>
+<details class="columnstyle">
+<summary>vistor_line_score    (varchar(26)) </summary>
+<pre class="codeblock"><code>Away team line score, e.g. 010000(10)0x</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_line_score    (varchar(26)) </summary>
+<pre class="codeblock"><code>Home team line score, e.g. 010000(10)0x</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_ab    (smallint) </summary>
+<pre class="codeblock"><code>Away team at bats</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_h    (smallint) </summary>
+<pre class="codeblock"><code>Away team hits</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_d    (smallint) </summary>
+<pre class="codeblock"><code>Away team doubles</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_t    (smallint) </summary>
+<pre class="codeblock"><code>Away team triples</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_hr    (smallint) </summary>
+<pre class="codeblock"><code>Away team home runs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_rbi    (smallint) </summary>
+<pre class="codeblock"><code>Away team runs batted in</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_sh    (smallint) </summary>
+<pre class="codeblock"><code>Away team sacrifice hits (may include sac flies before 1954)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_sf    (smallint) </summary>
+<pre class="codeblock"><code>Away team sacrifice flies (since 1954)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_hbp    (smallint) </summary>
+<pre class="codeblock"><code>Away team hit by pitches</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_bb    (smallint) </summary>
+<pre class="codeblock"><code>Away team walks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_ibb    (smallint) </summary>
+<pre class="codeblock"><code>Away team intentional walks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_k    (smallint) </summary>
+<pre class="codeblock"><code>Away team strikeouts</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_sb    (smallint) </summary>
+<pre class="codeblock"><code>Away team stolen bases</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_cs    (smallint) </summary>
+<pre class="codeblock"><code>Away team caught stealing</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_gdp    (smallint) </summary>
+<pre class="codeblock"><code>Away team grounded into double plays</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_ci    (smallint) </summary>
+<pre class="codeblock"><code>Away team reached on interference</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_lob    (smallint) </summary>
+<pre class="codeblock"><code>Away team left on base</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_pitchers    (smallint) </summary>
+<pre class="codeblock"><code>Away team pitchers used</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_er    (smallint) </summary>
+<pre class="codeblock"><code>Away team individual earned runs allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_ter    (smallint) </summary>
+<pre class="codeblock"><code>Away team team earned runs allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_wp    (smallint) </summary>
+<pre class="codeblock"><code>Away team wild pitches allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_balks    (smallint) </summary>
+<pre class="codeblock"><code>Away team balks allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_po    (smallint) </summary>
+<pre class="codeblock"><code>Away team putouts</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_a    (smallint) </summary>
+<pre class="codeblock"><code>Away team assists</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_e    (smallint) </summary>
+<pre class="codeblock"><code>Away team errors</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_passed    (smallint) </summary>
+<pre class="codeblock"><code>Away team passed balls</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_db    (smallint) </summary>
+<pre class="codeblock"><code>Away team double plays turned</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_tp    (smallint) </summary>
+<pre class="codeblock"><code>Away team triple plays turned</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_ab    (smallint) </summary>
+<pre class="codeblock"><code>Home team at bats</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_h    (smallint) </summary>
+<pre class="codeblock"><code>Home team hits</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_d    (smallint) </summary>
+<pre class="codeblock"><code>Home team doubles</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_t    (smallint) </summary>
+<pre class="codeblock"><code>Home team triples</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_hr    (smallint) </summary>
+<pre class="codeblock"><code>Home team home runs</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_rbi    (smallint) </summary>
+<pre class="codeblock"><code>Home team runs batted in</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_sh    (smallint) </summary>
+<pre class="codeblock"><code>Home team sacrifice hits (may include sac flies before 1954)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_sf    (smallint) </summary>
+<pre class="codeblock"><code>Home team sacrifice flies (since 1954)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_hbp    (smallint) </summary>
+<pre class="codeblock"><code>Home team hit by pitches</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_bb    (smallint) </summary>
+<pre class="codeblock"><code>Home team walks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_ibb    (smallint) </summary>
+<pre class="codeblock"><code>Home team intentional walks</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_k    (smallint) </summary>
+<pre class="codeblock"><code>Home team strikeouts</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_sb    (smallint) </summary>
+<pre class="codeblock"><code>Home team stolen bases</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_cs    (smallint) </summary>
+<pre class="codeblock"><code>Home team caught stealing</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_gdp    (smallint) </summary>
+<pre class="codeblock"><code>Home team grounded into double plays</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_ci    (smallint) </summary>
+<pre class="codeblock"><code>Home team reached on interference</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_lob    (smallint) </summary>
+<pre class="codeblock"><code>Home team left on base</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_pitchers    (smallint) </summary>
+<pre class="codeblock"><code>Home team pitchers used</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_er    (smallint) </summary>
+<pre class="codeblock"><code>Home team individual earned runs allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_ter    (smallint) </summary>
+<pre class="codeblock"><code>Home team team earned runs allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_wp    (smallint) </summary>
+<pre class="codeblock"><code>Home team wild pitches allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_balks    (smallint) </summary>
+<pre class="codeblock"><code>Home team balks allowed</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_po    (smallint) </summary>
+<pre class="codeblock"><code>Home team putouts</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_a    (smallint) </summary>
+<pre class="codeblock"><code>Home team assists</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_e    (smallint) </summary>
+<pre class="codeblock"><code>Home team errors</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_passed    (smallint) </summary>
+<pre class="codeblock"><code>Home team passed balls</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_db    (smallint) </summary>
+<pre class="codeblock"><code>Home team double plays turned</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_tp    (smallint) </summary>
+<pre class="codeblock"><code>Home team triple plays turned</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_h_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home plate umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_h_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home plate umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_1b_id    (char(8)) </summary>
+<pre class="codeblock"><code>First base umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_1b_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>First base umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_2b_id    (char(8)) </summary>
+<pre class="codeblock"><code>Second base umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_2b_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Second base umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_3b_id    (char(8)) </summary>
+<pre class="codeblock"><code>Third base umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_3b_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Third base umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_lf_id    (char(8)) </summary>
+<pre class="codeblock"><code>Left field umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_lf_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Left field umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_rf_id    (char(8)) </summary>
+<pre class="codeblock"><code>Right field umpire ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>umpire_rf_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Right field umpire name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_manager_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team manager ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_manager_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team manager name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_manager_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team manager ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_manager_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team manager name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>winning_pitcher_id    (char(8)) </summary>
+<pre class="codeblock"><code>Winning pitcher ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>winning_pitcher_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Winning pitcher name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>losing_pitcher_id    (char(8)) </summary>
+<pre class="codeblock"><code>Losing pitcher ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>losing_pitcher_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Losing pitcher name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>saving_pitcher_id    (char(8)) </summary>
+<pre class="codeblock"><code>Saving pitcher ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>saving_pitcher_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Saving pitcher name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_winning_rbi_id    (char(8)) </summary>
+<pre class="codeblock"><code>Game-winning RBI ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_winning_rbi_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Game-winning RBI name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_starting_pitcher_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team starting pitcher ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_starting_pitcher_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team starting pitcher name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_starting_pitcher_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team starting pitcher ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_starting_pitcher_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team starting pitcher name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_1_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 1 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_1_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 1 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_1_position    (smallint) </summary>
+<pre class="codeblock"><code>Away team lineup slot 1 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_2_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 2 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_2_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 2 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_2_position    (smallint) </summary>
+<pre class="codeblock"><code>Away team lineup slot 2 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_3_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 3 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_3_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 3 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_3_position    (smallint) </summary>
+<pre class="codeblock"><code>Away team lineup slot 3 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_4_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 4 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_4_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 4 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_4_position    (smallint) </summary>
+<pre class="codeblock"><code>Away team lineup slot 4 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_5_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 5 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_5_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 5 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_5_position    (smallint) </summary>
+<pre class="codeblock"><code>Away team lineup slot 5 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_6_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 6 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_6_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 6 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_6_position    (smallint) </summary>
+<pre class="codeblock"><code>Away team lineup slot 6 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_7_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 7 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_7_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 7 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_7_position    (smallint) </summary>
+<pre class="codeblock"><code>Away team lineup slot 7 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_8_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 8 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_8_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 8 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_8_position    (smallint) </summary>
+<pre class="codeblock"><code>Away team lineup slot 8 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_9_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 9 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_9_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Away team lineup slot 9 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visitor_batting_9_position    (smallint) </summary>
+<pre class="codeblock"><code>Away team lineup slot 9 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_1_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 1 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_1_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 1 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_1_position    (smallint) </summary>
+<pre class="codeblock"><code>Home team lineup slot 1 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_2_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 2 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_2_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 2 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_2_position    (smallint) </summary>
+<pre class="codeblock"><code>Home team lineup slot 2 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_3_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 3 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_3_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 3 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_3_position    (smallint) </summary>
+<pre class="codeblock"><code>Home team lineup slot 3 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_4_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 4 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_4_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 4 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_4_position    (smallint) </summary>
+<pre class="codeblock"><code>Home team lineup slot 4 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_5_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 5 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_5_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 5 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_5_position    (smallint) </summary>
+<pre class="codeblock"><code>Home team lineup slot 5 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_6_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 6 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_6_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 6 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_6_position    (smallint) </summary>
+<pre class="codeblock"><code>Home team lineup slot 6 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_7_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 7 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_7_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 7 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_7_position    (smallint) </summary>
+<pre class="codeblock"><code>Home team lineup slot 7 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_8_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 8 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_8_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 8 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_8_position    (smallint) </summary>
+<pre class="codeblock"><code>Home team lineup slot 8 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_9_player_id    (char(8)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 9 starting player ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_9_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Home team lineup slot 9 starting player name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_batting_9_position    (smallint) </summary>
+<pre class="codeblock"><code>Home team lineup slot 9 starting player fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>additional_info    (varchar(128)) </summary>
+<pre class="codeblock"><code>Additional information.  This is a grab-bag of informational
+      items that might not warrant a field on their own.  The field
+      is alpha-numeric. Some items are represented by tokens such as:
+         "HTBF" -- home team batted first.
+         Note: if "HTBF" is specified it would be possible to see
+         something like "01002000x" in the visitor's line score.
+      Changes in umpire positions during a game will also appear in
+      this field.  These will be in the form:
+         umpchange,inning,umpPosition,umpid with the latter three
+         repeated for each umpire.
+      These changes occur with umpire injuries, late arrival of
+      umpires or changes from completion of suspended games. Details
+      of suspended games are in field `completion_information`.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>acquisition_info    (char(1)) </summary>
+<pre class="codeblock"><code>Y - complete game information, N - no game information, D - game derived from box score and game story, P - portions of game information</code></pre>
+</details>
+<h3 id="park">park</h3>
+<pre class="codeblock"><code>Basic information about ballparks.</code></pre>
+<details class="keycolumnstyle">
+<summary>park_id    (char(5)) &#128273;</summary>
+<pre class="codeblock"><code>Park ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>name    (varchar(41)) </summary>
+<pre class="codeblock"><code>Park name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>aka    (varchar(55)) </summary>
+<pre class="codeblock"><code>Common park alias</code></pre>
+</details>
+<details class="columnstyle">
+<summary>city    (varchar(17)) </summary>
+<pre class="codeblock"><code>City</code></pre>
+</details>
+<details class="columnstyle">
+<summary>state    (varchar(9)) </summary>
+<pre class="codeblock"><code>State</code></pre>
+</details>
+<details class="columnstyle">
+<summary>start_date    (varchar(10)) </summary>
+<pre class="codeblock"><code>First game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>end_date    (varchar(10)) </summary>
+<pre class="codeblock"><code>Last game</code></pre>
+</details>
+<details class="columnstyle">
+<summary>league    (char(2)) </summary>
+<pre class="codeblock"><code>League ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>notes    (varchar(54)) </summary>
+<pre class="codeblock"><code>Misc. notes</code></pre>
+</details>
+<h3 id="roster">roster</h3>
+<pre class="codeblock"><code>Contains one row for each unique combination of player, team, and year. For more detailed/convenient player
+biographical data, use the `people` table from the Baseball Databank schema, joining on `retro_id`.</code></pre>
+<details class="keycolumnstyle">
+<summary>year    (integer) &#128273;</summary>
+<pre class="codeblock"><code>Year of roster</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id    (char(8)) &#128273;</summary>
+<pre class="codeblock"><code>Player ID</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id    (char(3)) &#128273;</summary>
+<pre class="codeblock"><code>Team ID</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>position    (varchar(2)) &#128273;</summary>
+<pre class="codeblock"><code>Primary fielding position</code></pre>
+</details>
+<details class="columnstyle">
+<summary>last_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Player last name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>first_name    (varchar(32)) </summary>
+<pre class="codeblock"><code>Player first name</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bats    (char(1)) </summary>
+<pre class="codeblock"><code>Bat handedness</code></pre>
+</details>
+<details class="columnstyle">
+<summary>throws    (char(1)) </summary>
+<pre class="codeblock"><code>Throw handedness</code></pre>
+</details>
+<h3 id="schedule">schedule</h3>
+<pre class="codeblock"><code>Contains the original regular season schedules for all seasons dating back to 1877.</code></pre>
+<details class="keycolumnstyle">
+<summary>date    (date) &#128273;</summary>
+<pre class="codeblock"><code>Scheduled game date</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>home_team    (char(3)) &#128273;</summary>
+<pre class="codeblock"><code>Home team ID</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>home_team_game_number    (integer) &#128273;</summary>
+<pre class="codeblock"><code>Home team game number</code></pre>
+</details>
+<details class="columnstyle">
+<summary>double_header    (smallint) </summary>
+<pre class="codeblock"><code>Doubleheader flag (0 - only game of day, 1 - first game of doubleheader, 2 - second game of doubleheader</code></pre>
+</details>
+<details class="columnstyle">
+<summary>day_of_week    (char(3)) </summary>
+<pre class="codeblock"><code>Day of week (3 letter abbreviation</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visiting_team    (char(3)) </summary>
+<pre class="codeblock"><code>Away team ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visiting_team_league    (char(2)) </summary>
+<pre class="codeblock"><code>Away team league ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>visiting_team_game_number    (smallint) </summary>
+<pre class="codeblock"><code>Away team game number</code></pre>
+</details>
+<details class="columnstyle">
+<summary>home_team_league    (char(2)) </summary>
+<pre class="codeblock"><code>Home team league ID</code></pre>
+</details>
+<details class="columnstyle">
+<summary>day_night    (char(1)) </summary>
+<pre class="codeblock"><code>D - day, N - night</code></pre>
+</details>
+<details class="columnstyle">
+<summary>postponement_indicator    (varchar(120)) </summary>
+<pre class="codeblock"><code>This field will contain one or more phrases related to the game if it was
+not played as scheduled. If there is more than one phrase, they are separated
+by a semi-colon (";"). There are three possible outcomes for games not played
+on the originally scheduled date:
+-- The game was played on another date
+-- The game was played on the original date but at another site
+-- The game was not played</code></pre>
+</details>
+<details class="columnstyle">
+<summary>makeup_dates    (varchar(120)) </summary>
+<pre class="codeblock"><code>This field will contain a makeup date if the postponed game was played at
+another time or place. If an attempt was known to have been made on a date but
+postponed again, that date will be listed. In that case, there will be a second
+date for the date when the game was actually played, in this form: "20150428;
+20150528" For the note about a team folding, the team code is one of the
+standard Retrosheet team IDs. The same is true for the team played as note.
+Often, the two of these are combined in one field.</code></pre>
+</details>
+<h3 id="sub">sub</h3>
+<pre class="codeblock"><code>A complement to `event` that provides convenient information about substitutions.</code></pre>
+<details class="keycolumnstyle">
+<summary>dummy_id    (integer) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_id    (char(12)) </summary>
+<pre class="codeblock"><code>Game ID (home team ID + YYYYMMDD + doubleheader flag</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inn_ct    (smallint) </summary>
+<pre class="codeblock"><code>Inning of substitution</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bat_home_id    (smallint) </summary>
+<pre class="codeblock"><code>Is home team batting (-1 for N/A)</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sub_id    (char(8)) </summary>
+<pre class="codeblock"><code>Player ID of substitute</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sub_home_id    (boolean) </summary>
+<pre class="codeblock"><code>Is the home team making the substitution</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sub_lineup_id    (smallint) </summary>
+<pre class="codeblock"><code>Lineup position of substitution</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sub_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position of substitution</code></pre>
+</details>
+<details class="columnstyle">
+<summary>removed_id    (char(8)) </summary>
+<pre class="codeblock"><code>ID of removed player</code></pre>
+</details>
+<details class="columnstyle">
+<summary>removed_fld_cd    (smallint) </summary>
+<pre class="codeblock"><code>Fielding position of removed player</code></pre>
+</details>
+<details class="columnstyle">
+<summary>event_id    (smallint) </summary>
+<pre class="codeblock"><code>Event number in which substitution occurred</code></pre>
+</details>
+<h2 id="baseballdatabank">baseballdatabank</h2>
+<h3 id="allstar_full">allstar_full</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>dummy_id    (integer) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>player_id    (varchar(9)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>year_id    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_num    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>game_id    (varchar(12)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>starting_pos    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="appearances">appearances</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id    (varchar(3)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_all    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_batting    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_defense    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_p    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_c    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_1b    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_2b    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_3b    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_ss    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_lf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_cf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_rf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_of    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_dh    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_ph    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_pr    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="awards_managers">awards_managers</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>dummy_id    (integer) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>player_id    (varchar(10)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>award_id    (varchar(75)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>year_id    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>tie    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>notes    (varchar(100)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="awards_players">awards_players</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>dummy_id    (integer) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>player_id    (varchar(9)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>award_id    (varchar(255)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>year_id    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>tie    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>notes    (varchar(100)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="awards_share_managers">awards_share_managers</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>award_id    (varchar(25)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (integer) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(10)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>points_won    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>points_max    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>votes_first    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="awards_share_players">awards_share_players</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>award_id    (varchar(25)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>points_won    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>points_max    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>votes_first    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="batting">batting</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>stint    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ab    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>r    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>h    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>_2b    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>_3b    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hr    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>rbi    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>cs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>so    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ibb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hbp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sh    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gidp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="batting_post">batting_post</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>round    (varchar(10)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ab    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>r    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>h    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>_2b    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>_3b    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hr    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>rbi    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>cs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>so    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ibb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hbp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sh    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gidp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="college_playing">college_playing</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>school_id    (varchar(15)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="fielding">fielding</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>stint    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>pos    (varchar(2)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inn_outs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>po    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>a    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>e    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>dp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>wp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>cs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>zr    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="fielding_of">fielding_of</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>stint    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_lf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_cf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_rf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="fielding_of_split">fielding_of_split</h3>
+<pre class="codeblock"><code>Disaggregates outfield statistics from `Fielding` into LF, CF, and RF</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>stint    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>pos    (varchar(2)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inn_outs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>po    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>a    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>e    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>dp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>wp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>cs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>zr    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="fielding_post">fielding_post</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>round    (varchar(10)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>pos    (varchar(2)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inn_outs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>po    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>a    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>e    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>dp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>tp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>pb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>cs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="hall_of_fame">hall_of_fame</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(10)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>voted_by    (varchar(64)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ballots    (varchar(64)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>needed    (varchar(64)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>votes    (varchar(64)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inducted    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>category    (varchar(20)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>needed_note    (varchar(25)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="home_games">home_games</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>lg_id    (varchar(2)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id    (varchar(3)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>park_id    (varchar(5)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>first_game    (date) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>last_game    (date) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>games    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>openings    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>attendance    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="managers">managers</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id    (varchar(3)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>inseason    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>player_id    (varchar(10)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>w    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>l    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>rank    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>plyr_mgr    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="managers_half">managers_half</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(10)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id    (varchar(3)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>half    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>inseason    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>w    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>l    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>rank    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="parks">parks</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>park_id    (varchar(5)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>park_name    (varchar(40)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>park_alias    (varchar(55)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>city    (varchar(25)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>state    (varchar(16)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>country    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="people">people</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(10)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>birth_year    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>birth_month    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>birth_day    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>birth_country    (varchar(50)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>birth_state    (varchar(50)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>birth_city    (varchar(50)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>death_year    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>death_month    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>death_day    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>death_country    (varchar(50)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>death_state    (varchar(50)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>death_city    (varchar(50)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>name_first    (varchar(50)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>name_last    (varchar(50)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>name_given    (varchar(255)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>weight    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>height    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bats    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>throws    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>debut    (date) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>final_game    (date) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>retro_id    (varchar(9)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bbref_id    (varchar(9)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="pitching">pitching</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>stint    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>w    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>l    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>cg    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sho    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sv    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ip_outs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>h    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>er    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hr    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>so    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ba_opp    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>era    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ibb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>wp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hbp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bk    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bfp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>r    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sh    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gidp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="pitching_post">pitching_post</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>round    (varchar(10)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>w    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>l    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>cg    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sho    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sv    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ip_outs    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>h    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>er    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hr    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>so    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ba_opp    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>era    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ibb    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>wp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hbp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bk    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bfp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>r    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sh    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sf    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>gidp    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="salaries">salaries</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id    (varchar(3)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>lg_id    (varchar(2)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>player_id    (varchar(9)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>salary    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="schools">schools</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>school_id    (varchar(15)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>name_full    (varchar(255)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>city    (varchar(55)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>state    (varchar(55)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>country    (varchar(55)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="series_post">series_post</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>round    (varchar(5)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id_winner    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id_winner    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id_loser    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_id_loser    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>wins    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>losses    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ties    (smallint) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="teams">teams</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>year_id    (smallint) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>lg_id    (varchar(2)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id    (varchar(3)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>franch_id    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>div_id    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>rank    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g_home    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>w    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>l    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>div_win    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>wc_win    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>lg_win    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ws_win    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>r    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ab    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>h    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>_2b    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>_3b    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hr    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bb    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>so    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sb    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>cs    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hbp    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sf    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ra    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>er    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>era    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>cg    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sho    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>sv    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ip_outs    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>h_a    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>hr_a    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bb_a    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>so_a    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>e    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>dp    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>fp    (float) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>name    (varchar(50)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>park    (varchar(255)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>attendance    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>bpf    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>ppf    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id_br    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id_lahman45    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>team_id_retro    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="teams_franchises">teams_franchises</h3>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+<details class="keycolumnstyle">
+<summary>franch_id    (varchar(3)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>franch_name    (varchar(50)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>active    (varchar(2)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>na_assoc    (varchar(3)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<h3 id="teams_half">teams_half</h3>
+<pre class="codeblock"><code>Table for years in MLB history that the season was divided into halves (e.g. 1981)</code></pre>
+<details class="keycolumnstyle">
+<summary>year_id    (integer) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>lg_id    (varchar(2)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>team_id    (varchar(3)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="keycolumnstyle">
+<summary>half    (varchar(1)) &#128273;</summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>div_id    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>div_win    (varchar(1)) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>rank    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>g    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>w    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details>
+<details class="columnstyle">
+<summary>l    (integer) </summary>
+<pre class="codeblock"><code>No documentation provided.</code></pre>
+</details></body>
